@@ -1,0 +1,56 @@
+@startuml
+title
+	Database relations BRS
+end title
+
+entity Intercom 
+{
+    * Id : int
+    --
+	* Name : string
+	* MasterCode : string
+	* PhoneNumber : string
+	Description : string
+}
+
+entity PhoneNumber
+{
+	* DivertOrder: int
+	* Number : string
+	--
+}
+
+entity ApartmentConfiguration
+{
+	* ApartmentNumber : int
+	--
+	* MemoryLocation : int
+	* DialToOpen : bool
+	* Name : string
+	AccessCode : string
+}
+
+entity Owner
+{
+	* Id : int
+	--
+	* Name : string	
+	Remarks : string
+}
+
+entity Transponder
+{
+	* Number : string
+}
+
+Owner ||--|{ Transponder : owns
+note on link : One to many
+
+ApartmentConfiguration }|--|{ Intercom : is configured for
+note on link : Many to many
+
+ApartmentConfiguration ||--|{ PhoneNumber : has 
+note on link: One to many 
+
+@enduml
+

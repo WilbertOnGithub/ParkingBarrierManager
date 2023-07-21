@@ -1,0 +1,8 @@
+mode: Mainline
+branches:
+  feature:
+    regex: ^feature?[/-]|bugfix?[/-]|hotfix?[/-]$
+    tag: alpha
+ignore:
+  sha: []
+assembly-versioning-scheme: MajorMinorPatch

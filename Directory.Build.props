@@ -1,10 +1,15 @@
 <Project>
 
     <PropertyGroup>
+        <Title></Title>
+        <Authors>Wilbert van Dolleweerd</Authors>
+        <Description>Parking Barrier Manager</Description>
+
+        <TargetFramework>net7.0</TargetFramework>
         <LangVersion>latest</LangVersion>
         <Nullable>enable</Nullable>
         <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
-        <RootNamespace>BRS</RootNamespace>
+        <RootNamespace>PBM</RootNamespace>
     </PropertyGroup>
-    
+
 </Project>

@@ -1,21 +1,20 @@
 @startuml
 title
-	Database relations BRS
+	Database relations Parking Barrier Manager
 end title
 
-entity Intercom 
+entity Intercom
 {
     * Id : int
     --
 	* Name : string
 	* MasterCode : string
-	* PhoneNumber : string
 	Description : string
 }
 
 entity PhoneNumber
 {
-	* DivertOrder: int
+	* Order: PhoneNumberOrder
 	* Number : string
 	--
 }
@@ -34,7 +33,7 @@ entity Owner
 {
 	* Id : int
 	--
-	* Name : string	
+	* Name : string
 	Remarks : string
 }
 
@@ -43,14 +42,16 @@ entity Transponder
 	* Number : string
 }
 
-Owner ||--|{ Transponder : owns
-note on link : One to many
+enum PhoneNumberOrder
+{
+    Primary,
+    Secondary,
+    Tertiary,
+    Quaternary
+}
 
-ApartmentConfiguration }|--|{ Intercom : is configured for
-note on link : Many to many
-
-ApartmentConfiguration ||--|{ PhoneNumber : has 
-note on link: One to many 
+Intercom ||-- PhoneNumber : one
+ApartmentConfiguration }|-- PhoneNumber : one or more
+Owner }|-- Transponder : one or more
 
 @enduml
-

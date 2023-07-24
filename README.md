@@ -11,8 +11,8 @@ open the barrier.
 
 PBM is used to:
 
-- Maintain a list of all apartement information for both intercoms (name, apartement number, etc).
-- Maintain a list of all the phone numbers configured for each apartement
+- Maintain a list of all apartment information for both intercoms (name, apartment number, etc).
+- Maintain a list of all the phone numbers configured for each apartment
 - Maintain the configuration of both intercoms (access codes)
 - When changing the configuration for an apartment, BRS can send a SMS to the intercom to use the newly configured
   values.

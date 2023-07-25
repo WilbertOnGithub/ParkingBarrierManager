@@ -1,4 +1,7 @@
-﻿namespace Arentheym.ParkingBarrier.UI;
+﻿using Arentheym.ParkingBarrier.UI.ViewModels;
+using Arentheym.ParkingBarrier.UI.Views;
+
+namespace Arentheym.ParkingBarrier.UI;
 
 using Microsoft.Extensions.DependencyInjection;
 
@@ -6,8 +9,9 @@ public static class UIServicesExtension
 {
     public static IServiceCollection RegisterUIServices(this IServiceCollection services)
     {
-        // TODO: Extend list here
-        // services.AddTransient<IUpdateReportingUseCase, UpdateReportingUseCase>();
+        services.AddSingleton<MainWindow>();
+        services.AddSingleton<MainWindowViewModel>();
+
         return services;
     }
 }

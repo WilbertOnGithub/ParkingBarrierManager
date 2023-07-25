@@ -1,5 +1,8 @@
-﻿using Arentheym.ParkingBarrier.UI.ViewModels;
+﻿using Arentheym.ParkingBarrier.Application;
+using Arentheym.ParkingBarrier.Infrastructure;
+using Arentheym.ParkingBarrier.UI.ViewModels;
 using Arentheym.ParkingBarrier.UI.Views;
+using Serilog;
 
 namespace Arentheym.ParkingBarrier.UI;
 
@@ -11,6 +14,15 @@ public static class UIServicesExtension
     {
         services.AddSingleton<MainWindow>();
         services.AddSingleton<MainWindowViewModel>();
+
+        services.RegisterApplicationServices();
+        services.RegisterInfrastructureServices();
+
+        // Add Serilog configuration
+        using var log = new LoggerConfiguration()
+            .WriteTo.Console()
+            .CreateLogger();
+        services.AddSingleton<ILogger>(log);
 
         return services;
     }

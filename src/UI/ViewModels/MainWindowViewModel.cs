@@ -9,6 +9,7 @@ public partial class MainWindowViewModel : ViewModelBase
     public MainWindowViewModel(ILogger<MainWindowViewModel> logger)
     {
         this.logger = logger;
+        this.logger.LogDebug("Foo");
     }
 
     public string Greeting => "Welcome to Avalonia!";

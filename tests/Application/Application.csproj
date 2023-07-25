@@ -7,4 +7,8 @@
     <AssemblyName>Application.Tests</AssemblyName>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\Application\Application.csproj" />
+  </ItemGroup>
+
 </Project>

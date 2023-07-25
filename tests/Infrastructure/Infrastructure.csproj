@@ -7,4 +7,8 @@
     <AssemblyName>Infrastructure.Tests</AssemblyName>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\Infrastructure\Infrastructure.csproj" />
+  </ItemGroup>
+
 </Project>

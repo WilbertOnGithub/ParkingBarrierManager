@@ -2,6 +2,7 @@
 using Arentheym.ParkingBarrier.Infrastructure;
 using Arentheym.ParkingBarrier.UI.ViewModels;
 using Arentheym.ParkingBarrier.UI.Views;
+using Avalonia.Logging;
 using Serilog;
 
 namespace Arentheym.ParkingBarrier.UI;
@@ -19,10 +20,15 @@ public static class UIServicesExtension
         services.RegisterInfrastructureServices();
 
         // Add Serilog configuration
-        using var log = new LoggerConfiguration()
-            .WriteTo.Console()
-            .CreateLogger();
-        services.AddSingleton<ILogger>(log);
+        services.AddLogging(builder =>
+        {
+            var logger = new LoggerConfiguration()
+                .MinimumLevel.Debug()
+                .WriteTo.Console()
+                .CreateLogger();
+
+            builder.AddSerilog(logger);
+        });
 
         return services;
     }

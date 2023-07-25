@@ -24,8 +24,6 @@ public partial class App : Avalonia.Application
         var provider = services.BuildServiceProvider();
         Ioc.Default.ConfigureServices(provider);
 
-        //Avalonia.Logging
-
         if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
         {
             // Line below is needed to remove Avalonia data validation.

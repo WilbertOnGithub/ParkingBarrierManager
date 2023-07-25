@@ -1,6 +1,6 @@
 using Avalonia.Controls;
 
-namespace UI.Views;
+namespace Arentheym.ParkingBarrier.UI.Views;
 
 public partial class MainWindow : Window
 {

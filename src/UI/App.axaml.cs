@@ -1,12 +1,12 @@
+using Arentheym.ParkingBarrier.UI.ViewModels;
+using Arentheym.ParkingBarrier.UI.Views;
 using Avalonia;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Data.Core;
 using Avalonia.Data.Core.Plugins;
 using Avalonia.Markup.Xaml;
-using UI.ViewModels;
-using UI.Views;
 
-namespace UI;
+namespace Arentheym.ParkingBarrier.UI;
 
 public partial class App : Application
 {

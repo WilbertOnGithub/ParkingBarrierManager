@@ -9,7 +9,7 @@
         <LangVersion>latest</LangVersion>
         <Nullable>enable</Nullable>
         <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
-        <RootNamespace>PBM</RootNamespace>
+        <RootNamespace>Arentheym</RootNamespace>
     </PropertyGroup>
 
 </Project>

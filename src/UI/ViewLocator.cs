@@ -1,9 +1,9 @@
 using System;
+using Arentheym.ParkingBarrier.UI.ViewModels;
 using Avalonia.Controls;
 using Avalonia.Controls.Templates;
-using UI.ViewModels;
 
-namespace UI;
+namespace Arentheym.ParkingBarrier.UI;
 
 public class ViewLocator : IDataTemplate
 {
@@ -16,7 +16,7 @@ public class ViewLocator : IDataTemplate
         {
             return (Control)Activator.CreateInstance(type)!;
         }
-        
+
         return new TextBlock { Text = "Not Found: " + name };
     }
 

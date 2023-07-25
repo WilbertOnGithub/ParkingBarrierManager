@@ -1,7 +1,7 @@
 ﻿using Avalonia;
 using System;
 
-namespace UI;
+namespace Arentheym.ParkingBarrier.UI;
 
 class Program
 {

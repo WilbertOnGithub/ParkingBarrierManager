@@ -1,6 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 
-namespace UI.ViewModels;
+namespace Arentheym.ParkingBarrier.UI.ViewModels;
 
 public class ViewModelBase : ObservableObject
 {

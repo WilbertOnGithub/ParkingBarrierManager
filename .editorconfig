@@ -1,2 +1,13 @@
 [*.xml]
+# Microsoft .NET properties
+
+# ReSharper inspection severities
+resharper_check_namespace_highlighting = none
+
+[*]
+charset = utf-8-bom
+end_of_line = crlf
+trim_trailing_whitespace = true
+insert_final_newline = false
+indent_style = space
 indent_size = 4

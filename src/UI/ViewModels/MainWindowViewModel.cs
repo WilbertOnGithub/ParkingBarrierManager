@@ -1,4 +1,4 @@
-﻿namespace UI.ViewModels;
+﻿namespace Arentheym.ParkingBarrier.UI.ViewModels;
 
 public partial class MainWindowViewModel : ViewModelBase
 {

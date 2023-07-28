@@ -7,9 +7,13 @@
 
         <TargetFramework>net7.0</TargetFramework>
         <LangVersion>latest</LangVersion>
+        <RootNamespace>Arentheym</RootNamespace>
+
         <Nullable>enable</Nullable>
         <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
-        <RootNamespace>Arentheym</RootNamespace>
+        <EnableNETAnalyzers>true</EnableNETAnalyzers>
+        <AnalysisMode>AllEnabledByDefault</AnalysisMode>
+        <AnalysisLevel>latest</AnalysisLevel>
     </PropertyGroup>
 
 </Project>

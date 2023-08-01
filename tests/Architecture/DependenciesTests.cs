@@ -65,8 +65,8 @@ public class DependenciesTests
 
         if (!File.Exists(path))
         {
-            return path.Contains(Debug) ?
-                path.Replace(Debug, Release) : path.Replace(Release, Debug);
+            return path.Contains(Debug, StringComparison.Ordinal) ?
+                path.Replace(Debug, Release, StringComparison.Ordinal) : path.Replace(Release, Debug, StringComparison.Ordinal);
         }
 
         return path;

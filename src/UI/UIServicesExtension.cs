@@ -1,4 +1,5 @@
-﻿using Arentheym.ParkingBarrier.Application;
+﻿using System.Globalization;
+using Arentheym.ParkingBarrier.Application;
 using Arentheym.ParkingBarrier.Infrastructure;
 using Arentheym.ParkingBarrier.UI.ViewModels;
 using Arentheym.ParkingBarrier.UI.Views;
@@ -24,8 +25,8 @@ public static class UIServicesExtension
         {
             var logger = new LoggerConfiguration()
                 .MinimumLevel.Debug()
-                .WriteTo.Console()
-                .WriteTo.File("C:\\temp\\logs\\log.txt", rollingInterval: RollingInterval.Day)
+                .WriteTo.Console(formatProvider: CultureInfo.InvariantCulture)
+                .WriteTo.File("C:\\temp\\logs\\log.txt", rollingInterval: RollingInterval.Day, formatProvider: CultureInfo.InvariantCulture)
                 .CreateLogger();
 
             builder.AddSerilog(logger);

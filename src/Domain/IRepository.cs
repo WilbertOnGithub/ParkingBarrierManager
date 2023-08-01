@@ -1,6 +1,9 @@
 ﻿namespace Arentheym.ParkingBarrier.Domain;
 
+/// <summary>
+///
+/// </summary>
 public interface IRepository
 {
-    // Defines the interface for interacting with the database.
+    void EmptyMethodForNow();
 }

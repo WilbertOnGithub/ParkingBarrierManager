@@ -7,11 +7,11 @@ namespace Arentheym.ParkingBarrier.UI;
 
 public class ViewLocator : IDataTemplate
 {
-    public Control Build(object? data)
+    public Control Build(object? param)
     {
-        ArgumentNullException.ThrowIfNull(data);
+        ArgumentNullException.ThrowIfNull(param);
 
-        var name = data.GetType().FullName!.Replace("ViewModel", "View");
+        var name = param.GetType().FullName!.Replace("ViewModel", "View", StringComparison.Ordinal);
         var type = Type.GetType(name);
 
         if (type != null)

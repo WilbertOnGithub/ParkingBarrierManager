@@ -20,6 +20,13 @@
             <DataTemplate>
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Text="{Binding ApartmentNumber}" Margin="0,0,10,0"/>
+                    <TextBlock Text="{Binding DisplayName}" Margin="0,0,10,0"/>
+                    <TextBlock Text="{Binding PrimaryPhoneNumber}" Margin="0,0,10,0"/>
+                    <TextBlock Text="{Binding SecondaryPhoneNumber}" Margin="0,0,10,0"/>
+                    <TextBlock Text="{Binding TertiaryPhoneNumber}" Margin="0,0,10,0"/>
+                    <TextBlock Text="{Binding TertiaryPhoneNumber}" Margin="0,0,10,0"/>
+                    <TextBlock Text="{Binding QuaternaryPhoneNumber}" Margin="0,0,10,0"/>
+                    <CheckBox IsChecked="{Binding DialToOpen}"></CheckBox>
                 </StackPanel>
             </DataTemplate>
         </ListBox.ItemTemplate>

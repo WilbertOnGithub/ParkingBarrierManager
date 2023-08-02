@@ -15,31 +15,48 @@
         <vm:MainWindowViewModel/>
     </Design.DataContext>
 
+    <StackPanel Orientation="Vertical">
+        <DataGrid ItemsSource="{Binding Configurations}" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Appartement" Binding="{Binding ApartmentNumber}" />
+                <DataGridTextColumn Header="Primair" Binding="{Binding PrimaryPhoneNumber}" />
+            </DataGrid.Columns>
+        </DataGrid>
+    </StackPanel>
+
+    <!--
+    <DataGrid.Columns>
+        <DataGridTextColumn Header="First Name"
+                            Binding="{Binding FirstName}"
+                            Width="2*" />
+        <DataGridTextColumn Header="Last Name"
+                            Binding="{Binding LastName}"
+                            Width="2*" />
+        <DataGridTextColumn Header="Department"
+                            Binding="{Binding DepartmentNumber}"
+                            Width="*" />
+    </DataGrid.Columns>
+
     <ListBox ItemsSource="{Binding Configurations}">
         <ListBox.ItemTemplate>
             <DataTemplate>
                 <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="{Binding ApartmentNumber}" Margin="0,0,10,0"/>
-                    <TextBox Text="{Binding DisplayName}" Margin="0,0,10,0"/>
-                    <TextBox Text="{Binding PrimaryPhoneNumber}" Margin="0,0,10,0"/>
-                    <TextBox Text="{Binding SecondaryPhoneNumber}" Margin="0,0,10,0"/>
-                    <TextBox Text="{Binding TertiaryPhoneNumber}" Margin="0,0,10,0"/>
-                    <TextBox Text="{Binding TertiaryPhoneNumber}" Margin="0,0,10,0"/>
-                    <TextBox Text="{Binding QuaternaryPhoneNumber}" Margin="0,0,10,0"/>
+                    <TextBlock Text="{Binding ApartmentNumber}" />
+                    <TextBox Text="{Binding DisplayName}" />
+                    <TextBox Text="{Binding PrimaryPhoneNumber}" />
+                    <TextBox Text="{Binding SecondaryPhoneNumber}"/>
+                    <TextBox Text="{Binding TertiaryPhoneNumber}"/>
+                    <TextBox Text="{Binding TertiaryPhoneNumber}"/>
+                    <TextBox Text="{Binding QuaternaryPhoneNumber}"/>
                     <CheckBox IsChecked="{Binding DialToOpen}">Dial to open</CheckBox>
-                    <ComboBox ItemsSource="{Binding Intercoms}" SelectedIndex="0">
-                        <ComboBox.ItemTemplate>
-                            <DataTemplate>
-                                <CheckBox
-                                    IsChecked="{Binding IsUsed}"
-                                    Content="{Binding Name}"
-                                />
-                            </DataTemplate>
-                        </ComboBox.ItemTemplate>
-                    </ComboBox>
+                    <CheckBox IsChecked="{Binding Intercoms[0].IsUsed}"
+                              Content="{Binding Intercoms[0].Name}" />
+                    <CheckBox IsChecked="{Binding Intercoms[1].IsUsed}"
+                              Content="{Binding Intercoms[1].Name}" />
                 </StackPanel>
             </DataTemplate>
         </ListBox.ItemTemplate>
     </ListBox>
+    -->
 
 </Window>

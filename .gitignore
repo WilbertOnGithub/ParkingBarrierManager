@@ -16,6 +16,9 @@ bld/
 [Ll]og/
 [Ll]ogs/
 
+# User specific
+*.user
+
 # Idea folder
 .idea/
 
@@ -24,4 +27,3 @@ BenchmarkDotNet.Artifacts/
 
 # JetBrains Rider
 *.sln.iml
-

@@ -7,28 +7,39 @@ namespace Arentheym.ParkingBarrier.UI.ViewModels;
 public partial class ApartmentConfigurationViewModel : ObservableValidator
 {
     [ObservableProperty]
+    [PhoneNumber]
     private string primaryPhoneNumber;
 
     [ObservableProperty]
+    [PhoneNumber]
     private string secondaryPhoneNumber;
 
     [ObservableProperty]
+    [PhoneNumber]
     private string tertiaryPhoneNumber;
 
     [ObservableProperty]
+    [PhoneNumber]
     private string quaternaryPhoneNumber;
 
+    [ObservableProperty]
     [AccessCode]
     private string accessCode;
 
     [ObservableProperty]
     private bool dialToOpen;
 
+    [ObservableProperty]
     [Required]
     [MaxLength(16)]
     private string displayName;
 
-    public int ApartmentNumber { get; init; }
+    private int apartmentNumber;
+    public int ApartmentNumber
+    {
+        get => apartmentNumber;
+        init => SetProperty(ref apartmentNumber, value);
+    }
 
     public ApartmentConfigurationViewModel()
     {
@@ -39,5 +50,7 @@ public partial class ApartmentConfigurationViewModel : ObservableValidator
         accessCode = string.Empty;
         displayName = string.Empty;
         dialToOpen = false;
+
+        ApartmentNumber = 1;
     }
 }

@@ -12,7 +12,7 @@ public sealed partial class PhoneNumber : ValidationAttribute
             return ValidationResult.Success;
         }
 
-        return new("Phonenumber can be empty or a number of exactly 10 digits (ignoring whitespace).");
+        return new("Phone number can be empty or a number of exactly 10 digits (ignoring whitespace).");
     }
 
     /// <summary>

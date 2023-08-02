@@ -16,6 +16,7 @@ public static class UIServicesExtension
     {
         services.AddSingleton<MainWindow>();
         services.AddSingleton<MainWindowViewModel>();
+        services.AddSingleton<ApartmentConfigurationViewModel>();
 
         services.RegisterApplicationServices();
         services.RegisterInfrastructureServices();

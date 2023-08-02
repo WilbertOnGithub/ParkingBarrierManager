@@ -15,7 +15,19 @@ public partial class MainWindowViewModel : ViewModelBase
             DisplayName = "Wilbert",
             AccessCode = "1234",
             DialToOpen = true,
-            PrimaryPhoneNumber = "0613739851"
+            PrimaryPhoneNumber = "0613739851",
+            Intercoms = { new IntercomViewModel()
+                {
+                    Name = "Voor",
+                    IsUsed = true
+                },
+                new IntercomViewModel()
+                {
+                    Name = "Achter",
+                    IsUsed = false
+                }
+            }
+
         });
     }
 

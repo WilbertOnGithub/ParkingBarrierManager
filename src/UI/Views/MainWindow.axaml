@@ -20,13 +20,23 @@
             <DataTemplate>
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Text="{Binding ApartmentNumber}" Margin="0,0,10,0"/>
-                    <TextBlock Text="{Binding DisplayName}" Margin="0,0,10,0"/>
-                    <TextBlock Text="{Binding PrimaryPhoneNumber}" Margin="0,0,10,0"/>
-                    <TextBlock Text="{Binding SecondaryPhoneNumber}" Margin="0,0,10,0"/>
-                    <TextBlock Text="{Binding TertiaryPhoneNumber}" Margin="0,0,10,0"/>
-                    <TextBlock Text="{Binding TertiaryPhoneNumber}" Margin="0,0,10,0"/>
-                    <TextBlock Text="{Binding QuaternaryPhoneNumber}" Margin="0,0,10,0"/>
-                    <CheckBox IsChecked="{Binding DialToOpen}"></CheckBox>
+                    <TextBox Text="{Binding DisplayName}" Margin="0,0,10,0"/>
+                    <TextBox Text="{Binding PrimaryPhoneNumber}" Margin="0,0,10,0"/>
+                    <TextBox Text="{Binding SecondaryPhoneNumber}" Margin="0,0,10,0"/>
+                    <TextBox Text="{Binding TertiaryPhoneNumber}" Margin="0,0,10,0"/>
+                    <TextBox Text="{Binding TertiaryPhoneNumber}" Margin="0,0,10,0"/>
+                    <TextBox Text="{Binding QuaternaryPhoneNumber}" Margin="0,0,10,0"/>
+                    <CheckBox IsChecked="{Binding DialToOpen}">Dial to open</CheckBox>
+                    <ComboBox ItemsSource="{Binding Intercoms}" SelectedIndex="0">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <CheckBox
+                                    IsChecked="{Binding IsUsed}"
+                                    Content="{Binding Name}"
+                                />
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
                 </StackPanel>
             </DataTemplate>
         </ListBox.ItemTemplate>

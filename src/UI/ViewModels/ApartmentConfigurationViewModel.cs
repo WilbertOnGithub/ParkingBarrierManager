@@ -1,4 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.ComponentModel.DataAnnotations;
 using Arentheym.ParkingBarrier.UI.Validators;
 using CommunityToolkit.Mvvm.ComponentModel;
 
@@ -40,6 +42,8 @@ public partial class ApartmentConfigurationViewModel : ObservableValidator
         get => apartmentNumber;
         init => SetProperty(ref apartmentNumber, value);
     }
+
+    public ObservableCollection<IntercomViewModel> Intercoms { get; } = new ObservableCollection<IntercomViewModel>();
 
     public ApartmentConfigurationViewModel()
     {

@@ -21,7 +21,7 @@ public partial class ApartmentConfigurationViewModel : ObservableValidator
     [AccessCode]
     private string accessCode;
 
-    [Required]
+    [ObservableProperty]
     private bool dialToOpen;
 
     [Required]

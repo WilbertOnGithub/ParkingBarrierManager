@@ -3,7 +3,7 @@ using System.Reflection;
 using FluentAssertions;
 using Xunit;
 
-namespace Architecture;
+namespace Arentheym.ParkingBarrier.Architecture.Tests;
 
 public class DependenciesTests
 {
@@ -19,10 +19,10 @@ public class DependenciesTests
         path += "/net7.0/";
         path = Fallback(Path.GetFullPath(path));
 
-        uiAssembly = Assembly.LoadFile(Path.Combine(path, "UI.dll"));
-        applicationAssembly = Assembly.LoadFile(Path.Combine(path, "Application.dll"));
-        domainAssembly = Assembly.LoadFile(Path.Combine(path, "Domain.dll"));
-        infrastructureAssembly = Assembly.LoadFile(Path.Combine(path, "Infrastructure.dll"));
+        uiAssembly = Assembly.LoadFile(Path.Combine(path, "UITests.dll"));
+        applicationAssembly = Assembly.LoadFile(Path.Combine(path, "ApplicationTests.dll"));
+        domainAssembly = Assembly.LoadFile(Path.Combine(path, "DomainTests.dll"));
+        infrastructureAssembly = Assembly.LoadFile(Path.Combine(path, "InfrastructureTests.dll"));
     }
 
     [Fact]

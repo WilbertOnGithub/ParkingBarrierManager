@@ -1,7 +1,7 @@
-﻿namespace Arentheym.ParkingBarrier.Domain.Tests;
-
-using AutoFixture;
+﻿using AutoFixture;
 using AutoFixture.AutoNSubstitute;
+
+namespace Arentheym.ParkingBarrier.Infrastructure.Tests;
 
 public class Class1
 {

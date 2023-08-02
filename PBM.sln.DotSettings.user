@@ -1,2 +1,18 @@
 ﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-	<s:String x:Key="/Default/Environment/Highlighting/HighlightingSourceSnapshotLocation/@EntryValue">C:\Users\wilbe\AppData\Local\JetBrains\Rider2023.1\resharper-host\temp\Rider\vAny\CoverageData\_PBM.121597990\Snapshot\snapshot.utdcvr</s:String></wpf:ResourceDictionary>
+	<s:String x:Key="/Default/Environment/Highlighting/HighlightingSourceSnapshotLocation/@EntryValue">C:\Users\wilbe\AppData\Local\JetBrains\Rider2023.1\resharper-host\temp\Rider\vAny\CoverageData\_PBM.121597990\Snapshot\snapshot.utdcvr</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=5c0f029f_002D0f03_002D4cd9_002D8de6_002Df23fb4c4aceb/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="Foo #2" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;TestAncestor&gt;&#xD;
+    &lt;TestId&gt;xUnit::B7F5BCC6-F17E-4B24-851F-4DFAA5E64707::net7.0::UI.ValidatorTests.AccessCodeCanContainOneToSixDigits&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::B7F5BCC6-F17E-4B24-851F-4DFAA5E64707::net7.0::UI.ValidatorTests.AccessCodeCannotContainInvalidData&lt;/TestId&gt;&#xD;
+  &lt;/TestAncestor&gt;&#xD;
+&lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=75c17f20_002Db27e_002D467d_002D878b_002D938ee4da7176/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="Foo" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;TestAncestor&gt;&#xD;
+    &lt;TestId&gt;xUnit::B7F5BCC6-F17E-4B24-851F-4DFAA5E64707::net7.0::UI.ValidatorTests.Foo&lt;/TestId&gt;&#xD;
+  &lt;/TestAncestor&gt;&#xD;
+&lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=c5e31730_002D83cc_002D4efc_002D8597_002Da52857420ebc/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="Foo #3" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;TestAncestor&gt;&#xD;
+    &lt;TestId&gt;xUnit::B7F5BCC6-F17E-4B24-851F-4DFAA5E64707::net7.0::UI.ValidatorTests.Foo&lt;/TestId&gt;&#xD;
+  &lt;/TestAncestor&gt;&#xD;
+&lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>

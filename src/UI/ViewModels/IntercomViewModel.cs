@@ -8,6 +8,8 @@ namespace Arentheym.ParkingBarrier.UI.ViewModels;
 /// </summary>
 public partial class IntercomViewModel : ObservableObject
 {
+    public int Id { get; init; }
+
     [ObservableProperty]
     private bool isUsed;
 

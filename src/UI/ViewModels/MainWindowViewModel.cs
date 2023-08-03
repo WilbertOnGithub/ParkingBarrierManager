@@ -7,6 +7,8 @@ public partial class MainWindowViewModel : ViewModelBase
 {
     public ObservableCollection<ApartmentConfigurationViewModel> Configurations { get; } = new ObservableCollection<ApartmentConfigurationViewModel>();
 
+    // TODO: Add code to retrieve configurations from application layer
+
     public MainWindowViewModel()
     {
         Configurations.Add(new ApartmentConfigurationViewModel()
@@ -18,11 +20,13 @@ public partial class MainWindowViewModel : ViewModelBase
             PrimaryPhoneNumber = "0613739851",
             Intercoms = { new IntercomViewModel()
                 {
+                    Id = 1,
                     Name = "Voor",
                     IsUsed = true
                 },
                 new IntercomViewModel()
                 {
+                    Id =2,
                     Name = "Achter",
                     IsUsed = false
                 }
@@ -30,7 +34,4 @@ public partial class MainWindowViewModel : ViewModelBase
 
         });
     }
-
-    [SuppressMessage("Performance", "CA1822:Mark members as static", Justification = "Needed for binding")]
-    public string Greeting => "Welcome to Avalonia!";
 }

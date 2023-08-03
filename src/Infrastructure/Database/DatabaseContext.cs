@@ -32,9 +32,10 @@ public class DatabaseContext : DbContext
     /// Apply configuration for this database context.
     /// </summary>
     /// <param name="modelBuilder">The model builder to use for the configuration.</param>
-    protected override void OnModelCreating(ModelBuilder? modelBuilder)
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder?.ApplyConfiguration(new IntercomConfiguration());
-        //modelBuilder.ApplyConfiguration(new ApartmentConfigurationConfiguration());
+        ArgumentNullException.ThrowIfNull(modelBuilder);
+        modelBuilder.ApplyConfiguration(new IntercomConfiguration());
+        modelBuilder.ApplyConfiguration(new ApartmentConfigurationConfiguration());
     }
 }

@@ -9,4 +9,9 @@ public class ApartmentConfigurationRepository : IApartmentConfigurationRepositor
     {
         throw new NotImplementedException();
     }
+
+    public void SaveUpdates(IEnumerable<ApartmentConfiguration> apartmentConfigurations)
+    {
+        throw new NotImplementedException();
+    }
 }

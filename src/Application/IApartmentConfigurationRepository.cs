@@ -8,4 +8,6 @@ namespace Arentheym.ParkingBarrier.Application;
 public interface IApartmentConfigurationRepository
 {
     IEnumerable<ApartmentConfiguration> GetApartmentConfigurations();
+
+    void SaveUpdates(IEnumerable<ApartmentConfiguration> apartmentConfigurations);
 }

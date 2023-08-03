@@ -1,5 +1,8 @@
 ﻿namespace Arentheym.ParkingBarrier.Domain;
 
+/// <summary>
+/// The phone number for an <see cref="ApartmentConfiguration"/> together with its <see cref="DivertOrder"/>
+/// </summary>
 public class DivertPhoneNumber : PhoneNumber
 {
     /// <summary>

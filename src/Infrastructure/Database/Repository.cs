@@ -1,4 +1,5 @@
-﻿using Arentheym.ParkingBarrier.Domain;
+﻿using Arentheym.ParkingBarrier.Application;
+using Arentheym.ParkingBarrier.Domain;
 
 namespace Arentheym.ParkingBarrier.Infrastructure.Database;
 

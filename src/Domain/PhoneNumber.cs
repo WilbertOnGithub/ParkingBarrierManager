@@ -3,6 +3,9 @@ using Arentheym.ParkingBarrier.Domain.Core;
 
 namespace Arentheym.ParkingBarrier.Domain;
 
+/// <summary>
+/// Represents a phone number.
+/// </summary>
 public partial class PhoneNumber : ValueObject
 {
     /// <summary>
@@ -13,7 +16,7 @@ public partial class PhoneNumber : ValueObject
     {
         if (!PhoneNumberRegex().IsMatch(number))
         {
-            throw new ArgumentException("Phonenumber must contain exactly 10 digits or be empty.");
+            throw new ArgumentException("Phone number must contain exactly 10 digits or be empty.");
         }
 
         Number = number;

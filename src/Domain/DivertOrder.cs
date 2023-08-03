@@ -1,5 +1,8 @@
 ﻿namespace Arentheym.ParkingBarrier.Domain;
 
+/// <summary>
+/// The divert order list for phone numbers for an apartment.
+/// </summary>
 public enum DivertOrder
 {
     /// <summary>

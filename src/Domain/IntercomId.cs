@@ -2,6 +2,9 @@
 
 namespace Arentheym.ParkingBarrier.Domain;
 
+/// <summary>
+/// The unique identifier for an <see cref="Intercom"/>
+/// </summary>
 public class IntercomId : ValueObject
 {
     /// <summary>

@@ -3,6 +3,10 @@ using Arentheym.ParkingBarrier.Domain.Core;
 
 namespace Arentheym.ParkingBarrier.Domain;
 
+/// <summary>
+/// The code that is configured for an apartment to open the barrier using the
+/// touchpad on the intercom.
+/// </summary>
 public partial class AccessCode : ValueObject
 {
     /// <summary>

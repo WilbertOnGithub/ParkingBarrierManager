@@ -3,6 +3,9 @@ using Arentheym.ParkingBarrier.Domain.Core;
 
 namespace Arentheym.ParkingBarrier.Domain;
 
+/// <summary>
+/// The unique identifier for an <see cref="ApartmentConfiguration"/>
+/// </summary>
 public partial class ApartmentId : ValueObject
 {
     /// <summary>

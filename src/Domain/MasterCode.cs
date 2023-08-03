@@ -3,6 +3,10 @@ using Arentheym.ParkingBarrier.Domain.Core;
 
 namespace Arentheym.ParkingBarrier.Domain;
 
+/// <summary>
+/// Represents the master code for the intercom. Each remote command to the
+/// intercom must be accompanied by the master code.
+/// </summary>
 public partial class MasterCode : ValueObject
 {
     /// <summary>

@@ -1,4 +1,4 @@
-﻿namespace Arentheym.ParkingBarrier.Domain;
+﻿namespace Arentheym.ParkingBarrier.Application;
 
 /// <summary>
 ///

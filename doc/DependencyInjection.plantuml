@@ -11,9 +11,8 @@ UI ..> Application
 UI ..> Infrastructure
 
 Application --> Domain
-Application --> Infrastructure
 Infrastructure --> Domain
-
+Infrastructure --> Application
 
 Domain -[hidden]down- Infrastructure
 

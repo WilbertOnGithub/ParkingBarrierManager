@@ -7,8 +7,8 @@ title Shows dependencies between layers according to [[https://www.c-sharpcorner
 [Infrastructure] as Infrastructure
 
 Application --> Domain
-Application --> Infrastructure
 Infrastructure --> Domain
+Infrastructure --> Application
 
 Domain -[hidden]down- Infrastructure
 

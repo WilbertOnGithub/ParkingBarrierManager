@@ -15,82 +15,38 @@
         <vm:MainWindowViewModel/>
     </Design.DataContext>
 
-    <StackPanel Orientation="Vertical">
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <ItemsRepeater ItemsSource="{Binding Configurations}" Margin="0 20">
+            <ItemsRepeater.Layout>
+                <StackLayout Spacing="20" Orientation="Vertical" />
+            </ItemsRepeater.Layout>
+            <ItemsRepeater.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{Binding ApartmentNumber}"/>
+                        <TextBox Text="{Binding DisplayName}"/>
+                        <TextBox Text="{Binding AccessCode}"/>
+                        <TextBox Text="{Binding PrimaryPhoneNumber}"/>
+                        <TextBox Text="{Binding SecondaryPhoneNumber}"/>
+                        <TextBox Text="{Binding TertiaryPhoneNumber}"/>
+                        <TextBox Text="{Binding QuaternaryPhoneNumber}"/>
+                        <CheckBox IsChecked="{Binding DialToOpen}">Dial to open</CheckBox>
 
-        <DataGrid ItemsSource="{Binding Configurations}" AutoGenerateColumns="False">
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="Appartement" Binding="{Binding ApartmentNumber}" />
-                <DataGridTextColumn Header="Naam op display" Binding="{Binding DisplayName}" />
-                <DataGridTextColumn Header="Primair" Binding="{Binding PrimaryPhoneNumber}" />
-                <DataGridTextColumn Header="Secundair" Binding="{Binding SecondaryPhoneNumber}" />
-                <DataGridTextColumn Header="Tertair" Binding="{Binding TertiaryPhoneNumber}" />
-                <DataGridTextColumn Header="Quartair" Binding="{Binding QuaternaryPhoneNumber}" />
-                <DataGridCheckBoxColumn Header="Dial to open" Binding="{Binding DialToOpen}"/>
-                <DataGridTemplateColumn>
-                    <DataGridTemplateColumn.Header>
-                        Intercom
-                    </DataGridTemplateColumn.Header>
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <StackPanel Orientation="Horizontal">
-                                <CheckBox IsChecked="{Binding Intercoms[0].IsUsed}"
-                                          Content="{Binding Intercoms[0].Name}" />
-                            </StackPanel>
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
-                <DataGridTemplateColumn>
-                    <DataGridTemplateColumn.Header>
-                        Intercom
-                    </DataGridTemplateColumn.Header>
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <CheckBox IsChecked="{Binding Intercoms[1].IsUsed}"
-                                      Content="{Binding Intercoms[1].Name}" />
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
-            </DataGrid.Columns>
-        </DataGrid>
-
-    </StackPanel>
-
-        <!--
-        -->
-
-    <!--
-    <DataGrid.Columns>
-        <DataGridTextColumn Header="First Name"
-                            Binding="{Binding FirstName}"
-                            Width="2*" />
-        <DataGridTextColumn Header="Last Name"
-                            Binding="{Binding LastName}"
-                            Width="2*" />
-        <DataGridTextColumn Header="Department"
-                            Binding="{Binding DepartmentNumber}"
-                            Width="*" />
-    </DataGrid.Columns>
-
-    <ListBox ItemsSource="{Binding Configurations}">
-        <ListBox.ItemTemplate>
-            <DataTemplate>
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="{Binding ApartmentNumber}" />
-                    <TextBox Text="{Binding DisplayName}" />
-                    <TextBox Text="{Binding PrimaryPhoneNumber}" />
-                    <TextBox Text="{Binding SecondaryPhoneNumber}"/>
-                    <TextBox Text="{Binding TertiaryPhoneNumber}"/>
-                    <TextBox Text="{Binding TertiaryPhoneNumber}"/>
-                    <TextBox Text="{Binding QuaternaryPhoneNumber}"/>
-                    <CheckBox IsChecked="{Binding DialToOpen}">Dial to open</CheckBox>
-                    <CheckBox IsChecked="{Binding Intercoms[0].IsUsed}"
-                              Content="{Binding Intercoms[0].Name}" />
-                    <CheckBox IsChecked="{Binding Intercoms[1].IsUsed}"
-                              Content="{Binding Intercoms[1].Name}" />
-                </StackPanel>
-            </DataTemplate>
-        </ListBox.ItemTemplate>
-    </ListBox>
-    -->
+                        <ItemsRepeater ItemsSource="{Binding Intercoms}">
+                            <ItemsRepeater.Layout>
+                                <StackLayout Spacing="20" Orientation="Horizontal" />
+                            </ItemsRepeater.Layout>
+                            <ItemsRepeater.ItemTemplate>
+                                <DataTemplate>
+                                    <CheckBox IsChecked="{Binding IsUsed}"
+                                              Content="{Binding Name}" />
+                                </DataTemplate>
+                            </ItemsRepeater.ItemTemplate>
+                        </ItemsRepeater>
+                    </StackPanel>
+                </DataTemplate>
+            </ItemsRepeater.ItemTemplate>
+        </ItemsRepeater>
+    </ScrollViewer>
 
 </Window>

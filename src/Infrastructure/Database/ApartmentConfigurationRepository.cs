@@ -3,9 +3,9 @@ using Arentheym.ParkingBarrier.Domain;
 
 namespace Arentheym.ParkingBarrier.Infrastructure.Database;
 
-public class Repository : IRepository
+public class ApartmentConfigurationRepository : IApartmentConfigurationRepository
 {
-    public void EmptyMethodForNow()
+    public IEnumerable<ApartmentConfiguration> GetApartmentConfigurations()
     {
         throw new NotImplementedException();
     }

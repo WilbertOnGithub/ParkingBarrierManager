@@ -1,10 +1,12 @@
 ﻿using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
 using System.Reflection;
 using FluentAssertions;
 using Xunit;
 
 namespace Arentheym.ParkingBarrier.Architecture.Tests;
 
+[SuppressMessage("Naming", "CA1707:Identifiers should not contain underscores", Justification = "Unit testing naming")]
 public class DependenciesTests
 {
     private readonly Assembly uiAssembly;
@@ -19,39 +21,38 @@ public class DependenciesTests
         path += "/net7.0/";
         path = Fallback(Path.GetFullPath(path));
 
-        uiAssembly = Assembly.LoadFile(Path.Combine(path, "UITests.dll"));
-        applicationAssembly = Assembly.LoadFile(Path.Combine(path, "ApplicationTests.dll"));
-        domainAssembly = Assembly.LoadFile(Path.Combine(path, "DomainTests.dll"));
-        infrastructureAssembly = Assembly.LoadFile(Path.Combine(path, "InfrastructureTests.dll"));
+        uiAssembly = Assembly.LoadFile(Path.Combine(path, "UI.dll"));
+        applicationAssembly = Assembly.LoadFile(Path.Combine(path, "Application.dll"));
+        domainAssembly = Assembly.LoadFile(Path.Combine(path, "Domain.dll"));
+        infrastructureAssembly = Assembly.LoadFile(Path.Combine(path, "Infrastructure.dll"));
     }
 
     [Fact]
-    public void UIAssemblyIsCompositeRoot()
+    public void UIAssembly_Is_CompositeRoot()
     {
         uiAssembly.Should().Reference(applicationAssembly);
         uiAssembly.Should().Reference(infrastructureAssembly);
     }
 
     [Fact]
-    public void InfrastructureMustOnlyReferenceDomain()
+    public void Infrastructure_Can_Only_Reference_Domain_And_Application()
     {
-        infrastructureAssembly.Should().Reference(domainAssembly);
+        // TODO: Uncomment when having actually referenced domain
+        // infrastructureAssembly.Should().Reference(domainAssembly);
+        infrastructureAssembly.Should().Reference(applicationAssembly);
         infrastructureAssembly.Should().NotReference(uiAssembly);
-        infrastructureAssembly.Should().NotReference(applicationAssembly);
     }
 
     [Fact]
-    public void ApplicationMustOnlyReferenceDomainAndApplication()
+    public void Application_Can_OnlyReference_Domain()
     {
         // TODO: Uncomment when having actually referenced domain
         //applicationAssembly.Should().Reference(domainAssembly);
-        // TODO: Uncomment when having actually referenced domain
-        // applicationAssembly.Should().Reference(infrastructureAssembly);
         applicationAssembly.Should().NotReference(uiAssembly);
     }
 
     [Fact]
-    public void DomainMustReferenceNothing()
+    public void Domain_Must_Stand_Alone()
     {
         domainAssembly.Should().NotReference(uiAssembly);
         domainAssembly.Should().NotReference(applicationAssembly);

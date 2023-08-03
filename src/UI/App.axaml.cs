@@ -5,6 +5,7 @@ using Avalonia.Data.Core.Plugins;
 using Avalonia.Markup.Xaml;
 
 using CommunityToolkit.Mvvm.DependencyInjection;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Arentheym.ParkingBarrier.UI;
@@ -36,5 +37,16 @@ public partial class App : Avalonia.Application
         }
 
         base.OnFrameworkInitializationCompleted();
+    }
+
+    private IConfiguration BuildConfiguration()
+    {
+        var builder = new ConfigurationBuilder();
+        builder.AddJsonFile(
+            "appsettings.json",
+            optional: false,
+            reloadOnChange: false);
+
+        return builder.Build();
     }
 }

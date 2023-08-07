@@ -8,7 +8,7 @@ namespace Arentheym.ParkingBarrier.Domain;
 public class ApartmentConfiguration : Entity<ApartmentId>
 {
     private readonly List<Intercom> intercoms = new ();
-    private List<DivertPhoneNumber> phoneNumbers = new ();
+    private readonly List<DivertPhoneNumber> phoneNumbers = new ();
 
     /// <summary>
     /// Initializes a new instance of the <see cref="ApartmentConfiguration"/> class.
@@ -112,12 +112,42 @@ public class ApartmentConfiguration : Entity<ApartmentId>
     public IReadOnlyList<DivertPhoneNumber> PhoneNumbers => phoneNumbers.OrderBy(x => x.Order).ToList().AsReadOnly();
 
     /// <summary>
-    /// Update the phone number.
+    /// Insert or update the phone number.
     /// </summary>
-    /// <param name="phoneNumber">The new <see cref="DivertPhoneNumber"/>.</param>
-    public void UpdatePhoneNumber(DivertPhoneNumber phoneNumber)
+    /// <param name="phoneNumber">The <see cref="DivertPhoneNumber"/>.</param>
+    public void UpsertPhoneNumber(DivertPhoneNumber phoneNumber)
     {
         var index = phoneNumbers.FindIndex(x => x.Order == phoneNumber.Order);
-        phoneNumbers[index] = phoneNumber;
+        switch (index)
+        {
+            // Add phone number if not yet present with this order.
+            case -1:
+                phoneNumbers.Add(phoneNumber);
+                break;
+
+            // Update existing phone number with same order.
+            default:
+                phoneNumbers[index] = phoneNumber;
+                break;
+        }
+    }
+
+    /// <summary>
+    /// Insert or update the intercom.
+    /// </summary>
+    /// <param name="intercom">The <see cref="Intercom"/></param>
+    public void UpsertIntercom(Intercom intercom)
+    {
+        var index = intercoms.FindIndex(x => x.Id == intercom.Id);
+        switch (index)
+        {
+            case -1:
+                intercoms.Add(intercom);
+                break;
+
+            default:
+                intercoms[index] = intercom;
+                break;
+        }
     }
 }

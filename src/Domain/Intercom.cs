@@ -12,15 +12,14 @@ public class Intercom : Entity<IntercomId>
     /// Initializes a new instance of the <see cref="Intercom"/> class.
     /// </summary>
     /// <param name="name">The name of the owner.</param>
-    /// <param name="description">The description of the intercom.</param>
     /// <param name="phoneNumber">A <see cref="PhoneNumber"/> used by this intercom.</param>
-    /// <param name="mastercode">The <see cref="MasterCode"/> used by this intercom.</param>
-    public Intercom(string name, PhoneNumber phoneNumber, MasterCode mastercode)
+    /// <param name="masterCode">The <see cref="MasterCode"/> used by this intercom.</param>
+    public Intercom(string name, PhoneNumber phoneNumber, MasterCode masterCode)
         : base(IntercomId.NewId())
     {
         Name = name;
         PhoneNumber = phoneNumber;
-        MasterCode = mastercode;
+        MasterCode = masterCode;
     }
 
     /// <summary>
@@ -30,15 +29,15 @@ public class Intercom : Entity<IntercomId>
     /// Private constructor only used by EF Core.
     /// </remarks>
     /// <param name="id">The unique identifier for the <see cref="Intercom"/>.</param>
-    /// <param name="mastercode">The <see cref="MasterCode"/> is necessary to remotely configure the intercom.</param>
+    /// <param name="masterCode">The <see cref="MasterCode"/> is necessary to remotely configure the intercom.</param>
     /// <param name="name">The name of the <see cref="Intercom"/>.</param>
     /// <param name="phoneNumber">The <see cref="PhoneNumber"/> used by the intercom.</param>
-    private Intercom(IntercomId id, MasterCode mastercode, string name, PhoneNumber phoneNumber)
+    private Intercom(IntercomId id, MasterCode masterCode, string name)
         : base(id)
     {
-        MasterCode = mastercode;
+        MasterCode = masterCode;
         Name = name;
-        PhoneNumber = phoneNumber;
+        PhoneNumber = PhoneNumber.EmptyPhoneNumber;
     }
 
     /// <summary>

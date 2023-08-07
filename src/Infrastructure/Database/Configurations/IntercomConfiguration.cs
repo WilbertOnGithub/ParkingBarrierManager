@@ -7,6 +7,7 @@ namespace Arentheym.ParkingBarrier.Infrastructure.Database.Configurations;
 /// <summary>
 /// Database configuration for <see cref="Intercom"/>.
 /// </summary>
+
 internal sealed class IntercomConfiguration : IEntityTypeConfiguration<Intercom>
 {
     /// <summary>

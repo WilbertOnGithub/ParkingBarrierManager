@@ -35,9 +35,10 @@ internal sealed class ApartmentConfigurationConfiguration : IEntityTypeConfigura
 
         // We need to map it this because we want a one-way relationship in code from
         // apartment configurations to intercoms but not the other way around.
+
         builder.HasMany(x => x.Intercoms)
                .WithMany()
-               .UsingEntity(x => x.ToTable("ApartmentConfigurationIntercom"));
+               .UsingEntity(x => x.ToTable("ApartmentConfigurationIntercoms"));
 
         builder.OwnsMany(x => x.PhoneNumbers, owned =>
             {

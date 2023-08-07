@@ -112,35 +112,6 @@ public class ApartmentConfiguration : Entity<ApartmentId>
     public IReadOnlyList<DivertPhoneNumber> PhoneNumbers => phoneNumbers.OrderBy(x => x.Order).ToList().AsReadOnly();
 
     /// <summary>
-    /// Add a new intercom to this configuration.
-    /// </summary>
-    /// <param name="intercom">The new <see cref="Intercom"/>.</param>
-    public void AddIntercom(Intercom intercom)
-    {
-        if (intercoms.Contains(intercom))
-        {
-            throw new ArgumentException("Intercom already used by this configuration.");
-        }
-
-        intercoms.Add(intercom);
-    }
-
-    /// <summary>
-    /// Remove an existing intercom from this configuration.
-    /// </summary>
-    /// <param name="intercom">The <see cref="Intercom"/> to be removed.</param>
-    /// <exception cref="ArgumentException">If the intercom was not found for this configuration.</exception>
-    public void RemoveIntercom(Intercom intercom)
-    {
-        if (!intercoms.Contains(intercom))
-        {
-            throw new ArgumentException("Intercom not found");
-        }
-
-        intercoms.Remove(intercom);
-    }
-
-    /// <summary>
     /// Update the phone number.
     /// </summary>
     /// <param name="phoneNumber">The new <see cref="DivertPhoneNumber"/>.</param>

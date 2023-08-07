@@ -1,4 +1,5 @@
-﻿using Arentheym.ParkingBarrier.Domain;
+﻿using System.Globalization;
+using Arentheym.ParkingBarrier.Domain;
 using Arentheym.ParkingBarrier.Infrastructure.Database.Configurations;
 using Microsoft.EntityFrameworkCore;
 
@@ -37,5 +38,26 @@ public class DatabaseContext : DbContext
         ArgumentNullException.ThrowIfNull(modelBuilder);
         modelBuilder.ApplyConfiguration(new IntercomConfiguration());
         modelBuilder.ApplyConfiguration(new ApartmentConfigurationConfiguration());
+
+        const string masterCode = "8601";
+
+        var intercomFront = new Intercom("Slagboom voor", new PhoneNumber("0657093298"), new MasterCode(masterCode));
+        var intercomBack = new Intercom("Slagboom achter", new PhoneNumber("0657181402"), new MasterCode(masterCode));
+
+        modelBuilder.Entity<Intercom>().HasData(intercomFront);
+        modelBuilder.Entity<Intercom>().HasData(intercomBack);
+
+        // Seeding data apartment configurations
+        for (int apartmentNumber = 51; apartmentNumber <= 189; apartmentNumber += 2)
+        {
+            var apartmentConfiguration = new ApartmentConfiguration(
+                new ApartmentId(apartmentNumber.ToString(CultureInfo.InvariantCulture)),
+                new MemoryLocation(Convert.ToInt16(apartmentNumber)),
+                apartmentNumber.ToString("D3", CultureInfo.InvariantCulture),
+                true,
+                new AccessCode(string.Empty));
+
+            modelBuilder.Entity<ApartmentConfiguration>().HasData(apartmentConfiguration);
+        }
     }
 }

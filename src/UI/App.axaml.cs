@@ -38,15 +38,4 @@ public partial class App : Avalonia.Application
 
         base.OnFrameworkInitializationCompleted();
     }
-
-    private IConfiguration BuildConfiguration()
-    {
-        var builder = new ConfigurationBuilder();
-        builder.AddJsonFile(
-            "appsettings.json",
-            optional: false,
-            reloadOnChange: false);
-
-        return builder.Build();
-    }
 }

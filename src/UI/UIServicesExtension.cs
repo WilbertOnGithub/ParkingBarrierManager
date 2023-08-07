@@ -3,6 +3,7 @@ using Arentheym.ParkingBarrier.Application;
 using Arentheym.ParkingBarrier.Infrastructure;
 using Arentheym.ParkingBarrier.UI.ViewModels;
 using Arentheym.ParkingBarrier.UI.Views;
+using Microsoft.Extensions.Configuration;
 using Serilog;
 using Serilog.Debugging;
 
@@ -20,6 +21,7 @@ public static class UIServicesExtension
 
         services.RegisterApplicationServices();
         services.RegisterInfrastructureServices();
+
 
         // Add Serilog configuration
         services.AddLogging(builder =>

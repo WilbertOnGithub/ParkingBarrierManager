@@ -32,12 +32,12 @@ public class Intercom : Entity<IntercomId>
     /// <param name="masterCode">The <see cref="MasterCode"/> is necessary to remotely configure the intercom.</param>
     /// <param name="name">The name of the <see cref="Intercom"/>.</param>
     /// <param name="phoneNumber">The <see cref="PhoneNumber"/> used by the intercom.</param>
-    private Intercom(IntercomId id, MasterCode masterCode, string name)
+    private Intercom(IntercomId id, string name, PhoneNumber phoneNumber, MasterCode masterCode)
         : base(id)
     {
-        MasterCode = masterCode;
         Name = name;
-        PhoneNumber = PhoneNumber.EmptyPhoneNumber;
+        PhoneNumber = phoneNumber;
+        MasterCode = masterCode;
     }
 
     /// <summary>

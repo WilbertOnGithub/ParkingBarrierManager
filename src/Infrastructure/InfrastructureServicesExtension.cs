@@ -1,4 +1,9 @@
-﻿namespace Arentheym.ParkingBarrier.Infrastructure;
+﻿using System.Reflection;
+using Arentheym.ParkingBarrier.Infrastructure.Database;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+
+namespace Arentheym.ParkingBarrier.Infrastructure;
 
 using Microsoft.Extensions.DependencyInjection;
 
@@ -6,8 +11,21 @@ public static class InfrastructureServicesExtension
 {
     public static IServiceCollection RegisterInfrastructureServices(this IServiceCollection services)
     {
-        // TODO: Extend list here
-        // services.AddTransient<IUpdateReportingUseCase, UpdateReportingUseCase>();
+        // Read configuration and add it as a strongly typed object to dependency injection.
+        var databaseConfiguration = new DatabaseConfiguration();
+        IConfigurationSection section = BuildConfiguration().GetSection(nameof(databaseConfiguration));
+        section.Bind(databaseConfiguration);
+
+        services.AddDbContext<DatabaseContext>(options => options.UseSqlite(databaseConfiguration.ExpandedConnectionString));
+
         return services;
+    }
+
+    private static IConfiguration BuildConfiguration()
+    {
+        var builder = new ConfigurationBuilder();
+        builder.AddJsonFile("appsettings.json", optional: false, reloadOnChange: false);
+
+        return builder.Build();
     }
 }

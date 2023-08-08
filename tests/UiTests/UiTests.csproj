@@ -10,4 +10,8 @@
       <ProjectReference Include="..\..\src\UI\UI.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <PackageReference Update="Microsoft.NET.Test.Sdk" Version="17.7.0" />
+    </ItemGroup>
+
 </Project>

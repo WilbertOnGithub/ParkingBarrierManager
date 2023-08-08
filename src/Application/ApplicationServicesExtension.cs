@@ -6,8 +6,8 @@ public static class ApplicationServicesExtension
 {
     public static IServiceCollection RegisterApplicationServices(this IServiceCollection services)
     {
-        // TODO: Extend list here
-        // services.AddTransient<IUpdateReportingUseCase, UpdateReportingUseCase>();
+        services.AddTransient<DataService>();
+
         return services;
     }
 }

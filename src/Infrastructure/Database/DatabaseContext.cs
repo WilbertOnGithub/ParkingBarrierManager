@@ -57,7 +57,33 @@ public class DatabaseContext : DbContext
                 true,
                 new AccessCode(string.Empty));
 
-            modelBuilder.Entity<ApartmentConfiguration>().HasData(apartmentConfiguration);
+            // Create a standard list of 4 phone numbers.
+            modelBuilder.Entity<ApartmentConfiguration>(b =>
+            {
+                b.HasData(apartmentConfiguration);
+                b.OwnsMany(e => e.PhoneNumbers).HasData(new
+                {
+                    ApartmentConfigurationId = apartmentConfiguration.Id,
+                    Order = DivertOrder.Primary,
+                    Number = string.Empty
+                }, new
+                {
+                    ApartmentConfigurationId = apartmentConfiguration.Id,
+                    Order = DivertOrder.Secondary,
+                    Number = string.Empty
+                }, new
+                {
+                    ApartmentConfigurationId = apartmentConfiguration.Id,
+                    Order = DivertOrder.Tertiary,
+                    Number = string.Empty
+                }, new
+                {
+                    ApartmentConfigurationId = apartmentConfiguration.Id,
+                    Order = DivertOrder.Quaternary,
+                    Number = string.Empty
+                });
+            });
+
         }
     }
 }

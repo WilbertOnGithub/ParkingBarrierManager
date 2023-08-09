@@ -33,12 +33,21 @@ internal sealed class ApartmentConfigurationConfiguration : IEntityTypeConfigura
 
         builder.Property(p => p.DialToOpen).HasColumnName("DialToOpen");
 
-        // We need to map it this because we want a one-way relationship in code from
+        // We need to map it this because we want a relationship in code from
         // apartment configurations to intercoms but not the other way around.
 
         builder.HasMany(x => x.Intercoms)
                .WithMany()
-               .UsingEntity(x => x.ToTable("ApartmentConfigurationIntercoms"));
+               .UsingEntity<Dictionary<string, object>>
+               (
+                   "ApartmentconfigurationIntercoms",
+                   x => x.HasOne<Intercom>()
+                         .WithMany()
+                         .HasForeignKey("IntercomId"),
+                   x => x.HasOne<ApartmentConfiguration>()
+                         .WithMany()
+                         .HasForeignKey("ApartmentConfigurationId")
+                );
 
         builder.OwnsMany(x => x.PhoneNumbers, owned =>
             {

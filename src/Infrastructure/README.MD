@@ -5,7 +5,7 @@ We use [Dotnet EF tooling](https://docs.microsoft.com/en-us/ef/core/cli/dotnet) 
 [Detailed instructions on how to use the tooling](https://learn.microsoft.com/en-us/ef/core/cli/dotnet)
 
 ### To create a new migration
-- `dotnet ef migrations add MigrationName --project \src\Infrastructure --output-dir Database\Migrations`
+- `dotnet ef migrations add MigrationName --project src\Infrastructure --output-dir Database\Migrations`
 
 The *--project* parameter is necessary so the tooling knows where to find the necessary configuration
 to roll out the database. See also the implementation of the ContextDesignTimeFactory class.

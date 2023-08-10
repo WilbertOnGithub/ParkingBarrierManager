@@ -34,7 +34,7 @@ public static class ManualMapper
                 apartmentConfiguration.PhoneNumbers.First(x => x.Order == DivertOrder.Tertiary).Number,
             QuaternaryPhoneNumber =
                 apartmentConfiguration.PhoneNumbers.First(x => x.Order == DivertOrder.Quaternary).Number
-        };
+            };
 
         return result;
     }

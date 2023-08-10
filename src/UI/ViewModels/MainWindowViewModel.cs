@@ -12,7 +12,6 @@ public partial class MainWindowViewModel : ViewModelBase
 
     public ObservableCollection<ApartmentConfigurationViewModel> Configurations { get; } = new ObservableCollection<ApartmentConfigurationViewModel>();
 
-    // TODO: Add code to retrieve configurations from application layer
 
     [SuppressMessage("Design", "CA1062:Validate arguments of public methods", Justification = "Dependency injection")]
     public MainWindowViewModel(DataService dataService)
@@ -23,9 +22,10 @@ public partial class MainWindowViewModel : ViewModelBase
 
     private async Task InitializeAsync()
     {
+        var intercoms = await dataService.GetIntercoms().ConfigureAwait(false);
         foreach (var domainEntity in await dataService.GetApartmentConfigurations().ConfigureAwait(false))
         {
-            Configurations.Add(ManualMapper.EntityToViewModel(domainEntity));
+            Configurations.Add(ManualMapper.EntityToViewModel(domainEntity, intercoms));
         }
     }
 }

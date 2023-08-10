@@ -1,37 +1,31 @@
 ﻿using System.Collections.ObjectModel;
 using System.Diagnostics.CodeAnalysis;
+using System.Threading.Tasks;
+using Arentheym.ParkingBarrier.Application;
 
 namespace Arentheym.ParkingBarrier.UI.ViewModels;
 
 public partial class MainWindowViewModel : ViewModelBase
 {
+    private readonly DataService dataService;
+    private readonly Task initialisationTask;
+
     public ObservableCollection<ApartmentConfigurationViewModel> Configurations { get; } = new ObservableCollection<ApartmentConfigurationViewModel>();
 
     // TODO: Add code to retrieve configurations from application layer
 
-    public MainWindowViewModel()
+    [SuppressMessage("Design", "CA1062:Validate arguments of public methods", Justification = "Dependency injection")]
+    public MainWindowViewModel(DataService dataService)
     {
-        Configurations.Add(new ApartmentConfigurationViewModel()
-        {
-            ApartmentNumber = 131,
-            DisplayName = "Wilbert",
-            AccessCode = "1234",
-            DialToOpen = true,
-            PrimaryPhoneNumber = "0613739851",
-            Intercoms = { new IntercomViewModel()
-                {
-                    Id = 1,
-                    Name = "Voor",
-                    IsUsed = true
-                },
-                new IntercomViewModel()
-                {
-                    Id =2,
-                    Name = "Achter",
-                    IsUsed = false
-                }
-            }
+        this.dataService = dataService;
+        this.initialisationTask = InitializeAsync();
+    }
 
-        });
+    private async Task InitializeAsync()
+    {
+        foreach (var domainEntity in await dataService.GetApartmentConfigurations().ConfigureAwait(false))
+        {
+            Configurations.Add(ManualMapper.EntityToViewModel(domainEntity));
+        }
     }
 }

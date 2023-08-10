@@ -5,6 +5,7 @@ namespace Arentheym.ParkingBarrier.Application;
 public class DataService
 {
     private readonly IRepository repository;
+
     public DataService(IRepository repository)
     {
         this.repository = repository;

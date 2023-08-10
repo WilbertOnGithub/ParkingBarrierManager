@@ -1,4 +1,5 @@
 ﻿using System.Reflection;
+using Arentheym.ParkingBarrier.Application;
 using Arentheym.ParkingBarrier.Infrastructure.Database;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -16,6 +17,7 @@ public static class InfrastructureServicesExtension
         IConfigurationSection section = BuildConfiguration().GetSection(nameof(databaseConfiguration));
         section.Bind(databaseConfiguration);
 
+        services.AddTransient<IRepository, Repository>();
         services.AddDbContext<DatabaseContext>(options => options.UseSqlite(databaseConfiguration.ExpandedConnectionString));
 
         return services;

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using Arentheym.ParkingBarrier.Domain;
 using Arentheym.ParkingBarrier.UI.ViewModels;
@@ -49,6 +50,36 @@ public static class ManualMapper
                     Name = intercom.Name,
                     IsUsed = false
                 });
+            }
+        }
+
+        return result;
+    }
+
+    public static ApartmentConfiguration ViewModelToEntity(
+        ApartmentConfigurationViewModel viewModel,
+        IEnumerable<Intercom> intercoms)
+    {
+        ArgumentNullException.ThrowIfNull(viewModel);
+        ArgumentNullException.ThrowIfNull(intercoms);
+
+        var result = new ApartmentConfiguration(
+            new ApartmentId(viewModel.ApartmentNumber),
+            new MemoryLocation((short)viewModel.ApartmentNumber),
+            viewModel.DisplayName,
+            dialToOpen: viewModel.DialToOpen,
+            new AccessCode(viewModel.AccessCode));
+
+        result.UpsertPhoneNumber(new DivertPhoneNumber(DivertOrder.Primary, viewModel.PrimaryPhoneNumber));
+        result.UpsertPhoneNumber(new DivertPhoneNumber(DivertOrder.Secondary, viewModel.SecondaryPhoneNumber));
+        result.UpsertPhoneNumber(new DivertPhoneNumber(DivertOrder.Tertiary, viewModel.TertiaryPhoneNumber));
+        result.UpsertPhoneNumber(new DivertPhoneNumber(DivertOrder.Quaternary, viewModel.QuaternaryPhoneNumber));
+
+        foreach (var intercom in intercoms)
+        {
+            if (viewModel.Intercoms.Any(x => x.Id == intercom.Id.Id && x.IsUsed))
+            {
+                result.LinkIntercom(intercom);
             }
         }
 

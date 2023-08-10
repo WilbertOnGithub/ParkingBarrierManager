@@ -42,14 +42,14 @@ public partial class ApartmentConfigurationViewModel : ObservableValidator
     [MaxLength(16)]
     private string displayName;
 
-    private int apartmentNumber;
-    public int ApartmentNumber
+    private string apartmentNumber;
+    public string ApartmentNumber
     {
         get => apartmentNumber;
         init => SetProperty(ref apartmentNumber, value);
     }
 
-    public ObservableCollection<IntercomViewModel> Intercoms { get; } = new ObservableCollection<IntercomViewModel>();
+    public ObservableCollection<IntercomViewModel> Intercoms { get; init; } = new ObservableCollection<IntercomViewModel>();
 
     public ApartmentConfigurationViewModel()
     {
@@ -61,6 +61,6 @@ public partial class ApartmentConfigurationViewModel : ObservableValidator
         displayName = string.Empty;
         dialToOpen = false;
 
-        ApartmentNumber = 1;
+        apartmentNumber = "1";
     }
 }

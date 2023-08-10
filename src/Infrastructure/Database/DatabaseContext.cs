@@ -84,6 +84,10 @@ public class DatabaseContext : DbContext
                 });
             });
 
+            modelBuilder.Entity("ApartmentconfigurationIntercoms").HasData(
+                new { ApartmentConfigurationId = apartmentConfiguration.Id, IntercomId = intercomBack.Id },
+                new { ApartmentConfigurationId = apartmentConfiguration.Id, IntercomId = intercomFront.Id }
+            );
         }
     }
 }

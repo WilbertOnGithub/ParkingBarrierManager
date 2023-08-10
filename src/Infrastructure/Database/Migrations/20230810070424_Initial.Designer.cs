@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Arentheym.Database.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    [Migration("20230809132851_Initial")]
+    [Migration("20230810070424_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
@@ -22,17 +22,719 @@ namespace Arentheym.Database.Migrations
 
             modelBuilder.Entity("ApartmentconfigurationIntercoms", b =>
                 {
-                    b.Property<string>("ApartmentConfigurationId")
-                        .HasColumnType("TEXT");
-
                     b.Property<Guid>("IntercomId")
                         .HasColumnType("TEXT");
 
-                    b.HasKey("ApartmentConfigurationId", "IntercomId");
+                    b.Property<string>("ApartmentConfigurationId")
+                        .HasColumnType("TEXT");
 
-                    b.HasIndex("IntercomId");
+                    b.HasKey("IntercomId", "ApartmentConfigurationId");
 
-                    b.ToTable("ApartmentconfigurationIntercoms");
+                    b.HasIndex("ApartmentConfigurationId");
+
+                    b.ToTable("ApartmentConfigurationIntercoms", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            IntercomId = new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a"),
+                            ApartmentConfigurationId = "51"
+                        },
+                        new
+                        {
+                            IntercomId = new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349"),
+                            ApartmentConfigurationId = "51"
+                        },
+                        new
+                        {
+                            IntercomId = new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a"),
+                            ApartmentConfigurationId = "53"
+                        },
+                        new
+                        {
+                            IntercomId = new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349"),
+                            ApartmentConfigurationId = "53"
+                        },
+                        new
+                        {
+                            IntercomId = new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a"),
+                            ApartmentConfigurationId = "55"
+                        },
+                        new
+                        {
+                            IntercomId = new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349"),
+                            ApartmentConfigurationId = "55"
+                        },
+                        new
+                        {
+                            IntercomId = new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a"),
+                            ApartmentConfigurationId = "57"
+                        },
+                        new
+                        {
+                            IntercomId = new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349"),
+                            ApartmentConfigurationId = "57"
+                        },
+                        new
+                        {
+                            IntercomId = new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a"),
+                            ApartmentConfigurationId = "59"
+                        },
+                        new
+                        {
+                            IntercomId = new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349"),
+                            ApartmentConfigurationId = "59"
+                        },
+                        new
+                        {
+                            IntercomId = new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a"),
+                            ApartmentConfigurationId = "61"
+                        },
+                        new
+                        {
+                            IntercomId = new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349"),
+                            ApartmentConfigurationId = "61"
+                        },
+                        new
+                        {
+                            IntercomId = new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a"),
+                            ApartmentConfigurationId = "63"
+                        },
+                        new
+                        {
+                            IntercomId = new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349"),
+                            ApartmentConfigurationId = "63"
+                        },
+                        new
+                        {
+                            IntercomId = new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a"),
+                            ApartmentConfigurationId = "65"
+                        },
+                        new
+                        {
+                            IntercomId = new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349"),
+                            ApartmentConfigurationId = "65"
+                        },
+                        new
+                        {
+                            IntercomId = new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a"),
+                            ApartmentConfigurationId = "67"
+                        },
+                        new
+                        {
+                            IntercomId = new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349"),
+                            ApartmentConfigurationId = "67"
+                        },
+                        new
+                        {
+                            IntercomId = new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a"),
+                            ApartmentConfigurationId = "69"
+                        },
+                        new
+                        {
+                            IntercomId = new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349"),
+                            ApartmentConfigurationId = "69"
+                        },
+                        new
+                        {
+                            IntercomId = new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a"),
+                            ApartmentConfigurationId = "71"
+                        },
+                        new
+                        {
+                            IntercomId = new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349"),
+                            ApartmentConfigurationId = "71"
+                        },
+                        new
+                        {
+                            IntercomId = new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a"),
+                            ApartmentConfigurationId = "73"
+                        },
+                        new
+                        {
+                            IntercomId = new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349"),
+                            ApartmentConfigurationId = "73"
+                        },
+                        new
+                        {
+                            IntercomId = new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a"),
+                            ApartmentConfigurationId = "75"
+                        },
+                        new
+                        {
+                            IntercomId = new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349"),
+                            ApartmentConfigurationId = "75"
+                        },
+                        new
+                        {
+                            IntercomId = new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a"),
+                            ApartmentConfigurationId = "77"
+                        },
+                        new
+                        {
+                            IntercomId = new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349"),
+                            ApartmentConfigurationId = "77"
+                        },
+                        new
+                        {
+                            IntercomId = new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a"),
+                            ApartmentConfigurationId = "79"
+                        },
+                        new
+                        {
+                            IntercomId = new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349"),
+                            ApartmentConfigurationId = "79"
+                        },
+                        new
+                        {
+                            IntercomId = new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a"),
+                            ApartmentConfigurationId = "81"
+                        },
+                        new
+                        {
+                            IntercomId = new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349"),
+                            ApartmentConfigurationId = "81"
+                        },
+                        new
+                        {
+                            IntercomId = new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a"),
+                            ApartmentConfigurationId = "83"
+                        },
+                        new
+                        {
+                            IntercomId = new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349"),
+                            ApartmentConfigurationId = "83"
+                        },
+                        new
+                        {
+                            IntercomId = new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a"),
+                            ApartmentConfigurationId = "85"
+                        },
+                        new
+                        {
+                            IntercomId = new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349"),
+                            ApartmentConfigurationId = "85"
+                        },
+                        new
+                        {
+                            IntercomId = new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a"),
+                            ApartmentConfigurationId = "87"
+                        },
+                        new
+                        {
+                            IntercomId = new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349"),
+                            ApartmentConfigurationId = "87"
+                        },
+                        new
+                        {
+                            IntercomId = new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a"),
+                            ApartmentConfigurationId = "89"
+                        },
+                        new
+                        {
+                            IntercomId = new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349"),
+                            ApartmentConfigurationId = "89"
+                        },
+                        new
+                        {
+                            IntercomId = new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a"),
+                            ApartmentConfigurationId = "91"
+                        },
+                        new
+                        {
+                            IntercomId = new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349"),
+                            ApartmentConfigurationId = "91"
+                        },
+                        new
+                        {
+                            IntercomId = new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a"),
+                            ApartmentConfigurationId = "93"
+                        },
+                        new
+                        {
+                            IntercomId = new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349"),
+                            ApartmentConfigurationId = "93"
+                        },
+                        new
+                        {
+                            IntercomId = new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a"),
+                            ApartmentConfigurationId = "95"
+                        },
+                        new
+                        {
+                            IntercomId = new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349"),
+                            ApartmentConfigurationId = "95"
+                        },
+                        new
+                        {
+                            IntercomId = new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a"),
+                            ApartmentConfigurationId = "97"
+                        },
+                        new
+                        {
+                            IntercomId = new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349"),
+                            ApartmentConfigurationId = "97"
+                        },
+                        new
+                        {
+                            IntercomId = new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a"),
+                            ApartmentConfigurationId = "99"
+                        },
+                        new
+                        {
+                            IntercomId = new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349"),
+                            ApartmentConfigurationId = "99"
+                        },
+                        new
+                        {
+                            IntercomId = new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a"),
+                            ApartmentConfigurationId = "101"
+                        },
+                        new
+                        {
+                            IntercomId = new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349"),
+                            ApartmentConfigurationId = "101"
+                        },
+                        new
+                        {
+                            IntercomId = new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a"),
+                            ApartmentConfigurationId = "103"
+                        },
+                        new
+                        {
+                            IntercomId = new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349"),
+                            ApartmentConfigurationId = "103"
+                        },
+                        new
+                        {
+                            IntercomId = new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a"),
+                            ApartmentConfigurationId = "105"
+                        },
+                        new
+                        {
+                            IntercomId = new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349"),
+                            ApartmentConfigurationId = "105"
+                        },
+                        new
+                        {
+                            IntercomId = new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a"),
+                            ApartmentConfigurationId = "107"
+                        },
+                        new
+                        {
+                            IntercomId = new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349"),
+                            ApartmentConfigurationId = "107"
+                        },
+                        new
+                        {
+                            IntercomId = new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a"),
+                            ApartmentConfigurationId = "109"
+                        },
+                        new
+                        {
+                            IntercomId = new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349"),
+                            ApartmentConfigurationId = "109"
+                        },
+                        new
+                        {
+                            IntercomId = new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a"),
+                            ApartmentConfigurationId = "111"
+                        },
+                        new
+                        {
+                            IntercomId = new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349"),
+                            ApartmentConfigurationId = "111"
+                        },
+                        new
+                        {
+                            IntercomId = new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a"),
+                            ApartmentConfigurationId = "113"
+                        },
+                        new
+                        {
+                            IntercomId = new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349"),
+                            ApartmentConfigurationId = "113"
+                        },
+                        new
+                        {
+                            IntercomId = new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a"),
+                            ApartmentConfigurationId = "115"
+                        },
+                        new
+                        {
+                            IntercomId = new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349"),
+                            ApartmentConfigurationId = "115"
+                        },
+                        new
+                        {
+                            IntercomId = new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a"),
+                            ApartmentConfigurationId = "117"
+                        },
+                        new
+                        {
+                            IntercomId = new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349"),
+                            ApartmentConfigurationId = "117"
+                        },
+                        new
+                        {
+                            IntercomId = new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a"),
+                            ApartmentConfigurationId = "119"
+                        },
+                        new
+                        {
+                            IntercomId = new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349"),
+                            ApartmentConfigurationId = "119"
+                        },
+                        new
+                        {
+                            IntercomId = new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a"),
+                            ApartmentConfigurationId = "121"
+                        },
+                        new
+                        {
+                            IntercomId = new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349"),
+                            ApartmentConfigurationId = "121"
+                        },
+                        new
+                        {
+                            IntercomId = new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a"),
+                            ApartmentConfigurationId = "123"
+                        },
+                        new
+                        {
+                            IntercomId = new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349"),
+                            ApartmentConfigurationId = "123"
+                        },
+                        new
+                        {
+                            IntercomId = new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a"),
+                            ApartmentConfigurationId = "125"
+                        },
+                        new
+                        {
+                            IntercomId = new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349"),
+                            ApartmentConfigurationId = "125"
+                        },
+                        new
+                        {
+                            IntercomId = new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a"),
+                            ApartmentConfigurationId = "127"
+                        },
+                        new
+                        {
+                            IntercomId = new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349"),
+                            ApartmentConfigurationId = "127"
+                        },
+                        new
+                        {
+                            IntercomId = new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a"),
+                            ApartmentConfigurationId = "129"
+                        },
+                        new
+                        {
+                            IntercomId = new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349"),
+                            ApartmentConfigurationId = "129"
+                        },
+                        new
+                        {
+                            IntercomId = new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a"),
+                            ApartmentConfigurationId = "131"
+                        },
+                        new
+                        {
+                            IntercomId = new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349"),
+                            ApartmentConfigurationId = "131"
+                        },
+                        new
+                        {
+                            IntercomId = new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a"),
+                            ApartmentConfigurationId = "133"
+                        },
+                        new
+                        {
+                            IntercomId = new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349"),
+                            ApartmentConfigurationId = "133"
+                        },
+                        new
+                        {
+                            IntercomId = new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a"),
+                            ApartmentConfigurationId = "135"
+                        },
+                        new
+                        {
+                            IntercomId = new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349"),
+                            ApartmentConfigurationId = "135"
+                        },
+                        new
+                        {
+                            IntercomId = new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a"),
+                            ApartmentConfigurationId = "137"
+                        },
+                        new
+                        {
+                            IntercomId = new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349"),
+                            ApartmentConfigurationId = "137"
+                        },
+                        new
+                        {
+                            IntercomId = new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a"),
+                            ApartmentConfigurationId = "139"
+                        },
+                        new
+                        {
+                            IntercomId = new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349"),
+                            ApartmentConfigurationId = "139"
+                        },
+                        new
+                        {
+                            IntercomId = new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a"),
+                            ApartmentConfigurationId = "141"
+                        },
+                        new
+                        {
+                            IntercomId = new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349"),
+                            ApartmentConfigurationId = "141"
+                        },
+                        new
+                        {
+                            IntercomId = new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a"),
+                            ApartmentConfigurationId = "143"
+                        },
+                        new
+                        {
+                            IntercomId = new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349"),
+                            ApartmentConfigurationId = "143"
+                        },
+                        new
+                        {
+                            IntercomId = new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a"),
+                            ApartmentConfigurationId = "145"
+                        },
+                        new
+                        {
+                            IntercomId = new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349"),
+                            ApartmentConfigurationId = "145"
+                        },
+                        new
+                        {
+                            IntercomId = new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a"),
+                            ApartmentConfigurationId = "147"
+                        },
+                        new
+                        {
+                            IntercomId = new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349"),
+                            ApartmentConfigurationId = "147"
+                        },
+                        new
+                        {
+                            IntercomId = new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a"),
+                            ApartmentConfigurationId = "149"
+                        },
+                        new
+                        {
+                            IntercomId = new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349"),
+                            ApartmentConfigurationId = "149"
+                        },
+                        new
+                        {
+                            IntercomId = new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a"),
+                            ApartmentConfigurationId = "151"
+                        },
+                        new
+                        {
+                            IntercomId = new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349"),
+                            ApartmentConfigurationId = "151"
+                        },
+                        new
+                        {
+                            IntercomId = new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a"),
+                            ApartmentConfigurationId = "153"
+                        },
+                        new
+                        {
+                            IntercomId = new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349"),
+                            ApartmentConfigurationId = "153"
+                        },
+                        new
+                        {
+                            IntercomId = new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a"),
+                            ApartmentConfigurationId = "155"
+                        },
+                        new
+                        {
+                            IntercomId = new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349"),
+                            ApartmentConfigurationId = "155"
+                        },
+                        new
+                        {
+                            IntercomId = new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a"),
+                            ApartmentConfigurationId = "157"
+                        },
+                        new
+                        {
+                            IntercomId = new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349"),
+                            ApartmentConfigurationId = "157"
+                        },
+                        new
+                        {
+                            IntercomId = new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a"),
+                            ApartmentConfigurationId = "159"
+                        },
+                        new
+                        {
+                            IntercomId = new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349"),
+                            ApartmentConfigurationId = "159"
+                        },
+                        new
+                        {
+                            IntercomId = new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a"),
+                            ApartmentConfigurationId = "161"
+                        },
+                        new
+                        {
+                            IntercomId = new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349"),
+                            ApartmentConfigurationId = "161"
+                        },
+                        new
+                        {
+                            IntercomId = new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a"),
+                            ApartmentConfigurationId = "163"
+                        },
+                        new
+                        {
+                            IntercomId = new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349"),
+                            ApartmentConfigurationId = "163"
+                        },
+                        new
+                        {
+                            IntercomId = new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a"),
+                            ApartmentConfigurationId = "165"
+                        },
+                        new
+                        {
+                            IntercomId = new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349"),
+                            ApartmentConfigurationId = "165"
+                        },
+                        new
+                        {
+                            IntercomId = new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a"),
+                            ApartmentConfigurationId = "167"
+                        },
+                        new
+                        {
+                            IntercomId = new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349"),
+                            ApartmentConfigurationId = "167"
+                        },
+                        new
+                        {
+                            IntercomId = new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a"),
+                            ApartmentConfigurationId = "169"
+                        },
+                        new
+                        {
+                            IntercomId = new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349"),
+                            ApartmentConfigurationId = "169"
+                        },
+                        new
+                        {
+                            IntercomId = new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a"),
+                            ApartmentConfigurationId = "171"
+                        },
+                        new
+                        {
+                            IntercomId = new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349"),
+                            ApartmentConfigurationId = "171"
+                        },
+                        new
+                        {
+                            IntercomId = new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a"),
+                            ApartmentConfigurationId = "173"
+                        },
+                        new
+                        {
+                            IntercomId = new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349"),
+                            ApartmentConfigurationId = "173"
+                        },
+                        new
+                        {
+                            IntercomId = new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a"),
+                            ApartmentConfigurationId = "175"
+                        },
+                        new
+                        {
+                            IntercomId = new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349"),
+                            ApartmentConfigurationId = "175"
+                        },
+                        new
+                        {
+                            IntercomId = new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a"),
+                            ApartmentConfigurationId = "177"
+                        },
+                        new
+                        {
+                            IntercomId = new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349"),
+                            ApartmentConfigurationId = "177"
+                        },
+                        new
+                        {
+                            IntercomId = new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a"),
+                            ApartmentConfigurationId = "179"
+                        },
+                        new
+                        {
+                            IntercomId = new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349"),
+                            ApartmentConfigurationId = "179"
+                        },
+                        new
+                        {
+                            IntercomId = new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a"),
+                            ApartmentConfigurationId = "181"
+                        },
+                        new
+                        {
+                            IntercomId = new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349"),
+                            ApartmentConfigurationId = "181"
+                        },
+                        new
+                        {
+                            IntercomId = new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a"),
+                            ApartmentConfigurationId = "183"
+                        },
+                        new
+                        {
+                            IntercomId = new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349"),
+                            ApartmentConfigurationId = "183"
+                        },
+                        new
+                        {
+                            IntercomId = new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a"),
+                            ApartmentConfigurationId = "185"
+                        },
+                        new
+                        {
+                            IntercomId = new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349"),
+                            ApartmentConfigurationId = "185"
+                        },
+                        new
+                        {
+                            IntercomId = new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a"),
+                            ApartmentConfigurationId = "187"
+                        },
+                        new
+                        {
+                            IntercomId = new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349"),
+                            ApartmentConfigurationId = "187"
+                        },
+                        new
+                        {
+                            IntercomId = new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a"),
+                            ApartmentConfigurationId = "189"
+                        },
+                        new
+                        {
+                            IntercomId = new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349"),
+                            ApartmentConfigurationId = "189"
+                        });
                 });
 
             modelBuilder.Entity("Arentheym.ParkingBarrier.Domain.ApartmentConfiguration", b =>
@@ -654,14 +1356,14 @@ namespace Arentheym.Database.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("2d18cd18-f0ce-46ea-8d87-f45bf4d06092"),
+                            Id = new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349"),
                             MasterCode = "8601",
                             Name = "Slagboom voor",
                             PhoneNumber = "0657093298"
                         },
                         new
                         {
-                            Id = new Guid("2ff5167e-b15d-4544-b8ba-5a0421bd9a7c"),
+                            Id = new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a"),
                             MasterCode = "8601",
                             Name = "Slagboom achter",
                             PhoneNumber = "0657181402"

@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Arentheym.Database.Migrations
 {
     /// <inheritdoc />
-    [SuppressMessage("Design", "CA1062:Validate arguments of public methods", Justification = "EF Core generated  code.")]
+    [SuppressMessage("Design", "CA1062:Validate arguments of public methods", Justification = "EF Core generated code")]
     public partial class Initial : Migration
     {
         /// <inheritdoc />
@@ -64,23 +64,23 @@ namespace Arentheym.Database.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "ApartmentconfigurationIntercoms",
+                name: "ApartmentConfigurationIntercoms",
                 columns: table => new
                 {
-                    ApartmentConfigurationId = table.Column<string>(type: "TEXT", nullable: false),
-                    IntercomId = table.Column<Guid>(type: "TEXT", nullable: false)
+                    IntercomId = table.Column<Guid>(type: "TEXT", nullable: false),
+                    ApartmentConfigurationId = table.Column<string>(type: "TEXT", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ApartmentconfigurationIntercoms", x => new { x.ApartmentConfigurationId, x.IntercomId });
+                    table.PrimaryKey("PK_ApartmentConfigurationIntercoms", x => new { x.IntercomId, x.ApartmentConfigurationId });
                     table.ForeignKey(
-                        name: "FK_ApartmentconfigurationIntercoms_ApartmentConfigurations_ApartmentConfigurationId",
+                        name: "FK_ApartmentConfigurationIntercoms_ApartmentConfigurations_ApartmentConfigurationId",
                         column: x => x.ApartmentConfigurationId,
                         principalTable: "ApartmentConfigurations",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_ApartmentconfigurationIntercoms_Intercoms_IntercomId",
+                        name: "FK_ApartmentConfigurationIntercoms_Intercoms_IntercomId",
                         column: x => x.IntercomId,
                         principalTable: "Intercoms",
                         principalColumn: "Id",
@@ -169,8 +169,155 @@ namespace Arentheym.Database.Migrations
                 columns: new[] { "Id", "MasterCode", "Name", "PhoneNumber" },
                 values: new object[,]
                 {
-                    { new Guid("2d18cd18-f0ce-46ea-8d87-f45bf4d06092"), "8601", "Slagboom voor", "0657093298" },
-                    { new Guid("2ff5167e-b15d-4544-b8ba-5a0421bd9a7c"), "8601", "Slagboom achter", "0657181402" }
+                    { new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a"), "8601", "Slagboom achter", "0657181402" },
+                    { new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349"), "8601", "Slagboom voor", "0657093298" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "ApartmentConfigurationIntercoms",
+                columns: new[] { "ApartmentConfigurationId", "IntercomId" },
+                values: new object[,]
+                {
+                    { "101", new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a") },
+                    { "103", new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a") },
+                    { "105", new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a") },
+                    { "107", new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a") },
+                    { "109", new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a") },
+                    { "111", new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a") },
+                    { "113", new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a") },
+                    { "115", new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a") },
+                    { "117", new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a") },
+                    { "119", new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a") },
+                    { "121", new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a") },
+                    { "123", new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a") },
+                    { "125", new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a") },
+                    { "127", new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a") },
+                    { "129", new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a") },
+                    { "131", new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a") },
+                    { "133", new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a") },
+                    { "135", new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a") },
+                    { "137", new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a") },
+                    { "139", new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a") },
+                    { "141", new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a") },
+                    { "143", new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a") },
+                    { "145", new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a") },
+                    { "147", new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a") },
+                    { "149", new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a") },
+                    { "151", new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a") },
+                    { "153", new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a") },
+                    { "155", new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a") },
+                    { "157", new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a") },
+                    { "159", new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a") },
+                    { "161", new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a") },
+                    { "163", new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a") },
+                    { "165", new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a") },
+                    { "167", new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a") },
+                    { "169", new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a") },
+                    { "171", new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a") },
+                    { "173", new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a") },
+                    { "175", new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a") },
+                    { "177", new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a") },
+                    { "179", new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a") },
+                    { "181", new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a") },
+                    { "183", new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a") },
+                    { "185", new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a") },
+                    { "187", new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a") },
+                    { "189", new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a") },
+                    { "51", new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a") },
+                    { "53", new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a") },
+                    { "55", new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a") },
+                    { "57", new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a") },
+                    { "59", new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a") },
+                    { "61", new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a") },
+                    { "63", new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a") },
+                    { "65", new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a") },
+                    { "67", new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a") },
+                    { "69", new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a") },
+                    { "71", new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a") },
+                    { "73", new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a") },
+                    { "75", new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a") },
+                    { "77", new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a") },
+                    { "79", new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a") },
+                    { "81", new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a") },
+                    { "83", new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a") },
+                    { "85", new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a") },
+                    { "87", new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a") },
+                    { "89", new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a") },
+                    { "91", new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a") },
+                    { "93", new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a") },
+                    { "95", new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a") },
+                    { "97", new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a") },
+                    { "99", new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a") },
+                    { "101", new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349") },
+                    { "103", new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349") },
+                    { "105", new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349") },
+                    { "107", new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349") },
+                    { "109", new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349") },
+                    { "111", new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349") },
+                    { "113", new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349") },
+                    { "115", new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349") },
+                    { "117", new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349") },
+                    { "119", new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349") },
+                    { "121", new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349") },
+                    { "123", new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349") },
+                    { "125", new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349") },
+                    { "127", new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349") },
+                    { "129", new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349") },
+                    { "131", new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349") },
+                    { "133", new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349") },
+                    { "135", new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349") },
+                    { "137", new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349") },
+                    { "139", new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349") },
+                    { "141", new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349") },
+                    { "143", new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349") },
+                    { "145", new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349") },
+                    { "147", new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349") },
+                    { "149", new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349") },
+                    { "151", new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349") },
+                    { "153", new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349") },
+                    { "155", new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349") },
+                    { "157", new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349") },
+                    { "159", new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349") },
+                    { "161", new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349") },
+                    { "163", new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349") },
+                    { "165", new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349") },
+                    { "167", new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349") },
+                    { "169", new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349") },
+                    { "171", new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349") },
+                    { "173", new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349") },
+                    { "175", new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349") },
+                    { "177", new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349") },
+                    { "179", new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349") },
+                    { "181", new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349") },
+                    { "183", new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349") },
+                    { "185", new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349") },
+                    { "187", new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349") },
+                    { "189", new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349") },
+                    { "51", new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349") },
+                    { "53", new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349") },
+                    { "55", new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349") },
+                    { "57", new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349") },
+                    { "59", new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349") },
+                    { "61", new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349") },
+                    { "63", new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349") },
+                    { "65", new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349") },
+                    { "67", new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349") },
+                    { "69", new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349") },
+                    { "71", new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349") },
+                    { "73", new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349") },
+                    { "75", new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349") },
+                    { "77", new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349") },
+                    { "79", new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349") },
+                    { "81", new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349") },
+                    { "83", new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349") },
+                    { "85", new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349") },
+                    { "87", new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349") },
+                    { "89", new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349") },
+                    { "91", new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349") },
+                    { "93", new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349") },
+                    { "95", new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349") },
+                    { "97", new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349") },
+                    { "99", new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349") }
                 });
 
             migrationBuilder.InsertData(
@@ -461,15 +608,15 @@ namespace Arentheym.Database.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_ApartmentconfigurationIntercoms_IntercomId",
-                table: "ApartmentconfigurationIntercoms",
-                column: "IntercomId");
+                name: "IX_ApartmentConfigurationIntercoms_ApartmentConfigurationId",
+                table: "ApartmentConfigurationIntercoms",
+                column: "ApartmentConfigurationId");
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropTable(name: "ApartmentconfigurationIntercoms");
+            migrationBuilder.DropTable(name: "ApartmentConfigurationIntercoms");
             migrationBuilder.DropTable(name: "ApartmentConfigurationPhoneNumbers");
             migrationBuilder.DropTable(name: "Intercoms");
             migrationBuilder.DropTable(name: "ApartmentConfigurations");

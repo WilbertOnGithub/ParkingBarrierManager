@@ -11,27 +11,27 @@ public partial class ApartmentConfigurationViewModel : ObservableValidator
     [ObservableProperty]
     [NotifyDataErrorInfo]
     [PhoneNumber]
-    private string primaryPhoneNumber;
+    private string primaryPhoneNumber = string.Empty;
 
     [ObservableProperty]
     [NotifyDataErrorInfo]
     [PhoneNumber]
-    private string secondaryPhoneNumber;
+    private string secondaryPhoneNumber = string.Empty;
 
     [ObservableProperty]
     [NotifyDataErrorInfo]
     [PhoneNumber]
-    private string tertiaryPhoneNumber;
+    private string tertiaryPhoneNumber = string.Empty;
 
     [ObservableProperty]
     [NotifyDataErrorInfo]
     [PhoneNumber]
-    private string quaternaryPhoneNumber;
+    private string quaternaryPhoneNumber = string.Empty;
 
     [ObservableProperty]
     [NotifyDataErrorInfo]
     [AccessCode]
-    private string accessCode;
+    private string accessCode = string.Empty;
 
     [ObservableProperty]
     private bool dialToOpen;
@@ -40,27 +40,14 @@ public partial class ApartmentConfigurationViewModel : ObservableValidator
     [NotifyDataErrorInfo]
     [Required]
     [MaxLength(16)]
-    private string displayName;
+    private string displayName = string.Empty;
 
-    private string apartmentNumber;
-    public string ApartmentNumber
+    private int apartmentNumber;
+    public int ApartmentNumber
     {
         get => apartmentNumber;
         init => SetProperty(ref apartmentNumber, value);
     }
 
     public ObservableCollection<IntercomViewModel> Intercoms { get; init; } = new ObservableCollection<IntercomViewModel>();
-
-    public ApartmentConfigurationViewModel()
-    {
-        primaryPhoneNumber = string.Empty;
-        secondaryPhoneNumber = string.Empty;
-        tertiaryPhoneNumber = string.Empty;
-        quaternaryPhoneNumber = string.Empty;
-        accessCode = string.Empty;
-        displayName = string.Empty;
-        dialToOpen = false;
-
-        apartmentNumber = "1";
-    }
 }

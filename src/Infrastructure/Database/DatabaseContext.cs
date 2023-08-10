@@ -51,7 +51,7 @@ public class DatabaseContext : DbContext
         for (int apartmentNumber = 51; apartmentNumber <= 189; apartmentNumber += 2)
         {
             var apartmentConfiguration = new ApartmentConfiguration(
-                new ApartmentId(apartmentNumber.ToString(CultureInfo.InvariantCulture)),
+                new ApartmentId(apartmentNumber),
                 new MemoryLocation(Convert.ToInt16(apartmentNumber)),
                 apartmentNumber.ToString("D3", CultureInfo.InvariantCulture),
                 true,

@@ -1,5 +1,4 @@
-﻿using System.Text.RegularExpressions;
-using Arentheym.ParkingBarrier.Domain.Core;
+﻿using Arentheym.ParkingBarrier.Domain.Core;
 
 namespace Arentheym.ParkingBarrier.Domain;
 
@@ -12,21 +11,19 @@ public partial class ApartmentId : ValueObject
     /// Initializes a new instance of the <see cref="ApartmentId"/> class.
     /// </summary>
     /// <param name="number">The number of the apartment.</param>
-    public ApartmentId(string number)
+    public ApartmentId(int number)
     {
-        if (!ApartmentNumberRegex().IsMatch(number))
+        if (number is < 51 or > 189)
         {
-            throw new ArgumentException("An apartment number can contain digits and " +
-                                        "letters A-F, maximum length 6 characters.");
+            throw new ArgumentException("Expecting number to be between 51 and 189.");
         }
-
         Number = number;
     }
 
     /// <summary>
     /// Gets the number for the apartment.
     /// </summary>
-    public string Number { get; }
+    public int Number { get; }
 
     /// <summary>
     /// List the properties needed to determine equality.
@@ -36,7 +33,4 @@ public partial class ApartmentId : ValueObject
     {
         yield return Number;
     }
-
-    [GeneratedRegex(@"[0-9A-F]{1,6}", RegexOptions.Compiled | RegexOptions.Singleline)]
-    private static partial Regex ApartmentNumberRegex();
 }

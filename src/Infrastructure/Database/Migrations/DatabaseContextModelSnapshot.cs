@@ -22,8 +22,8 @@ namespace Arentheym.Database.Migrations
                     b.Property<Guid>("IntercomId")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("ApartmentConfigurationId")
-                        .HasColumnType("TEXT");
+                    b.Property<int>("ApartmentConfigurationId")
+                        .HasColumnType("INTEGER");
 
                     b.HasKey("IntercomId", "ApartmentConfigurationId");
 
@@ -34,710 +34,710 @@ namespace Arentheym.Database.Migrations
                     b.HasData(
                         new
                         {
-                            IntercomId = new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a"),
-                            ApartmentConfigurationId = "51"
+                            IntercomId = new Guid("e797b035-e95e-4927-b142-8ef8719310f5"),
+                            ApartmentConfigurationId = 51
                         },
                         new
                         {
-                            IntercomId = new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349"),
-                            ApartmentConfigurationId = "51"
+                            IntercomId = new Guid("135c0215-f77f-404e-ad52-82a42e959531"),
+                            ApartmentConfigurationId = 51
                         },
                         new
                         {
-                            IntercomId = new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a"),
-                            ApartmentConfigurationId = "53"
+                            IntercomId = new Guid("e797b035-e95e-4927-b142-8ef8719310f5"),
+                            ApartmentConfigurationId = 53
                         },
                         new
                         {
-                            IntercomId = new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349"),
-                            ApartmentConfigurationId = "53"
+                            IntercomId = new Guid("135c0215-f77f-404e-ad52-82a42e959531"),
+                            ApartmentConfigurationId = 53
                         },
                         new
                         {
-                            IntercomId = new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a"),
-                            ApartmentConfigurationId = "55"
+                            IntercomId = new Guid("e797b035-e95e-4927-b142-8ef8719310f5"),
+                            ApartmentConfigurationId = 55
                         },
                         new
                         {
-                            IntercomId = new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349"),
-                            ApartmentConfigurationId = "55"
+                            IntercomId = new Guid("135c0215-f77f-404e-ad52-82a42e959531"),
+                            ApartmentConfigurationId = 55
                         },
                         new
                         {
-                            IntercomId = new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a"),
-                            ApartmentConfigurationId = "57"
+                            IntercomId = new Guid("e797b035-e95e-4927-b142-8ef8719310f5"),
+                            ApartmentConfigurationId = 57
                         },
                         new
                         {
-                            IntercomId = new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349"),
-                            ApartmentConfigurationId = "57"
+                            IntercomId = new Guid("135c0215-f77f-404e-ad52-82a42e959531"),
+                            ApartmentConfigurationId = 57
                         },
                         new
                         {
-                            IntercomId = new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a"),
-                            ApartmentConfigurationId = "59"
+                            IntercomId = new Guid("e797b035-e95e-4927-b142-8ef8719310f5"),
+                            ApartmentConfigurationId = 59
                         },
                         new
                         {
-                            IntercomId = new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349"),
-                            ApartmentConfigurationId = "59"
+                            IntercomId = new Guid("135c0215-f77f-404e-ad52-82a42e959531"),
+                            ApartmentConfigurationId = 59
                         },
                         new
                         {
-                            IntercomId = new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a"),
-                            ApartmentConfigurationId = "61"
+                            IntercomId = new Guid("e797b035-e95e-4927-b142-8ef8719310f5"),
+                            ApartmentConfigurationId = 61
                         },
                         new
                         {
-                            IntercomId = new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349"),
-                            ApartmentConfigurationId = "61"
+                            IntercomId = new Guid("135c0215-f77f-404e-ad52-82a42e959531"),
+                            ApartmentConfigurationId = 61
                         },
                         new
                         {
-                            IntercomId = new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a"),
-                            ApartmentConfigurationId = "63"
+                            IntercomId = new Guid("e797b035-e95e-4927-b142-8ef8719310f5"),
+                            ApartmentConfigurationId = 63
                         },
                         new
                         {
-                            IntercomId = new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349"),
-                            ApartmentConfigurationId = "63"
+                            IntercomId = new Guid("135c0215-f77f-404e-ad52-82a42e959531"),
+                            ApartmentConfigurationId = 63
                         },
                         new
                         {
-                            IntercomId = new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a"),
-                            ApartmentConfigurationId = "65"
+                            IntercomId = new Guid("e797b035-e95e-4927-b142-8ef8719310f5"),
+                            ApartmentConfigurationId = 65
                         },
                         new
                         {
-                            IntercomId = new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349"),
-                            ApartmentConfigurationId = "65"
+                            IntercomId = new Guid("135c0215-f77f-404e-ad52-82a42e959531"),
+                            ApartmentConfigurationId = 65
                         },
                         new
                         {
-                            IntercomId = new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a"),
-                            ApartmentConfigurationId = "67"
+                            IntercomId = new Guid("e797b035-e95e-4927-b142-8ef8719310f5"),
+                            ApartmentConfigurationId = 67
                         },
                         new
                         {
-                            IntercomId = new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349"),
-                            ApartmentConfigurationId = "67"
+                            IntercomId = new Guid("135c0215-f77f-404e-ad52-82a42e959531"),
+                            ApartmentConfigurationId = 67
                         },
                         new
                         {
-                            IntercomId = new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a"),
-                            ApartmentConfigurationId = "69"
+                            IntercomId = new Guid("e797b035-e95e-4927-b142-8ef8719310f5"),
+                            ApartmentConfigurationId = 69
                         },
                         new
                         {
-                            IntercomId = new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349"),
-                            ApartmentConfigurationId = "69"
+                            IntercomId = new Guid("135c0215-f77f-404e-ad52-82a42e959531"),
+                            ApartmentConfigurationId = 69
                         },
                         new
                         {
-                            IntercomId = new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a"),
-                            ApartmentConfigurationId = "71"
+                            IntercomId = new Guid("e797b035-e95e-4927-b142-8ef8719310f5"),
+                            ApartmentConfigurationId = 71
                         },
                         new
                         {
-                            IntercomId = new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349"),
-                            ApartmentConfigurationId = "71"
+                            IntercomId = new Guid("135c0215-f77f-404e-ad52-82a42e959531"),
+                            ApartmentConfigurationId = 71
                         },
                         new
                         {
-                            IntercomId = new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a"),
-                            ApartmentConfigurationId = "73"
+                            IntercomId = new Guid("e797b035-e95e-4927-b142-8ef8719310f5"),
+                            ApartmentConfigurationId = 73
                         },
                         new
                         {
-                            IntercomId = new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349"),
-                            ApartmentConfigurationId = "73"
+                            IntercomId = new Guid("135c0215-f77f-404e-ad52-82a42e959531"),
+                            ApartmentConfigurationId = 73
                         },
                         new
                         {
-                            IntercomId = new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a"),
-                            ApartmentConfigurationId = "75"
+                            IntercomId = new Guid("e797b035-e95e-4927-b142-8ef8719310f5"),
+                            ApartmentConfigurationId = 75
                         },
                         new
                         {
-                            IntercomId = new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349"),
-                            ApartmentConfigurationId = "75"
+                            IntercomId = new Guid("135c0215-f77f-404e-ad52-82a42e959531"),
+                            ApartmentConfigurationId = 75
                         },
                         new
                         {
-                            IntercomId = new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a"),
-                            ApartmentConfigurationId = "77"
+                            IntercomId = new Guid("e797b035-e95e-4927-b142-8ef8719310f5"),
+                            ApartmentConfigurationId = 77
                         },
                         new
                         {
-                            IntercomId = new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349"),
-                            ApartmentConfigurationId = "77"
+                            IntercomId = new Guid("135c0215-f77f-404e-ad52-82a42e959531"),
+                            ApartmentConfigurationId = 77
                         },
                         new
                         {
-                            IntercomId = new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a"),
-                            ApartmentConfigurationId = "79"
+                            IntercomId = new Guid("e797b035-e95e-4927-b142-8ef8719310f5"),
+                            ApartmentConfigurationId = 79
                         },
                         new
                         {
-                            IntercomId = new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349"),
-                            ApartmentConfigurationId = "79"
+                            IntercomId = new Guid("135c0215-f77f-404e-ad52-82a42e959531"),
+                            ApartmentConfigurationId = 79
                         },
                         new
                         {
-                            IntercomId = new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a"),
-                            ApartmentConfigurationId = "81"
+                            IntercomId = new Guid("e797b035-e95e-4927-b142-8ef8719310f5"),
+                            ApartmentConfigurationId = 81
                         },
                         new
                         {
-                            IntercomId = new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349"),
-                            ApartmentConfigurationId = "81"
+                            IntercomId = new Guid("135c0215-f77f-404e-ad52-82a42e959531"),
+                            ApartmentConfigurationId = 81
                         },
                         new
                         {
-                            IntercomId = new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a"),
-                            ApartmentConfigurationId = "83"
+                            IntercomId = new Guid("e797b035-e95e-4927-b142-8ef8719310f5"),
+                            ApartmentConfigurationId = 83
                         },
                         new
                         {
-                            IntercomId = new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349"),
-                            ApartmentConfigurationId = "83"
+                            IntercomId = new Guid("135c0215-f77f-404e-ad52-82a42e959531"),
+                            ApartmentConfigurationId = 83
                         },
                         new
                         {
-                            IntercomId = new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a"),
-                            ApartmentConfigurationId = "85"
+                            IntercomId = new Guid("e797b035-e95e-4927-b142-8ef8719310f5"),
+                            ApartmentConfigurationId = 85
                         },
                         new
                         {
-                            IntercomId = new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349"),
-                            ApartmentConfigurationId = "85"
+                            IntercomId = new Guid("135c0215-f77f-404e-ad52-82a42e959531"),
+                            ApartmentConfigurationId = 85
                         },
                         new
                         {
-                            IntercomId = new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a"),
-                            ApartmentConfigurationId = "87"
+                            IntercomId = new Guid("e797b035-e95e-4927-b142-8ef8719310f5"),
+                            ApartmentConfigurationId = 87
                         },
                         new
                         {
-                            IntercomId = new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349"),
-                            ApartmentConfigurationId = "87"
+                            IntercomId = new Guid("135c0215-f77f-404e-ad52-82a42e959531"),
+                            ApartmentConfigurationId = 87
                         },
                         new
                         {
-                            IntercomId = new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a"),
-                            ApartmentConfigurationId = "89"
+                            IntercomId = new Guid("e797b035-e95e-4927-b142-8ef8719310f5"),
+                            ApartmentConfigurationId = 89
                         },
                         new
                         {
-                            IntercomId = new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349"),
-                            ApartmentConfigurationId = "89"
+                            IntercomId = new Guid("135c0215-f77f-404e-ad52-82a42e959531"),
+                            ApartmentConfigurationId = 89
                         },
                         new
                         {
-                            IntercomId = new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a"),
-                            ApartmentConfigurationId = "91"
+                            IntercomId = new Guid("e797b035-e95e-4927-b142-8ef8719310f5"),
+                            ApartmentConfigurationId = 91
                         },
                         new
                         {
-                            IntercomId = new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349"),
-                            ApartmentConfigurationId = "91"
+                            IntercomId = new Guid("135c0215-f77f-404e-ad52-82a42e959531"),
+                            ApartmentConfigurationId = 91
                         },
                         new
                         {
-                            IntercomId = new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a"),
-                            ApartmentConfigurationId = "93"
+                            IntercomId = new Guid("e797b035-e95e-4927-b142-8ef8719310f5"),
+                            ApartmentConfigurationId = 93
                         },
                         new
                         {
-                            IntercomId = new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349"),
-                            ApartmentConfigurationId = "93"
+                            IntercomId = new Guid("135c0215-f77f-404e-ad52-82a42e959531"),
+                            ApartmentConfigurationId = 93
                         },
                         new
                         {
-                            IntercomId = new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a"),
-                            ApartmentConfigurationId = "95"
+                            IntercomId = new Guid("e797b035-e95e-4927-b142-8ef8719310f5"),
+                            ApartmentConfigurationId = 95
                         },
                         new
                         {
-                            IntercomId = new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349"),
-                            ApartmentConfigurationId = "95"
+                            IntercomId = new Guid("135c0215-f77f-404e-ad52-82a42e959531"),
+                            ApartmentConfigurationId = 95
                         },
                         new
                         {
-                            IntercomId = new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a"),
-                            ApartmentConfigurationId = "97"
+                            IntercomId = new Guid("e797b035-e95e-4927-b142-8ef8719310f5"),
+                            ApartmentConfigurationId = 97
                         },
                         new
                         {
-                            IntercomId = new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349"),
-                            ApartmentConfigurationId = "97"
+                            IntercomId = new Guid("135c0215-f77f-404e-ad52-82a42e959531"),
+                            ApartmentConfigurationId = 97
                         },
                         new
                         {
-                            IntercomId = new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a"),
-                            ApartmentConfigurationId = "99"
+                            IntercomId = new Guid("e797b035-e95e-4927-b142-8ef8719310f5"),
+                            ApartmentConfigurationId = 99
                         },
                         new
                         {
-                            IntercomId = new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349"),
-                            ApartmentConfigurationId = "99"
+                            IntercomId = new Guid("135c0215-f77f-404e-ad52-82a42e959531"),
+                            ApartmentConfigurationId = 99
                         },
                         new
                         {
-                            IntercomId = new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a"),
-                            ApartmentConfigurationId = "101"
+                            IntercomId = new Guid("e797b035-e95e-4927-b142-8ef8719310f5"),
+                            ApartmentConfigurationId = 101
                         },
                         new
                         {
-                            IntercomId = new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349"),
-                            ApartmentConfigurationId = "101"
+                            IntercomId = new Guid("135c0215-f77f-404e-ad52-82a42e959531"),
+                            ApartmentConfigurationId = 101
                         },
                         new
                         {
-                            IntercomId = new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a"),
-                            ApartmentConfigurationId = "103"
+                            IntercomId = new Guid("e797b035-e95e-4927-b142-8ef8719310f5"),
+                            ApartmentConfigurationId = 103
                         },
                         new
                         {
-                            IntercomId = new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349"),
-                            ApartmentConfigurationId = "103"
+                            IntercomId = new Guid("135c0215-f77f-404e-ad52-82a42e959531"),
+                            ApartmentConfigurationId = 103
                         },
                         new
                         {
-                            IntercomId = new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a"),
-                            ApartmentConfigurationId = "105"
+                            IntercomId = new Guid("e797b035-e95e-4927-b142-8ef8719310f5"),
+                            ApartmentConfigurationId = 105
                         },
                         new
                         {
-                            IntercomId = new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349"),
-                            ApartmentConfigurationId = "105"
+                            IntercomId = new Guid("135c0215-f77f-404e-ad52-82a42e959531"),
+                            ApartmentConfigurationId = 105
                         },
                         new
                         {
-                            IntercomId = new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a"),
-                            ApartmentConfigurationId = "107"
+                            IntercomId = new Guid("e797b035-e95e-4927-b142-8ef8719310f5"),
+                            ApartmentConfigurationId = 107
                         },
                         new
                         {
-                            IntercomId = new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349"),
-                            ApartmentConfigurationId = "107"
+                            IntercomId = new Guid("135c0215-f77f-404e-ad52-82a42e959531"),
+                            ApartmentConfigurationId = 107
                         },
                         new
                         {
-                            IntercomId = new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a"),
-                            ApartmentConfigurationId = "109"
+                            IntercomId = new Guid("e797b035-e95e-4927-b142-8ef8719310f5"),
+                            ApartmentConfigurationId = 109
                         },
                         new
                         {
-                            IntercomId = new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349"),
-                            ApartmentConfigurationId = "109"
+                            IntercomId = new Guid("135c0215-f77f-404e-ad52-82a42e959531"),
+                            ApartmentConfigurationId = 109
                         },
                         new
                         {
-                            IntercomId = new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a"),
-                            ApartmentConfigurationId = "111"
+                            IntercomId = new Guid("e797b035-e95e-4927-b142-8ef8719310f5"),
+                            ApartmentConfigurationId = 111
                         },
                         new
                         {
-                            IntercomId = new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349"),
-                            ApartmentConfigurationId = "111"
+                            IntercomId = new Guid("135c0215-f77f-404e-ad52-82a42e959531"),
+                            ApartmentConfigurationId = 111
                         },
                         new
                         {
-                            IntercomId = new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a"),
-                            ApartmentConfigurationId = "113"
+                            IntercomId = new Guid("e797b035-e95e-4927-b142-8ef8719310f5"),
+                            ApartmentConfigurationId = 113
                         },
                         new
                         {
-                            IntercomId = new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349"),
-                            ApartmentConfigurationId = "113"
+                            IntercomId = new Guid("135c0215-f77f-404e-ad52-82a42e959531"),
+                            ApartmentConfigurationId = 113
                         },
                         new
                         {
-                            IntercomId = new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a"),
-                            ApartmentConfigurationId = "115"
+                            IntercomId = new Guid("e797b035-e95e-4927-b142-8ef8719310f5"),
+                            ApartmentConfigurationId = 115
                         },
                         new
                         {
-                            IntercomId = new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349"),
-                            ApartmentConfigurationId = "115"
+                            IntercomId = new Guid("135c0215-f77f-404e-ad52-82a42e959531"),
+                            ApartmentConfigurationId = 115
                         },
                         new
                         {
-                            IntercomId = new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a"),
-                            ApartmentConfigurationId = "117"
+                            IntercomId = new Guid("e797b035-e95e-4927-b142-8ef8719310f5"),
+                            ApartmentConfigurationId = 117
                         },
                         new
                         {
-                            IntercomId = new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349"),
-                            ApartmentConfigurationId = "117"
+                            IntercomId = new Guid("135c0215-f77f-404e-ad52-82a42e959531"),
+                            ApartmentConfigurationId = 117
                         },
                         new
                         {
-                            IntercomId = new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a"),
-                            ApartmentConfigurationId = "119"
+                            IntercomId = new Guid("e797b035-e95e-4927-b142-8ef8719310f5"),
+                            ApartmentConfigurationId = 119
                         },
                         new
                         {
-                            IntercomId = new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349"),
-                            ApartmentConfigurationId = "119"
+                            IntercomId = new Guid("135c0215-f77f-404e-ad52-82a42e959531"),
+                            ApartmentConfigurationId = 119
                         },
                         new
                         {
-                            IntercomId = new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a"),
-                            ApartmentConfigurationId = "121"
+                            IntercomId = new Guid("e797b035-e95e-4927-b142-8ef8719310f5"),
+                            ApartmentConfigurationId = 121
                         },
                         new
                         {
-                            IntercomId = new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349"),
-                            ApartmentConfigurationId = "121"
+                            IntercomId = new Guid("135c0215-f77f-404e-ad52-82a42e959531"),
+                            ApartmentConfigurationId = 121
                         },
                         new
                         {
-                            IntercomId = new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a"),
-                            ApartmentConfigurationId = "123"
+                            IntercomId = new Guid("e797b035-e95e-4927-b142-8ef8719310f5"),
+                            ApartmentConfigurationId = 123
                         },
                         new
                         {
-                            IntercomId = new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349"),
-                            ApartmentConfigurationId = "123"
+                            IntercomId = new Guid("135c0215-f77f-404e-ad52-82a42e959531"),
+                            ApartmentConfigurationId = 123
                         },
                         new
                         {
-                            IntercomId = new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a"),
-                            ApartmentConfigurationId = "125"
+                            IntercomId = new Guid("e797b035-e95e-4927-b142-8ef8719310f5"),
+                            ApartmentConfigurationId = 125
                         },
                         new
                         {
-                            IntercomId = new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349"),
-                            ApartmentConfigurationId = "125"
+                            IntercomId = new Guid("135c0215-f77f-404e-ad52-82a42e959531"),
+                            ApartmentConfigurationId = 125
                         },
                         new
                         {
-                            IntercomId = new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a"),
-                            ApartmentConfigurationId = "127"
+                            IntercomId = new Guid("e797b035-e95e-4927-b142-8ef8719310f5"),
+                            ApartmentConfigurationId = 127
                         },
                         new
                         {
-                            IntercomId = new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349"),
-                            ApartmentConfigurationId = "127"
+                            IntercomId = new Guid("135c0215-f77f-404e-ad52-82a42e959531"),
+                            ApartmentConfigurationId = 127
                         },
                         new
                         {
-                            IntercomId = new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a"),
-                            ApartmentConfigurationId = "129"
+                            IntercomId = new Guid("e797b035-e95e-4927-b142-8ef8719310f5"),
+                            ApartmentConfigurationId = 129
                         },
                         new
                         {
-                            IntercomId = new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349"),
-                            ApartmentConfigurationId = "129"
+                            IntercomId = new Guid("135c0215-f77f-404e-ad52-82a42e959531"),
+                            ApartmentConfigurationId = 129
                         },
                         new
                         {
-                            IntercomId = new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a"),
-                            ApartmentConfigurationId = "131"
+                            IntercomId = new Guid("e797b035-e95e-4927-b142-8ef8719310f5"),
+                            ApartmentConfigurationId = 131
                         },
                         new
                         {
-                            IntercomId = new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349"),
-                            ApartmentConfigurationId = "131"
+                            IntercomId = new Guid("135c0215-f77f-404e-ad52-82a42e959531"),
+                            ApartmentConfigurationId = 131
                         },
                         new
                         {
-                            IntercomId = new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a"),
-                            ApartmentConfigurationId = "133"
+                            IntercomId = new Guid("e797b035-e95e-4927-b142-8ef8719310f5"),
+                            ApartmentConfigurationId = 133
                         },
                         new
                         {
-                            IntercomId = new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349"),
-                            ApartmentConfigurationId = "133"
+                            IntercomId = new Guid("135c0215-f77f-404e-ad52-82a42e959531"),
+                            ApartmentConfigurationId = 133
                         },
                         new
                         {
-                            IntercomId = new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a"),
-                            ApartmentConfigurationId = "135"
+                            IntercomId = new Guid("e797b035-e95e-4927-b142-8ef8719310f5"),
+                            ApartmentConfigurationId = 135
                         },
                         new
                         {
-                            IntercomId = new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349"),
-                            ApartmentConfigurationId = "135"
+                            IntercomId = new Guid("135c0215-f77f-404e-ad52-82a42e959531"),
+                            ApartmentConfigurationId = 135
                         },
                         new
                         {
-                            IntercomId = new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a"),
-                            ApartmentConfigurationId = "137"
+                            IntercomId = new Guid("e797b035-e95e-4927-b142-8ef8719310f5"),
+                            ApartmentConfigurationId = 137
                         },
                         new
                         {
-                            IntercomId = new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349"),
-                            ApartmentConfigurationId = "137"
+                            IntercomId = new Guid("135c0215-f77f-404e-ad52-82a42e959531"),
+                            ApartmentConfigurationId = 137
                         },
                         new
                         {
-                            IntercomId = new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a"),
-                            ApartmentConfigurationId = "139"
+                            IntercomId = new Guid("e797b035-e95e-4927-b142-8ef8719310f5"),
+                            ApartmentConfigurationId = 139
                         },
                         new
                         {
-                            IntercomId = new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349"),
-                            ApartmentConfigurationId = "139"
+                            IntercomId = new Guid("135c0215-f77f-404e-ad52-82a42e959531"),
+                            ApartmentConfigurationId = 139
                         },
                         new
                         {
-                            IntercomId = new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a"),
-                            ApartmentConfigurationId = "141"
+                            IntercomId = new Guid("e797b035-e95e-4927-b142-8ef8719310f5"),
+                            ApartmentConfigurationId = 141
                         },
                         new
                         {
-                            IntercomId = new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349"),
-                            ApartmentConfigurationId = "141"
+                            IntercomId = new Guid("135c0215-f77f-404e-ad52-82a42e959531"),
+                            ApartmentConfigurationId = 141
                         },
                         new
                         {
-                            IntercomId = new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a"),
-                            ApartmentConfigurationId = "143"
+                            IntercomId = new Guid("e797b035-e95e-4927-b142-8ef8719310f5"),
+                            ApartmentConfigurationId = 143
                         },
                         new
                         {
-                            IntercomId = new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349"),
-                            ApartmentConfigurationId = "143"
+                            IntercomId = new Guid("135c0215-f77f-404e-ad52-82a42e959531"),
+                            ApartmentConfigurationId = 143
                         },
                         new
                         {
-                            IntercomId = new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a"),
-                            ApartmentConfigurationId = "145"
+                            IntercomId = new Guid("e797b035-e95e-4927-b142-8ef8719310f5"),
+                            ApartmentConfigurationId = 145
                         },
                         new
                         {
-                            IntercomId = new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349"),
-                            ApartmentConfigurationId = "145"
+                            IntercomId = new Guid("135c0215-f77f-404e-ad52-82a42e959531"),
+                            ApartmentConfigurationId = 145
                         },
                         new
                         {
-                            IntercomId = new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a"),
-                            ApartmentConfigurationId = "147"
+                            IntercomId = new Guid("e797b035-e95e-4927-b142-8ef8719310f5"),
+                            ApartmentConfigurationId = 147
                         },
                         new
                         {
-                            IntercomId = new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349"),
-                            ApartmentConfigurationId = "147"
+                            IntercomId = new Guid("135c0215-f77f-404e-ad52-82a42e959531"),
+                            ApartmentConfigurationId = 147
                         },
                         new
                         {
-                            IntercomId = new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a"),
-                            ApartmentConfigurationId = "149"
+                            IntercomId = new Guid("e797b035-e95e-4927-b142-8ef8719310f5"),
+                            ApartmentConfigurationId = 149
                         },
                         new
                         {
-                            IntercomId = new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349"),
-                            ApartmentConfigurationId = "149"
+                            IntercomId = new Guid("135c0215-f77f-404e-ad52-82a42e959531"),
+                            ApartmentConfigurationId = 149
                         },
                         new
                         {
-                            IntercomId = new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a"),
-                            ApartmentConfigurationId = "151"
+                            IntercomId = new Guid("e797b035-e95e-4927-b142-8ef8719310f5"),
+                            ApartmentConfigurationId = 151
                         },
                         new
                         {
-                            IntercomId = new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349"),
-                            ApartmentConfigurationId = "151"
+                            IntercomId = new Guid("135c0215-f77f-404e-ad52-82a42e959531"),
+                            ApartmentConfigurationId = 151
                         },
                         new
                         {
-                            IntercomId = new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a"),
-                            ApartmentConfigurationId = "153"
+                            IntercomId = new Guid("e797b035-e95e-4927-b142-8ef8719310f5"),
+                            ApartmentConfigurationId = 153
                         },
                         new
                         {
-                            IntercomId = new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349"),
-                            ApartmentConfigurationId = "153"
+                            IntercomId = new Guid("135c0215-f77f-404e-ad52-82a42e959531"),
+                            ApartmentConfigurationId = 153
                         },
                         new
                         {
-                            IntercomId = new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a"),
-                            ApartmentConfigurationId = "155"
+                            IntercomId = new Guid("e797b035-e95e-4927-b142-8ef8719310f5"),
+                            ApartmentConfigurationId = 155
                         },
                         new
                         {
-                            IntercomId = new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349"),
-                            ApartmentConfigurationId = "155"
+                            IntercomId = new Guid("135c0215-f77f-404e-ad52-82a42e959531"),
+                            ApartmentConfigurationId = 155
                         },
                         new
                         {
-                            IntercomId = new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a"),
-                            ApartmentConfigurationId = "157"
+                            IntercomId = new Guid("e797b035-e95e-4927-b142-8ef8719310f5"),
+                            ApartmentConfigurationId = 157
                         },
                         new
                         {
-                            IntercomId = new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349"),
-                            ApartmentConfigurationId = "157"
+                            IntercomId = new Guid("135c0215-f77f-404e-ad52-82a42e959531"),
+                            ApartmentConfigurationId = 157
                         },
                         new
                         {
-                            IntercomId = new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a"),
-                            ApartmentConfigurationId = "159"
+                            IntercomId = new Guid("e797b035-e95e-4927-b142-8ef8719310f5"),
+                            ApartmentConfigurationId = 159
                         },
                         new
                         {
-                            IntercomId = new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349"),
-                            ApartmentConfigurationId = "159"
+                            IntercomId = new Guid("135c0215-f77f-404e-ad52-82a42e959531"),
+                            ApartmentConfigurationId = 159
                         },
                         new
                         {
-                            IntercomId = new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a"),
-                            ApartmentConfigurationId = "161"
+                            IntercomId = new Guid("e797b035-e95e-4927-b142-8ef8719310f5"),
+                            ApartmentConfigurationId = 161
                         },
                         new
                         {
-                            IntercomId = new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349"),
-                            ApartmentConfigurationId = "161"
+                            IntercomId = new Guid("135c0215-f77f-404e-ad52-82a42e959531"),
+                            ApartmentConfigurationId = 161
                         },
                         new
                         {
-                            IntercomId = new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a"),
-                            ApartmentConfigurationId = "163"
+                            IntercomId = new Guid("e797b035-e95e-4927-b142-8ef8719310f5"),
+                            ApartmentConfigurationId = 163
                         },
                         new
                         {
-                            IntercomId = new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349"),
-                            ApartmentConfigurationId = "163"
+                            IntercomId = new Guid("135c0215-f77f-404e-ad52-82a42e959531"),
+                            ApartmentConfigurationId = 163
                         },
                         new
                         {
-                            IntercomId = new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a"),
-                            ApartmentConfigurationId = "165"
+                            IntercomId = new Guid("e797b035-e95e-4927-b142-8ef8719310f5"),
+                            ApartmentConfigurationId = 165
                         },
                         new
                         {
-                            IntercomId = new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349"),
-                            ApartmentConfigurationId = "165"
+                            IntercomId = new Guid("135c0215-f77f-404e-ad52-82a42e959531"),
+                            ApartmentConfigurationId = 165
                         },
                         new
                         {
-                            IntercomId = new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a"),
-                            ApartmentConfigurationId = "167"
+                            IntercomId = new Guid("e797b035-e95e-4927-b142-8ef8719310f5"),
+                            ApartmentConfigurationId = 167
                         },
                         new
                         {
-                            IntercomId = new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349"),
-                            ApartmentConfigurationId = "167"
+                            IntercomId = new Guid("135c0215-f77f-404e-ad52-82a42e959531"),
+                            ApartmentConfigurationId = 167
                         },
                         new
                         {
-                            IntercomId = new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a"),
-                            ApartmentConfigurationId = "169"
+                            IntercomId = new Guid("e797b035-e95e-4927-b142-8ef8719310f5"),
+                            ApartmentConfigurationId = 169
                         },
                         new
                         {
-                            IntercomId = new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349"),
-                            ApartmentConfigurationId = "169"
+                            IntercomId = new Guid("135c0215-f77f-404e-ad52-82a42e959531"),
+                            ApartmentConfigurationId = 169
                         },
                         new
                         {
-                            IntercomId = new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a"),
-                            ApartmentConfigurationId = "171"
+                            IntercomId = new Guid("e797b035-e95e-4927-b142-8ef8719310f5"),
+                            ApartmentConfigurationId = 171
                         },
                         new
                         {
-                            IntercomId = new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349"),
-                            ApartmentConfigurationId = "171"
+                            IntercomId = new Guid("135c0215-f77f-404e-ad52-82a42e959531"),
+                            ApartmentConfigurationId = 171
                         },
                         new
                         {
-                            IntercomId = new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a"),
-                            ApartmentConfigurationId = "173"
+                            IntercomId = new Guid("e797b035-e95e-4927-b142-8ef8719310f5"),
+                            ApartmentConfigurationId = 173
                         },
                         new
                         {
-                            IntercomId = new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349"),
-                            ApartmentConfigurationId = "173"
+                            IntercomId = new Guid("135c0215-f77f-404e-ad52-82a42e959531"),
+                            ApartmentConfigurationId = 173
                         },
                         new
                         {
-                            IntercomId = new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a"),
-                            ApartmentConfigurationId = "175"
+                            IntercomId = new Guid("e797b035-e95e-4927-b142-8ef8719310f5"),
+                            ApartmentConfigurationId = 175
                         },
                         new
                         {
-                            IntercomId = new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349"),
-                            ApartmentConfigurationId = "175"
+                            IntercomId = new Guid("135c0215-f77f-404e-ad52-82a42e959531"),
+                            ApartmentConfigurationId = 175
                         },
                         new
                         {
-                            IntercomId = new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a"),
-                            ApartmentConfigurationId = "177"
+                            IntercomId = new Guid("e797b035-e95e-4927-b142-8ef8719310f5"),
+                            ApartmentConfigurationId = 177
                         },
                         new
                         {
-                            IntercomId = new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349"),
-                            ApartmentConfigurationId = "177"
+                            IntercomId = new Guid("135c0215-f77f-404e-ad52-82a42e959531"),
+                            ApartmentConfigurationId = 177
                         },
                         new
                         {
-                            IntercomId = new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a"),
-                            ApartmentConfigurationId = "179"
+                            IntercomId = new Guid("e797b035-e95e-4927-b142-8ef8719310f5"),
+                            ApartmentConfigurationId = 179
                         },
                         new
                         {
-                            IntercomId = new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349"),
-                            ApartmentConfigurationId = "179"
+                            IntercomId = new Guid("135c0215-f77f-404e-ad52-82a42e959531"),
+                            ApartmentConfigurationId = 179
                         },
                         new
                         {
-                            IntercomId = new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a"),
-                            ApartmentConfigurationId = "181"
+                            IntercomId = new Guid("e797b035-e95e-4927-b142-8ef8719310f5"),
+                            ApartmentConfigurationId = 181
                         },
                         new
                         {
-                            IntercomId = new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349"),
-                            ApartmentConfigurationId = "181"
+                            IntercomId = new Guid("135c0215-f77f-404e-ad52-82a42e959531"),
+                            ApartmentConfigurationId = 181
                         },
                         new
                         {
-                            IntercomId = new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a"),
-                            ApartmentConfigurationId = "183"
+                            IntercomId = new Guid("e797b035-e95e-4927-b142-8ef8719310f5"),
+                            ApartmentConfigurationId = 183
                         },
                         new
                         {
-                            IntercomId = new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349"),
-                            ApartmentConfigurationId = "183"
+                            IntercomId = new Guid("135c0215-f77f-404e-ad52-82a42e959531"),
+                            ApartmentConfigurationId = 183
                         },
                         new
                         {
-                            IntercomId = new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a"),
-                            ApartmentConfigurationId = "185"
+                            IntercomId = new Guid("e797b035-e95e-4927-b142-8ef8719310f5"),
+                            ApartmentConfigurationId = 185
                         },
                         new
                         {
-                            IntercomId = new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349"),
-                            ApartmentConfigurationId = "185"
+                            IntercomId = new Guid("135c0215-f77f-404e-ad52-82a42e959531"),
+                            ApartmentConfigurationId = 185
                         },
                         new
                         {
-                            IntercomId = new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a"),
-                            ApartmentConfigurationId = "187"
+                            IntercomId = new Guid("e797b035-e95e-4927-b142-8ef8719310f5"),
+                            ApartmentConfigurationId = 187
                         },
                         new
                         {
-                            IntercomId = new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349"),
-                            ApartmentConfigurationId = "187"
+                            IntercomId = new Guid("135c0215-f77f-404e-ad52-82a42e959531"),
+                            ApartmentConfigurationId = 187
                         },
                         new
                         {
-                            IntercomId = new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a"),
-                            ApartmentConfigurationId = "189"
+                            IntercomId = new Guid("e797b035-e95e-4927-b142-8ef8719310f5"),
+                            ApartmentConfigurationId = 189
                         },
                         new
                         {
-                            IntercomId = new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349"),
-                            ApartmentConfigurationId = "189"
+                            IntercomId = new Guid("135c0215-f77f-404e-ad52-82a42e959531"),
+                            ApartmentConfigurationId = 189
                         });
                 });
 
             modelBuilder.Entity("Arentheym.ParkingBarrier.Domain.ApartmentConfiguration", b =>
                 {
-                    b.Property<string>("Id")
-                        .HasColumnType("TEXT")
+                    b.Property<int>("Id")
+                        .HasColumnType("INTEGER")
                         .HasColumnName("Id");
 
                     b.Property<string>("AccessCode")
@@ -764,7 +764,7 @@ namespace Arentheym.Database.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "51",
+                            Id = 51,
                             AccessCode = "",
                             DialToOpen = true,
                             DisplayName = "051",
@@ -772,7 +772,7 @@ namespace Arentheym.Database.Migrations
                         },
                         new
                         {
-                            Id = "53",
+                            Id = 53,
                             AccessCode = "",
                             DialToOpen = true,
                             DisplayName = "053",
@@ -780,7 +780,7 @@ namespace Arentheym.Database.Migrations
                         },
                         new
                         {
-                            Id = "55",
+                            Id = 55,
                             AccessCode = "",
                             DialToOpen = true,
                             DisplayName = "055",
@@ -788,7 +788,7 @@ namespace Arentheym.Database.Migrations
                         },
                         new
                         {
-                            Id = "57",
+                            Id = 57,
                             AccessCode = "",
                             DialToOpen = true,
                             DisplayName = "057",
@@ -796,7 +796,7 @@ namespace Arentheym.Database.Migrations
                         },
                         new
                         {
-                            Id = "59",
+                            Id = 59,
                             AccessCode = "",
                             DialToOpen = true,
                             DisplayName = "059",
@@ -804,7 +804,7 @@ namespace Arentheym.Database.Migrations
                         },
                         new
                         {
-                            Id = "61",
+                            Id = 61,
                             AccessCode = "",
                             DialToOpen = true,
                             DisplayName = "061",
@@ -812,7 +812,7 @@ namespace Arentheym.Database.Migrations
                         },
                         new
                         {
-                            Id = "63",
+                            Id = 63,
                             AccessCode = "",
                             DialToOpen = true,
                             DisplayName = "063",
@@ -820,7 +820,7 @@ namespace Arentheym.Database.Migrations
                         },
                         new
                         {
-                            Id = "65",
+                            Id = 65,
                             AccessCode = "",
                             DialToOpen = true,
                             DisplayName = "065",
@@ -828,7 +828,7 @@ namespace Arentheym.Database.Migrations
                         },
                         new
                         {
-                            Id = "67",
+                            Id = 67,
                             AccessCode = "",
                             DialToOpen = true,
                             DisplayName = "067",
@@ -836,7 +836,7 @@ namespace Arentheym.Database.Migrations
                         },
                         new
                         {
-                            Id = "69",
+                            Id = 69,
                             AccessCode = "",
                             DialToOpen = true,
                             DisplayName = "069",
@@ -844,7 +844,7 @@ namespace Arentheym.Database.Migrations
                         },
                         new
                         {
-                            Id = "71",
+                            Id = 71,
                             AccessCode = "",
                             DialToOpen = true,
                             DisplayName = "071",
@@ -852,7 +852,7 @@ namespace Arentheym.Database.Migrations
                         },
                         new
                         {
-                            Id = "73",
+                            Id = 73,
                             AccessCode = "",
                             DialToOpen = true,
                             DisplayName = "073",
@@ -860,7 +860,7 @@ namespace Arentheym.Database.Migrations
                         },
                         new
                         {
-                            Id = "75",
+                            Id = 75,
                             AccessCode = "",
                             DialToOpen = true,
                             DisplayName = "075",
@@ -868,7 +868,7 @@ namespace Arentheym.Database.Migrations
                         },
                         new
                         {
-                            Id = "77",
+                            Id = 77,
                             AccessCode = "",
                             DialToOpen = true,
                             DisplayName = "077",
@@ -876,7 +876,7 @@ namespace Arentheym.Database.Migrations
                         },
                         new
                         {
-                            Id = "79",
+                            Id = 79,
                             AccessCode = "",
                             DialToOpen = true,
                             DisplayName = "079",
@@ -884,7 +884,7 @@ namespace Arentheym.Database.Migrations
                         },
                         new
                         {
-                            Id = "81",
+                            Id = 81,
                             AccessCode = "",
                             DialToOpen = true,
                             DisplayName = "081",
@@ -892,7 +892,7 @@ namespace Arentheym.Database.Migrations
                         },
                         new
                         {
-                            Id = "83",
+                            Id = 83,
                             AccessCode = "",
                             DialToOpen = true,
                             DisplayName = "083",
@@ -900,7 +900,7 @@ namespace Arentheym.Database.Migrations
                         },
                         new
                         {
-                            Id = "85",
+                            Id = 85,
                             AccessCode = "",
                             DialToOpen = true,
                             DisplayName = "085",
@@ -908,7 +908,7 @@ namespace Arentheym.Database.Migrations
                         },
                         new
                         {
-                            Id = "87",
+                            Id = 87,
                             AccessCode = "",
                             DialToOpen = true,
                             DisplayName = "087",
@@ -916,7 +916,7 @@ namespace Arentheym.Database.Migrations
                         },
                         new
                         {
-                            Id = "89",
+                            Id = 89,
                             AccessCode = "",
                             DialToOpen = true,
                             DisplayName = "089",
@@ -924,7 +924,7 @@ namespace Arentheym.Database.Migrations
                         },
                         new
                         {
-                            Id = "91",
+                            Id = 91,
                             AccessCode = "",
                             DialToOpen = true,
                             DisplayName = "091",
@@ -932,7 +932,7 @@ namespace Arentheym.Database.Migrations
                         },
                         new
                         {
-                            Id = "93",
+                            Id = 93,
                             AccessCode = "",
                             DialToOpen = true,
                             DisplayName = "093",
@@ -940,7 +940,7 @@ namespace Arentheym.Database.Migrations
                         },
                         new
                         {
-                            Id = "95",
+                            Id = 95,
                             AccessCode = "",
                             DialToOpen = true,
                             DisplayName = "095",
@@ -948,7 +948,7 @@ namespace Arentheym.Database.Migrations
                         },
                         new
                         {
-                            Id = "97",
+                            Id = 97,
                             AccessCode = "",
                             DialToOpen = true,
                             DisplayName = "097",
@@ -956,7 +956,7 @@ namespace Arentheym.Database.Migrations
                         },
                         new
                         {
-                            Id = "99",
+                            Id = 99,
                             AccessCode = "",
                             DialToOpen = true,
                             DisplayName = "099",
@@ -964,7 +964,7 @@ namespace Arentheym.Database.Migrations
                         },
                         new
                         {
-                            Id = "101",
+                            Id = 101,
                             AccessCode = "",
                             DialToOpen = true,
                             DisplayName = "101",
@@ -972,7 +972,7 @@ namespace Arentheym.Database.Migrations
                         },
                         new
                         {
-                            Id = "103",
+                            Id = 103,
                             AccessCode = "",
                             DialToOpen = true,
                             DisplayName = "103",
@@ -980,7 +980,7 @@ namespace Arentheym.Database.Migrations
                         },
                         new
                         {
-                            Id = "105",
+                            Id = 105,
                             AccessCode = "",
                             DialToOpen = true,
                             DisplayName = "105",
@@ -988,7 +988,7 @@ namespace Arentheym.Database.Migrations
                         },
                         new
                         {
-                            Id = "107",
+                            Id = 107,
                             AccessCode = "",
                             DialToOpen = true,
                             DisplayName = "107",
@@ -996,7 +996,7 @@ namespace Arentheym.Database.Migrations
                         },
                         new
                         {
-                            Id = "109",
+                            Id = 109,
                             AccessCode = "",
                             DialToOpen = true,
                             DisplayName = "109",
@@ -1004,7 +1004,7 @@ namespace Arentheym.Database.Migrations
                         },
                         new
                         {
-                            Id = "111",
+                            Id = 111,
                             AccessCode = "",
                             DialToOpen = true,
                             DisplayName = "111",
@@ -1012,7 +1012,7 @@ namespace Arentheym.Database.Migrations
                         },
                         new
                         {
-                            Id = "113",
+                            Id = 113,
                             AccessCode = "",
                             DialToOpen = true,
                             DisplayName = "113",
@@ -1020,7 +1020,7 @@ namespace Arentheym.Database.Migrations
                         },
                         new
                         {
-                            Id = "115",
+                            Id = 115,
                             AccessCode = "",
                             DialToOpen = true,
                             DisplayName = "115",
@@ -1028,7 +1028,7 @@ namespace Arentheym.Database.Migrations
                         },
                         new
                         {
-                            Id = "117",
+                            Id = 117,
                             AccessCode = "",
                             DialToOpen = true,
                             DisplayName = "117",
@@ -1036,7 +1036,7 @@ namespace Arentheym.Database.Migrations
                         },
                         new
                         {
-                            Id = "119",
+                            Id = 119,
                             AccessCode = "",
                             DialToOpen = true,
                             DisplayName = "119",
@@ -1044,7 +1044,7 @@ namespace Arentheym.Database.Migrations
                         },
                         new
                         {
-                            Id = "121",
+                            Id = 121,
                             AccessCode = "",
                             DialToOpen = true,
                             DisplayName = "121",
@@ -1052,7 +1052,7 @@ namespace Arentheym.Database.Migrations
                         },
                         new
                         {
-                            Id = "123",
+                            Id = 123,
                             AccessCode = "",
                             DialToOpen = true,
                             DisplayName = "123",
@@ -1060,7 +1060,7 @@ namespace Arentheym.Database.Migrations
                         },
                         new
                         {
-                            Id = "125",
+                            Id = 125,
                             AccessCode = "",
                             DialToOpen = true,
                             DisplayName = "125",
@@ -1068,7 +1068,7 @@ namespace Arentheym.Database.Migrations
                         },
                         new
                         {
-                            Id = "127",
+                            Id = 127,
                             AccessCode = "",
                             DialToOpen = true,
                             DisplayName = "127",
@@ -1076,7 +1076,7 @@ namespace Arentheym.Database.Migrations
                         },
                         new
                         {
-                            Id = "129",
+                            Id = 129,
                             AccessCode = "",
                             DialToOpen = true,
                             DisplayName = "129",
@@ -1084,7 +1084,7 @@ namespace Arentheym.Database.Migrations
                         },
                         new
                         {
-                            Id = "131",
+                            Id = 131,
                             AccessCode = "",
                             DialToOpen = true,
                             DisplayName = "131",
@@ -1092,7 +1092,7 @@ namespace Arentheym.Database.Migrations
                         },
                         new
                         {
-                            Id = "133",
+                            Id = 133,
                             AccessCode = "",
                             DialToOpen = true,
                             DisplayName = "133",
@@ -1100,7 +1100,7 @@ namespace Arentheym.Database.Migrations
                         },
                         new
                         {
-                            Id = "135",
+                            Id = 135,
                             AccessCode = "",
                             DialToOpen = true,
                             DisplayName = "135",
@@ -1108,7 +1108,7 @@ namespace Arentheym.Database.Migrations
                         },
                         new
                         {
-                            Id = "137",
+                            Id = 137,
                             AccessCode = "",
                             DialToOpen = true,
                             DisplayName = "137",
@@ -1116,7 +1116,7 @@ namespace Arentheym.Database.Migrations
                         },
                         new
                         {
-                            Id = "139",
+                            Id = 139,
                             AccessCode = "",
                             DialToOpen = true,
                             DisplayName = "139",
@@ -1124,7 +1124,7 @@ namespace Arentheym.Database.Migrations
                         },
                         new
                         {
-                            Id = "141",
+                            Id = 141,
                             AccessCode = "",
                             DialToOpen = true,
                             DisplayName = "141",
@@ -1132,7 +1132,7 @@ namespace Arentheym.Database.Migrations
                         },
                         new
                         {
-                            Id = "143",
+                            Id = 143,
                             AccessCode = "",
                             DialToOpen = true,
                             DisplayName = "143",
@@ -1140,7 +1140,7 @@ namespace Arentheym.Database.Migrations
                         },
                         new
                         {
-                            Id = "145",
+                            Id = 145,
                             AccessCode = "",
                             DialToOpen = true,
                             DisplayName = "145",
@@ -1148,7 +1148,7 @@ namespace Arentheym.Database.Migrations
                         },
                         new
                         {
-                            Id = "147",
+                            Id = 147,
                             AccessCode = "",
                             DialToOpen = true,
                             DisplayName = "147",
@@ -1156,7 +1156,7 @@ namespace Arentheym.Database.Migrations
                         },
                         new
                         {
-                            Id = "149",
+                            Id = 149,
                             AccessCode = "",
                             DialToOpen = true,
                             DisplayName = "149",
@@ -1164,7 +1164,7 @@ namespace Arentheym.Database.Migrations
                         },
                         new
                         {
-                            Id = "151",
+                            Id = 151,
                             AccessCode = "",
                             DialToOpen = true,
                             DisplayName = "151",
@@ -1172,7 +1172,7 @@ namespace Arentheym.Database.Migrations
                         },
                         new
                         {
-                            Id = "153",
+                            Id = 153,
                             AccessCode = "",
                             DialToOpen = true,
                             DisplayName = "153",
@@ -1180,7 +1180,7 @@ namespace Arentheym.Database.Migrations
                         },
                         new
                         {
-                            Id = "155",
+                            Id = 155,
                             AccessCode = "",
                             DialToOpen = true,
                             DisplayName = "155",
@@ -1188,7 +1188,7 @@ namespace Arentheym.Database.Migrations
                         },
                         new
                         {
-                            Id = "157",
+                            Id = 157,
                             AccessCode = "",
                             DialToOpen = true,
                             DisplayName = "157",
@@ -1196,7 +1196,7 @@ namespace Arentheym.Database.Migrations
                         },
                         new
                         {
-                            Id = "159",
+                            Id = 159,
                             AccessCode = "",
                             DialToOpen = true,
                             DisplayName = "159",
@@ -1204,7 +1204,7 @@ namespace Arentheym.Database.Migrations
                         },
                         new
                         {
-                            Id = "161",
+                            Id = 161,
                             AccessCode = "",
                             DialToOpen = true,
                             DisplayName = "161",
@@ -1212,7 +1212,7 @@ namespace Arentheym.Database.Migrations
                         },
                         new
                         {
-                            Id = "163",
+                            Id = 163,
                             AccessCode = "",
                             DialToOpen = true,
                             DisplayName = "163",
@@ -1220,7 +1220,7 @@ namespace Arentheym.Database.Migrations
                         },
                         new
                         {
-                            Id = "165",
+                            Id = 165,
                             AccessCode = "",
                             DialToOpen = true,
                             DisplayName = "165",
@@ -1228,7 +1228,7 @@ namespace Arentheym.Database.Migrations
                         },
                         new
                         {
-                            Id = "167",
+                            Id = 167,
                             AccessCode = "",
                             DialToOpen = true,
                             DisplayName = "167",
@@ -1236,7 +1236,7 @@ namespace Arentheym.Database.Migrations
                         },
                         new
                         {
-                            Id = "169",
+                            Id = 169,
                             AccessCode = "",
                             DialToOpen = true,
                             DisplayName = "169",
@@ -1244,7 +1244,7 @@ namespace Arentheym.Database.Migrations
                         },
                         new
                         {
-                            Id = "171",
+                            Id = 171,
                             AccessCode = "",
                             DialToOpen = true,
                             DisplayName = "171",
@@ -1252,7 +1252,7 @@ namespace Arentheym.Database.Migrations
                         },
                         new
                         {
-                            Id = "173",
+                            Id = 173,
                             AccessCode = "",
                             DialToOpen = true,
                             DisplayName = "173",
@@ -1260,7 +1260,7 @@ namespace Arentheym.Database.Migrations
                         },
                         new
                         {
-                            Id = "175",
+                            Id = 175,
                             AccessCode = "",
                             DialToOpen = true,
                             DisplayName = "175",
@@ -1268,7 +1268,7 @@ namespace Arentheym.Database.Migrations
                         },
                         new
                         {
-                            Id = "177",
+                            Id = 177,
                             AccessCode = "",
                             DialToOpen = true,
                             DisplayName = "177",
@@ -1276,7 +1276,7 @@ namespace Arentheym.Database.Migrations
                         },
                         new
                         {
-                            Id = "179",
+                            Id = 179,
                             AccessCode = "",
                             DialToOpen = true,
                             DisplayName = "179",
@@ -1284,7 +1284,7 @@ namespace Arentheym.Database.Migrations
                         },
                         new
                         {
-                            Id = "181",
+                            Id = 181,
                             AccessCode = "",
                             DialToOpen = true,
                             DisplayName = "181",
@@ -1292,7 +1292,7 @@ namespace Arentheym.Database.Migrations
                         },
                         new
                         {
-                            Id = "183",
+                            Id = 183,
                             AccessCode = "",
                             DialToOpen = true,
                             DisplayName = "183",
@@ -1300,7 +1300,7 @@ namespace Arentheym.Database.Migrations
                         },
                         new
                         {
-                            Id = "185",
+                            Id = 185,
                             AccessCode = "",
                             DialToOpen = true,
                             DisplayName = "185",
@@ -1308,7 +1308,7 @@ namespace Arentheym.Database.Migrations
                         },
                         new
                         {
-                            Id = "187",
+                            Id = 187,
                             AccessCode = "",
                             DialToOpen = true,
                             DisplayName = "187",
@@ -1316,7 +1316,7 @@ namespace Arentheym.Database.Migrations
                         },
                         new
                         {
-                            Id = "189",
+                            Id = 189,
                             AccessCode = "",
                             DialToOpen = true,
                             DisplayName = "189",
@@ -1353,14 +1353,14 @@ namespace Arentheym.Database.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("d06842e8-de5b-44e2-8d3c-81cfa5946349"),
+                            Id = new Guid("135c0215-f77f-404e-ad52-82a42e959531"),
                             MasterCode = "8601",
                             Name = "Slagboom voor",
                             PhoneNumber = "0657093298"
                         },
                         new
                         {
-                            Id = new Guid("0fb8dc75-d706-4b4a-bad6-ad864063983a"),
+                            Id = new Guid("e797b035-e95e-4927-b142-8ef8719310f5"),
                             MasterCode = "8601",
                             Name = "Slagboom achter",
                             PhoneNumber = "0657181402"
@@ -1386,8 +1386,8 @@ namespace Arentheym.Database.Migrations
                 {
                     b.OwnsMany("Arentheym.ParkingBarrier.Domain.DivertPhoneNumber", "PhoneNumbers", b1 =>
                         {
-                            b1.Property<string>("ApartmentConfigurationId")
-                                .HasColumnType("TEXT");
+                            b1.Property<int>("ApartmentConfigurationId")
+                                .HasColumnType("INTEGER");
 
                             b1.Property<int>("Order")
                                 .HasColumnType("INTEGER")
@@ -1407,1681 +1407,1681 @@ namespace Arentheym.Database.Migrations
                             b1.HasData(
                                 new
                                 {
-                                    ApartmentConfigurationId = "51",
+                                    ApartmentConfigurationId = 51,
                                     Order = 0,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "51",
+                                    ApartmentConfigurationId = 51,
                                     Order = 1,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "51",
+                                    ApartmentConfigurationId = 51,
                                     Order = 2,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "51",
+                                    ApartmentConfigurationId = 51,
                                     Order = 3,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "53",
+                                    ApartmentConfigurationId = 53,
                                     Order = 0,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "53",
+                                    ApartmentConfigurationId = 53,
                                     Order = 1,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "53",
+                                    ApartmentConfigurationId = 53,
                                     Order = 2,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "53",
+                                    ApartmentConfigurationId = 53,
                                     Order = 3,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "55",
+                                    ApartmentConfigurationId = 55,
                                     Order = 0,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "55",
+                                    ApartmentConfigurationId = 55,
                                     Order = 1,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "55",
+                                    ApartmentConfigurationId = 55,
                                     Order = 2,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "55",
+                                    ApartmentConfigurationId = 55,
                                     Order = 3,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "57",
+                                    ApartmentConfigurationId = 57,
                                     Order = 0,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "57",
+                                    ApartmentConfigurationId = 57,
                                     Order = 1,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "57",
+                                    ApartmentConfigurationId = 57,
                                     Order = 2,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "57",
+                                    ApartmentConfigurationId = 57,
                                     Order = 3,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "59",
+                                    ApartmentConfigurationId = 59,
                                     Order = 0,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "59",
+                                    ApartmentConfigurationId = 59,
                                     Order = 1,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "59",
+                                    ApartmentConfigurationId = 59,
                                     Order = 2,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "59",
+                                    ApartmentConfigurationId = 59,
                                     Order = 3,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "61",
+                                    ApartmentConfigurationId = 61,
                                     Order = 0,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "61",
+                                    ApartmentConfigurationId = 61,
                                     Order = 1,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "61",
+                                    ApartmentConfigurationId = 61,
                                     Order = 2,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "61",
+                                    ApartmentConfigurationId = 61,
                                     Order = 3,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "63",
+                                    ApartmentConfigurationId = 63,
                                     Order = 0,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "63",
+                                    ApartmentConfigurationId = 63,
                                     Order = 1,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "63",
+                                    ApartmentConfigurationId = 63,
                                     Order = 2,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "63",
+                                    ApartmentConfigurationId = 63,
                                     Order = 3,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "65",
+                                    ApartmentConfigurationId = 65,
                                     Order = 0,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "65",
+                                    ApartmentConfigurationId = 65,
                                     Order = 1,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "65",
+                                    ApartmentConfigurationId = 65,
                                     Order = 2,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "65",
+                                    ApartmentConfigurationId = 65,
                                     Order = 3,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "67",
+                                    ApartmentConfigurationId = 67,
                                     Order = 0,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "67",
+                                    ApartmentConfigurationId = 67,
                                     Order = 1,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "67",
+                                    ApartmentConfigurationId = 67,
                                     Order = 2,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "67",
+                                    ApartmentConfigurationId = 67,
                                     Order = 3,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "69",
+                                    ApartmentConfigurationId = 69,
                                     Order = 0,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "69",
+                                    ApartmentConfigurationId = 69,
                                     Order = 1,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "69",
+                                    ApartmentConfigurationId = 69,
                                     Order = 2,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "69",
+                                    ApartmentConfigurationId = 69,
                                     Order = 3,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "71",
+                                    ApartmentConfigurationId = 71,
                                     Order = 0,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "71",
+                                    ApartmentConfigurationId = 71,
                                     Order = 1,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "71",
+                                    ApartmentConfigurationId = 71,
                                     Order = 2,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "71",
+                                    ApartmentConfigurationId = 71,
                                     Order = 3,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "73",
+                                    ApartmentConfigurationId = 73,
                                     Order = 0,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "73",
+                                    ApartmentConfigurationId = 73,
                                     Order = 1,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "73",
+                                    ApartmentConfigurationId = 73,
                                     Order = 2,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "73",
+                                    ApartmentConfigurationId = 73,
                                     Order = 3,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "75",
+                                    ApartmentConfigurationId = 75,
                                     Order = 0,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "75",
+                                    ApartmentConfigurationId = 75,
                                     Order = 1,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "75",
+                                    ApartmentConfigurationId = 75,
                                     Order = 2,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "75",
+                                    ApartmentConfigurationId = 75,
                                     Order = 3,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "77",
+                                    ApartmentConfigurationId = 77,
                                     Order = 0,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "77",
+                                    ApartmentConfigurationId = 77,
                                     Order = 1,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "77",
+                                    ApartmentConfigurationId = 77,
                                     Order = 2,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "77",
+                                    ApartmentConfigurationId = 77,
                                     Order = 3,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "79",
+                                    ApartmentConfigurationId = 79,
                                     Order = 0,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "79",
+                                    ApartmentConfigurationId = 79,
                                     Order = 1,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "79",
+                                    ApartmentConfigurationId = 79,
                                     Order = 2,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "79",
+                                    ApartmentConfigurationId = 79,
                                     Order = 3,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "81",
+                                    ApartmentConfigurationId = 81,
                                     Order = 0,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "81",
+                                    ApartmentConfigurationId = 81,
                                     Order = 1,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "81",
+                                    ApartmentConfigurationId = 81,
                                     Order = 2,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "81",
+                                    ApartmentConfigurationId = 81,
                                     Order = 3,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "83",
+                                    ApartmentConfigurationId = 83,
                                     Order = 0,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "83",
+                                    ApartmentConfigurationId = 83,
                                     Order = 1,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "83",
+                                    ApartmentConfigurationId = 83,
                                     Order = 2,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "83",
+                                    ApartmentConfigurationId = 83,
                                     Order = 3,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "85",
+                                    ApartmentConfigurationId = 85,
                                     Order = 0,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "85",
+                                    ApartmentConfigurationId = 85,
                                     Order = 1,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "85",
+                                    ApartmentConfigurationId = 85,
                                     Order = 2,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "85",
+                                    ApartmentConfigurationId = 85,
                                     Order = 3,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "87",
+                                    ApartmentConfigurationId = 87,
                                     Order = 0,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "87",
+                                    ApartmentConfigurationId = 87,
                                     Order = 1,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "87",
+                                    ApartmentConfigurationId = 87,
                                     Order = 2,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "87",
+                                    ApartmentConfigurationId = 87,
                                     Order = 3,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "89",
+                                    ApartmentConfigurationId = 89,
                                     Order = 0,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "89",
+                                    ApartmentConfigurationId = 89,
                                     Order = 1,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "89",
+                                    ApartmentConfigurationId = 89,
                                     Order = 2,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "89",
+                                    ApartmentConfigurationId = 89,
                                     Order = 3,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "91",
+                                    ApartmentConfigurationId = 91,
                                     Order = 0,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "91",
+                                    ApartmentConfigurationId = 91,
                                     Order = 1,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "91",
+                                    ApartmentConfigurationId = 91,
                                     Order = 2,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "91",
+                                    ApartmentConfigurationId = 91,
                                     Order = 3,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "93",
+                                    ApartmentConfigurationId = 93,
                                     Order = 0,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "93",
+                                    ApartmentConfigurationId = 93,
                                     Order = 1,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "93",
+                                    ApartmentConfigurationId = 93,
                                     Order = 2,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "93",
+                                    ApartmentConfigurationId = 93,
                                     Order = 3,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "95",
+                                    ApartmentConfigurationId = 95,
                                     Order = 0,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "95",
+                                    ApartmentConfigurationId = 95,
                                     Order = 1,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "95",
+                                    ApartmentConfigurationId = 95,
                                     Order = 2,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "95",
+                                    ApartmentConfigurationId = 95,
                                     Order = 3,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "97",
+                                    ApartmentConfigurationId = 97,
                                     Order = 0,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "97",
+                                    ApartmentConfigurationId = 97,
                                     Order = 1,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "97",
+                                    ApartmentConfigurationId = 97,
                                     Order = 2,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "97",
+                                    ApartmentConfigurationId = 97,
                                     Order = 3,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "99",
+                                    ApartmentConfigurationId = 99,
                                     Order = 0,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "99",
+                                    ApartmentConfigurationId = 99,
                                     Order = 1,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "99",
+                                    ApartmentConfigurationId = 99,
                                     Order = 2,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "99",
+                                    ApartmentConfigurationId = 99,
                                     Order = 3,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "101",
+                                    ApartmentConfigurationId = 101,
                                     Order = 0,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "101",
+                                    ApartmentConfigurationId = 101,
                                     Order = 1,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "101",
+                                    ApartmentConfigurationId = 101,
                                     Order = 2,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "101",
+                                    ApartmentConfigurationId = 101,
                                     Order = 3,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "103",
+                                    ApartmentConfigurationId = 103,
                                     Order = 0,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "103",
+                                    ApartmentConfigurationId = 103,
                                     Order = 1,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "103",
+                                    ApartmentConfigurationId = 103,
                                     Order = 2,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "103",
+                                    ApartmentConfigurationId = 103,
                                     Order = 3,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "105",
+                                    ApartmentConfigurationId = 105,
                                     Order = 0,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "105",
+                                    ApartmentConfigurationId = 105,
                                     Order = 1,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "105",
+                                    ApartmentConfigurationId = 105,
                                     Order = 2,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "105",
+                                    ApartmentConfigurationId = 105,
                                     Order = 3,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "107",
+                                    ApartmentConfigurationId = 107,
                                     Order = 0,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "107",
+                                    ApartmentConfigurationId = 107,
                                     Order = 1,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "107",
+                                    ApartmentConfigurationId = 107,
                                     Order = 2,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "107",
+                                    ApartmentConfigurationId = 107,
                                     Order = 3,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "109",
+                                    ApartmentConfigurationId = 109,
                                     Order = 0,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "109",
+                                    ApartmentConfigurationId = 109,
                                     Order = 1,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "109",
+                                    ApartmentConfigurationId = 109,
                                     Order = 2,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "109",
+                                    ApartmentConfigurationId = 109,
                                     Order = 3,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "111",
+                                    ApartmentConfigurationId = 111,
                                     Order = 0,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "111",
+                                    ApartmentConfigurationId = 111,
                                     Order = 1,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "111",
+                                    ApartmentConfigurationId = 111,
                                     Order = 2,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "111",
+                                    ApartmentConfigurationId = 111,
                                     Order = 3,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "113",
+                                    ApartmentConfigurationId = 113,
                                     Order = 0,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "113",
+                                    ApartmentConfigurationId = 113,
                                     Order = 1,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "113",
+                                    ApartmentConfigurationId = 113,
                                     Order = 2,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "113",
+                                    ApartmentConfigurationId = 113,
                                     Order = 3,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "115",
+                                    ApartmentConfigurationId = 115,
                                     Order = 0,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "115",
+                                    ApartmentConfigurationId = 115,
                                     Order = 1,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "115",
+                                    ApartmentConfigurationId = 115,
                                     Order = 2,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "115",
+                                    ApartmentConfigurationId = 115,
                                     Order = 3,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "117",
+                                    ApartmentConfigurationId = 117,
                                     Order = 0,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "117",
+                                    ApartmentConfigurationId = 117,
                                     Order = 1,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "117",
+                                    ApartmentConfigurationId = 117,
                                     Order = 2,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "117",
+                                    ApartmentConfigurationId = 117,
                                     Order = 3,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "119",
+                                    ApartmentConfigurationId = 119,
                                     Order = 0,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "119",
+                                    ApartmentConfigurationId = 119,
                                     Order = 1,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "119",
+                                    ApartmentConfigurationId = 119,
                                     Order = 2,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "119",
+                                    ApartmentConfigurationId = 119,
                                     Order = 3,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "121",
+                                    ApartmentConfigurationId = 121,
                                     Order = 0,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "121",
+                                    ApartmentConfigurationId = 121,
                                     Order = 1,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "121",
+                                    ApartmentConfigurationId = 121,
                                     Order = 2,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "121",
+                                    ApartmentConfigurationId = 121,
                                     Order = 3,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "123",
+                                    ApartmentConfigurationId = 123,
                                     Order = 0,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "123",
+                                    ApartmentConfigurationId = 123,
                                     Order = 1,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "123",
+                                    ApartmentConfigurationId = 123,
                                     Order = 2,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "123",
+                                    ApartmentConfigurationId = 123,
                                     Order = 3,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "125",
+                                    ApartmentConfigurationId = 125,
                                     Order = 0,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "125",
+                                    ApartmentConfigurationId = 125,
                                     Order = 1,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "125",
+                                    ApartmentConfigurationId = 125,
                                     Order = 2,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "125",
+                                    ApartmentConfigurationId = 125,
                                     Order = 3,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "127",
+                                    ApartmentConfigurationId = 127,
                                     Order = 0,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "127",
+                                    ApartmentConfigurationId = 127,
                                     Order = 1,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "127",
+                                    ApartmentConfigurationId = 127,
                                     Order = 2,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "127",
+                                    ApartmentConfigurationId = 127,
                                     Order = 3,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "129",
+                                    ApartmentConfigurationId = 129,
                                     Order = 0,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "129",
+                                    ApartmentConfigurationId = 129,
                                     Order = 1,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "129",
+                                    ApartmentConfigurationId = 129,
                                     Order = 2,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "129",
+                                    ApartmentConfigurationId = 129,
                                     Order = 3,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "131",
+                                    ApartmentConfigurationId = 131,
                                     Order = 0,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "131",
+                                    ApartmentConfigurationId = 131,
                                     Order = 1,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "131",
+                                    ApartmentConfigurationId = 131,
                                     Order = 2,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "131",
+                                    ApartmentConfigurationId = 131,
                                     Order = 3,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "133",
+                                    ApartmentConfigurationId = 133,
                                     Order = 0,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "133",
+                                    ApartmentConfigurationId = 133,
                                     Order = 1,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "133",
+                                    ApartmentConfigurationId = 133,
                                     Order = 2,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "133",
+                                    ApartmentConfigurationId = 133,
                                     Order = 3,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "135",
+                                    ApartmentConfigurationId = 135,
                                     Order = 0,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "135",
+                                    ApartmentConfigurationId = 135,
                                     Order = 1,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "135",
+                                    ApartmentConfigurationId = 135,
                                     Order = 2,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "135",
+                                    ApartmentConfigurationId = 135,
                                     Order = 3,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "137",
+                                    ApartmentConfigurationId = 137,
                                     Order = 0,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "137",
+                                    ApartmentConfigurationId = 137,
                                     Order = 1,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "137",
+                                    ApartmentConfigurationId = 137,
                                     Order = 2,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "137",
+                                    ApartmentConfigurationId = 137,
                                     Order = 3,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "139",
+                                    ApartmentConfigurationId = 139,
                                     Order = 0,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "139",
+                                    ApartmentConfigurationId = 139,
                                     Order = 1,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "139",
+                                    ApartmentConfigurationId = 139,
                                     Order = 2,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "139",
+                                    ApartmentConfigurationId = 139,
                                     Order = 3,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "141",
+                                    ApartmentConfigurationId = 141,
                                     Order = 0,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "141",
+                                    ApartmentConfigurationId = 141,
                                     Order = 1,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "141",
+                                    ApartmentConfigurationId = 141,
                                     Order = 2,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "141",
+                                    ApartmentConfigurationId = 141,
                                     Order = 3,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "143",
+                                    ApartmentConfigurationId = 143,
                                     Order = 0,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "143",
+                                    ApartmentConfigurationId = 143,
                                     Order = 1,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "143",
+                                    ApartmentConfigurationId = 143,
                                     Order = 2,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "143",
+                                    ApartmentConfigurationId = 143,
                                     Order = 3,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "145",
+                                    ApartmentConfigurationId = 145,
                                     Order = 0,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "145",
+                                    ApartmentConfigurationId = 145,
                                     Order = 1,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "145",
+                                    ApartmentConfigurationId = 145,
                                     Order = 2,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "145",
+                                    ApartmentConfigurationId = 145,
                                     Order = 3,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "147",
+                                    ApartmentConfigurationId = 147,
                                     Order = 0,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "147",
+                                    ApartmentConfigurationId = 147,
                                     Order = 1,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "147",
+                                    ApartmentConfigurationId = 147,
                                     Order = 2,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "147",
+                                    ApartmentConfigurationId = 147,
                                     Order = 3,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "149",
+                                    ApartmentConfigurationId = 149,
                                     Order = 0,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "149",
+                                    ApartmentConfigurationId = 149,
                                     Order = 1,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "149",
+                                    ApartmentConfigurationId = 149,
                                     Order = 2,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "149",
+                                    ApartmentConfigurationId = 149,
                                     Order = 3,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "151",
+                                    ApartmentConfigurationId = 151,
                                     Order = 0,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "151",
+                                    ApartmentConfigurationId = 151,
                                     Order = 1,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "151",
+                                    ApartmentConfigurationId = 151,
                                     Order = 2,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "151",
+                                    ApartmentConfigurationId = 151,
                                     Order = 3,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "153",
+                                    ApartmentConfigurationId = 153,
                                     Order = 0,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "153",
+                                    ApartmentConfigurationId = 153,
                                     Order = 1,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "153",
+                                    ApartmentConfigurationId = 153,
                                     Order = 2,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "153",
+                                    ApartmentConfigurationId = 153,
                                     Order = 3,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "155",
+                                    ApartmentConfigurationId = 155,
                                     Order = 0,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "155",
+                                    ApartmentConfigurationId = 155,
                                     Order = 1,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "155",
+                                    ApartmentConfigurationId = 155,
                                     Order = 2,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "155",
+                                    ApartmentConfigurationId = 155,
                                     Order = 3,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "157",
+                                    ApartmentConfigurationId = 157,
                                     Order = 0,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "157",
+                                    ApartmentConfigurationId = 157,
                                     Order = 1,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "157",
+                                    ApartmentConfigurationId = 157,
                                     Order = 2,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "157",
+                                    ApartmentConfigurationId = 157,
                                     Order = 3,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "159",
+                                    ApartmentConfigurationId = 159,
                                     Order = 0,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "159",
+                                    ApartmentConfigurationId = 159,
                                     Order = 1,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "159",
+                                    ApartmentConfigurationId = 159,
                                     Order = 2,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "159",
+                                    ApartmentConfigurationId = 159,
                                     Order = 3,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "161",
+                                    ApartmentConfigurationId = 161,
                                     Order = 0,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "161",
+                                    ApartmentConfigurationId = 161,
                                     Order = 1,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "161",
+                                    ApartmentConfigurationId = 161,
                                     Order = 2,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "161",
+                                    ApartmentConfigurationId = 161,
                                     Order = 3,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "163",
+                                    ApartmentConfigurationId = 163,
                                     Order = 0,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "163",
+                                    ApartmentConfigurationId = 163,
                                     Order = 1,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "163",
+                                    ApartmentConfigurationId = 163,
                                     Order = 2,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "163",
+                                    ApartmentConfigurationId = 163,
                                     Order = 3,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "165",
+                                    ApartmentConfigurationId = 165,
                                     Order = 0,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "165",
+                                    ApartmentConfigurationId = 165,
                                     Order = 1,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "165",
+                                    ApartmentConfigurationId = 165,
                                     Order = 2,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "165",
+                                    ApartmentConfigurationId = 165,
                                     Order = 3,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "167",
+                                    ApartmentConfigurationId = 167,
                                     Order = 0,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "167",
+                                    ApartmentConfigurationId = 167,
                                     Order = 1,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "167",
+                                    ApartmentConfigurationId = 167,
                                     Order = 2,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "167",
+                                    ApartmentConfigurationId = 167,
                                     Order = 3,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "169",
+                                    ApartmentConfigurationId = 169,
                                     Order = 0,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "169",
+                                    ApartmentConfigurationId = 169,
                                     Order = 1,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "169",
+                                    ApartmentConfigurationId = 169,
                                     Order = 2,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "169",
+                                    ApartmentConfigurationId = 169,
                                     Order = 3,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "171",
+                                    ApartmentConfigurationId = 171,
                                     Order = 0,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "171",
+                                    ApartmentConfigurationId = 171,
                                     Order = 1,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "171",
+                                    ApartmentConfigurationId = 171,
                                     Order = 2,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "171",
+                                    ApartmentConfigurationId = 171,
                                     Order = 3,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "173",
+                                    ApartmentConfigurationId = 173,
                                     Order = 0,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "173",
+                                    ApartmentConfigurationId = 173,
                                     Order = 1,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "173",
+                                    ApartmentConfigurationId = 173,
                                     Order = 2,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "173",
+                                    ApartmentConfigurationId = 173,
                                     Order = 3,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "175",
+                                    ApartmentConfigurationId = 175,
                                     Order = 0,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "175",
+                                    ApartmentConfigurationId = 175,
                                     Order = 1,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "175",
+                                    ApartmentConfigurationId = 175,
                                     Order = 2,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "175",
+                                    ApartmentConfigurationId = 175,
                                     Order = 3,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "177",
+                                    ApartmentConfigurationId = 177,
                                     Order = 0,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "177",
+                                    ApartmentConfigurationId = 177,
                                     Order = 1,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "177",
+                                    ApartmentConfigurationId = 177,
                                     Order = 2,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "177",
+                                    ApartmentConfigurationId = 177,
                                     Order = 3,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "179",
+                                    ApartmentConfigurationId = 179,
                                     Order = 0,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "179",
+                                    ApartmentConfigurationId = 179,
                                     Order = 1,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "179",
+                                    ApartmentConfigurationId = 179,
                                     Order = 2,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "179",
+                                    ApartmentConfigurationId = 179,
                                     Order = 3,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "181",
+                                    ApartmentConfigurationId = 181,
                                     Order = 0,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "181",
+                                    ApartmentConfigurationId = 181,
                                     Order = 1,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "181",
+                                    ApartmentConfigurationId = 181,
                                     Order = 2,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "181",
+                                    ApartmentConfigurationId = 181,
                                     Order = 3,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "183",
+                                    ApartmentConfigurationId = 183,
                                     Order = 0,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "183",
+                                    ApartmentConfigurationId = 183,
                                     Order = 1,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "183",
+                                    ApartmentConfigurationId = 183,
                                     Order = 2,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "183",
+                                    ApartmentConfigurationId = 183,
                                     Order = 3,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "185",
+                                    ApartmentConfigurationId = 185,
                                     Order = 0,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "185",
+                                    ApartmentConfigurationId = 185,
                                     Order = 1,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "185",
+                                    ApartmentConfigurationId = 185,
                                     Order = 2,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "185",
+                                    ApartmentConfigurationId = 185,
                                     Order = 3,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "187",
+                                    ApartmentConfigurationId = 187,
                                     Order = 0,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "187",
+                                    ApartmentConfigurationId = 187,
                                     Order = 1,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "187",
+                                    ApartmentConfigurationId = 187,
                                     Order = 2,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "187",
+                                    ApartmentConfigurationId = 187,
                                     Order = 3,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "189",
+                                    ApartmentConfigurationId = 189,
                                     Order = 0,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "189",
+                                    ApartmentConfigurationId = 189,
                                     Order = 1,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "189",
+                                    ApartmentConfigurationId = 189,
                                     Order = 2,
                                     Number = ""
                                 },
                                 new
                                 {
-                                    ApartmentConfigurationId = "189",
+                                    ApartmentConfigurationId = 189,
                                     Order = 3,
                                     Number = ""
                                 });

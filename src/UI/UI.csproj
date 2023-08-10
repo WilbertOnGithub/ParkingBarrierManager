@@ -26,7 +26,6 @@
     <PackageReference Condition="'$(Configuration)' == 'Debug'" Include="Avalonia.Diagnostics" Version="11.0.2" />
     <PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.1" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="7.0.0" />
-    <PackageReference Include="Riok.Mapperly" Version="3.0.0" />
     <PackageReference Include="serilog" Version="3.0.1" />
     <PackageReference Include="serilog.extensions.logging" Version="7.0.0" />
     <PackageReference Include="serilog.sinks.console" Version="4.1.0" />

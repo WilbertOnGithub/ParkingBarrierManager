@@ -1,25 +1,19 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Arentheym.ParkingBarrier.Domain;
 using Arentheym.ParkingBarrier.UI.ViewModels;
-using Riok.Mapperly.Abstractions;
 
 namespace Arentheym.ParkingBarrier.UI;
 
-/*
-[Mapper]
-public partial class ApartmentConfigurationMapper
-{
-    [MapProperty(nameof(apartmentConfiguration.Id.Number), nameof(ApartmentConfigurationViewModel.ApartmentNumber))]
-    public partial ApartmentConfigurationViewModel EntityToViewModel(ApartmentConfiguration apartmentConfiguration);
-}
-*/
-
 public static class ManualMapper
 {
-    public static ApartmentConfigurationViewModel EntityToViewModel(ApartmentConfiguration apartmentConfiguration)
+    public static ApartmentConfigurationViewModel EntityToViewModel(
+        ApartmentConfiguration apartmentConfiguration,
+        IEnumerable<Intercom> intercoms)
     {
         ArgumentNullException.ThrowIfNull(apartmentConfiguration);
+        ArgumentNullException.ThrowIfNull(intercoms);
 
         var result = new ApartmentConfigurationViewModel
         {
@@ -35,6 +29,28 @@ public static class ManualMapper
             QuaternaryPhoneNumber =
                 apartmentConfiguration.PhoneNumbers.First(x => x.Order == DivertOrder.Quaternary).Number
             };
+
+        foreach (var intercom in intercoms)
+        {
+            if (apartmentConfiguration.Intercoms.Any(x => x.Id == intercom.Id))
+            {
+                result.Intercoms.Add(new IntercomViewModel
+                {
+                    Id = intercom.Id.Id,
+                    Name = intercom.Name,
+                    IsUsed = true
+                });
+            }
+            else
+            {
+                result.Intercoms.Add(new IntercomViewModel
+                {
+                    Id = intercom.Id.Id,
+                    Name = intercom.Name,
+                    IsUsed = false
+                });
+            }
+        }
 
         return result;
     }

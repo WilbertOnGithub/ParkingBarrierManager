@@ -16,7 +16,7 @@ public partial class PhoneNumber : ValueObject
     {
         if (!PhoneNumberRegex().IsMatch(number))
         {
-            throw new ArgumentException("Phone number must contain exactly 10 digits or be empty.");
+            throw new ArgumentException("Phone number can be empty or a number of exactly 10 digits (ignoring whitespace).");
         }
 
         Number = number;
@@ -41,6 +41,6 @@ public partial class PhoneNumber : ValueObject
         yield return Number;
     }
 
-    [GeneratedRegex(@"^\d{10}$|^$", RegexOptions.Compiled | RegexOptions.Singleline)]
+    [GeneratedRegex(@"^(?:\s*\d\s*){10}$|^$", RegexOptions.Compiled)]
     private static partial Regex PhoneNumberRegex();
 }

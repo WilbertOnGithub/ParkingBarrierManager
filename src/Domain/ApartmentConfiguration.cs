@@ -136,18 +136,8 @@ public class ApartmentConfiguration : Entity<ApartmentId>
     /// Insert or update the intercom.
     /// </summary>
     /// <param name="intercom">The <see cref="Intercom"/></param>
-    public void UpsertIntercom(Intercom intercom)
+    public void LinkIntercom(Intercom intercom)
     {
-        var index = intercoms.FindIndex(x => x.Id == intercom.Id);
-        switch (index)
-        {
-            case -1:
-                intercoms.Add(intercom);
-                break;
-
-            default:
-                intercoms[index] = intercom;
-                break;
-        }
+        intercoms.Add(intercom);
     }
 }

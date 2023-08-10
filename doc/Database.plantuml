@@ -9,17 +9,13 @@ entity Intercom
     --
 	* Name : string
 	* MasterCode : string
-}
-
-entity PhoneNumber
-{
-	* Number : string
-	--
+	* PhoneNumber: string
 }
 
 entity OrderedPhoneNumber
 {
     * Order: PhoneNumberOrder
+	* Number : string
 }
 
 entity ApartmentConfiguration
@@ -40,8 +36,8 @@ enum PhoneNumberOrder
     Quaternary
 }
 
-Intercom ||-- PhoneNumber : exactly one
 ApartmentConfiguration }|-- OrderedPhoneNumber : one or more
-OrderedPhoneNumber ||-- PhoneNumber: exactly one
+ApartmentConfiguration }|-|{ Intercom : many to many
+
 
 @enduml

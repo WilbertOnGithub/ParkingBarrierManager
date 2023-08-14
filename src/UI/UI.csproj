@@ -16,14 +16,14 @@
 
 
   <ItemGroup>
-    <PackageReference Include="Avalonia" Version="11.0.2" />
-    <PackageReference Include="avalonia.controls.datagrid" Version="11.0.2" />
-    <PackageReference Include="Avalonia.Controls.ItemsRepeater" Version="11.0.2" />
-    <PackageReference Include="Avalonia.Desktop" Version="11.0.2" />
-    <PackageReference Include="Avalonia.Themes.Fluent" Version="11.0.2" />
-    <PackageReference Include="Avalonia.Fonts.Inter" Version="11.0.2" />
+    <PackageReference Include="Avalonia" Version="11.0.3" />
+    <PackageReference Include="avalonia.controls.datagrid" Version="11.0.3" />
+    <PackageReference Include="Avalonia.Controls.ItemsRepeater" Version="11.0.3" />
+    <PackageReference Include="Avalonia.Desktop" Version="11.0.3" />
+    <PackageReference Include="Avalonia.Themes.Fluent" Version="11.0.3" />
+    <PackageReference Include="Avalonia.Fonts.Inter" Version="11.0.3" />
     <!--Condition below is needed to remove Avalonia.Diagnostics package from build output in Release configuration.-->
-    <PackageReference Condition="'$(Configuration)' == 'Debug'" Include="Avalonia.Diagnostics" Version="11.0.2" />
+    <PackageReference Condition="'$(Configuration)' == 'Debug'" Include="Avalonia.Diagnostics" Version="11.0.3" />
     <PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.1" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="7.0.0" />
     <PackageReference Include="serilog" Version="3.0.1" />

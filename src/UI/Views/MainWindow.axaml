@@ -3,11 +3,12 @@
         xmlns:vm="using:Arentheym.ParkingBarrier.UI.ViewModels"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:rsc="clr-namespace:Arentheym.Resources"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="Arentheym.ParkingBarrier.UI.Views.MainWindow"
         x:DataType="vm:MainWindowViewModel"
         Icon="/Assets/avalonia-logo.ico"
-        Title="UI">
+        Title="{x:Static rsc:Resources.ApplicationTitle}">
 
     <Design.DataContext>
         <!-- This only sets the DataContext for the previewer in an IDE,
@@ -15,8 +16,18 @@
         <vm:MainWindowViewModel/>
     </Design.DataContext>
 
-    <Grid>
-        <DataGrid ItemsSource="{Binding Configurations}">
+    <Grid ShowGridLines="True">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <StackPanel Orientation="Horizontal" Grid.Row="0">
+            <TextBlock>Dummy text</TextBlock>
+        </StackPanel>
+
+        <DataGrid ItemsSource="{Binding Configurations}"
+                  Grid.Row="1" MaxHeight="1000">
             <DataGrid.Columns>
                 <DataGridTemplateColumn Header="Huisnummer">
                     <DataGridTemplateColumn.CellTemplate>
@@ -92,8 +103,7 @@
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
             </DataGrid.Columns>
-
-        </DataGrid>
+            </DataGrid>
     </Grid>
 
 </Window>

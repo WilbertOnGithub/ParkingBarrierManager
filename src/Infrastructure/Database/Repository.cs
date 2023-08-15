@@ -43,6 +43,8 @@ public class Repository : IRepository
             .Include(x => x.Intercoms)
             .First(x => x.Id == first.Id);
 
+        var existingIntercoms = databaseContext.Intercoms.ToList();
+
         // Update existing ApartmentConfiguration object.
         databaseContext.Entry(existingEntry).CurrentValues.SetValues(first);
 
@@ -52,17 +54,16 @@ public class Repository : IRepository
             existingEntry.UpsertPhoneNumber(phoneNumber);
         }
 
-        // Add any new referenced intercoms.
+        // Add any new referenced intercoms (if any).
         foreach (var intercom in first.Intercoms)
         {
-            var existingIntercom = existingEntry.Intercoms.FirstOrDefault(x => x.Id == intercom.Id);
-            if (existingIntercom == null)
+            if (existingEntry.Intercoms.FirstOrDefault(x => x.Id == intercom.Id) == null)
             {
-                existingEntry.LinkIntercom(intercom);
+                existingEntry.LinkIntercom(existingIntercoms.First(x => x.Id == intercom.Id));
             }
         }
 
-        // Delete any non-referenced intercoms
+        // Delete any no longer referenced intercoms.
         foreach (var intercom in existingEntry.Intercoms)
         {
             if (!first.Intercoms.Any(x => x.Id == intercom.Id))
@@ -76,7 +77,8 @@ public class Repository : IRepository
             Console.WriteLine($"Entity: {entry.Entity.GetType().Name}, State: {entry.State.ToString()} ");
         }
 
-        // Finally, save the graph
+
+        // Finally, save the new state of the graph.
         await databaseContext.SaveChangesAsync().ConfigureAwait(false);
     }
 }

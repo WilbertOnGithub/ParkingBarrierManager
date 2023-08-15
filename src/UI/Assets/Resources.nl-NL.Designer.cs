@@ -60,11 +60,92 @@ namespace Arentheym.Assets {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Toegangscode.
+        /// </summary>
+        public static string AccessCodeHeader {
+            get {
+                return ResourceManager.GetString("AccessCodeHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Slagboom beheer VvE de Grote Enk.
         /// </summary>
         public static string ApplicationTitle {
             get {
                 return ResourceManager.GetString("ApplicationTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bellen kan slagboom openen?.
+        /// </summary>
+        public static string DialToOpenHeader {
+            get {
+                return ResourceManager.GetString("DialToOpenHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Naam op intercom.
+        /// </summary>
+        public static string DisplayNameHeader {
+            get {
+                return ResourceManager.GetString("DisplayNameHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Huisnummer.
+        /// </summary>
+        public static string HouseNumberHeader {
+            get {
+                return ResourceManager.GetString("HouseNumberHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Gekoppelde intercoms.
+        /// </summary>
+        public static string LinkedIntercomsHeader {
+            get {
+                return ResourceManager.GetString("LinkedIntercomsHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Primair telefoonnummer.
+        /// </summary>
+        public static string PrimaryPhonenumberHeader {
+            get {
+                return ResourceManager.GetString("PrimaryPhonenumberHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Quartair telefoonnummer.
+        /// </summary>
+        public static string QuaternaryPhonenumberHeader {
+            get {
+                return ResourceManager.GetString("QuaternaryPhonenumberHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Secundair telefoonnummer.
+        /// </summary>
+        public static string SecondaryPhonenumberHeader {
+            get {
+                return ResourceManager.GetString("SecondaryPhonenumberHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tertiair telefoonnummer.
+        /// </summary>
+        public static string TertiaryPhonenumberHeader {
+            get {
+                return ResourceManager.GetString("TertiaryPhonenumberHeader", resourceCulture);
             }
         }
     }

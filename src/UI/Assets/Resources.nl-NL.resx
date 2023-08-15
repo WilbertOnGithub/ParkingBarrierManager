@@ -21,4 +21,31 @@
     <data name="ApplicationTitle" xml:space="preserve">
         <value>Slagboom beheer VvE de Grote Enk</value>
     </data>
+    <data name="HouseNumberHeader" xml:space="preserve">
+        <value>Huisnummer</value>
+    </data>
+    <data name="DisplayNameHeader" xml:space="preserve">
+        <value>Naam op intercom</value>
+    </data>
+    <data name="AccessCodeHeader" xml:space="preserve">
+        <value>Toegangscode</value>
+    </data>
+    <data name="PrimaryPhonenumberHeader" xml:space="preserve">
+        <value>Primair telefoonnummer</value>
+    </data>
+    <data name="SecondaryPhonenumberHeader" xml:space="preserve">
+        <value>Secundair telefoonnummer</value>
+    </data>
+    <data name="TertiaryPhonenumberHeader" xml:space="preserve">
+        <value>Tertiair telefoonnummer</value>
+    </data>
+    <data name="QuaternaryPhonenumberHeader" xml:space="preserve">
+        <value>Quartair telefoonnummer</value>
+    </data>
+    <data name="DialToOpenHeader" xml:space="preserve">
+        <value>Bellen kan slagboom openen?</value>
+    </data>
+    <data name="LinkedIntercomsHeader" xml:space="preserve">
+        <value>Gekoppelde intercoms</value>
+    </data>
 </root>

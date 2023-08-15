@@ -46,10 +46,29 @@ public class Repository : IRepository
         // Update existing ApartmentConfiguration object.
         databaseContext.Entry(existingEntry).CurrentValues.SetValues(first);
 
-        // Also update all owned phone numbers.
-        foreach (var foo in first.PhoneNumbers)
+        // Update all owned phone numbers.
+        foreach (var phoneNumber in first.PhoneNumbers)
         {
-            existingEntry.UpsertPhoneNumber(foo);
+            existingEntry.UpsertPhoneNumber(phoneNumber);
+        }
+
+        // Add any new referenced intercoms.
+        foreach (var intercom in first.Intercoms)
+        {
+            var existingIntercom = existingEntry.Intercoms.FirstOrDefault(x => x.Id == intercom.Id);
+            if (existingIntercom == null)
+            {
+                existingEntry.LinkIntercom(intercom);
+            }
+        }
+
+        // Delete any non-referenced intercoms
+        foreach (var intercom in existingEntry.Intercoms)
+        {
+            if (!first.Intercoms.Any(x => x.Id == intercom.Id))
+            {
+                existingEntry.UnlinkIntercom(intercom);
+            }
         }
 
         foreach (var entry in databaseContext.ChangeTracker.Entries())

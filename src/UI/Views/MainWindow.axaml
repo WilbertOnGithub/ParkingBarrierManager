@@ -29,63 +29,63 @@
         <DataGrid ItemsSource="{Binding Configurations}"
                   Grid.Row="1" MaxHeight="1000">
             <DataGrid.Columns>
-                <DataGridTemplateColumn Header="Huisnummer">
+                <DataGridTemplateColumn Header="{x:Static i18n:Resources.HouseNumberHeader}">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <TextBlock Text="{Binding ApartmentNumber}" />
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
-                <DataGridTemplateColumn Header="Naam op display">
+                <DataGridTemplateColumn Header="{x:Static i18n:Resources.DisplayNameHeader}">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <TextBox Text="{Binding DisplayName}" />
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
-                <DataGridTemplateColumn Header="Toegangscode">
+                <DataGridTemplateColumn Header="{x:Static i18n:Resources.AccessCodeHeader}">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <TextBox Text="{Binding AccessCode}" />
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
-                <DataGridTemplateColumn Header="Primair telefoonnummer">
+                <DataGridTemplateColumn Header="{x:Static i18n:Resources.PrimaryPhonenumberHeader}">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <TextBox Text="{Binding PrimaryPhoneNumber}" />
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
-                <DataGridTemplateColumn Header="Secundair telefoonnummer">
+                <DataGridTemplateColumn Header="{x:Static i18n:Resources.SecondaryPhonenumberHeader}">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <TextBox Text="{Binding SecondaryPhoneNumber}" />
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
-                <DataGridTemplateColumn Header="Tertiair telefoonnummer">
+                <DataGridTemplateColumn Header="{x:Static i18n:Resources.TertiaryPhonenumberHeader}">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <TextBox Text="{Binding TertiaryPhoneNumber}" />
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
-                <DataGridTemplateColumn Header="Quartair telefoonnummer">
+                <DataGridTemplateColumn Header="{x:Static i18n:Resources.QuaternaryPhonenumberHeader}">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <TextBox Text="{Binding QuaternaryPhoneNumber}" />
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
-                <DataGridTemplateColumn Header="Dial to open">
+                <DataGridTemplateColumn Header="{x:Static i18n:Resources.DialToOpenHeader}">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <CheckBox IsChecked="{Binding DialToOpen}">Dial to open</CheckBox>
+                            <CheckBox IsChecked="{Binding DialToOpen}"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
-                <DataGridTemplateColumn Header="Dial to open">
+                <DataGridTemplateColumn Header="{x:Static i18n:Resources.LinkedIntercomsHeader}">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <ItemsRepeater ItemsSource="{Binding Intercoms}">

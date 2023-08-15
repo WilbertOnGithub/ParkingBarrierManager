@@ -21,4 +21,31 @@
     <data name="ApplicationTitle" xml:space="preserve">
         <value>Parking Barrier Manager</value>
     </data>
+    <data name="HouseNumberHeader" xml:space="preserve">
+        <value>House number</value>
+    </data>
+    <data name="DisplayNameHeader" xml:space="preserve">
+        <value>Name on display</value>
+    </data>
+    <data name="AccessCodeHeader" xml:space="preserve">
+        <value>Access code</value>
+    </data>
+    <data name="PrimaryPhonenumberHeader" xml:space="preserve">
+        <value>Primary phonenumber</value>
+    </data>
+    <data name="SecondaryPhonenumberHeader" xml:space="preserve">
+        <value>Secondary phonenumber</value>
+    </data>
+    <data name="TertiaryPhonenumberHeader" xml:space="preserve">
+        <value>Tertiary phonenumber</value>
+    </data>
+    <data name="QuaternaryPhonenumberHeader" xml:space="preserve">
+        <value>Quaternary phonenumber</value>
+    </data>
+    <data name="DialToOpenHeader" xml:space="preserve">
+        <value>Dial to open barrier?</value>
+    </data>
+    <data name="LinkedIntercomsHeader" xml:space="preserve">
+        <value>Linked intercoms</value>
+    </data>
 </root>

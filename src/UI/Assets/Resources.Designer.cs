@@ -60,11 +60,92 @@ namespace Arentheym.Assets {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Access code.
+        /// </summary>
+        public static string AccessCodeHeader {
+            get {
+                return ResourceManager.GetString("AccessCodeHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Parking Barrier Manager.
         /// </summary>
         public static string ApplicationTitle {
             get {
                 return ResourceManager.GetString("ApplicationTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Dial to open barrier?.
+        /// </summary>
+        public static string DialToOpenHeader {
+            get {
+                return ResourceManager.GetString("DialToOpenHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Name on display.
+        /// </summary>
+        public static string DisplayNameHeader {
+            get {
+                return ResourceManager.GetString("DisplayNameHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to House number.
+        /// </summary>
+        public static string HouseNumberHeader {
+            get {
+                return ResourceManager.GetString("HouseNumberHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Linked intercoms.
+        /// </summary>
+        public static string LinkedIntercomsHeader {
+            get {
+                return ResourceManager.GetString("LinkedIntercomsHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Primary phonenumber.
+        /// </summary>
+        public static string PrimaryPhonenumberHeader {
+            get {
+                return ResourceManager.GetString("PrimaryPhonenumberHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Quaternary phonenumber.
+        /// </summary>
+        public static string QuaternaryPhonenumberHeader {
+            get {
+                return ResourceManager.GetString("QuaternaryPhonenumberHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Secondary phonenumber.
+        /// </summary>
+        public static string SecondaryPhonenumberHeader {
+            get {
+                return ResourceManager.GetString("SecondaryPhonenumberHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tertiary phonenumber.
+        /// </summary>
+        public static string TertiaryPhonenumberHeader {
+            get {
+                return ResourceManager.GetString("TertiaryPhonenumberHeader", resourceCulture);
             }
         }
     }

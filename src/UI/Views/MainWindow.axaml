@@ -16,6 +16,7 @@
         <vm:MainWindowViewModel/>
     </Design.DataContext>
 
+
     <Grid ShowGridLines="True">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"></RowDefinition>
@@ -27,61 +28,73 @@
         </StackPanel>
 
         <DataGrid ItemsSource="{Binding Configurations}"
-                  Grid.Row="1" MaxHeight="1000">
+                  Grid.Row="1"
+                  MaxHeight="1000"
+                  CanUserResizeColumns="True">
             <DataGrid.Columns>
                 <DataGridTemplateColumn Header="{x:Static i18n:Resources.HouseNumberHeader}">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <TextBlock Text="{Binding ApartmentNumber}" />
+                            <TextBlock Text="{Binding ApartmentNumber}"
+                                       HorizontalAlignment="Center"
+                                       Margin="10,0,10,0"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
                 <DataGridTemplateColumn Header="{x:Static i18n:Resources.DisplayNameHeader}">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <TextBox Text="{Binding DisplayName}" />
+                            <TextBox Text="{Binding DisplayName}"
+                                     Margin="10,0,10,0"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
                 <DataGridTemplateColumn Header="{x:Static i18n:Resources.AccessCodeHeader}">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <TextBox Text="{Binding AccessCode}" />
+                            <TextBox Text="{Binding AccessCode}"
+                                     Margin="10,0,10,0"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
                 <DataGridTemplateColumn Header="{x:Static i18n:Resources.PrimaryPhonenumberHeader}">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <TextBox Text="{Binding PrimaryPhoneNumber}" />
+                            <TextBox Text="{Binding PrimaryPhoneNumber}"
+                                     Margin="10,0,10,0"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
                 <DataGridTemplateColumn Header="{x:Static i18n:Resources.SecondaryPhonenumberHeader}">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <TextBox Text="{Binding SecondaryPhoneNumber}" />
+                            <TextBox Text="{Binding SecondaryPhoneNumber}"
+                                     Margin="10,0,10,0"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
                 <DataGridTemplateColumn Header="{x:Static i18n:Resources.TertiaryPhonenumberHeader}">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <TextBox Text="{Binding TertiaryPhoneNumber}" />
+                            <TextBox Text="{Binding TertiaryPhoneNumber}"
+                                     Margin="10,0,10,0"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
                 <DataGridTemplateColumn Header="{x:Static i18n:Resources.QuaternaryPhonenumberHeader}">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <TextBox Text="{Binding QuaternaryPhoneNumber}" />
+                            <TextBox Text="{Binding QuaternaryPhoneNumber}"
+                                     Margin="10,0,10,0"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
                 <DataGridTemplateColumn Header="{x:Static i18n:Resources.DialToOpenHeader}">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <CheckBox IsChecked="{Binding DialToOpen}"/>
+                            <CheckBox IsChecked="{Binding DialToOpen}"
+                                      HorizontalAlignment="Center"
+                                      Margin="10,0,10,0"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>

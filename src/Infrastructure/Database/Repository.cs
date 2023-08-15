@@ -7,6 +7,7 @@ namespace Arentheym.ParkingBarrier.Infrastructure.Database;
 public class Repository : IRepository
 {
     private readonly DatabaseContext databaseContext;
+
     public Repository(DatabaseContext databaseContext)
     {
         this.databaseContext = databaseContext;
@@ -15,7 +16,6 @@ public class Repository : IRepository
     public async Task<IEnumerable<Intercom>> GetIntercomsAsync()
     {
         return await databaseContext.Intercoms.OrderBy(x => x.Name)
-                                              .AsNoTracking()
                                               .ToListAsync()
                                               .ConfigureAwait(false);
     }
@@ -26,14 +26,30 @@ public class Repository : IRepository
                                     .Include(x => x.PhoneNumbers)
                                     .Include(x => x.Intercoms)
                                     .OrderBy(x => x.Id)
-                                    .AsNoTracking()
                                     .ToListAsync()
                                     .ConfigureAwait(false);
     }
 
-    public async Task SaveApartmentConfigurations(IEnumerable<ApartmentConfiguration> modifiedApartmentConfigurations)
+    public async Task SaveApartmentConfigurations(IList<ApartmentConfiguration> modifiedApartmentConfigurations)
     {
-        databaseContext.UpdateRange(modifiedApartmentConfigurations);
+        ArgumentNullException.ThrowIfNull(modifiedApartmentConfigurations);
+
+        var first = modifiedApartmentConfigurations[0];
+
+        var existingEntry = databaseContext.ApartmentConfigurations
+            .Include(x => x.PhoneNumbers)
+            .Include(x => x.Intercoms)
+            .First(x => x.Id == first.Id);
+
+        // Update existing object
+        databaseContext.Entry(existingEntry).CurrentValues.SetValues(first);
+
+        // Update linked phone numbers
+        foreach (var phoneNumber in first.PhoneNumbers)
+        {
+            var existingPhoneNumber = existingEntry.PhoneNumbers.First(p => p.Order == phoneNumber.Order);
+            databaseContext.Entry(existingPhoneNumber).CurrentValues.SetValues(phoneNumber);
+        }
 
         await databaseContext.SaveChangesAsync().ConfigureAwait(false);
     }

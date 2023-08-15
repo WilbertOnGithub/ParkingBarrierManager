@@ -36,6 +36,6 @@ public partial class MainWindowViewModel : ViewModelBase
     [RelayCommand]
     public async Task SaveConfigurationsAsync()
     {
-        await dataService.SaveApartmentConfigurations(Configurations.Select(x => ManualMapper.ViewModelToEntity(x, availableIntercoms))).ConfigureAwait(false);
+        await dataService.SaveApartmentConfigurations(Configurations.Select(x => ManualMapper.ViewModelToEntity(x, availableIntercoms)).ToList()).ConfigureAwait(false);
     }
 }

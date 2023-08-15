@@ -16,6 +16,7 @@ public class Repository : IRepository
     public async Task<IEnumerable<Intercom>> GetIntercomsAsync()
     {
         return await databaseContext.Intercoms.OrderBy(x => x.Name)
+                                              .AsNoTracking()
                                               .ToListAsync()
                                               .ConfigureAwait(false);
     }
@@ -26,6 +27,7 @@ public class Repository : IRepository
                                     .Include(x => x.PhoneNumbers)
                                     .Include(x => x.Intercoms)
                                     .OrderBy(x => x.Id)
+                                    .AsNoTracking()
                                     .ToListAsync()
                                     .ConfigureAwait(false);
     }
@@ -41,16 +43,21 @@ public class Repository : IRepository
             .Include(x => x.Intercoms)
             .First(x => x.Id == first.Id);
 
-        // Update existing object
+        // Update existing ApartmentConfiguration object.
         databaseContext.Entry(existingEntry).CurrentValues.SetValues(first);
 
-        // Update linked phone numbers
-        foreach (var phoneNumber in first.PhoneNumbers)
+        // Also update all owned phone numbers.
+        foreach (var foo in first.PhoneNumbers)
         {
-            var existingPhoneNumber = existingEntry.PhoneNumbers.First(p => p.Order == phoneNumber.Order);
-            databaseContext.Entry(existingPhoneNumber).CurrentValues.SetValues(phoneNumber);
+            existingEntry.UpsertPhoneNumber(foo);
         }
 
+        foreach (var entry in databaseContext.ChangeTracker.Entries())
+        {
+            Console.WriteLine($"Entity: {entry.Entity.GetType().Name}, State: {entry.State.ToString()} ");
+        }
+
+        // Finally, save the graph
         await databaseContext.SaveChangesAsync().ConfigureAwait(false);
     }
 }

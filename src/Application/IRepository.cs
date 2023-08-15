@@ -3,7 +3,7 @@
 namespace Arentheym.ParkingBarrier.Application;
 
 /// <summary>
-///
+/// Defines data access methods.
 /// </summary>
 public interface IRepository
 {

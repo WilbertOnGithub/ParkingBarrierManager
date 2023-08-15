@@ -23,8 +23,11 @@
             <RowDefinition Height="Auto"></RowDefinition>
         </Grid.RowDefinitions>
 
-        <StackPanel Orientation="Horizontal" Grid.Row="0">
-            <TextBlock>Dummy text</TextBlock>
+        <StackPanel Orientation="Horizontal" Grid.Row="0"
+                    HorizontalAlignment="Right">
+            <Button HorizontalAlignment="Right"
+                    Command="{Binding SaveConfigurationsAsync}"
+                    Content="Save Configurations" />
         </StackPanel>
 
         <DataGrid ItemsSource="{Binding Configurations}"

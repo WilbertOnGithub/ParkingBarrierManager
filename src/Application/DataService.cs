@@ -20,4 +20,9 @@ public class DataService
     {
         return await repository.GetIntercomsAsync().ConfigureAwait(false);
     }
+
+    public async Task SaveApartmentConfigurations(IEnumerable<ApartmentConfiguration> modifiedApartmentConfigurations)
+    {
+        await repository.SaveApartmentConfigurations(modifiedApartmentConfigurations).ConfigureAwait(false);
+    }
 }

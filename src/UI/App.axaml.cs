@@ -21,7 +21,7 @@ public partial class App : Avalonia.Application
 
     public override void OnFrameworkInitializationCompleted()
     {
-        Arentheym.Resources.Resources.Culture = new CultureInfo("nl-NL");
+        Arentheym.Assets.Resources.Culture = new CultureInfo("nl-NL");
 
         var services = new ServiceCollection();
         services.RegisterUIServices();

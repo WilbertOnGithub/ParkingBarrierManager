@@ -13,6 +13,7 @@
     <Folder Include="Behaviours\" />
     <Folder Include="Models\" />
     <AvaloniaResource Include="Assets\**" />
+    <Folder Include="Resources\" />
   </ItemGroup>
 
 
@@ -49,21 +50,27 @@
 
 
   <ItemGroup>
-    <EmbeddedResource Update="Resources\Resources.resx">
+    <EmbeddedResource Update="Assets\Resources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Update="Resources\Resources.nl-nl.resx">
+    <EmbeddedResource Update="Assets\Resources.nl-NL.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.nl-NL.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
 
 
   <ItemGroup>
-    <Compile Update="Resources\Resources.Designer.cs">
+    <Compile Update="Assets\Resources.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Assets\Resources.nl-NL.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.nl-NL.resx</DependentUpon>
     </Compile>
   </ItemGroup>
 </Project>

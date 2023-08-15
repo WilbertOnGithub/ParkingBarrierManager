@@ -11,5 +11,5 @@ public interface IRepository
 
     Task<IEnumerable<ApartmentConfiguration>> GetApartmentConfigurationsAsync();
 
-    Task SaveApartmentConfigurations(IEnumerable<ApartmentConfiguration> modifiedApartmentConfigurations);
+    Task SaveApartmentConfigurations(IList<ApartmentConfiguration> modifiedApartmentConfigurations);
 }

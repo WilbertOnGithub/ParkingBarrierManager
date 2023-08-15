@@ -142,4 +142,9 @@ public class ApartmentConfiguration : Entity<ApartmentId>
     {
         intercoms.Add(intercom);
     }
+
+    public void UnlinkIntercom(Intercom intercom)
+    {
+        intercoms.Remove(intercom);
+    }
 }

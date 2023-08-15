@@ -25,10 +25,12 @@ public class ApartmentConfiguration : Entity<ApartmentId>
         DialToOpen = true;
         AccessCode = AccessCode.NoAccessCode;
 
+        /*
         phoneNumbers.Add(new DivertPhoneNumber(DivertOrder.Primary, string.Empty));
         phoneNumbers.Add(new DivertPhoneNumber(DivertOrder.Secondary, string.Empty));
         phoneNumbers.Add(new DivertPhoneNumber(DivertOrder.Tertiary, string.Empty));
         phoneNumbers.Add(new DivertPhoneNumber(DivertOrder.Quaternary, string.Empty));
+        */
     }
 
     public ApartmentConfiguration(ApartmentId id, MemoryLocation memoryLocation, string displayName, bool dialToOpen, AccessCode accessCode)

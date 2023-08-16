@@ -38,6 +38,32 @@ public class RepositoryTests
         await databaseContext.Database.EnsureDeletedAsync().ConfigureAwait(false);
     }
 
+    [Fact]
+    public async Task Removing_a_linked_intercom_for_an_apartment_saves_it_correctly()
+    {
+        // Arrange
+        using DatabaseContext databaseContext = await CreateTemporaryDatabaseContext().ConfigureAwait(true);
+        fixture.Inject(databaseContext);
+        var repository = fixture.Create<Repository>();
+
+        IList<Intercom> intercoms = await repository.GetIntercomsAsync().ConfigureAwait(true);
+        IList<ApartmentConfiguration> apartmentConfigurations =
+            await repository.GetApartmentConfigurationsAsync().ConfigureAwait(true);
+        var apartment131 = apartmentConfigurations.First(x => x.Id.Number == 131);
+        apartment131.UnlinkIntercom(intercoms[0]);
+        apartment131.UnlinkIntercom(intercoms[1]);
+
+        // Act
+        await repository.UpdateApartmentConfigurationsAsync(apartmentConfigurations).ConfigureAwait(true);
+
+        IList<ApartmentConfiguration> updatedList =
+            await repository.GetApartmentConfigurationsAsync().ConfigureAwait(true);
+
+        // Assert
+        updatedList.First(x => x.Id.Number == 131).Intercoms.Count.Should().Be(0);
+        await databaseContext.Database.EnsureDeletedAsync().ConfigureAwait(true);
+    }
+
     /// <summary>
     /// Creates a <see cref="DatabaseContext"/> for a uniquely named SQLITE database in the TEMP folder
     /// for unit testing purposes.

@@ -145,6 +145,7 @@ public class ApartmentConfiguration : Entity<ApartmentId>
 
     public void UnlinkIntercom(Intercom intercom)
     {
-        intercoms.Remove(intercom);
+        var index = intercoms.FindIndex(x => x.Id.Id == intercom.Id.Id);
+        intercoms.RemoveAt(index);
     }
 }

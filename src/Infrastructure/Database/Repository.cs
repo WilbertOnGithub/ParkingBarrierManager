@@ -40,48 +40,49 @@ public class Repository : IRepository
     {
         ArgumentNullException.ThrowIfNull(modifiedApartmentConfigurations);
 
-        var existingIntercoms = databaseContext.Intercoms.ToList();
+        var existingIntercoms = await databaseContext.Intercoms.ToListAsync().ConfigureAwait(false);
         foreach (var apartmentConfiguration in modifiedApartmentConfigurations)
         {
-            var existingEntry = databaseContext.ApartmentConfigurations
-                .Include(x => x.PhoneNumbers)
-                .Include(x => x.Intercoms)
-                .First(x => x.Id == apartmentConfiguration.Id);
+            UpdateApartmentConfiguration(apartmentConfiguration, existingIntercoms);
+        }
 
-            // Update existing ApartmentConfiguration object.
-            databaseContext.Entry(existingEntry).CurrentValues.SetValues(apartmentConfiguration);
+        await databaseContext.SaveChangesAsync().ConfigureAwait(false);
+    }
 
-            // Update all owned phone numbers.
-            foreach (var phoneNumber in apartmentConfiguration.PhoneNumbers)
+    private void UpdateApartmentConfiguration(
+        ApartmentConfiguration apartmentConfiguration,
+        List<Intercom> existingIntercoms)
+    {
+        var existingEntry = databaseContext.ApartmentConfigurations
+            .Include(x => x.PhoneNumbers)
+            .Include(x => x.Intercoms)
+            .First(x => x.Id == apartmentConfiguration.Id);
+
+        // Update existing ApartmentConfiguration object.
+        databaseContext.Entry(existingEntry).CurrentValues.SetValues(apartmentConfiguration);
+
+        // Update all owned phone numbers.
+        foreach (var phoneNumber in apartmentConfiguration.PhoneNumbers)
+        {
+            existingEntry.UpsertPhoneNumber(phoneNumber);
+        }
+
+        // Add any new referenced intercoms (if any).
+        foreach (var intercom in apartmentConfiguration.Intercoms)
+        {
+            if (existingEntry.Intercoms.FirstOrDefault(x => x.Id == intercom.Id) == null)
             {
-                existingEntry.UpsertPhoneNumber(phoneNumber);
+                existingEntry.LinkIntercom(existingIntercoms.First(x => x.Id == intercom.Id));
             }
+        }
 
-            // Add any new referenced intercoms (if any).
-            foreach (var intercom in apartmentConfiguration.Intercoms)
+        // Delete any no longer referenced intercoms.
+        foreach (var intercom in existingEntry.Intercoms)
+        {
+            if (apartmentConfiguration.Intercoms.All(x => x.Id != intercom.Id))
             {
-                if (existingEntry.Intercoms.FirstOrDefault(x => x.Id == intercom.Id) == null)
-                {
-                    existingEntry.LinkIntercom(existingIntercoms.First(x => x.Id == intercom.Id));
-                }
+                existingEntry.UnlinkIntercom(intercom);
             }
-
-            // Delete any no longer referenced intercoms.
-            foreach (var intercom in existingEntry.Intercoms)
-            {
-                if (!apartmentConfiguration.Intercoms.Any(x => x.Id == intercom.Id))
-                {
-                    existingEntry.UnlinkIntercom(intercom);
-                }
-            }
-
-            foreach (var entry in databaseContext.ChangeTracker.Entries())
-            {
-                Console.WriteLine($"Entity: {entry.Entity.GetType().Name}, State: {entry.State.ToString()} ");
-            }
-
-            // Finally, save the new state of the graph.
-            await databaseContext.SaveChangesAsync().ConfigureAwait(false);
         }
     }
 }

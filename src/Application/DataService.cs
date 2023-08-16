@@ -23,6 +23,6 @@ public class DataService
 
     public async Task SaveApartmentConfigurations(IList<ApartmentConfiguration> modifiedApartmentConfigurations)
     {
-        await repository.SaveApartmentConfigurations(modifiedApartmentConfigurations).ConfigureAwait(false);
+        await repository.UpdateApartmentConfigurationsAsync(modifiedApartmentConfigurations).ConfigureAwait(false);
     }
 }

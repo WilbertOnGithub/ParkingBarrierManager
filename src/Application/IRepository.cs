@@ -7,9 +7,9 @@ namespace Arentheym.ParkingBarrier.Application;
 /// </summary>
 public interface IRepository
 {
-    Task<IEnumerable<Intercom>> GetIntercomsAsync();
+    Task<IList<Intercom>> GetIntercomsAsync();
 
-    Task<IEnumerable<ApartmentConfiguration>> GetApartmentConfigurationsAsync();
+    Task<IList<ApartmentConfiguration>> GetApartmentConfigurationsAsync();
 
-    Task SaveApartmentConfigurations(IList<ApartmentConfiguration> modifiedApartmentConfigurations);
+    Task UpdateApartmentConfigurationsAsync(IList<ApartmentConfiguration> modifiedApartmentConfigurations);
 }

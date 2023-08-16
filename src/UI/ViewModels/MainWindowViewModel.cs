@@ -26,10 +26,10 @@ public partial class MainWindowViewModel : ViewModelBase
 
     private async Task InitializeAsync()
     {
-        availableIntercoms = await dataService.GetIntercoms().ConfigureAwait(false);
+        availableIntercoms = await dataService.GetIntercoms();
         foreach (var domainEntity in await dataService.GetApartmentConfigurations())
         {
-            Configurations.Add(ManualMapper.EntityToViewModel(domainEntity, availableIntercoms));
+            Configurations.Add(ManualMapper.EntityToViewModel(domainEntity, availableIntercoms.ToList()));
         }
     }
 
@@ -37,6 +37,6 @@ public partial class MainWindowViewModel : ViewModelBase
     public async Task SaveConfigurationsAsync()
     {
         await dataService.SaveApartmentConfigurations(
-            Configurations.Select(x => ManualMapper.ViewModelToEntity(x, availableIntercoms)).ToList());
+            Configurations.Select(x => ManualMapper.ViewModelToEntity(x, availableIntercoms.ToList())).ToList());
     }
 }

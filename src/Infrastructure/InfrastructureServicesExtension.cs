@@ -1,6 +1,7 @@
 ﻿using System.Reflection;
 using Arentheym.ParkingBarrier.Application;
 using Arentheym.ParkingBarrier.Infrastructure.Database;
+using Arentheym.ParkingBarrier.Infrastructure.SmsGateWay;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 
@@ -18,6 +19,7 @@ public static class InfrastructureServicesExtension
         section.Bind(databaseConfiguration);
 
         services.AddTransient<IRepository, Repository>();
+        services.AddTransient<ISmsGateway, MessageBirdGateway>();
         services.AddDbContext<DatabaseContext>(options => options.UseSqlite(databaseConfiguration.ExpandedConnectionString));
 
         return services;

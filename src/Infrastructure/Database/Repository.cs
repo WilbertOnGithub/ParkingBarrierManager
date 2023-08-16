@@ -40,52 +40,48 @@ public class Repository : IRepository
     {
         ArgumentNullException.ThrowIfNull(modifiedApartmentConfigurations);
 
-        // Retrieve existing intercoms to prevent the EF Core tracker from adding them as new entries in the
         var existingIntercoms = databaseContext.Intercoms.ToList();
-
-        foreach (var modifiedApartmentConfiguration in modifiedApartmentConfigurations)
+        foreach (var apartmentConfiguration in modifiedApartmentConfigurations)
         {
-            UpdateApartmentConfiguration(modifiedApartmentConfiguration, existingIntercoms);
-        }
+            var existingEntry = databaseContext.ApartmentConfigurations
+                .Include(x => x.PhoneNumbers)
+                .Include(x => x.Intercoms)
+                .First(x => x.Id == apartmentConfiguration.Id);
 
-        // Finally, save the new state of the entire ApartmentConfiguration graph.
-        await databaseContext.SaveChangesAsync().ConfigureAwait(false);
-    }
+            // Update existing ApartmentConfiguration object.
+            databaseContext.Entry(existingEntry).CurrentValues.SetValues(apartmentConfiguration);
 
-    private void UpdateApartmentConfiguration(
-        ApartmentConfiguration modifiedApartmentConfiguration,
-        IReadOnlyCollection<Intercom> existingIntercoms)
-    {
-        var entityOnDisk = databaseContext.ApartmentConfigurations
-            .Include(x => x.PhoneNumbers)
-            .Include(x => x.Intercoms)
-            .First(x => x.Id == modifiedApartmentConfiguration.Id);
-
-        // Update all owned phone numbers with new values.
-        foreach (var phoneNumber in modifiedApartmentConfiguration.PhoneNumbers)
-        {
-            entityOnDisk.UpsertPhoneNumber(phoneNumber);
-        }
-
-        // Update existing ApartmentConfiguration object with new values.
-        databaseContext.Entry(entityOnDisk).CurrentValues.SetValues(modifiedApartmentConfiguration);
-
-        // Add any new referenced intercoms to the join table ApartmentConfigurationIntercom.
-        foreach (var intercom in entityOnDisk.Intercoms)
-        {
-            if (entityOnDisk.Intercoms.FirstOrDefault(x => x.Id == intercom.Id) == null)
+            // Update all owned phone numbers.
+            foreach (var phoneNumber in apartmentConfiguration.PhoneNumbers)
             {
-                entityOnDisk.LinkIntercom(existingIntercoms.First(x => x.Id == intercom.Id));
+                existingEntry.UpsertPhoneNumber(phoneNumber);
             }
-        }
 
-        // Delete no longer referenced intercoms from the join table ApartmentConfigurationIntercom.
-        foreach (var intercom in entityOnDisk.Intercoms)
-        {
-            if (modifiedApartmentConfiguration.Intercoms.All(x => x.Id != intercom.Id))
+            // Add any new referenced intercoms (if any).
+            foreach (var intercom in apartmentConfiguration.Intercoms)
             {
-                entityOnDisk.UnlinkIntercom(intercom);
+                if (existingEntry.Intercoms.FirstOrDefault(x => x.Id == intercom.Id) == null)
+                {
+                    existingEntry.LinkIntercom(existingIntercoms.First(x => x.Id == intercom.Id));
+                }
             }
+
+            // Delete any no longer referenced intercoms.
+            foreach (var intercom in existingEntry.Intercoms)
+            {
+                if (!apartmentConfiguration.Intercoms.Any(x => x.Id == intercom.Id))
+                {
+                    existingEntry.UnlinkIntercom(intercom);
+                }
+            }
+
+            foreach (var entry in databaseContext.ChangeTracker.Entries())
+            {
+                Console.WriteLine($"Entity: {entry.Entity.GetType().Name}, State: {entry.State.ToString()} ");
+            }
+
+            // Finally, save the new state of the graph.
+            await databaseContext.SaveChangesAsync().ConfigureAwait(false);
         }
     }
 }

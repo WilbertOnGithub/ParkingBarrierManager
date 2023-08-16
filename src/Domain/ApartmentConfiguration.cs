@@ -120,8 +120,18 @@ public class ApartmentConfiguration : Entity<ApartmentId>
     public void UpsertPhoneNumber(DivertPhoneNumber phoneNumber)
     {
         var index = phoneNumbers.FindIndex(x => x.Order == phoneNumber.Order);
-        phoneNumbers.RemoveAt(index);
-        phoneNumbers.Add(phoneNumber);
+        switch (index)
+        {
+            // Add phone number if not yet present with this order.
+            case -1:
+                phoneNumbers.Add(phoneNumber);
+                break;
+
+            // Update existing phone number with same order.
+            default:
+                phoneNumbers[index] = phoneNumber;
+                break;
+        }
     }
 
     /// <summary>

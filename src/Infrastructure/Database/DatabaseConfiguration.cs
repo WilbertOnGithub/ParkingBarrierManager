@@ -1,6 +1,6 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 
-namespace Arentheym.ParkingBarrier.Infrastructure;
+namespace Arentheym.ParkingBarrier.Infrastructure.Database;
 
 public class DatabaseConfiguration
 {

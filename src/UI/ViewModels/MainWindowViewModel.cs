@@ -27,7 +27,7 @@ public partial class MainWindowViewModel : ViewModelBase
     private async Task InitializeAsync()
     {
         availableIntercoms = await dataService.GetIntercoms().ConfigureAwait(false);
-        foreach (var domainEntity in await dataService.GetApartmentConfigurations().ConfigureAwait(false))
+        foreach (var domainEntity in await dataService.GetApartmentConfigurations())
         {
             Configurations.Add(ManualMapper.EntityToViewModel(domainEntity, availableIntercoms));
         }
@@ -36,6 +36,7 @@ public partial class MainWindowViewModel : ViewModelBase
     [RelayCommand]
     public async Task SaveConfigurationsAsync()
     {
-        await dataService.SaveApartmentConfigurations(Configurations.Select(x => ManualMapper.ViewModelToEntity(x, availableIntercoms)).ToList()).ConfigureAwait(false);
+        await dataService.SaveApartmentConfigurations(
+            Configurations.Select(x => ManualMapper.ViewModelToEntity(x, availableIntercoms)).ToList());
     }
 }

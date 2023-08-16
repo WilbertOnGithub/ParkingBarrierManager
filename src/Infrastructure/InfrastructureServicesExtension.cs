@@ -1,7 +1,7 @@
 ﻿using System.Reflection;
 using Arentheym.ParkingBarrier.Application;
 using Arentheym.ParkingBarrier.Infrastructure.Database;
-using Arentheym.ParkingBarrier.Infrastructure.SmsGateWay;
+using Arentheym.ParkingBarrier.Infrastructure.SmsGateway;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 

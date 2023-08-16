@@ -42,7 +42,7 @@ public class RepositoryTests
     public async Task Removing_Linked_Intercom_Saves_It_In_Database()
     {
         // Arrange
-        using DatabaseContext databaseContext = await CreateTemporaryDatabaseContext().ConfigureAwait(true);
+        await using DatabaseContext databaseContext = await CreateTemporaryDatabaseContext();
         fixture.Inject(databaseContext);
         var repository = fixture.Create<Repository>();
 
@@ -54,13 +54,41 @@ public class RepositoryTests
         apartment131.UnlinkIntercom(intercoms[1]);
 
         // Act
-        await repository.UpdateApartmentConfigurationsAsync(apartmentConfigurations).ConfigureAwait(true);
+        await repository.UpdateApartmentConfigurationsAsync(apartmentConfigurations);
 
         IList<ApartmentConfiguration> updatedList =
             await repository.GetApartmentConfigurationsAsync();
 
         // Assert
         updatedList.First(x => x.Id.Number == 131).Intercoms.Count.Should().Be(0);
+        await databaseContext.Database.EnsureDeletedAsync();
+    }
+
+    [Fact]
+    public async Task Adding_Intercom_Saves_It_In_Database()
+    {
+        // Arrange
+        await using DatabaseContext databaseContext = await CreateTemporaryDatabaseContext();
+        fixture.Inject(databaseContext);
+        var repository = fixture.Create<Repository>();
+
+        IList<Intercom> intercoms = await repository.GetIntercomsAsync();
+        IList<ApartmentConfiguration> apartmentConfigurations =
+            await repository.GetApartmentConfigurationsAsync();
+        var apartment131 = apartmentConfigurations.First(x => x.Id.Number == 131);
+        apartment131.UnlinkIntercom(intercoms[0]);
+        apartment131.UnlinkIntercom(intercoms[1]);
+        await repository.UpdateApartmentConfigurationsAsync(apartmentConfigurations);
+
+        // Act
+        apartment131.LinkIntercom(intercoms[0]);
+        await repository.UpdateApartmentConfigurationsAsync(apartmentConfigurations);
+
+        IList<ApartmentConfiguration> updatedList =
+            await repository.GetApartmentConfigurationsAsync();
+
+        // Assert
+        updatedList.First(x => x.Id.Number == 131).Intercoms.Count.Should().Be(1);
         await databaseContext.Database.EnsureDeletedAsync();
     }
 

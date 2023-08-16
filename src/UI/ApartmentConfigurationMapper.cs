@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using Arentheym.ParkingBarrier.Domain;
 using Arentheym.ParkingBarrier.UI.ViewModels;
@@ -11,7 +10,7 @@ public static class ManualMapper
 {
     public static ApartmentConfigurationViewModel EntityToViewModel(
         ApartmentConfiguration apartmentConfiguration,
-        IEnumerable<Intercom> intercoms)
+        IList<Intercom> intercoms)
     {
         ArgumentNullException.ThrowIfNull(apartmentConfiguration);
         ArgumentNullException.ThrowIfNull(intercoms);
@@ -58,7 +57,7 @@ public static class ManualMapper
 
     public static ApartmentConfiguration ViewModelToEntity(
         ApartmentConfigurationViewModel viewModel,
-        IEnumerable<Intercom> intercoms)
+        IList<Intercom> intercoms)
     {
         ArgumentNullException.ThrowIfNull(viewModel);
         ArgumentNullException.ThrowIfNull(intercoms);

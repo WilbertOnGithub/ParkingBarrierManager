@@ -16,7 +16,7 @@ public class DataService
         return await repository.GetApartmentConfigurationsAsync().ConfigureAwait(false);
     }
 
-    public async Task<IEnumerable<Intercom>> GetIntercoms()
+    public async Task<IList<Intercom>> GetIntercoms()
     {
         return await repository.GetIntercomsAsync().ConfigureAwait(false);
     }

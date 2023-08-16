@@ -3,7 +3,7 @@ using System.Text;
 using Arentheym.ParkingBarrier.Domain;
 using Microsoft.Extensions.Primitives;
 
-namespace Arentheym.ParkingBarrier.Infrastructure.SmsGateWay;
+namespace Arentheym.ParkingBarrier.Infrastructure.SmsGateway;
 
 /// <summary>
 /// The SMS command to update the configuration for an apartment.

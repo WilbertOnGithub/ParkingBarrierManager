@@ -1,6 +1,6 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 using Arentheym.ParkingBarrier.Domain;
-using Arentheym.ParkingBarrier.Infrastructure.SmsGateWay;
+using Arentheym.ParkingBarrier.Infrastructure.SmsGateway;
 using FluentAssertions;
 using Xunit;
 

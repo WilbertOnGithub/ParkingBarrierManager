@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -10,35 +9,46 @@ namespace Arentheym.ParkingBarrier.UI.ViewModels;
 
 public partial class ApartmentConfigurationViewModel : ObservableValidator, IEquatable<ApartmentConfigurationViewModel>
 {
+    private ApartmentConfigurationViewModel? original;
+
+    public bool IsDirty => !this.Equals(original);
+
     [ObservableProperty]
+    [NotifyPropertyChangedFor(nameof(IsDirty))]
     [NotifyDataErrorInfo]
     [PhoneNumber]
     private string primaryPhoneNumber = string.Empty;
 
     [ObservableProperty]
+    [NotifyPropertyChangedFor(nameof(IsDirty))]
     [NotifyDataErrorInfo]
     [PhoneNumber]
     private string secondaryPhoneNumber = string.Empty;
 
     [ObservableProperty]
+    [NotifyPropertyChangedFor(nameof(IsDirty))]
     [NotifyDataErrorInfo]
     [PhoneNumber]
     private string tertiaryPhoneNumber = string.Empty;
 
     [ObservableProperty]
+    [NotifyPropertyChangedFor(nameof(IsDirty))]
     [NotifyDataErrorInfo]
     [PhoneNumber]
     private string quaternaryPhoneNumber = string.Empty;
 
     [ObservableProperty]
+    [NotifyPropertyChangedFor(nameof(IsDirty))]
     [NotifyDataErrorInfo]
     [AccessCode]
     private string accessCode = string.Empty;
 
     [ObservableProperty]
+    [NotifyPropertyChangedFor(nameof(IsDirty))]
     private bool dialToOpen;
 
     [ObservableProperty]
+    [NotifyPropertyChangedFor(nameof(IsDirty))]
     [NotifyDataErrorInfo]
     [Required]
     [MaxLength(16)]
@@ -51,7 +61,12 @@ public partial class ApartmentConfigurationViewModel : ObservableValidator, IEqu
         init => SetProperty(ref apartmentNumber, value);
     }
 
-    public ObservableCollection<IntercomViewModel> Intercoms { get; init; } = new ObservableCollection<IntercomViewModel>();
+    public ObservableCollection<IntercomViewModel> Intercoms { get; init; } = new();
+
+    public void SetOriginal()
+    {
+        original = MemberwiseClone() as ApartmentConfigurationViewModel;
+    }
 
     public bool Equals(ApartmentConfigurationViewModel? other)
     {

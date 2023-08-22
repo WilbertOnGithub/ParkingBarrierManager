@@ -79,6 +79,13 @@ public partial class ApartmentConfigurationViewModel : ObservableValidator, IEqu
     public void SetOriginal()
     {
         original = MemberwiseClone() as ApartmentConfigurationViewModel;
+
+        /*
+        for (int i = 0; i < Intercoms.Count; i++)
+        {
+            original!.Intercoms[i] = Intercoms[i].Clone();
+        }
+        */
     }
 
     public bool Equals(ApartmentConfigurationViewModel? other)

@@ -1,4 +1,6 @@
 ﻿using System;
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
 using CommunityToolkit.Mvvm.ComponentModel;
 
 namespace Arentheym.ParkingBarrier.UI.ViewModels;
@@ -25,7 +27,6 @@ public partial class IntercomViewModel : ObservableObject, IEquatable<IntercomVi
     public bool Equals(IntercomViewModel? other)
     {
         if (ReferenceEquals(null, other)) return false;
-        if (ReferenceEquals(this, other)) return true;
         return IsUsed == other.IsUsed &&
                string.Equals(Name, other.Name, StringComparison.OrdinalIgnoreCase) &&
                Id.Equals(other.Id);
@@ -34,8 +35,7 @@ public partial class IntercomViewModel : ObservableObject, IEquatable<IntercomVi
     public override bool Equals(object? obj)
     {
         if (ReferenceEquals(null, obj)) return false;
-        if (ReferenceEquals(this, obj)) return true;
-        if (obj.GetType() != this.GetType()) return false;
+        if (obj.GetType() != GetType()) return false;
         return Equals((IntercomViewModel) obj);
     }
 

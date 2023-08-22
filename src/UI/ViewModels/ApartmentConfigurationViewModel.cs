@@ -11,7 +11,17 @@ public partial class ApartmentConfigurationViewModel : ObservableValidator, IEqu
 {
     private ApartmentConfigurationViewModel? original;
 
-    public bool IsDirty => !this.Equals(original);
+    public bool IsDirty
+    {
+        get
+        {
+            if (original is null)
+            {
+                throw new InvalidOperationException($"Original has not been set. Call method {nameof(SetOriginal)} first.");
+            }
+            return !this.Equals(original);
+        }
+    }
 
     [ObservableProperty]
     [NotifyPropertyChangedFor(nameof(IsDirty))]
@@ -63,6 +73,9 @@ public partial class ApartmentConfigurationViewModel : ObservableValidator, IEqu
 
     public ObservableCollection<IntercomViewModel> Intercoms { get; init; } = new();
 
+    /// <summary>
+    /// Store original values to compare if values have changed. <seealso cref="IsDirty"/>
+    /// </summary>
     public void SetOriginal()
     {
         original = MemberwiseClone() as ApartmentConfigurationViewModel;
@@ -87,7 +100,7 @@ public partial class ApartmentConfigurationViewModel : ObservableValidator, IEqu
     {
         if (ReferenceEquals(null, obj)) return false;
         if (ReferenceEquals(this, obj)) return true;
-        if (obj.GetType() != this.GetType()) return false;
+        if (obj.GetType() != GetType()) return false;
         return Equals((ApartmentConfigurationViewModel) obj);
     }
 

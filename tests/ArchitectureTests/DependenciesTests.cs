@@ -28,31 +28,29 @@ public class DependenciesTests
     }
 
     [Fact]
-    public void UIAssembly_Is_CompositeRoot()
+    public void UIAssembly_is_compositeroot()
     {
         uiAssembly.Should().Reference(applicationAssembly);
         uiAssembly.Should().Reference(infrastructureAssembly);
     }
 
     [Fact]
-    public void Infrastructure_Can_Only_Reference_Domain_And_Application()
+    public void Infrastructure_can_only_reference_domain_and_application()
     {
-        // TODO: Uncomment when having actually referenced domain
-        // infrastructureAssembly.Should().Reference(domainAssembly);
+        infrastructureAssembly.Should().Reference(domainAssembly);
         infrastructureAssembly.Should().Reference(applicationAssembly);
         infrastructureAssembly.Should().NotReference(uiAssembly);
     }
 
     [Fact]
-    public void Application_Can_OnlyReference_Domain()
+    public void Application_can_only_reference()
     {
-        // TODO: Uncomment when having actually referenced domain
-        //applicationAssembly.Should().Reference(domainAssembly);
+        applicationAssembly.Should().Reference(domainAssembly);
         applicationAssembly.Should().NotReference(uiAssembly);
     }
 
     [Fact]
-    public void Domain_Must_Stand_Alone()
+    public void Domain_must_stand_alone()
     {
         domainAssembly.Should().NotReference(uiAssembly);
         domainAssembly.Should().NotReference(applicationAssembly);

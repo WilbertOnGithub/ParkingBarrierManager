@@ -10,7 +10,7 @@ namespace Arentheym.ParkingBarrier.Infrastructure.Tests;
 public class SmsGatewayTests
 {
     [Fact]
-    public void ApartmentConfiguration_Is_Converted_To_Correct_SMS_Format()
+    public void ApartmentConfiguration_is_converted_to_correct_format()
     {
         // Arrange
         var configuration = new ApartmentConfiguration(

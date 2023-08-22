@@ -17,7 +17,7 @@ public class ValidatorTests
     [InlineData("1234")]
     [InlineData("12345")]
     [InlineData("123456")]
-    public void AccessCode_Is_Valid_With_Valid_Data(string data)
+    public void AccessCode_is_valid_with_valid_data(string data)
     {
         // Arrange
         AccessCode accessCode = new();
@@ -30,7 +30,7 @@ public class ValidatorTests
     [InlineData("A")]
     [InlineData("1234567")]
     [InlineData("1234-567")]
-    public void AccessCode_Is_InValid_With_Invalid_Data(string data)
+    public void AccessCode_is_inValid_with_invalid_data(string data)
     {
         // Arrange
         AccessCode accessCode = new();
@@ -43,7 +43,7 @@ public class ValidatorTests
     [InlineData("")]
     [InlineData("1234567890")]
     [InlineData(" 1 2 3 4 5 6 7 8 9 0 ")]
-    public void PhoneNumber_Is_Valid_With_Valid_Data(string data)
+    public void PhoneNumber_is_valid_with_valid_data(string data)
     {
         // Arrange
         PhoneNumber phoneNumber = new();
@@ -57,7 +57,7 @@ public class ValidatorTests
     [InlineData("12345678901")]     // Too long
     [InlineData("123456")]          // Too short
     [InlineData(" 1 2 3 4 5 6 ")]   // Too short with whitespace
-    public void PhoneNumber_Is_Invalid_With_Invalid_Data(string data)
+    public void PhoneNumber_is_invalid_with_invalid_data(string data)
     {
         // Arrange
         PhoneNumber phoneNumber = new();

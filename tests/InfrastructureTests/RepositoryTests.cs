@@ -15,7 +15,7 @@ public class RepositoryTests
     private readonly IFixture fixture = new Fixture().Customize(new AutoNSubstituteCustomization());
 
     [Fact]
-    public async Task Updating_PhoneNumber_Saves_It_In_Database()
+    public async Task Updating_phoneNumber_saves_it_in_database()
     {
         // Arrange
         using DatabaseContext databaseContext = await CreateTemporaryDatabaseContext();
@@ -39,7 +39,7 @@ public class RepositoryTests
     }
 
     [Fact]
-    public async Task Removing_Linked_Intercom_Saves_It_In_Database()
+    public async Task Removing_linked_intercom_saves_it_in_database()
     {
         // Arrange
         await using DatabaseContext databaseContext = await CreateTemporaryDatabaseContext();
@@ -65,7 +65,7 @@ public class RepositoryTests
     }
 
     [Fact]
-    public async Task Adding_Intercom_Saves_It_In_Database()
+    public async Task Adding_intercom_saves_it_in_database()
     {
         // Arrange
         await using DatabaseContext databaseContext = await CreateTemporaryDatabaseContext();

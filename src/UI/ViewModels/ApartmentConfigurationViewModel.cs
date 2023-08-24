@@ -20,7 +20,7 @@ public partial class ApartmentConfigurationViewModel : ObservableValidator, IEqu
             {
                 throw new InvalidOperationException($"Original has not been set. Call method {nameof(SetOriginal)} first.");
             }
-            return !this.Equals(original);
+            return !Equals(original);
         }
     }
 

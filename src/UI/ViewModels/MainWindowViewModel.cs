@@ -30,13 +30,23 @@ public partial class MainWindowViewModel : ViewModelBase
         foreach (var domainEntity in await dataService.GetApartmentConfigurations())
         {
             Configurations.Add(ManualMapper.EntityToViewModel(domainEntity, availableIntercoms.ToList()));
+            Configurations.Last().SetOriginal();
         }
     }
 
-    [RelayCommand]
+    [RelayCommand(CanExecute = nameof(CanSaveConfigurations))]
     public async Task SaveConfigurationsAsync()
     {
+        var dirtyConfigurations = Configurations.Where(x => x.IsDirty).ToList();
         await dataService.SaveApartmentConfigurations(
-            Configurations.Select(x => ManualMapper.ViewModelToEntity(x, availableIntercoms.ToList())).ToList());
+            dirtyConfigurations.Select(x => ManualMapper.ViewModelToEntity(x, availableIntercoms.ToList())).ToList());
+
+        // Set original for all dirty configurations so that they are no longer dirty.
+        dirtyConfigurations.All(x => x.SetOriginal());
+    }
+
+    private bool CanSaveConfigurations()
+    {
+        return Configurations.Any(x => x.IsDirty);
     }
 }

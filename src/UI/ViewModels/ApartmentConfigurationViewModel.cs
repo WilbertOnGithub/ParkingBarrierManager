@@ -2,6 +2,7 @@
 using System.Collections.ObjectModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using Arentheym.ParkingBarrier.UI.Extensions;
 using Arentheym.ParkingBarrier.UI.Validators;
 using CommunityToolkit.Mvvm.ComponentModel;
 
@@ -78,14 +79,7 @@ public partial class ApartmentConfigurationViewModel : ObservableValidator, IEqu
     /// </summary>
     public void SetOriginal()
     {
-        original = MemberwiseClone() as ApartmentConfigurationViewModel;
-
-        /*
-        for (int i = 0; i < Intercoms.Count; i++)
-        {
-            original!.Intercoms[i] = Intercoms[i].Clone();
-        }
-        */
+        original = this.Copy();
     }
 
     public bool Equals(ApartmentConfigurationViewModel? other)

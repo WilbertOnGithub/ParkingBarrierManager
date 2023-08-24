@@ -42,7 +42,7 @@ public partial class MainWindowViewModel : ViewModelBase
             dirtyConfigurations.Select(x => ManualMapper.ViewModelToEntity(x, availableIntercoms.ToList())).ToList());
 
         // Set original for all dirty configurations so that they are no longer dirty.
-        dirtyConfigurations.All(x => x.SetOriginal());
+        dirtyConfigurations.ForEach(x => x.SetOriginal());
     }
 
     private bool CanSaveConfigurations()

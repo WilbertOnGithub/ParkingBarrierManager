@@ -23,25 +23,21 @@ public partial class MainWindowViewModel : ViewModelBase
     [ObservableProperty]
     private int numberOfDirtyConfigurations;
 
-    public ObservableCollection<ApartmentConfigurationViewModel> Configurations { get; } = new ObservableCollection<ApartmentConfigurationViewModel>();
+    public ObservableCollection<ApartmentConfigurationViewModel> Configurations { get; } = new();
 
     [SuppressMessage("Design", "CA1062:Validate arguments of public methods", Justification = "Dependency injection")]
     public MainWindowViewModel(DataService dataService)
     {
         this.dataService = dataService;
         initialisationTask = InitializeAsync();
-
-        foreach (var configurationViewModel in Configurations)
-        {
-            foreach (var intercomViewModel in configurationViewModel.Intercoms)
-            {
-                intercomViewModel.PropertyChanged += OnConfigurationChanged;
-            }
-            configurationViewModel.PropertyChanged += OnConfigurationChanged;
-        }
     }
 
     private void OnConfigurationChanged(object? sender, PropertyChangedEventArgs args)
+    {
+        UpdateDirtyStatus();
+    }
+
+    private void UpdateDirtyStatus()
     {
         ButtonEnabled = Configurations.Any(x => x.IsDirty);
         NumberOfDirtyConfigurations = Configurations.Count(x => x.IsDirty);
@@ -55,6 +51,17 @@ public partial class MainWindowViewModel : ViewModelBase
             Configurations.Add(ManualMapper.EntityToViewModel(domainEntity, availableIntercoms.ToList()));
             Configurations.Last().SetOriginal();
         }
+
+        foreach (var configurationViewModel in Configurations)
+        {
+            foreach (var intercomViewModel in configurationViewModel.Intercoms)
+            {
+                intercomViewModel.PropertyChanged += OnConfigurationChanged;
+            }
+            configurationViewModel.PropertyChanged += OnConfigurationChanged;
+        }
+
+        UpdateDirtyStatus();
     }
 
     [RelayCommand]
@@ -64,7 +71,7 @@ public partial class MainWindowViewModel : ViewModelBase
         await dataService.SaveApartmentConfigurations(
             dirtyConfigurations.Select(x => ManualMapper.ViewModelToEntity(x, availableIntercoms.ToList())).ToList());
 
-        // Set original for all dirty configurations so that they are no longer dirty.
+        // Set original for all dirty configurations so that they are no longer considered dirty after save.
         dirtyConfigurations.ForEach(x => x.SetOriginal());
     }
 }

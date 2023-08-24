@@ -27,7 +27,9 @@
                     HorizontalAlignment="Right">
             <Button HorizontalAlignment="Right"
                     Command="{Binding SaveConfigurationsAsync}"
-                    Content="Save Configurations" />
+                    Content="Save Configurations"
+                    IsEnabled="{Binding ButtonEnabled, Mode=OneWay}"
+                    />
         </StackPanel>
 
         <DataGrid ItemsSource="{Binding Configurations}"

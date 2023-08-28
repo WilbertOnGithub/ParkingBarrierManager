@@ -1,6 +1,4 @@
 ﻿using System;
-using System.IO;
-using System.Runtime.Serialization.Formatters.Binary;
 using CommunityToolkit.Mvvm.ComponentModel;
 
 namespace Arentheym.ParkingBarrier.UI.ViewModels;

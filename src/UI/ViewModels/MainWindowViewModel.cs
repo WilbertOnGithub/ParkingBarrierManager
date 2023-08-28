@@ -11,10 +11,9 @@ using CommunityToolkit.Mvvm.Input;
 
 namespace Arentheym.ParkingBarrier.UI.ViewModels;
 
-public partial class MainWindowViewModel : ViewModelBase
+public partial class MainWindowViewModel : ViewModelBase, IAsyncInitialization
 {
     private readonly DataService dataService;
-    private readonly Task initialisationTask;
     private IEnumerable<Intercom> availableIntercoms = Enumerable.Empty<Intercom>();
 
     [ObservableProperty]
@@ -25,11 +24,13 @@ public partial class MainWindowViewModel : ViewModelBase
 
     public ObservableCollection<ApartmentConfigurationViewModel> Configurations { get; } = new();
 
+    public Task Initialization { get; }
+
     [SuppressMessage("Design", "CA1062:Validate arguments of public methods", Justification = "Dependency injection")]
     public MainWindowViewModel(DataService dataService)
     {
         this.dataService = dataService;
-        initialisationTask = InitializeAsync();
+        Initialization = InitializeAsync();
     }
 
     private void OnConfigurationChanged(object? sender, PropertyChangedEventArgs args)

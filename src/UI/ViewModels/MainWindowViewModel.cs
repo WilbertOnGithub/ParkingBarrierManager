@@ -74,5 +74,6 @@ public partial class MainWindowViewModel : ViewModelBase, IAsyncInitialization
 
         // Set original for all dirty configurations so that they are no longer considered dirty after save.
         dirtyConfigurations.ForEach(x => x.SetOriginal());
+        UpdateDirtyStatus();
     }
 }

@@ -107,6 +107,28 @@ public class MainWindowViewModelTests
         afterRevertingChange.Should().BeFalse("because the change has been reverted to the original.");
     }
 
+    [Fact]
+    public async Task After_MainWindowViewModel_is_saved_save_button_is_disabled()
+    {
+        // Arrange
+        var repositoryMock = fixture.Freeze<IRepository>();
+        repositoryMock.GetApartmentConfigurationsAsync().Returns(Task.FromResult(GetDefaultConfigurations()));
+        repositoryMock.GetIntercomsAsync().Returns(Task.FromResult(GetDefaultIntercoms()));
+
+        var sut = new MainWindowViewModel(fixture.Create<DataService>());
+        await sut.Initialization;
+
+        // Act
+        sut.Configurations.First().AccessCode = "1234";
+        bool afterChange = sut.ButtonEnabled;
+        await sut.SaveConfigurationsAsync();
+        bool afterSave = sut.ButtonEnabled;
+
+        // Assert
+        afterChange.Should().BeTrue("because changes have been made to the list.");
+        afterSave.Should().BeFalse("because all the changes have been saved and this is the new situation.");
+    }
+
     private static IList<ApartmentConfiguration> GetDefaultConfigurations()
     {
         IList<ApartmentConfiguration> configurations = new List<ApartmentConfiguration>();

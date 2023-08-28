@@ -2,15 +2,15 @@
 
 namespace Arentheym.ParkingBarrier.UI;
 
-public static class Program
+internal static class Program
 {
     public static void Main(string[] args)
     {
         Parser.Default.ParseArguments<Options>(args)
-            .WithParsed<Options>(o =>
+            .WithParsed(options =>
             {
-                Console.WriteLine(o.StringToDecrypt);
-                Console.WriteLine(o.StringToEncrypt);
+                Console.WriteLine($"string to decrypt {options.StringToDecrypt}");
+                Console.WriteLine(options.StringToEncrypt);
             });
     }
 }

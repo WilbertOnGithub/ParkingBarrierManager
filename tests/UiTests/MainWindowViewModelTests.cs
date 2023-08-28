@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Diagnostics.CodeAnalysis;
+﻿using System.Diagnostics.CodeAnalysis;
 using Arentheym.ParkingBarrier.Application;
 using Arentheym.ParkingBarrier.Domain;
 using Arentheym.ParkingBarrier.UI.ViewModels;
@@ -44,6 +43,68 @@ public class MainWindowViewModelTests
 
         // Act // Assert
         sut.ButtonEnabled.Should().BeFalse("because no changes have been made yet.");
+    }
+
+    [Fact]
+    public async Task When_MainWindowViewModel_is_changed_the_save_button_is_enabled()
+    {
+        // Arrange
+        var repositoryMock = fixture.Freeze<IRepository>();
+        repositoryMock.GetApartmentConfigurationsAsync().Returns(Task.FromResult(GetDefaultConfigurations()));
+        repositoryMock.GetIntercomsAsync().Returns(Task.FromResult(GetDefaultIntercoms()));
+
+        var sut = new MainWindowViewModel(fixture.Create<DataService>());
+        await sut.Initialization;
+
+        // Act
+        sut.Configurations.First().AccessCode = "1234";
+
+        // Assert
+        sut.ButtonEnabled.Should().BeTrue("because changes have been made to the list.");
+    }
+
+    [Fact]
+    public async Task When_MainWindowViewModel_is_changed_the_isdirty_count_increases()
+    {
+        // Arrange
+        var repositoryMock = fixture.Freeze<IRepository>();
+        repositoryMock.GetApartmentConfigurationsAsync().Returns(Task.FromResult(GetDefaultConfigurations()));
+        repositoryMock.GetIntercomsAsync().Returns(Task.FromResult(GetDefaultIntercoms()));
+
+        var sut = new MainWindowViewModel(fixture.Create<DataService>());
+        await sut.Initialization;
+
+        // Act
+        int initialValue = sut.NumberOfDirtyConfigurations;
+        sut.Configurations.First().AccessCode = "1234";
+        int secondValue = sut.NumberOfDirtyConfigurations;
+
+        // Assert
+        secondValue.Should().BeGreaterThan(initialValue, "because changes have been made to the list.");
+    }
+
+    [Fact]
+    public async Task When_MainWindowViewModel_is_changed_back_to_the_original_the_save_button_is_disabled_again()
+    {
+        // Arrange
+        var repositoryMock = fixture.Freeze<IRepository>();
+        repositoryMock.GetApartmentConfigurationsAsync().Returns(Task.FromResult(GetDefaultConfigurations()));
+        repositoryMock.GetIntercomsAsync().Returns(Task.FromResult(GetDefaultIntercoms()));
+
+        var sut = new MainWindowViewModel(fixture.Create<DataService>());
+        await sut.Initialization;
+
+        // Act
+        bool beforeChange = sut.ButtonEnabled;
+        sut.Configurations.First().AccessCode = "1234";
+        bool afterChange = sut.ButtonEnabled;
+        sut.Configurations.First().AccessCode = string.Empty;
+        bool afterRevertingChange = sut.ButtonEnabled;
+
+        // Assert
+        beforeChange.Should().BeFalse("because no changes have (yet) been made to the list.");
+        afterChange.Should().BeTrue("because changes have been made to the list.");
+        afterRevertingChange.Should().BeFalse("because the change has been reverted to the original.");
     }
 
     private static IList<ApartmentConfiguration> GetDefaultConfigurations()

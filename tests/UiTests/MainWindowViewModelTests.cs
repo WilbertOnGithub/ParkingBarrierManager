@@ -17,7 +17,7 @@ public class MainWindowViewModelTests
     private readonly IFixture fixture = new Fixture().Customize(new AutoNSubstituteCustomization());
 
     [Fact]
-    public void When_MainWindowViewModel_is_initially_loaded_we_have_no_dirty_configuration()
+    public async Task When_MainWindowViewModel_is_initially_loaded_we_have_no_dirty_configuration()
     {
         // Arrange
         var repositoryMock = fixture.Freeze<IRepository>();
@@ -25,13 +25,14 @@ public class MainWindowViewModelTests
         repositoryMock.GetIntercomsAsync().Returns(Task.FromResult(GetDefaultIntercoms()));
 
         var sut = new MainWindowViewModel(fixture.Create<DataService>());
+        await sut.Initialization;
 
         // Act // Assert
         sut.NumberOfDirtyConfigurations.Should().Be(0, "because no changes have been made yet.");
     }
 
     [Fact]
-    public void When_MainWindowViewModel_is_initially_loaded_save_button_is_disabled()
+    public async Task When_MainWindowViewModel_is_initially_loaded_save_button_is_disabled()
     {
         // Arrange
         var repositoryMock = fixture.Freeze<IRepository>();
@@ -39,6 +40,7 @@ public class MainWindowViewModelTests
         repositoryMock.GetIntercomsAsync().Returns(Task.FromResult(GetDefaultIntercoms()));
 
         var sut = new MainWindowViewModel(fixture.Create<DataService>());
+        await sut.Initialization;
 
         // Act // Assert
         sut.ButtonEnabled.Should().BeFalse("because no changes have been made yet.");
@@ -47,7 +49,12 @@ public class MainWindowViewModelTests
     private static IList<ApartmentConfiguration> GetDefaultConfigurations()
     {
         IList<ApartmentConfiguration> configurations = new List<ApartmentConfiguration>();
-        configurations.Add(new ApartmentConfiguration(new ApartmentId(51)));
+        var apartmentConfiguration = new ApartmentConfiguration(new ApartmentId(51));
+        apartmentConfiguration.UpsertPhoneNumber(new DivertPhoneNumber(DivertOrder.Primary, string.Empty));
+        apartmentConfiguration.UpsertPhoneNumber(new DivertPhoneNumber(DivertOrder.Secondary, string.Empty));
+        apartmentConfiguration.UpsertPhoneNumber(new DivertPhoneNumber(DivertOrder.Tertiary, string.Empty));
+        apartmentConfiguration.UpsertPhoneNumber(new DivertPhoneNumber(DivertOrder.Quaternary, string.Empty));
+        configurations.Add(apartmentConfiguration);
 
         return configurations;
     }

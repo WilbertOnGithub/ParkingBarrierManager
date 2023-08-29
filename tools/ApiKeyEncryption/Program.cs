@@ -1,4 +1,5 @@
-﻿using CommandLine;
+﻿using Arentheym.ParkingBarrier.Application;
+using CommandLine;
 
 namespace Arentheym.ParkingBarrier.UI;
 
@@ -9,8 +10,17 @@ internal static class Program
         Parser.Default.ParseArguments<Options>(args)
             .WithParsed(options =>
             {
-                Console.WriteLine($"string to decrypt {options.StringToDecrypt}");
-                Console.WriteLine(options.StringToEncrypt);
+                var encryptor = new Encryptor();
+
+                if (!string.IsNullOrEmpty(options.StringToEncrypt))
+                {
+                    Console.WriteLine($"Encrypted: {encryptor.Encrypt(options.StringToEncrypt)}");
+                }
+
+                if (!string.IsNullOrEmpty(options.StringToDecrypt))
+                {
+                    //Console.WriteLine($"Encrypted: {Encryptor.Encrypt(options.StringToEncrypt)}");
+                }
             });
     }
 }

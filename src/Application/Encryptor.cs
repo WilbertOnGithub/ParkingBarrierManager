@@ -1,7 +1,7 @@
 ﻿using System.Security.Cryptography;
 using System.Text;
 
-namespace Arentheym.ParkingBarrier.UI;
+namespace Arentheym.ParkingBarrier.Application;
 
 public class Encryptor
 {

@@ -19,7 +19,7 @@ internal static class Program
 
                 if (!string.IsNullOrEmpty(options.StringToDecrypt))
                 {
-                    //Console.WriteLine($"Encrypted: {Encryptor.Encrypt(options.StringToEncrypt)}");
+                    Console.WriteLine($"Decrypted: {encryptor.Decrypt(options.StringToDecrypt)}");
                 }
             });
     }

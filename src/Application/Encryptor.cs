@@ -7,6 +7,7 @@ public sealed class Encryptor : IDisposable
 {
     private readonly Aes aes;
     private const int keyLength = 16;
+    private const int initializationVectorLength = keyLength;
 
     public Encryptor()
     {
@@ -18,14 +19,14 @@ public sealed class Encryptor : IDisposable
         aes.GenerateIV();
     }
 
-    public string Encrypt (string plainText)
+    public string Encrypt(string plainText)
     {
         byte[] encrypted;
 
         using (var ms = new MemoryStream())
         {
             // Prepend the generated initialization vector to the encrypted bytes.
-            ms.Write(aes.IV, 0, 16); ;
+            ms.Write(aes.IV, 0, initializationVectorLength);
             using (var cs = new CryptoStream(ms, aes.CreateEncryptor(), CryptoStreamMode.Write))
             {
                 using (var sw = new StreamWriter(cs))
@@ -38,6 +39,32 @@ public sealed class Encryptor : IDisposable
         }
 
         return Convert.ToBase64String(encrypted);
+    }
+
+    public string Decrypt(string encryptedText)
+    {
+        byte[] encryptedBytes = Convert.FromBase64String(encryptedText);
+
+        using (var ms = new MemoryStream(encryptedBytes))
+        {
+            // Read initialization vector from the beginning of the stream.
+            byte[] buffer = new byte[initializationVectorLength];
+            ms.Read(buffer, 0, initializationVectorLength);
+
+            // Set the correct initialization vector.
+            aes.IV = buffer;
+
+            using (var decryptor = aes.CreateDecryptor())
+            {
+                using (var cs = new CryptoStream(ms, decryptor, CryptoStreamMode.Read))
+                {
+                    using (var sr = new StreamReader(cs))
+                    {
+                        return sr.ReadToEnd();
+                    }
+                }
+            }
+        }
     }
 
     private static byte[] GetPassPhrase()
@@ -54,7 +81,7 @@ public sealed class Encryptor : IDisposable
         }
 
         return Encoding.UTF8.GetBytes(key);
-   }
+    }
 
     public void Dispose()
     {

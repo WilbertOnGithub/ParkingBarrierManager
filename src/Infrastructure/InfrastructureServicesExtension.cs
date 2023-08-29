@@ -15,11 +15,11 @@ public static class InfrastructureServicesExtension
     {
         // Read configurations and add it as a strongly typed object to dependency injection.
         var databaseConfiguration = new DatabaseConfiguration();
-        IConfigurationSection databaseConfigurationSection = BuildConfiguration().GetSection(nameof(DatabaseConfiguration));
-        databaseConfigurationSection.Bind(BuildConfiguration().GetSection(nameof(databaseConfiguration)));
+        IConfigurationSection databaseConfigurationSection = BuildConfiguration().GetSection(nameof(databaseConfiguration));
+        databaseConfigurationSection.Bind(databaseConfiguration);
 
         var smsGatewayConfiguration = new SmsGatewayConfiguration();
-        IConfigurationSection smsGatewayConfigurationSection = BuildConfiguration().GetSection(nameof(SmsGatewayConfiguration));
+        IConfigurationSection smsGatewayConfigurationSection = BuildConfiguration().GetSection(nameof(smsGatewayConfiguration));
         smsGatewayConfigurationSection.Bind(smsGatewayConfiguration);
 
         services.AddTransient<IRepository, Repository>();

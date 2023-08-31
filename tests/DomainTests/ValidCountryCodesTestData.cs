@@ -11,7 +11,7 @@ namespace Arentheym.ParkingBarrier.Domain.Tests;
 /// <see cref="https://nl.wikipedia.org/wiki/Lijst_van_landnummers_in_de_telefonie_op_nummervolgorde"/>
 public class ValidCountryCodesTestData : IEnumerable<object[]>
 {
-    public static List<string> CreateTestData()
+    private static List<string> CreateTestData()
     {
         List<string> testData = new();
 

@@ -11,7 +11,7 @@ using Microsoft.Extensions.DependencyInjection;
 
 public static class InfrastructureServicesExtension
 {
-    public static IServiceCollection RegisterInfrastructureServices(this IServiceCollection services)
+    public static void RegisterInfrastructureServices(this IServiceCollection services)
     {
         // Read configurations and add it as a strongly typed object to dependency injection.
         var databaseConfiguration = new DatabaseConfiguration();
@@ -25,8 +25,6 @@ public static class InfrastructureServicesExtension
         services.AddTransient<IRepository, Repository>();
         services.AddTransient<ISmsGateway, MessageBirdGateway>();
         services.AddDbContext<DatabaseContext>(options => options.UseSqlite(databaseConfiguration.ExpandedConnectionString));
-
-        return services;
     }
 
     private static IConfiguration BuildConfiguration()

@@ -13,7 +13,7 @@ using Microsoft.Extensions.DependencyInjection;
 
 public static class UIServicesExtension
 {
-    public static IServiceCollection RegisterUIServices(this IServiceCollection services)
+    public static void RegisterUIServices(this IServiceCollection services)
     {
         services.AddSingleton<MainWindow>();
         services.AddSingleton<MainWindowViewModel>();
@@ -22,19 +22,18 @@ public static class UIServicesExtension
         services.RegisterApplicationServices();
         services.RegisterInfrastructureServices();
 
-
-        // Add Serilog configuration
+        // Add Serilog configuration from appsettings.json
         services.AddLogging(builder =>
         {
-            var logger = new LoggerConfiguration()
-                .MinimumLevel.Debug()
-                .WriteTo.Console(formatProvider: CultureInfo.InvariantCulture)
-                .WriteTo.File("C:\\temp\\logs\\log.txt", rollingInterval: RollingInterval.Day, formatProvider: CultureInfo.InvariantCulture)
-                .CreateLogger();
-
+            var logger = new LoggerConfiguration().ReadFrom.Configuration(ReadConfiguration()).CreateLogger();
             builder.AddSerilog(logger);
         });
+    }
 
-        return services;
+    private static IConfiguration ReadConfiguration()
+    {
+        return new ConfigurationBuilder()
+            .AddJsonFile("appsettings.json", optional: false, reloadOnChange: false)
+            .Build();
     }
 }

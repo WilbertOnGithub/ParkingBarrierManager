@@ -15,17 +15,19 @@ public static class UIServicesExtension
 {
     public static void RegisterUIServices(this IServiceCollection services)
     {
+        IConfiguration configuration = ReadConfiguration();
+
         services.AddSingleton<MainWindow>();
         services.AddSingleton<MainWindowViewModel>();
         services.AddSingleton<ApartmentConfigurationViewModel>();
 
-        services.RegisterApplicationServices();
-        services.RegisterInfrastructureServices();
+        services.RegisterApplicationServices(configuration);
+        services.RegisterInfrastructureServices(configuration);
 
         // Add Serilog configuration from appsettings.json
         services.AddLogging(builder =>
         {
-            var logger = new LoggerConfiguration().ReadFrom.Configuration(ReadConfiguration()).CreateLogger();
+            var logger = new LoggerConfiguration().ReadFrom.Configuration(configuration).CreateLogger();
             builder.AddSerilog(logger);
         });
     }

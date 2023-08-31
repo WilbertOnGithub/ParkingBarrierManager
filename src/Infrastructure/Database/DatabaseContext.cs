@@ -41,8 +41,8 @@ public class DatabaseContext : DbContext
 
         const string masterCode = "8601";
 
-        var intercomFront = new Intercom("Slagboom voor", new PhoneNumber("0657093298"), new MasterCode(masterCode));
-        var intercomBack = new Intercom("Slagboom achter", new PhoneNumber("0657181402"), new MasterCode(masterCode));
+        var intercomFront = new Intercom("Slagboom voor", new PhoneNumber("31657093298"), new MasterCode(masterCode));
+        var intercomBack = new Intercom("Slagboom achter", new PhoneNumber("31657181402"), new MasterCode(masterCode));
 
         modelBuilder.Entity<Intercom>().HasData(intercomFront);
         modelBuilder.Entity<Intercom>().HasData(intercomBack);

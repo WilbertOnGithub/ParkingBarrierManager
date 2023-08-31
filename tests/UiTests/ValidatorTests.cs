@@ -40,9 +40,8 @@ public class ValidatorTests
     }
 
     [Theory]
-    [InlineData("")]
-    [InlineData("1234567890")]
-    [InlineData(" 1 2 3 4 5 6 7 8 9 0 ")]
+    [InlineData("")]                // Empty phone number is allowed
+    [InlineData("31 1234567890")]   // Valid country code with 10 digit phone number
     public void PhoneNumber_is_valid_with_valid_data(string data)
     {
         // Arrange
@@ -53,10 +52,10 @@ public class ValidatorTests
     }
 
     [Theory]
-    [InlineData("abc")]             // No digits
-    [InlineData("12345678901")]     // Too long
-    [InlineData("123456")]          // Too short
-    [InlineData(" 1 2 3 4 5 6 ")]   // Too short with whitespace
+    [InlineData("abc")]                     // No digits
+    [InlineData("31 1234567890123456")]     // Phone > 15 digits
+    [InlineData("3 1234567890")]            // Invalid country code
+    [InlineData("31")]                      // Country code only
     public void PhoneNumber_is_invalid_with_invalid_data(string data)
     {
         // Arrange

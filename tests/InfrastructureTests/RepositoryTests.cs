@@ -25,7 +25,7 @@ public class RepositoryTests
         IList<ApartmentConfiguration> apartmentConfigurations =
             await repository.GetApartmentConfigurationsAsync().ConfigureAwait(false);
         var apartment131 = apartmentConfigurations.First(x => x.Id.Number == 131);
-        apartment131.UpsertPhoneNumber(new DivertPhoneNumber(DivertOrder.Primary, "1234567890"));
+        apartment131.UpsertPhoneNumber(new DivertPhoneNumber(DivertOrder.Primary, "31 1234567890"));
 
         // Act
         await repository.UpdateApartmentConfigurationsAsync(apartmentConfigurations);
@@ -34,7 +34,7 @@ public class RepositoryTests
             await repository.GetApartmentConfigurationsAsync().ConfigureAwait(false);
 
         // Assert
-        updatedList.First(x => x.Id.Number == 131).PhoneNumbers[0].Number.Should().Be("1234567890");
+        updatedList.First(x => x.Id.Number == 131).PhoneNumbers[0].Number.Should().Be("31 1234567890");
         await databaseContext.Database.EnsureDeletedAsync();
     }
 

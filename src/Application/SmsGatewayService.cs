@@ -6,6 +6,7 @@ namespace Arentheym.ParkingBarrier.Application;
 public class SmsGatewayService
 {
     private readonly ILogger<SmsGatewayService> logger;
+    private readonly ISmsGateway smsGateway;
     private readonly string apiKey;
 
     [SuppressMessage(
@@ -15,11 +16,18 @@ public class SmsGatewayService
     public SmsGatewayService(
         ILogger<SmsGatewayService> logger,
         SmsGatewayConfiguration configuration,
-        Encryptor encryptor)
+        Encryptor encryptor,
+        ISmsGateway smsGateway)
     {
         this.logger = logger;
+        this.smsGateway = smsGateway;
 
         // Decrypt the API key.
         apiKey = encryptor.Decrypt(configuration.ApiKey);
+    }
+
+    public void GetBalanceDetails()
+    {
+        smsGateway.GetBalanceDetails();
     }
 }

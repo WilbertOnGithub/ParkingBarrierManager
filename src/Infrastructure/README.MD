@@ -16,4 +16,4 @@ The *--output-dir* parameter is needed so the migrations are created at the desi
 
 
 ### To update your current database:
-- `dotnet ef database update --project \src\Infrastructure`
+- `dotnet ef database update --project src\Infrastructure`

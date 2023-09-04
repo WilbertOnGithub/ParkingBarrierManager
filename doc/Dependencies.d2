@@ -1,0 +1,13 @@
+explanation: |md
+  # Shows dependencies between layers according to [Clean Architecture](https://www.c-sharpcorner.com/article/what-is-clean-architecture/)
+| { near: top-center }
+
+UI.shape: package
+Application.shape: package
+Infrastructure.shape: package
+Domain.shape: package
+
+UI -> Application: can only access Application
+Application -> Domain
+Infrastructure -> Domain
+Infrastructure -> Application : references interfaces\n defined in Application

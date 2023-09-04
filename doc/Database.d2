@@ -1,0 +1,47 @@
+explanation: |md
+  # Database diagram
+| { near: top-center }
+
+Intercoms {
+    shape: sql_table
+
+    Id: guid { constraint: [primary_key, unique] }
+    MasterCode: text {constraint: not_null }
+    Name: text {constraint: not_null }
+    PhoneNumber: text {constraint: not_null }
+}
+
+ApartmentConfigurations {
+    shape: sql_table
+    Id: integer { constraint: [primary_key, unique] }
+    DialToOpen: boolean
+    DisplayName: text {constraint: not_null }
+    MemoryLocation: integer
+    AccessCode: text {constraint: not_null }
+}
+
+ApartmentConfigurationPhoneNumbers {
+    shape: sql_table
+    Number: text {constraint: not_null }
+    Order: integer  
+    ApartmentConfigurationId: integer { constraint: foreign_key }
+}
+
+ApartmentConfigurationIntercoms {
+    shape: sql_table
+    IntercomId: guid { constraint: foreign_key }
+    ApartmentConfigurationId: integer { constraint: foreign_key }
+}
+
+ApartmentConfigurationIntercoms -> Intercoms {
+    source-arrowhead: 1
+    target-arrowhead: 1
+}
+ApartmentConfigurationIntercoms -> ApartmentConfigurations {
+    source-arrowhead: 1
+    target-arrowhead: 1
+}
+ApartmentConfigurationPhoneNumbers -> ApartmentConfigurations {
+    source-arrowhead: *
+    target-arrowhead: 1
+}

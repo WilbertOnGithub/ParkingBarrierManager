@@ -1,5 +1,4 @@
 ﻿using System.Diagnostics.CodeAnalysis;
-using System.Reflection;
 using Arentheym.ParkingBarrier.Application;
 using Arentheym.ParkingBarrier.Infrastructure.Database;
 using Arentheym.ParkingBarrier.Infrastructure.SmsGateway;
@@ -25,6 +24,10 @@ public static class InfrastructureServicesExtension
 
         services.AddTransient<IRepository, Repository>();
         services.AddTransient<ISmsGateway, MessageBirdGateway>();
-        services.AddDbContext<DatabaseContext>(options => options.UseSqlite(databaseConfiguration.ExpandedConnectionString));
+
+        //ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))
+        services.AddDbContext<DatabaseContext>(options =>
+            options.UseSqlite(databaseConfiguration.ExpandedConnectionString));
     }
+}
 }

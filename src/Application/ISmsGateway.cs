@@ -7,5 +7,7 @@ namespace Arentheym.ParkingBarrier.Application;
 /// </summary>
 public interface ISmsGateway
 {
-    void UpdateConfiguration(ApartmentConfiguration apartmentConfiguration);
+    void Send();
+
+    void GetBalanceDetails();
 }

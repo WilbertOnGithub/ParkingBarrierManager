@@ -5,7 +5,12 @@ namespace Arentheym.ParkingBarrier.Infrastructure.SmsGateway;
 
 public class MessageBirdGateway : ISmsGateway
 {
-    public void UpdateConfiguration(ApartmentConfiguration apartmentConfiguration)
+    public void Send()
+    {
+        throw new NotImplementedException();
+    }
+
+    public void GetBalanceDetails()
     {
         throw new NotImplementedException();
     }

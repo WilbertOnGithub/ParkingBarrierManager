@@ -18,10 +18,6 @@ public static class InfrastructureServicesExtension
         IConfigurationSection databaseConfigurationSection = configuration.GetSection(nameof(databaseConfiguration));
         databaseConfigurationSection.Bind(databaseConfiguration);
 
-        var smsGatewayConfiguration = new SmsGatewayConfiguration();
-        IConfigurationSection smsGatewayConfigurationSection = configuration.GetSection(nameof(smsGatewayConfiguration));
-        smsGatewayConfigurationSection.Bind(smsGatewayConfiguration);
-
         services.AddTransient<IRepository, Repository>();
         services.AddTransient<ISmsGateway, MessageBirdGateway>();
 

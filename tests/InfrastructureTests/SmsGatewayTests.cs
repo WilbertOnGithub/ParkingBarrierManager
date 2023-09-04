@@ -43,9 +43,7 @@ public class SmsGatewayTests
     public void Gateway_can_retrieve_balance_with_development_api_key()
     {
         // Arrange
-        var configurationMock = fixture.Freeze<SmsGatewayConfiguration>();
-        configurationMock.ApiKey.Returns("B0TqcBYPhQWwSlTmyf3LRhQnN97k9rbY2o5Ct5cqr17qp9Zyct0ERGsUmZgNU1+S");
-
+        //fixture.Register(ISmsGateway, new MessageBirdGateway("B0TqcBYPhQWwSlTmyf3LRhQnN97k9rbY2o5Ct5cqr17qp9Zyct0ERGsUmZgNU1+S"));
         var sut = fixture.Create<SmsGatewayService>();
 
         // Act

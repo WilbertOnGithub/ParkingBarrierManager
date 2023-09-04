@@ -1,6 +1,4 @@
-﻿using System.Diagnostics.CodeAnalysis;
-
-namespace Arentheym.ParkingBarrier.Application;
+﻿namespace Arentheym.ParkingBarrier.Infrastructure.SmsGateway;
 
 public class SmsGatewayConfiguration
 {

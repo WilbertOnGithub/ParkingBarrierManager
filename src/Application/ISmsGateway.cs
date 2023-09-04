@@ -1,4 +1,4 @@
-﻿using Arentheym.ParkingBarrier.Domain;
+﻿using FluentResults;
 
 namespace Arentheym.ParkingBarrier.Application;
 
@@ -7,7 +7,7 @@ namespace Arentheym.ParkingBarrier.Application;
 /// </summary>
 public interface ISmsGateway
 {
-    void Send();
+    Result Send();
 
-    void GetBalanceDetails();
+    Result<string> GetBalance();
 }

@@ -5,7 +5,7 @@ using Arentheym.ParkingBarrier.Infrastructure.SmsGateway;
 using AutoFixture;
 using AutoFixture.AutoNSubstitute;
 using FluentAssertions;
-using NSubstitute;
+using FluentResults;
 using Xunit;
 
 namespace Arentheym.ParkingBarrier.Infrastructure.Tests;
@@ -40,15 +40,42 @@ public class SmsGatewayTests
     }
 
     [Fact]
-    public void Gateway_can_retrieve_balance_with_development_api_key()
+    public void Gateway_can_retrieve_balance_with_valid_key()
     {
         // Arrange
-        //fixture.Register(ISmsGateway, new MessageBirdGateway("B0TqcBYPhQWwSlTmyf3LRhQnN97k9rbY2o5Ct5cqr17qp9Zyct0ERGsUmZgNU1+S"));
+        fixture.Register<ISmsGateway>(() => new MessageBirdGateway(GetDevelopmentApiKey()));
         var sut = fixture.Create<SmsGatewayService>();
 
         // Act
-        sut.GetBalanceDetails();
+        Result<string> balance = sut.GetBalanceDetails();
 
         // Assert
+        balance.IsSuccess.Should().BeTrue();
+        balance.Value.Should().Be("credits 0");
+    }
+
+    [Fact]
+    public void Gateway_cannot_retrieve_balance_with_invalid_key()
+    {
+        // Arrange
+        string invalidKey = Guid.NewGuid().ToString();
+        fixture.Register<ISmsGateway>(() => new MessageBirdGateway(invalidKey));
+        var sut = fixture.Create<SmsGatewayService>();
+
+        // Act
+        Result<string> balance = sut.GetBalanceDetails();
+
+        // Assert
+        balance.IsFailed.Should().BeTrue();
+        balance.Errors.Count.Should().BeGreaterThan(0);
+    }
+
+    /// <summary>
+    /// Use this API Key in your test environment. It will return a response but
+    /// not work in production or deduct balance.
+    /// </summary>
+    private static string GetDevelopmentApiKey()
+    {
+        return "jKPmLsisXNsnqOV1RifH3jQwt";
     }
 }

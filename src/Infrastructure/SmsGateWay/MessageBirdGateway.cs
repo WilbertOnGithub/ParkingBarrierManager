@@ -1,5 +1,5 @@
 ﻿using Arentheym.ParkingBarrier.Application;
-using Arentheym.ParkingBarrier.Domain;
+using FluentResults;
 using MessageBird;
 using MessageBird.Exceptions;
 using MessageBird.Objects;
@@ -15,35 +15,39 @@ public class MessageBirdGateway : ISmsGateway
         client = Client.CreateDefault(apiKey);
     }
 
-    public void Send()
+    public Result Send()
     {
-        throw new NotImplementedException();
+        return Result.Ok();
     }
 
-    public void GetBalanceDetails()
+    public Result<string> GetBalance()
     {
         try
         {
-            Balance foo = client.Balance();
+            Balance balance = client.Balance();
+            return Result.Ok<string>($"{balance.Type} {balance.Amount}");
         }
         catch (ErrorException e)
         {
+            var errors = new List<IError>();
+
             // Either the request fails with error descriptions from the endpoint.
             if (e.HasErrors)
             {
-                /*
-                foreach (Error error in e.Errors)
+                foreach (MessageBird.Objects.Error error in e.Errors)
                 {
-                    Console.WriteLine("code: {0} description: '{1}' parameter: '{2}'", error.Code, error.Description, error.Parameter);
+                    errors.Add(new FluentResults.Error($"Code: {error.Code} Description: {error.Description} Parameter: {error.Parameter}"));
                 }
-                */
             }
 
-            // or fails without error information from the endpoint, in which case the reason contains a 'best effort' description.
+            // Or it fails without error information from the endpoint,
+            // in which case the reason contains a 'best effort' description.
             if (e.HasReason)
             {
-                Console.WriteLine(e.Reason);
+                errors.Add(new FluentResults.Error(e.Reason));
             }
+
+            return Result.Fail(errors);
         }
     }
 }

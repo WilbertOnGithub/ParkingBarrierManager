@@ -7,7 +7,6 @@ public class SmsGatewayService
 {
     private readonly ILogger<SmsGatewayService> logger;
     private readonly ISmsGateway smsGateway;
-    private readonly string apiKey;
 
     [SuppressMessage(
         "Design",
@@ -15,15 +14,10 @@ public class SmsGatewayService
         Justification = "Cannot be null due to dependency injection.")]
     public SmsGatewayService(
         ILogger<SmsGatewayService> logger,
-        SmsGatewayConfiguration configuration,
-        Encryptor encryptor,
         ISmsGateway smsGateway)
     {
         this.logger = logger;
         this.smsGateway = smsGateway;
-
-        // Decrypt the API key.
-        apiKey = encryptor.Decrypt(configuration.ApiKey);
     }
 
     public void GetBalanceDetails()

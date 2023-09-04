@@ -18,10 +18,15 @@ public static class InfrastructureServicesExtension
         IConfigurationSection databaseConfigurationSection = configuration.GetSection(nameof(databaseConfiguration));
         databaseConfigurationSection.Bind(databaseConfiguration);
 
-        services.AddTransient<IRepository, Repository>();
-        services.AddTransient<ISmsGateway, MessageBirdGateway>();
+        var smsGatewayConfiguration = new SmsGatewayConfiguration();
+        IConfigurationSection smsGatewayConfigurationSection = configuration.GetSection(nameof(smsGatewayConfiguration));
+        smsGatewayConfigurationSection.Bind(smsGatewayConfiguration);
 
-        //ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))
+        using var encryptor = new Encryptor();
+        string decryptedApiKey = encryptor.Decrypt(smsGatewayConfiguration.ApiKey);
+
+        services.AddSingleton<IRepository, Repository>();
+        services.AddSingleton<ISmsGateway, MessageBirdGateway>(_ => new MessageBirdGateway(decryptedApiKey));
         services.AddDbContext<DatabaseContext>(options =>
             options.UseSqlite(databaseConfiguration.ExpandedConnectionString));
     }

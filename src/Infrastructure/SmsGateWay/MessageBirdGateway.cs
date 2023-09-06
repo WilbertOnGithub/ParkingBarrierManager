@@ -49,7 +49,7 @@ public class MessageBirdGateway : ISmsGateway
         try
         {
             Balance balance = client.Balance();
-            return Result.Ok<string>($"{balance.Type} {balance.Amount}");
+            return Result.Ok<string>($"{balance.Amount} {balance.Type}");
         }
         catch (ErrorException ex)
         {

@@ -11,12 +11,12 @@ using Xunit;
 namespace Arentheym.ParkingBarrier.Infrastructure.Tests;
 
 [SuppressMessage("Naming", "CA1707:Identifiers should not contain underscores", Justification = "Unit testing naming")]
-public class SmsGatewayTests
+public class MessageBirdGatewayTests
 {
-    private readonly IFixture fixture = new Fixture().Customize(new AutoNSubstituteCustomization());
+    //private readonly IFixture fixture = new Fixture().Customize(new AutoNSubstituteCustomization());
 
     [Fact]
-    public void ApartmentConfiguration_is_converted_to_correct_format()
+    public void ApartmentConfiguration_is_converted_to_correct_sms_format()
     {
         // Arrange
         var configuration = new ApartmentConfiguration(
@@ -40,34 +40,47 @@ public class SmsGatewayTests
     }
 
     [Fact]
-    public void Gateway_can_retrieve_balance_with_valid_key()
+    public void MessageBird_can_retrieve_balance_with_valid_key()
     {
         // Arrange
-        fixture.Register<ISmsGateway>(() => new MessageBirdGateway(GetDevelopmentApiKey()));
-        var sut = fixture.Create<SmsGatewayService>();
+        var sut = new MessageBirdGateway(GetDevelopmentApiKey());
 
         // Act
-        Result<string> balance = sut.GetBalanceDetails();
+        Result<string> balance = sut.GetBalance();
 
         // Assert
         balance.IsSuccess.Should().BeTrue();
-        balance.Value.Should().Be("credits 0");
+        balance.Value.Should().Be("0 credits");
     }
 
     [Fact]
-    public void Gateway_cannot_retrieve_balance_with_invalid_key()
+    public void MessageBird_cannot_retrieve_balance_with_invalid_key()
     {
         // Arrange
         string invalidKey = Guid.NewGuid().ToString();
-        fixture.Register<ISmsGateway>(() => new MessageBirdGateway(invalidKey));
-        var sut = fixture.Create<SmsGatewayService>();
+        var sut = new MessageBirdGateway(invalidKey);
 
         // Act
-        Result<string> balance = sut.GetBalanceDetails();
+        Result<string> balance = sut.GetBalance();
 
         // Assert
         balance.IsFailed.Should().BeTrue();
         balance.Errors.Count.Should().BeGreaterThan(0);
+    }
+
+    [Fact]
+    public void MessageBird_can_send_sms_with_valid_key()
+    {
+        // Arrange
+        var sut = new MessageBirdGateway(GetDevelopmentApiKey());
+        var apartmentConfiguration = new ApartmentConfiguration(new ApartmentId(131));
+        apartmentConfiguration.UpsertPhoneNumber(new DivertPhoneNumber(DivertOrder.Primary, "311234567890"));
+        apartmentConfiguration.LinkIntercom(new Intercom("voor", new PhoneNumber("3113739851"), new MasterCode("1111")));
+
+        // Act
+        IList<Result> result = sut.SendSms(apartmentConfiguration);
+
+
     }
 
     /// <summary>

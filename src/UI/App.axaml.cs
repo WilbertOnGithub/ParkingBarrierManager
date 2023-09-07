@@ -36,7 +36,7 @@ public partial class App : Avalonia.Application
             BindingPlugins.DataValidators.RemoveAt(0);
 
             // Start the first view. Viewmodel is bound to datacontext in constructor of view.
-            var mainView = provider.GetRequiredService<MainWindow>();
+            var mainView = provider.GetRequiredService<MainView>();
             desktop.MainWindow = mainView;
         }
 

@@ -4,11 +4,11 @@ using CommunityToolkit.Mvvm.DependencyInjection;
 
 namespace Arentheym.ParkingBarrier.UI.Views;
 
-public partial class MainWindow : Window
+public partial class MainView : Window
 {
-    public MainWindow()
+    public MainView()
     {
         InitializeComponent();
-        DataContext = Ioc.Default.GetRequiredService<MainWindowViewModel>();
+        DataContext = Ioc.Default.GetRequiredService<MainViewModel>();
     }
 }

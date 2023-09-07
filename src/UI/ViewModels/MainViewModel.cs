@@ -11,7 +11,7 @@ using CommunityToolkit.Mvvm.Input;
 
 namespace Arentheym.ParkingBarrier.UI.ViewModels;
 
-public partial class MainWindowViewModel : ViewModelBase, IAsyncInitialization
+public partial class MainViewModel : ViewModelBase, IAsyncInitialization
 {
     private readonly DataService dataService;
     private IEnumerable<Intercom> availableIntercoms = Enumerable.Empty<Intercom>();
@@ -27,7 +27,7 @@ public partial class MainWindowViewModel : ViewModelBase, IAsyncInitialization
     public Task Initialization { get; }
 
     [SuppressMessage("Design", "CA1062:Validate arguments of public methods", Justification = "Dependency injection")]
-    public MainWindowViewModel(DataService dataService)
+    public MainViewModel(DataService dataService)
     {
         this.dataService = dataService;
         Initialization = InitializeAsync();

@@ -16,8 +16,8 @@ public static class UIServicesExtension
     {
         IConfiguration configuration = ReadConfiguration();
 
-        services.AddSingleton<MainWindow>();
-        services.AddSingleton<MainWindowViewModel>();
+        services.AddSingleton<MainView>();
+        services.AddSingleton<MainViewModel>();
         services.AddSingleton<StatusBarView>();
         services.AddSingleton<StatusBarViewModel>();
         services.AddSingleton<ApartmentConfigurationViewModel>();

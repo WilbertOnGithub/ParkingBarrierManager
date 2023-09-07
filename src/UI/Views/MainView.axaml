@@ -6,20 +6,20 @@
         xmlns:i18n="clr-namespace:Arentheym.Assets"
         xmlns:views="clr-namespace:Arentheym.Views"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-        x:Class="Arentheym.ParkingBarrier.UI.Views.MainWindow"
-        x:DataType="vm:MainWindowViewModel"
+        x:Class="Arentheym.ParkingBarrier.UI.Views.MainView"
+        x:DataType="vm:MainViewModel"
         Icon="/Assets/avalonia-logo.ico"
         Title="{x:Static i18n:Resources.ApplicationTitle}">
 
     <Design.DataContext>
         <!-- This only sets the DataContext for the previewer in an IDE,
              to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
-        <vm:MainWindowViewModel/>
+        <vm:MainViewModel/>
     </Design.DataContext>
-
 
     <Grid ShowGridLines="True">
         <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition Height="Auto"></RowDefinition>
         </Grid.RowDefinitions>
@@ -124,7 +124,9 @@
             </DataGrid.Columns>
             </DataGrid>
 
-        <views:StatusBarView/>
+        <StackPanel Grid.Row="2" Orientation="Horizontal">
+            <views:StatusBarView/>
+        </StackPanel>
 
     </Grid>
 

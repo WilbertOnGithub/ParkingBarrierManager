@@ -83,7 +83,7 @@ public class MessageBirdGatewayTests
         // Act
         IList<Result> result = sut.SendSms(apartmentConfiguration);
 
-
+        //TODO: Finish this test.
     }
 
     /// <summary>
@@ -92,6 +92,7 @@ public class MessageBirdGatewayTests
     /// </summary>
     private static string GetDevelopmentApiKey()
     {
+        // TODO: Replace actual (now no longer valid key) with injection through environment variable.
         return "jKPmLsisXNsnqOV1RifH3jQwt";
     }
 }

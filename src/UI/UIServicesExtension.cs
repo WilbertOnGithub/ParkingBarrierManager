@@ -2,6 +2,7 @@
 using Arentheym.ParkingBarrier.Infrastructure;
 using Arentheym.ParkingBarrier.UI.ViewModels;
 using Arentheym.ParkingBarrier.UI.Views;
+using Arentheym.Views;
 using Microsoft.Extensions.Configuration;
 using Serilog;
 
@@ -17,6 +18,8 @@ public static class UIServicesExtension
 
         services.AddSingleton<MainWindow>();
         services.AddSingleton<MainWindowViewModel>();
+        services.AddSingleton<StatusBarView>();
+        services.AddSingleton<StatusBarViewModel>();
         services.AddSingleton<ApartmentConfigurationViewModel>();
 
         services.RegisterApplicationServices(configuration);

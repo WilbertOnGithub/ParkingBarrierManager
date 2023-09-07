@@ -1,14 +1,28 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
+﻿using Arentheym.ParkingBarrier.Application;
+using CommunityToolkit.Mvvm.ComponentModel;
+using FluentResults;
 
 namespace Arentheym.ParkingBarrier.UI.ViewModels;
 
 public partial class StatusBarViewModel : ObservableObject
 {
-    [ObservableProperty]
-    private string text;
+    private readonly SmsGatewayService smsGatewayService;
 
-    public StatusBarViewModel()
+    [ObservableProperty]
+    private string remainingCredits = string.Empty;
+
+    public StatusBarViewModel(SmsGatewayService smsGatewayService)
     {
-        text = "Foobar";
+        this.smsGatewayService = smsGatewayService;
+
+        RetrieveCreditsFromGateway();
+    }
+
+    private void RetrieveCreditsFromGateway()
+    {
+        Result<string> result = smsGatewayService.GetBalanceDetails();
+        RemainingCredits = result.IsSuccess ?
+            result.Value :
+            "Error occurred while retrieving SMS balance.";
     }
 }

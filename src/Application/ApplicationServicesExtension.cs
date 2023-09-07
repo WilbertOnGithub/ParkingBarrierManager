@@ -11,7 +11,7 @@ public static class ApplicationServicesExtension
         ArgumentNullException.ThrowIfNull(configuration);
 
         services.AddSingleton<DataService>();
-        services.AddSingleton<SmsGatewayService>();
-        services.AddSingleton<Encryptor>();
+        services.AddTransient<SmsGatewayService>();
+        services.AddTransient<Encryptor>();
     }
 }

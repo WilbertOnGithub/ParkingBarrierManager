@@ -75,6 +75,9 @@ public class MessageBirdGatewayTests
         var sut = new MessageBirdGateway(GetDevelopmentApiKey());
         var apartmentConfiguration = new ApartmentConfiguration(new ApartmentId(131));
         apartmentConfiguration.UpsertPhoneNumber(new DivertPhoneNumber(DivertOrder.Primary, "311234567890"));
+        apartmentConfiguration.UpsertPhoneNumber(new DivertPhoneNumber(DivertOrder.Secondary, string.Empty));
+        apartmentConfiguration.UpsertPhoneNumber(new DivertPhoneNumber(DivertOrder.Tertiary, string.Empty));
+        apartmentConfiguration.UpsertPhoneNumber(new DivertPhoneNumber(DivertOrder.Quaternary, string.Empty));
         apartmentConfiguration.LinkIntercom(new Intercom("voor", new PhoneNumber("3113739851"), new MasterCode("1111")));
 
         // Act

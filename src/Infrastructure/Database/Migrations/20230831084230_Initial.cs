@@ -13,6 +13,8 @@ namespace Arentheym.Database.Migrations
     public partial class Initial : Migration
     {
         /// <inheritdoc />
+        [SuppressMessage("Performance", "CA1861:Avoid constant arrays as arguments",
+            Justification = "Code is only run once, not repeatedly.")]
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(

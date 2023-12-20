@@ -30,7 +30,8 @@ public static class InfrastructureServicesExtension
 
         services.AddDbContext<DatabaseContext>(options =>
         {
-            options.UseSqlite(databaseConfiguration.ExpandedConnectionString);
+            options.UseSqlite(databaseConfiguration.ExpandedConnectionString,
+                o => o.UseQuerySplittingBehavior(QuerySplittingBehavior.SplitQuery));
             if (Debugger.IsAttached)
             {
                 options.EnableSensitiveDataLogging();

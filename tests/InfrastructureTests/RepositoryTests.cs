@@ -23,7 +23,7 @@ public class RepositoryTests
         var repository = fixture.Create<Repository>();
 
         IList<ApartmentConfiguration> apartmentConfigurations =
-            await repository.GetApartmentConfigurationsAsync().ConfigureAwait(false);
+            await repository.GetApartmentConfigurationsAsync();
         var apartment131 = apartmentConfigurations.First(x => x.Id.Number == 131);
         apartment131.UpsertPhoneNumber(new DivertPhoneNumber(DivertOrder.Primary, "31 1234567890"));
 
@@ -31,7 +31,7 @@ public class RepositoryTests
         await repository.UpdateApartmentConfigurationsAsync(apartmentConfigurations);
 
         IList<ApartmentConfiguration> updatedList =
-            await repository.GetApartmentConfigurationsAsync().ConfigureAwait(false);
+            await repository.GetApartmentConfigurationsAsync();
 
         // Assert
         updatedList.First(x => x.Id.Number == 131).PhoneNumbers[0].Number.Should().Be("31 1234567890");

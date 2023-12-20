@@ -1,4 +1,5 @@
-﻿using Arentheym.ParkingBarrier.Application;
+﻿using System;
+using Arentheym.ParkingBarrier.Application;
 using Arentheym.ParkingBarrier.Infrastructure;
 using Arentheym.ParkingBarrier.UI.ViewModels;
 using Arentheym.ParkingBarrier.UI.Views;
@@ -37,6 +38,7 @@ public static class UIServicesExtension
     {
         return new ConfigurationBuilder()
             .AddJsonFile("appsettings.json", optional: false, reloadOnChange: false)
+            .AddJsonFile($"appsettings.{Environment.MachineName}.json", optional: true, reloadOnChange: false)
             .AddEnvironmentVariables()
             .Build();
     }

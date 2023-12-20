@@ -12,6 +12,5 @@ public static class ApplicationServicesExtension
 
         services.AddSingleton<DataService>();
         services.AddTransient<SmsGatewayService>();
-        services.AddTransient<Encryptor>();
     }
 }

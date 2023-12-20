@@ -28,7 +28,7 @@ public class DatabaseContext : DbContext
     /// Gets the <see cref="DbSet{Intercom}"/>.
     /// </summary>
     public virtual DbSet<Intercom> Intercoms => Set<Intercom>();
-    
+
     /// <summary>
     /// Apply configuration for this database context.
     /// </summary>

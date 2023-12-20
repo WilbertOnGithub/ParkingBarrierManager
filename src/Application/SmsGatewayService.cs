@@ -10,13 +10,15 @@ public class SmsGatewayService(ILogger<SmsGatewayService> logger, ISmsGateway ga
     {
         Result<string> result = gateway.GetBalance();
 
-        if (result.IsFailed)
+        if (!result.IsFailed)
         {
-            logger.LogError("Error while trying to retrieve SMS balance");
-            foreach (var error in result.Errors)
-            {
-                logger.LogError("{ErrorMessage}", error.Message);
-            }
+            return gateway.GetBalance();
+        }
+
+        logger.LogError("Error while trying to retrieve SMS balance");
+        foreach (var error in result.Errors)
+        {
+            logger.LogError("{ErrorMessage}", error.Message);
         }
         return gateway.GetBalance();
     }

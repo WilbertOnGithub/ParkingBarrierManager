@@ -31,7 +31,8 @@ internal sealed class ApartmentConfigurationConfiguration : IEntityTypeConfigura
                .HasConversion(x => x.Code, x => new AccessCode(x))
                .ValueGeneratedNever();
 
-        builder.Property(p => p.DialToOpen).HasColumnName("DialToOpen");
+        builder.Property(p => p.DialToOpen)
+               .HasColumnName(nameof(ApartmentConfiguration.DialToOpen));
 
         // Uni-directional many to many relationship without having to
         // specify a mapping entity.

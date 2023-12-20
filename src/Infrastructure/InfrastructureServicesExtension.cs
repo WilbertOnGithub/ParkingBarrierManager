@@ -23,11 +23,7 @@ public static class InfrastructureServicesExtension
         IConfigurationSection smsGatewayConfigurationSection = configuration.GetSection(nameof(smsGatewayConfiguration));
         smsGatewayConfigurationSection.Bind(smsGatewayConfiguration);
 
-        // Decrypt the MessageBird API key before using it to correctly register the SMS gateway.
-        using var encryptor = new Encryptor();
-        string decryptedApiKey = encryptor.Decrypt(smsGatewayConfiguration.ApiKey);
-        services.AddSingleton<ISmsGateway, MessageBirdGateway>(_ => new MessageBirdGateway(decryptedApiKey));
-
+        services.AddSingleton<ISmsGateway, MessageBirdGateway>(_ => new MessageBirdGateway(smsGatewayConfiguration.ApiKey));
         services.AddSingleton<IRepository, Repository>();
         services.AddDbContext<DatabaseContext>(options =>
             options.UseSqlite(databaseConfiguration.ExpandedConnectionString));

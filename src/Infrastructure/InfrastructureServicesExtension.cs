@@ -1,7 +1,9 @@
-﻿using Arentheym.ParkingBarrier.Application;
+﻿using System.Diagnostics;
+using Arentheym.ParkingBarrier.Application;
 using Arentheym.ParkingBarrier.Infrastructure.Database;
 using Arentheym.ParkingBarrier.Infrastructure.SmsGateway;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Diagnostics;
 using Microsoft.Extensions.Configuration;
 
 namespace Arentheym.ParkingBarrier.Infrastructure;
@@ -25,7 +27,14 @@ public static class InfrastructureServicesExtension
 
         services.AddSingleton<ISmsGateway, MessageBirdGateway>(_ => new MessageBirdGateway(smsGatewayConfiguration.ApiKey));
         services.AddSingleton<IRepository, Repository>();
+
         services.AddDbContext<DatabaseContext>(options =>
-            options.UseSqlite(databaseConfiguration.ExpandedConnectionString));
+        {
+            options.UseSqlite(databaseConfiguration.ExpandedConnectionString);
+            if (Debugger.IsAttached)
+            {
+                options.EnableSensitiveDataLogging();
+            }
+        });
     }
 }

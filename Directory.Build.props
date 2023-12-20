@@ -5,7 +5,7 @@
         <Authors>Wilbert van Dolleweerd</Authors>
         <Description>Parking Barrier Manager</Description>
 
-        <TargetFramework>net7.0</TargetFramework>
+        <TargetFramework>net8.0</TargetFramework>
         <LangVersion>latest</LangVersion>
         <RootNamespace>Arentheym</RootNamespace>
 

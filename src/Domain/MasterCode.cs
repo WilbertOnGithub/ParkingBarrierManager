@@ -17,7 +17,7 @@ public partial class MasterCode : ValueObject
     {
         if (!MasterCodeRegEx().IsMatch(code))
         {
-            throw new ArgumentException("A master code must be exactly 4 digits.");
+            throw new ArgumentException("A master code must have exactly 4 digits.");
         }
 
         Code = code;

@@ -2,15 +2,8 @@
 
 namespace Arentheym.ParkingBarrier.Application;
 
-public class DataService
+public class DataService(IRepository repository)
 {
-    private readonly IRepository repository;
-
-    public DataService(IRepository repository)
-    {
-        this.repository = repository;
-    }
-
     public async Task<IEnumerable<ApartmentConfiguration>> GetApartmentConfigurations()
     {
         return await repository.GetApartmentConfigurationsAsync().ConfigureAwait(false);

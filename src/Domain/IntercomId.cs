@@ -10,7 +10,7 @@ public class IntercomId : ValueObject
     /// <summary>
     /// Initializes a new instance of the <see cref="IntercomId"/> class.
     /// </summary>
-    /// <param name="guid">The value of the identifier.</param>
+    /// <param name="id">The value of the identifier.</param>
     public IntercomId(Guid id)
     {
         Id = id;

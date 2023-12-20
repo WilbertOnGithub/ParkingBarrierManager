@@ -8,31 +8,23 @@ namespace Arentheym.ParkingBarrier.Infrastructure.SmsGateway;
 /// <summary>
 /// The SMS command to update the configuration for an apartment.
 /// </summary>
-internal class UpdateConfigurationCommand
+internal class UpdateConfigurationCommand(MasterCode code, ApartmentConfiguration configuration)
 {
-    private readonly MasterCode masterCode;
-    private readonly ApartmentConfiguration apartmentConfiguration;
-    public UpdateConfigurationCommand(MasterCode masterCode, ApartmentConfiguration apartmentConfiguration)
-    {
-        this.masterCode = masterCode;
-        this.apartmentConfiguration = apartmentConfiguration;
-    }
-
     public override string ToString()
     {
         var sb = new StringBuilder();
 
-        string name = apartmentConfiguration.DisplayName.Replace(" ", ">", StringComparison.InvariantCulture);
+        string name = configuration.DisplayName.Replace(" ", ">", StringComparison.InvariantCulture);
 
-        sb.Append(CultureInfo.InvariantCulture, $"{masterCode.Code}");
-        sb.Append(CultureInfo.InvariantCulture, $"MEM{apartmentConfiguration.MemoryLocation}");
+        sb.Append(CultureInfo.InvariantCulture, $"{code.Code}");
+        sb.Append(CultureInfo.InvariantCulture, $"MEM{configuration.MemoryLocation}");
         for (int i = 0; i < 4; i++)
         {
-            sb.Append(CultureInfo.InvariantCulture, $"\"{apartmentConfiguration.PhoneNumbers[i].Number}\",");
+            sb.Append(CultureInfo.InvariantCulture, $"\"{configuration.PhoneNumbers[i].Number}\",");
         }
-        sb.Append(CultureInfo.InvariantCulture, $"\"{apartmentConfiguration.Id.Number}\",");
-        sb.Append(CultureInfo.InvariantCulture, $"\"{apartmentConfiguration.AccessCode.Code}\",");
-        sb.Append(CultureInfo.InvariantCulture, $"{(apartmentConfiguration.DialToOpen ? 1 : 0)},");
+        sb.Append(CultureInfo.InvariantCulture, $"\"{configuration.Id.Number}\",");
+        sb.Append(CultureInfo.InvariantCulture, $"\"{configuration.AccessCode.Code}\",");
+        sb.Append(CultureInfo.InvariantCulture, $"{(configuration.DialToOpen ? 1 : 0)},");
         sb.Append(CultureInfo.InvariantCulture, $"0,");
         sb.Append(CultureInfo.InvariantCulture, $"\"{name}\"");
 

@@ -16,7 +16,7 @@ public partial class PhoneNumber : ValueObject
     {
         if (!PhoneNumberRegex().IsMatch(number))
         {
-            throw new ArgumentException("Phone number can be empty or a valid country code followed by up to 15 digits.");
+            throw new ArgumentException("Phone number must be empty or a valid country code followed by up to 15 digits. Ie. 311234567890");
         }
 
         Number = number;
@@ -42,7 +42,7 @@ public partial class PhoneNumber : ValueObject
     }
 
     /// <summary>
-    /// Regular expression for validating a phone number with a land code. Has the following parts:
+    /// Regular expression for validating a phone number with a country code. Has the following parts:
     /// - Country code as defined in <see cref="https://nl.wikipedia.org/wiki/Lijst_van_landnummers_in_de_telefonie_op_nummervolgorde"/>
     /// - optional whitespace
     /// - Phone number consisting of minimum 1 and maximum 15 digits.

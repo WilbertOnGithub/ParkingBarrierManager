@@ -18,7 +18,7 @@ public class RepositoryTests
     public async Task Updating_phoneNumber_saves_it_in_database()
     {
         // Arrange
-        using DatabaseContext databaseContext = await CreateTemporaryDatabaseContext();
+        await using DatabaseContext databaseContext = await CreateTemporaryDatabaseContext();
         fixture.Inject(databaseContext);
         var repository = fixture.Create<Repository>();
 

@@ -4,32 +4,25 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Arentheym.ParkingBarrier.Infrastructure.Database;
 
-public class Repository : IRepository
+public class Repository(DatabaseContext context) : IRepository
 {
-    private readonly DatabaseContext databaseContext;
-
-    public Repository(DatabaseContext databaseContext)
-    {
-        this.databaseContext = databaseContext;
-    }
-
     public async Task<IList<Intercom>> GetIntercomsAsync()
     {
-        return await databaseContext.Intercoms.OrderBy(x => x.Name)
-                                              .AsNoTracking()
-                                              .ToListAsync()
-                                              .ConfigureAwait(false);
+        return await context.Intercoms.OrderBy(x => x.Name)
+            .AsNoTracking()
+            .ToListAsync()
+            .ConfigureAwait(false);
     }
 
     public async Task<IList<ApartmentConfiguration>> GetApartmentConfigurationsAsync()
     {
-        return await databaseContext.ApartmentConfigurations
-                                    .Include(x => x.PhoneNumbers)
-                                    .Include(x => x.Intercoms)
-                                    .OrderBy(x => x.Id)
-                                    .AsNoTracking()
-                                    .ToListAsync()
-                                    .ConfigureAwait(false);
+        return await context.ApartmentConfigurations
+            .Include(x => x.PhoneNumbers)
+            .Include(x => x.Intercoms)
+            .OrderBy(x => x.Id)
+            .AsNoTracking()
+            .ToListAsync()
+            .ConfigureAwait(false);
     }
 
     /// <summary>
@@ -40,26 +33,26 @@ public class Repository : IRepository
     {
         ArgumentNullException.ThrowIfNull(modifiedApartmentConfigurations);
 
-        var existingIntercoms = await databaseContext.Intercoms.ToListAsync().ConfigureAwait(false);
+        var existingIntercoms = await context.Intercoms.ToListAsync().ConfigureAwait(false);
         foreach (var apartmentConfiguration in modifiedApartmentConfigurations)
         {
             UpdateApartmentConfiguration(apartmentConfiguration, existingIntercoms);
         }
 
-        await databaseContext.SaveChangesAsync().ConfigureAwait(false);
+        await context.SaveChangesAsync().ConfigureAwait(false);
     }
 
     private void UpdateApartmentConfiguration(
         ApartmentConfiguration apartmentConfiguration,
         List<Intercom> existingIntercoms)
     {
-        var existingEntry = databaseContext.ApartmentConfigurations
+        var existingEntry = context.ApartmentConfigurations
             .Include(x => x.PhoneNumbers)
             .Include(x => x.Intercoms)
             .First(x => x.Id == apartmentConfiguration.Id);
 
         // Update existing ApartmentConfiguration object.
-        databaseContext.Entry(existingEntry).CurrentValues.SetValues(apartmentConfiguration);
+        context.Entry(existingEntry).CurrentValues.SetValues(apartmentConfiguration);
 
         // Update all owned phone numbers.
         foreach (var phoneNumber in apartmentConfiguration.PhoneNumbers)

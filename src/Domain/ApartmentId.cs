@@ -5,7 +5,7 @@ namespace Arentheym.ParkingBarrier.Domain;
 /// <summary>
 /// The unique identifier for an <see cref="ApartmentConfiguration"/>
 /// </summary>
-public partial class ApartmentId : ValueObject
+public class ApartmentId : ValueObject
 {
     /// <summary>
     /// Initializes a new instance of the <see cref="ApartmentId"/> class.
@@ -13,9 +13,12 @@ public partial class ApartmentId : ValueObject
     /// <param name="number">The number of the apartment.</param>
     public ApartmentId(int number)
     {
-        if (number is < 51 or > 189)
+        const int lowestApartmentNumber = 51;
+        const int highestApartmentNumber = 189;
+        if (number is < lowestApartmentNumber or > highestApartmentNumber)
         {
-            throw new ArgumentException("Expecting number to be between 51 and 189.");
+            throw new ArgumentException(
+                $"Expecting number to be between {lowestApartmentNumber} and {highestApartmentNumber}.");
         }
         Number = number;
     }

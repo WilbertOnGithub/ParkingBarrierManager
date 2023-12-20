@@ -9,14 +9,9 @@ using MessageBird.Objects;
 
 namespace Arentheym.ParkingBarrier.Infrastructure.SmsGateway;
 
-public class MessageBirdGateway : ISmsGateway
+public class MessageBirdGateway(string apiKey) : ISmsGateway
 {
-    private readonly Client client;
-
-    public MessageBirdGateway(string apiKey)
-    {
-        client = Client.CreateDefault(apiKey);
-    }
+    private readonly Client client = Client.CreateDefault(apiKey);
 
     public IList<Result> SendSms(ApartmentConfiguration apartmentConfiguration)
     {
@@ -67,10 +62,8 @@ public class MessageBirdGateway : ISmsGateway
         // Either the request fails with error descriptions from the endpoint.
         if (ex.HasErrors)
         {
-            foreach (MessageBird.Objects.Error error in ex.Errors)
-            {
-                errors.Add(new FluentResults.Error($"Code: {error.Code} Description: {error.Description} Parameter: {error.Parameter}"));
-            }
+            errors.AddRange(ex.Errors.Select(
+                error => new FluentResults.Error($"Code: {error.Code} Description: {error.Description} Parameter: {error.Parameter}")));
         }
 
         // Or it fails without error information from the endpoint,

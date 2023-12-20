@@ -4,20 +4,11 @@ using Microsoft.Extensions.Logging;
 
 namespace Arentheym.ParkingBarrier.Application;
 
-public class SmsGatewayService
+public class SmsGatewayService(ILogger<SmsGatewayService> logger, ISmsGateway gateway)
 {
-    private readonly ILogger<SmsGatewayService> logger;
-    private readonly ISmsGateway smsGateway;
-
-    public SmsGatewayService(ILogger<SmsGatewayService> logger, ISmsGateway smsGateway)
-    {
-        this.logger = logger;
-        this.smsGateway = smsGateway;
-    }
-
     public Result<string> GetBalanceDetails()
     {
-        Result<string> result = smsGateway.GetBalance();
+        Result<string> result = gateway.GetBalance();
 
         if (result.IsFailed)
         {
@@ -27,6 +18,6 @@ public class SmsGatewayService
                 logger.LogError("{ErrorMessage}", error.Message);
             }
         }
-        return smsGateway.GetBalance();
+        return gateway.GetBalance();
     }
 }

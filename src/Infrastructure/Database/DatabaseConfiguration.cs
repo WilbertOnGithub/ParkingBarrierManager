@@ -9,12 +9,7 @@ public class DatabaseConfiguration
     /// </summary>
     public string ConnectionString { get; set; } = string.Empty;
 
-    public string ExpandedConnectionString
-    {
-        get
-        {
-            return ConnectionString.Replace("%APPDATA%",
-                Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), StringComparison.InvariantCulture);
-        }
-    }
+    public string ExpandedConnectionString =>
+        ConnectionString.Replace("%APPDATA%",
+            Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), StringComparison.InvariantCulture);
 }

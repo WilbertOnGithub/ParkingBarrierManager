@@ -15,9 +15,12 @@ public class MemoryLocation : ValueObject
     /// <param name="location">The number of the memory location.</param>
     public MemoryLocation(short location)
     {
-        if (location is < 0 or > 499)
+        const short lowestMemoryLocation = 0;
+        const short highestMemoryLocation = 499;
+        if (location is < lowestMemoryLocation or > highestMemoryLocation)
         {
-            throw new ArgumentException("Memory location must be between 0-499.");
+            throw new ArgumentException(
+                $"Memory location must be between {lowestMemoryLocation}-{highestMemoryLocation}.");
         }
 
         Location = location;

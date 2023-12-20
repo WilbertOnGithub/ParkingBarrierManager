@@ -1,4 +1,5 @@
-﻿using System.Globalization;
+﻿using System.Diagnostics.CodeAnalysis;
+using System.Globalization;
 using Arentheym.ParkingBarrier.Application;
 using Arentheym.ParkingBarrier.Domain;
 using FluentResults;
@@ -57,6 +58,8 @@ public class MessageBirdGateway : ISmsGateway
         }
     }
 
+    [SuppressMessage("Performance", "CA1859:Use concrete types when possible for improved performance",
+        Justification = "Performance not a concern")]
     private static IList<IError> CompileErrorList(ErrorException ex)
     {
         var errors = new List<IError>();

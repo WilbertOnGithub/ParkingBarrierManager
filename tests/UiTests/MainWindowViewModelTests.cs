@@ -129,9 +129,11 @@ public class MainWindowViewModelTests
         afterSave.Should().BeFalse("because all the changes have been saved and this is the new situation.");
     }
 
+    [SuppressMessage("Performance", "CA1859:Use concrete types when possible for improved performance",
+        Justification = "Performance not critical")]
     private static IList<ApartmentConfiguration> GetDefaultConfigurations()
     {
-        IList<ApartmentConfiguration> configurations = new List<ApartmentConfiguration>();
+        var configurations = new List<ApartmentConfiguration>();
         var apartmentConfiguration = new ApartmentConfiguration(new ApartmentId(51));
         apartmentConfiguration.UpsertPhoneNumber(new DivertPhoneNumber(DivertOrder.Primary, string.Empty));
         apartmentConfiguration.UpsertPhoneNumber(new DivertPhoneNumber(DivertOrder.Secondary, string.Empty));
@@ -142,11 +144,15 @@ public class MainWindowViewModelTests
         return configurations;
     }
 
+    [SuppressMessage("Performance", "CA1859:Use concrete types when possible for improved performance",
+        Justification = "Performance not critical")]
     private static IList<Intercom> GetDefaultIntercoms()
     {
-        IList<Intercom> intercoms = new List<Intercom>();
-        intercoms.Add(new Intercom("voor", new PhoneNumber("1234567890"), new MasterCode("1111")));
-        intercoms.Add(new Intercom("achter", new PhoneNumber("1234567890"), new MasterCode("1111")));
+        var intercoms = new List<Intercom>
+        {
+            new ("voor", new PhoneNumber("1234567890"), new MasterCode("1111")),
+            new ("achter", new PhoneNumber("1234567890"), new MasterCode("1111"))
+        };
 
         return intercoms;
     }

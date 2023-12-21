@@ -27,3 +27,6 @@ BenchmarkDotNet.Artifacts/
 
 # JetBrains Rider
 *.sln.iml
+
+# Nuke temporary files
+.nuke/temp

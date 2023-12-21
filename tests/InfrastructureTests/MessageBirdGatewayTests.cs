@@ -41,7 +41,7 @@ public class MessageBirdGatewayTests
     [SkippableFact]
     public void MessageBird_can_retrieve_balance_with_valid_key()
     {
-        Skip.If(string.IsNullOrEmpty(GetDevelopmentApiKey()));
+        Skip.If(string.IsNullOrEmpty(GetDevelopmentApiKey().ApiKey));
 
         // Arrange
         var sut = new MessageBirdGateway(GetDevelopmentApiKey());
@@ -57,8 +57,10 @@ public class MessageBirdGatewayTests
     public void MessageBird_cannot_retrieve_balance_with_invalid_key()
     {
         // Arrange
-        string invalidKey = Guid.NewGuid().ToString(); // Create invalid key
-        var sut = new MessageBirdGateway(invalidKey);
+        var sut = new MessageBirdGateway(new SmsGatewayConfiguration()
+        {
+            ApiKey = Guid.NewGuid().ToString() // Create invalid key
+        });
 
         // Act
         Result<string> balance = sut.GetBalance();
@@ -71,7 +73,7 @@ public class MessageBirdGatewayTests
     [SkippableFact]
     public void MessageBird_can_send_sms_with_valid_key()
     {
-        Skip.If(string.IsNullOrEmpty(GetDevelopmentApiKey()));
+        Skip.If(string.IsNullOrEmpty(GetDevelopmentApiKey().ApiKey));
 
         // Arrange
         var sut = new MessageBirdGateway(GetDevelopmentApiKey());
@@ -95,7 +97,7 @@ public class MessageBirdGatewayTests
     /// When adding a configuration as an environment variable <see cref="SmsGatewayConfiguration"/>
     /// you need the syntax 'SmsGatewayConfiguration:ApiKey=value'.
     /// </remarks>
-    private static string GetDevelopmentApiKey()
+    private static SmsGatewayConfiguration GetDevelopmentApiKey()
     {
         IConfigurationRoot configuration = new ConfigurationBuilder().AddEnvironmentVariables().Build();
 
@@ -103,6 +105,6 @@ public class MessageBirdGatewayTests
         IConfigurationSection smsGatewayConfigurationSection = configuration.GetSection(nameof(smsGatewayConfiguration));
         smsGatewayConfigurationSection.Bind(smsGatewayConfiguration);
 
-        return smsGatewayConfiguration.ApiKey;
+        return smsGatewayConfiguration;
     }
 }

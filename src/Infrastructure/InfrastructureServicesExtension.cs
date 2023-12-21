@@ -25,7 +25,8 @@ public static class InfrastructureServicesExtension
         IConfigurationSection smsGatewayConfigurationSection = configuration.GetSection(nameof(smsGatewayConfiguration));
         smsGatewayConfigurationSection.Bind(smsGatewayConfiguration);
 
-        services.AddSingleton<ISmsGateway, MessageBirdGateway>(_ => new MessageBirdGateway(smsGatewayConfiguration.ApiKey));
+        services.AddSingleton(smsGatewayConfiguration);
+        services.AddSingleton<ISmsGateway, MessageBirdGateway>();
         services.AddSingleton<IRepository, Repository>();
 
         services.AddDbContext<DatabaseContext>(options =>

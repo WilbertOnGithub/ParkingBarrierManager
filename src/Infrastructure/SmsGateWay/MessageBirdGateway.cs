@@ -9,9 +9,9 @@ using MessageBird.Objects;
 
 namespace Arentheym.ParkingBarrier.Infrastructure.SmsGateway;
 
-public class MessageBirdGateway(string apiKey) : ISmsGateway
+public class MessageBirdGateway(SmsGatewayConfiguration configuration) : ISmsGateway
 {
-    private readonly Client client = Client.CreateDefault(apiKey);
+    private readonly Client client = Client.CreateDefault(configuration.ApiKey);
 
     public IList<Result> SendSms(ApartmentConfiguration apartmentConfiguration)
     {
@@ -29,6 +29,7 @@ public class MessageBirdGateway(string apiKey) : ISmsGateway
             try
             {
                 Message message = client.SendMessage(sender, body, recipients);
+
                 results.Add(Result.Ok());
             }
             catch (ErrorException ex)

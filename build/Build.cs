@@ -7,7 +7,10 @@ using Nuke.Common.IO;
 using Nuke.Common.ProjectModel;
 using Nuke.Common.Tooling;
 using Nuke.Common.Tools.DotNet;
+using Nuke.Common.Tools.Xunit;
 using Nuke.Common.Utilities.Collections;
+
+using static Nuke.Common.Tools.DotNet.DotNetTasks;
 using static Nuke.Common.EnvironmentInfo;
 using static Nuke.Common.IO.FileSystemTasks;
 using static Nuke.Common.IO.PathConstruction;
@@ -23,11 +26,13 @@ class Build : NukeBuild
     readonly Solution Solution;
 
     AbsolutePath SourceDirectory => RootDirectory / "src";
+    AbsolutePath TestResultsDirectory => RootDirectory / "TestResults";
 
     Target Clean => _ => _
         .Before(Restore)
         .Executes(() =>
         {
+            TestResultsDirectory.CreateOrCleanDirectory();
             SourceDirectory
                 .GlobDirectories("**/{obj,bin}")
                 .DeleteDirectories();
@@ -36,7 +41,7 @@ class Build : NukeBuild
     Target Restore => _ => _
         .Executes(() =>
         {
-            DotNetTasks.DotNetRestore(s => s
+            DotNetRestore(s => s
                 .SetProjectFile(Solution));
         });
 
@@ -45,7 +50,16 @@ class Build : NukeBuild
         .DependsOn(Clean)
         .Executes(() =>
         {
-            DotNetTasks.DotNetBuild(s => s
+            DotNetBuild(s => s
+                .SetProjectFile(Solution)
+                .SetConfiguration(Configuration));
+        });
+
+    Target Tests => _ => _
+        .DependsOn(Compile)
+        .Executes(() =>
+        {
+            DotNetTest(s => s
                 .SetProjectFile(Solution)
                 .SetConfiguration(Configuration));
         });

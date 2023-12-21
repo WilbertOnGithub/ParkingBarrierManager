@@ -6,6 +6,7 @@ using AutoFixture;
 using AutoFixture.AutoNSubstitute;
 using FluentAssertions;
 using FluentResults;
+using Microsoft.Extensions.Configuration;
 using Xunit;
 
 namespace Arentheym.ParkingBarrier.Infrastructure.Tests;
@@ -13,8 +14,6 @@ namespace Arentheym.ParkingBarrier.Infrastructure.Tests;
 [SuppressMessage("Naming", "CA1707:Identifiers should not contain underscores", Justification = "Unit testing naming")]
 public class MessageBirdGatewayTests
 {
-    //private readonly IFixture fixture = new Fixture().Customize(new AutoNSubstituteCustomization());
-
     [Fact]
     public void ApartmentConfiguration_is_converted_to_correct_sms_format()
     {
@@ -39,9 +38,11 @@ public class MessageBirdGatewayTests
         result.Should().Be("1234MEM051\"1234567890\",\"2234567890\",\"3234567890\",\"4234567890\",\"51\",\"0000\",1,0,\"display>name\"");
     }
 
-    [Fact]
+    [SkippableFact]
     public void MessageBird_can_retrieve_balance_with_valid_key()
     {
+        Skip.If(string.IsNullOrEmpty(GetDevelopmentApiKey()));
+
         // Arrange
         var sut = new MessageBirdGateway(GetDevelopmentApiKey());
 
@@ -50,14 +51,13 @@ public class MessageBirdGatewayTests
 
         // Assert
         balance.IsSuccess.Should().BeTrue();
-        balance.Value.Should().Be("0 credits");
     }
 
     [Fact]
     public void MessageBird_cannot_retrieve_balance_with_invalid_key()
     {
         // Arrange
-        string invalidKey = Guid.NewGuid().ToString();
+        string invalidKey = Guid.NewGuid().ToString(); // Create invalid key
         var sut = new MessageBirdGateway(invalidKey);
 
         // Act
@@ -68,11 +68,14 @@ public class MessageBirdGatewayTests
         balance.Errors.Count.Should().BeGreaterThan(0);
     }
 
-    [Fact]
+    [SkippableFact]
     public void MessageBird_can_send_sms_with_valid_key()
     {
+        Skip.If(string.IsNullOrEmpty(GetDevelopmentApiKey()));
+
         // Arrange
         var sut = new MessageBirdGateway(GetDevelopmentApiKey());
+
         var apartmentConfiguration = new ApartmentConfiguration(new ApartmentId(131));
         apartmentConfiguration.UpsertPhoneNumber(new DivertPhoneNumber(DivertOrder.Primary, "311234567890"));
         apartmentConfiguration.UpsertPhoneNumber(new DivertPhoneNumber(DivertOrder.Secondary, string.Empty));
@@ -82,17 +85,24 @@ public class MessageBirdGatewayTests
 
         // Act
         IList<Result> result = sut.SendSms(apartmentConfiguration);
-
-        //TODO: Finish this test.
+        result.All(x => x.IsSuccess).Should().BeTrue();
     }
 
     /// <summary>
-    /// Use this API Key in your test environment. It will return a response but
-    /// not work in production or deduct balance.
+    /// Try to retrieve API key that should be injected using environment variables.
     /// </summary>
+    /// <remarks>
+    /// When adding a configuration as an environment variable <see cref="SmsGatewayConfiguration"/>
+    /// you need the syntax 'SmsGatewayConfiguration:ApiKey=value'.
+    /// </remarks>
     private static string GetDevelopmentApiKey()
     {
-        // TODO: Replace actual (now no longer valid key) with injection through environment variable.
-        return "jKPmLsisXNsnqOV1RifH3jQwt";
+        IConfigurationRoot configuration = new ConfigurationBuilder().AddEnvironmentVariables().Build();
+
+        var smsGatewayConfiguration = new SmsGatewayConfiguration();
+        IConfigurationSection smsGatewayConfigurationSection = configuration.GetSection(nameof(smsGatewayConfiguration));
+        smsGatewayConfigurationSection.Bind(smsGatewayConfiguration);
+
+        return smsGatewayConfiguration.ApiKey;
     }
 }

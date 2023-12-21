@@ -18,7 +18,7 @@ public class DependenciesTests
     {
         var path = "../../../../../src/UI/bin/";
         path += Debugger.IsAttached ? "Debug" : "Release";
-        path += "/net7.0/";
+        path += "/net8.0/";
         path = Fallback(Path.GetFullPath(path));
 
         uiAssembly = Assembly.LoadFile(Path.Combine(path, "UI.dll"));

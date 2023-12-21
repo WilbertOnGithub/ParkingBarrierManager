@@ -21,14 +21,14 @@ public class MessageBirdGateway(string apiKey) : ISmsGateway
         // Create a separate SMS for each intercom.
         foreach (var intercom in apartmentConfiguration.Intercoms)
         {
-            long[] phoneNumber = { Convert.ToInt64(intercom.PhoneNumber.Number, CultureInfo.InvariantCulture) };
-            string originator = "MessageBird";
+            long[] recipients = [Convert.ToInt64(intercom.PhoneNumber.Number, CultureInfo.InvariantCulture)];
+            string sender = "MessageBird";
             string body = new UpdateConfigurationCommand(
                 intercom.MasterCode, apartmentConfiguration).ToString();
 
             try
             {
-                Message message = client.SendMessage(originator, body, phoneNumber);
+                Message message = client.SendMessage(sender, body, recipients);
                 results.Add(Result.Ok());
             }
             catch (ErrorException ex)

@@ -81,7 +81,7 @@ public class MessageBirdGatewayTests
         apartmentConfiguration.UpsertPhoneNumber(new DivertPhoneNumber(DivertOrder.Secondary, string.Empty));
         apartmentConfiguration.UpsertPhoneNumber(new DivertPhoneNumber(DivertOrder.Tertiary, string.Empty));
         apartmentConfiguration.UpsertPhoneNumber(new DivertPhoneNumber(DivertOrder.Quaternary, string.Empty));
-        apartmentConfiguration.LinkIntercom(new Intercom("voor", new PhoneNumber("3113739851"), new MasterCode("1111")));
+        apartmentConfiguration.LinkIntercom(new Intercom("voor", new PhoneNumber("31613739851"), new MasterCode("1111")));
 
         // Act
         IList<Result> result = sut.SendSms(apartmentConfiguration);

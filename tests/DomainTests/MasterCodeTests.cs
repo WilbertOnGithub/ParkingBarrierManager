@@ -12,24 +12,26 @@ public class MasterCodeTests
     [InlineData("abcd")]
     public void AccessCode_is_invalid_if_it_does_not_have_4_digits(string potentialMasterCode)
     {
+        // Arrange / Act
         Action act = () =>
         {
             _ = new MasterCode(potentialMasterCode);
         };
 
-        // Act / Assert
+        // Assert
         act.Should().Throw<ArgumentException>("because this is not a valid MasterCode.");
     }
 
     [Fact]
     public void AccessCode_is_valid_with_exactly_4_digits()
     {
+        // Arrange / Act
         Action act = () =>
         {
             _ = new MasterCode("1234");
         };
 
-        // Act / Assert
+        // Assert
         act.Should().NotThrow<ArgumentException>("because this is a valid MasterCode.");
     }
 }

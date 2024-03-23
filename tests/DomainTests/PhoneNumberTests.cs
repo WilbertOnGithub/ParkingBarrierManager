@@ -6,16 +6,16 @@ namespace Arentheym.ParkingBarrier.Domain.Tests;
 public class PhoneNumberTests
 {
     [Theory]
-    [ClassData(typeof(ValidCountryCodesTestData))]
-    public void Valid_PhoneNumbers(string phoneNumber)
+    [ClassData(typeof(ValidPhoneNumbersTestData))]
+    public void PhoneNumbers_with_valid_country_codes_should_not_throw_exception(string phoneNumber)
     {
-        // Arrange
+        // Arrange / Act
         Action act = () =>
         {
             _ = new PhoneNumber(phoneNumber);
         };
 
-        // Act / Assert
+        // Assert
         act.Should().NotThrow<ArgumentException>("because this is a valid phone number.");
     }
 }

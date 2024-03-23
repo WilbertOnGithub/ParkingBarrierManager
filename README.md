@@ -13,6 +13,9 @@ PBM is used to:
 
 - Maintain a list of all apartment information for both intercoms (name, apartment number, etc).
 - Maintain a list of all the phone numbers configured for each apartment
-- Maintain the configuration of both intercoms (access codes)
+- Maintain the configuration of both intercoms (access codes and phone numbers)
 - When changing the configuration for an apartment, BRS can send a SMS to the intercom to use the newly configured
   values.
+
+When running the application for the first time, a SQLITE database will be created according to
+the settings in appsettings.json.

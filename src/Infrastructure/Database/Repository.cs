@@ -39,6 +39,11 @@ public class Repository(DatabaseContext context) : IRepository
         await context.SaveChangesAsync().ConfigureAwait(false);
     }
 
+    public Task UpdateIntercomsAsync(IList<Intercom> modifiedIntercoms)
+    {
+        throw new NotImplementedException();
+    }
+
     private void UpdateApartmentConfiguration(
         ApartmentConfiguration apartmentConfiguration,
         List<Intercom> existingIntercoms

@@ -12,4 +12,6 @@ public interface IRepository
     Task<IList<ApartmentConfiguration>> GetApartmentConfigurationsAsync();
 
     Task UpdateApartmentConfigurationsAsync(IList<ApartmentConfiguration> modifiedApartmentConfigurations);
+
+    Task UpdateIntercomsAsync(IList<Intercom> modifiedIntercoms);
 }

@@ -1,6 +1,4 @@
 ﻿using System.Diagnostics.CodeAnalysis;
-using FluentAssertions;
-using Xunit;
 
 namespace Arentheym.ParkingBarrier.Domain.Tests;
 

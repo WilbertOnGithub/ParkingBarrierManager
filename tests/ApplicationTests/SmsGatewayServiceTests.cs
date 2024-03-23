@@ -44,6 +44,21 @@ public class SmsGatewayServiceTests
     public void SmsGatewayService_returns_success_when_SmsGateway_succeeds()
     {
         // Arrange
+        var smsGatewayMock = fixture.Freeze<ISmsGateway>();
+        smsGatewayMock.GetBalance().Returns(Result.Ok<string>(string.Empty));
+        var sut = fixture.Create<SmsGatewayService>();
+
+        // Act
+        Result<string> result = sut.GetBalanceDetails();
+
+        // Assert
+        result.IsSuccess.Should().BeTrue("because the gateway succeeded");
+    }
+
+    [Fact]
+    public void SmsGatewayService_returns_current_balance_when_SmsGateway_succeeds()
+    {
+        // Arrange
         const string balance = "5 euro";
         var smsGatewayMock = fixture.Freeze<ISmsGateway>();
         smsGatewayMock.GetBalance().Returns(Result.Ok<string>(balance));
@@ -53,7 +68,6 @@ public class SmsGatewayServiceTests
         Result<string> result = sut.GetBalanceDetails();
 
         // Assert
-        result.IsSuccess.Should().BeTrue("because the gateway succeeded");
         result.Value.Should().Be(balance, "because the current credit balance was returned");
     }
 }

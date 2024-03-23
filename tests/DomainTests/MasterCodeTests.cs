@@ -10,7 +10,7 @@ public class MasterCodeTests
     [InlineData("123")]
     [InlineData("12345")]
     [InlineData("abcd")]
-    public void AccessCode_is_invalid_if_it_does_not_have_4_digits(string potentialMasterCode)
+    public void MasterCode_is_invalid_if_it_does_not_have_4_digits(string potentialMasterCode)
     {
         // Arrange / Act
         Action act = () =>
@@ -23,7 +23,7 @@ public class MasterCodeTests
     }
 
     [Fact]
-    public void AccessCode_is_valid_with_exactly_4_digits()
+    public void MasterCode_is_valid_with_exactly_4_digits()
     {
         // Arrange / Act
         Action act = () =>
@@ -33,5 +33,15 @@ public class MasterCodeTests
 
         // Assert
         act.Should().NotThrow<ArgumentException>("because this is a valid MasterCode.");
+    }
+
+    [Fact]
+    public void MasterCode_default_is_series_of_4_ones()
+    {
+        // Arrange / Act
+        var masterCode = MasterCode.Default;
+
+        // Assert
+        masterCode.Code.Should().Be("1111", "because this is the default Mastercode");
     }
 }

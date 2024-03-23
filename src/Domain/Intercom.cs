@@ -19,6 +19,11 @@ public class Intercom : Entity<IntercomId>
     public Intercom(string name, PhoneNumber phoneNumber, MasterCode masterCode)
         : base(IntercomId.NewId())
     {
+        if (string.IsNullOrEmpty(name))
+        {
+            throw new ArgumentException("An intercom must have a name.");
+        }
+
         this.name = name;
         PhoneNumber = phoneNumber;
         MasterCode = masterCode;
@@ -52,15 +57,12 @@ public class Intercom : Entity<IntercomId>
     /// </summary>
     public string Name
     {
-        get
-        {
-            return name;
-        }
+        get { return name; }
         set
         {
             if (string.IsNullOrEmpty(value))
             {
-                throw new ArgumentException("Name cannot be null or empty");
+                throw new ArgumentException("An intercom must have a name");
             }
             name = value;
         }

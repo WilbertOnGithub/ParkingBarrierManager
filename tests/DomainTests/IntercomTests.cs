@@ -17,6 +17,19 @@ public class IntercomTests
     }
 
     [Fact]
+    public void Intercom_with_valid_data_does_not_throw_exception()
+    {
+        // Arrange / Act
+        Action act = () =>
+        {
+            _ = new Intercom("This is an intercom", PhoneNumber.EmptyPhoneNumber, MasterCode.Default);
+        };
+
+        // Assert
+        act.Should().NotThrow<ArgumentException>("because this is a valid Intercom.");
+    }
+
+    [Fact]
     public void Changing_name_to_invalid_name_throws_exception()
     {
         // Arrange
@@ -33,16 +46,17 @@ public class IntercomTests
     }
 
     [Fact]
-    public void Intercom_with_valid_data_does_not_throw_exception()
+    public void Changing_name_sets_a_new_name()
     {
-        // Arrange / Act
-        Action act = () =>
-        {
-            _ = new Intercom("This is an intercom", PhoneNumber.EmptyPhoneNumber, MasterCode.Default);
-        };
+        // Arrange
+        var intercom = new Intercom("name", PhoneNumber.EmptyPhoneNumber, MasterCode.Default);
+
+        // Act
+        const string newName = "newName";
+        intercom.Name = newName;
 
         // Assert
-        act.Should().NotThrow<ArgumentException>("because this is a valid Intercom.");
+        intercom.Name.Should().Be(newName, "because the name was changed");
     }
 
     [Fact]

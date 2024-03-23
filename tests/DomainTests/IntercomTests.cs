@@ -17,6 +17,22 @@ public class IntercomTests
     }
 
     [Fact]
+    public void Changing_name_to_invalid_name_throws_exception()
+    {
+        // Arrange
+        var intercom = new Intercom("name", PhoneNumber.EmptyPhoneNumber, MasterCode.Default);
+
+        // Act
+        Action act = () =>
+        {
+            _ = intercom.Name = string.Empty;
+        };
+
+        // Assert
+        act.Should().Throw<ArgumentException>("because this is not a valid name.");
+    }
+
+    [Fact]
     public void Intercom_with_valid_data_does_not_throw_exception()
     {
         // Arrange / Act

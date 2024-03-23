@@ -22,7 +22,7 @@ public class ApartmentConfiguration : Entity<ApartmentId>
     {
         DisplayName = string.Empty;
         MemoryLocation = new MemoryLocation(0);
-        DialToOpen = true;
+        DialToOpen = false;
         AccessCode = AccessCode.NoAccessCode;
     }
 

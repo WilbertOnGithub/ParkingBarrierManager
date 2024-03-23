@@ -3,28 +3,20 @@
 [SuppressMessage("Naming", "CA1707:Identifiers should not contain underscores", Justification = "Unit testing naming")]
 public class ApartmentConfigurationTests
 {
-    [Fact]
-    public void Valid_data_creates_a_well_formed_object()
+    [Theory]
+    [ClassData(typeof(ApartmentConfigurationTestData))]
+    public void Using_the_multiple_constructors_should_create_a_well_formed_object(
+        [NotNull] ApartmentConfiguration configuration
+    )
     {
-        const string displayName = "displayname";
-
-        // Arrange / Act
-        var apartmentConfiguration = new ApartmentConfiguration(
-            new ApartmentId(89),
-            new MemoryLocation(0),
-            displayName,
-            true,
-            AccessCode.NoAccessCode
-        );
-
-        // Assert
-        apartmentConfiguration.Id.Should().Be(new ApartmentId(89));
-        apartmentConfiguration.MemoryLocation.Should().Be(new MemoryLocation(0));
-        apartmentConfiguration.DisplayName.Should().Be(displayName);
-        apartmentConfiguration.DialToOpen.Should().BeTrue();
-        apartmentConfiguration.AccessCode.Should().Be(AccessCode.NoAccessCode);
-        apartmentConfiguration.Intercoms.Count.Should().Be(0);
-        apartmentConfiguration.PhoneNumbers.Count.Should().Be(0);
+        // Arrange / Act // Assert
+        configuration.Id.Should().Be(new ApartmentId(89));
+        configuration.MemoryLocation.Should().Be(new MemoryLocation(0));
+        configuration.DisplayName.Should().Be(string.Empty);
+        configuration.DialToOpen.Should().BeFalse();
+        configuration.AccessCode.Should().Be(AccessCode.NoAccessCode);
+        configuration.Intercoms.Count.Should().Be(0);
+        configuration.PhoneNumbers.Count.Should().Be(0);
     }
 
     [Fact]

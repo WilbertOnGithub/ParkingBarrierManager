@@ -70,7 +70,8 @@ public partial class MainViewModel : ViewModelBase, IAsyncInitialization
     {
         var dirtyConfigurations = Configurations.Where(x => x.IsDirty).ToList();
         await dataService.SaveApartmentConfigurations(
-            dirtyConfigurations.Select(x => ManualMapper.ViewModelToEntity(x, availableIntercoms.ToList())).ToList());
+            dirtyConfigurations.Select(x => ManualMapper.ViewModelToEntity(x, availableIntercoms.ToList())).ToList()
+        );
 
         // Set original for all dirty configurations so that they are no longer considered dirty after save.
         dirtyConfigurations.ForEach(x => x.SetOriginal());

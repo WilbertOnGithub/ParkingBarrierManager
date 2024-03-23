@@ -22,7 +22,9 @@ public static class InfrastructureServicesExtension
         databaseConfigurationSection.Bind(databaseConfiguration);
 
         var smsGatewayConfiguration = new SmsGatewayConfiguration();
-        IConfigurationSection smsGatewayConfigurationSection = configuration.GetSection(nameof(smsGatewayConfiguration));
+        IConfigurationSection smsGatewayConfigurationSection = configuration.GetSection(
+            nameof(smsGatewayConfiguration)
+        );
         smsGatewayConfigurationSection.Bind(smsGatewayConfiguration);
 
         services.AddSingleton(smsGatewayConfiguration);
@@ -31,8 +33,10 @@ public static class InfrastructureServicesExtension
 
         services.AddDbContext<DatabaseContext>(options =>
         {
-            options.UseSqlite(databaseConfiguration.ExpandedConnectionString,
-                o => o.UseQuerySplittingBehavior(QuerySplittingBehavior.SplitQuery));
+            options.UseSqlite(
+                databaseConfiguration.ExpandedConnectionString,
+                o => o.UseQuerySplittingBehavior(QuerySplittingBehavior.SplitQuery)
+            );
             if (Debugger.IsAttached)
             {
                 options.EnableSensitiveDataLogging();

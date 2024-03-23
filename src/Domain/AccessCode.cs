@@ -26,7 +26,7 @@ public partial class AccessCode : ValueObject
     /// <summary>
     /// Gets the value if access code is not used.
     /// </summary>
-    public static AccessCode NoAccessCode => new (string.Empty);
+    public static AccessCode NoAccessCode => new(string.Empty);
 
     /// <summary>
     /// Gets the code.

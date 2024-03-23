@@ -9,7 +9,6 @@ namespace Arentheym.ParkingBarrier.UI.Messages;
 /// </summary>
 public class RefreshRemainingCreditsMessage : ValueChangedMessage<MainViewModel>
 {
-    public RefreshRemainingCreditsMessage(MainViewModel vm) : base(vm)
-    {
-    }
+    public RefreshRemainingCreditsMessage(MainViewModel vm)
+        : base(vm) { }
 }

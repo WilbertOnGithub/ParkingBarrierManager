@@ -194,11 +194,15 @@ public class ValidCountryCodesTestData : IEnumerable<object[]>
             testData[index] += $" {CreateRandomPhoneNumber()}"; // Add a phone number to each country code
         }
 
-        testData.Add(string.Empty);  // Empty phone number is also valid.
+        testData.Add(string.Empty); // Empty phone number is also valid.
         return testData;
     }
 
-    [SuppressMessage("Security", "CA5394:Do not use insecure randomness", Justification = "Not necessary for unit test.")]
+    [SuppressMessage(
+        "Security",
+        "CA5394:Do not use insecure randomness",
+        Justification = "Not necessary for unit test."
+    )]
     private static string CreateRandomPhoneNumber()
     {
         var rnd = new Random();

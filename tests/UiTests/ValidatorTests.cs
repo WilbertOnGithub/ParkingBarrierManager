@@ -1,8 +1,7 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 using Arentheym.ParkingBarrier.UI.Validators;
-
-using Xunit;
 using FluentAssertions;
+using Xunit;
 
 namespace Arentheym.ParkingBarrier.UI.Tests;
 
@@ -40,8 +39,8 @@ public class ValidatorTests
     }
 
     [Theory]
-    [InlineData("")]                // Empty phone number is allowed
-    [InlineData("31 1234567890")]   // Valid country code with 10 digit phone number
+    [InlineData("")] // Empty phone number is allowed
+    [InlineData("31 1234567890")] // Valid country code with 10 digit phone number
     public void PhoneNumber_is_valid_with_valid_data(string data)
     {
         // Arrange
@@ -52,10 +51,10 @@ public class ValidatorTests
     }
 
     [Theory]
-    [InlineData("abc")]                     // No digits
-    [InlineData("31 1234567890123456")]     // Phone > 15 digits
-    [InlineData("3 1234567890")]            // Invalid country code
-    [InlineData("31")]                      // Country code only
+    [InlineData("abc")] // No digits
+    [InlineData("31 1234567890123456")] // Phone > 15 digits
+    [InlineData("3 1234567890")] // Invalid country code
+    [InlineData("31")] // Country code only
     public void PhoneNumber_is_invalid_with_invalid_data(string data)
     {
         // Arrange

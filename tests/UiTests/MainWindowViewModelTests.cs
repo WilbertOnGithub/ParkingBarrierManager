@@ -129,8 +129,11 @@ public class MainWindowViewModelTests
         afterSave.Should().BeFalse("because all the changes have been saved and this is the new situation.");
     }
 
-    [SuppressMessage("Performance", "CA1859:Use concrete types when possible for improved performance",
-        Justification = "Performance not critical")]
+    [SuppressMessage(
+        "Performance",
+        "CA1859:Use concrete types when possible for improved performance",
+        Justification = "Performance not critical"
+    )]
     private static IList<ApartmentConfiguration> GetDefaultConfigurations()
     {
         var configurations = new List<ApartmentConfiguration>();
@@ -144,14 +147,17 @@ public class MainWindowViewModelTests
         return configurations;
     }
 
-    [SuppressMessage("Performance", "CA1859:Use concrete types when possible for improved performance",
-        Justification = "Performance not critical")]
+    [SuppressMessage(
+        "Performance",
+        "CA1859:Use concrete types when possible for improved performance",
+        Justification = "Performance not critical"
+    )]
     private static IList<Intercom> GetDefaultIntercoms()
     {
         var intercoms = new List<Intercom>
         {
-            new ("voor", new PhoneNumber("1234567890"), new MasterCode("1111")),
-            new ("achter", new PhoneNumber("1234567890"), new MasterCode("1111"))
+            new("voor", new PhoneNumber("1234567890"), new MasterCode("1111")),
+            new("achter", new PhoneNumber("1234567890"), new MasterCode("1111"))
         };
 
         return intercoms;

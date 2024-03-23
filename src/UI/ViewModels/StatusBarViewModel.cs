@@ -18,10 +18,13 @@ public partial class StatusBarViewModel : ObservableObject
         this.smsGatewayService = smsGatewayService;
 
         // Listen for RefreshRemainingCreditsMessage messages
-        WeakReferenceMessenger.Default.Register<RefreshRemainingCreditsMessage>(this, (_, _) =>
-        {
-            OnMessageReceived();
-        });
+        WeakReferenceMessenger.Default.Register<RefreshRemainingCreditsMessage>(
+            this,
+            (_, _) =>
+            {
+                OnMessageReceived();
+            }
+        );
 
         RetrieveCreditsFromGateway();
     }
@@ -29,9 +32,7 @@ public partial class StatusBarViewModel : ObservableObject
     private void RetrieveCreditsFromGateway()
     {
         Result<string> result = smsGatewayService.GetBalanceDetails();
-        RemainingCredits = result.IsSuccess ?
-            result.Value :
-            "Error occurred while retrieving SMS balance.";
+        RemainingCredits = result.IsSuccess ? result.Value : "Error occurred while retrieving SMS balance.";
     }
 
     private void OnMessageReceived()

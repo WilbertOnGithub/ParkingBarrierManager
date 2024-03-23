@@ -20,7 +20,8 @@ public class MemoryLocation : ValueObject
         if (location is < lowestMemoryLocation or > highestMemoryLocation)
         {
             throw new ArgumentException(
-                $"Memory location must be between {lowestMemoryLocation}-{highestMemoryLocation}.");
+                $"Memory location must be between {lowestMemoryLocation}-{highestMemoryLocation}."
+            );
         }
 
         Location = location;

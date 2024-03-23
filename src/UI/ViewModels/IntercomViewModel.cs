@@ -24,17 +24,20 @@ public partial class IntercomViewModel : ObservableObject, IEquatable<IntercomVi
 
     public bool Equals(IntercomViewModel? other)
     {
-        if (ReferenceEquals(null, other)) return false;
-        return IsUsed == other.IsUsed &&
-               string.Equals(Name, other.Name, StringComparison.OrdinalIgnoreCase) &&
-               Id.Equals(other.Id);
+        if (ReferenceEquals(null, other))
+            return false;
+        return IsUsed == other.IsUsed
+            && string.Equals(Name, other.Name, StringComparison.OrdinalIgnoreCase)
+            && Id.Equals(other.Id);
     }
 
     public override bool Equals(object? obj)
     {
-        if (ReferenceEquals(null, obj)) return false;
-        if (obj.GetType() != GetType()) return false;
-        return Equals((IntercomViewModel) obj);
+        if (ReferenceEquals(null, obj))
+            return false;
+        if (obj.GetType() != GetType())
+            return false;
+        return Equals((IntercomViewModel)obj);
     }
 
     public override int GetHashCode()

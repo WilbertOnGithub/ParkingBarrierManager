@@ -26,7 +26,7 @@ public partial class MasterCode : ValueObject
     /// <summary>
     /// Gets the default master code.
     /// </summary>
-    public static MasterCode Default => new ("1111");
+    public static MasterCode Default => new("1111");
 
     /// <summary>
     /// Gets the code.

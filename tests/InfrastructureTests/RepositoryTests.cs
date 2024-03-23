@@ -10,6 +10,7 @@ using Xunit;
 namespace Arentheym.ParkingBarrier.Infrastructure.Tests;
 
 [SuppressMessage("Naming", "CA1707:Identifiers should not contain underscores", Justification = "Unit testing naming")]
+[Trait("Category", "IntegrationTests")]
 public class RepositoryTests
 {
     private readonly IFixture fixture = new Fixture().Customize(new AutoNSubstituteCustomization());
@@ -57,6 +58,30 @@ public class RepositoryTests
 
         // Assert
         updatedList.First(x => x.Id.Number == 131).Intercoms.Count.Should().Be(0);
+        await databaseContext.Database.EnsureDeletedAsync();
+    }
+
+    [Fact]
+    public async Task Updating_intercoms_saves_it_in_database()
+    {
+        // Arrange
+        await using DatabaseContext databaseContext = await CreateTemporaryDatabaseContext();
+        fixture.Inject(databaseContext);
+        var repository = fixture.Create<Repository>();
+
+        IList<Intercom> intercoms = await repository.GetIntercomsAsync();
+        const string newName = "Wilbert";
+        intercoms[0].Name = newName;
+        intercoms[1].Name = newName;
+
+        // Act
+        await repository.UpdateIntercomsAsync(intercoms);
+        // Retrieve a new list to prove that we updated it.
+        IList<Intercom> updatedIntercoms = await repository.GetIntercomsAsync();
+
+        // Assert
+        updatedIntercoms[0].Name.Should().Be(newName);
+        updatedIntercoms[1].Name.Should().Be(newName);
         await databaseContext.Database.EnsureDeletedAsync();
     }
 

@@ -39,9 +39,20 @@ public class Repository(DatabaseContext context) : IRepository
         await context.SaveChangesAsync().ConfigureAwait(false);
     }
 
-    public Task UpdateIntercomsAsync(IList<Intercom> modifiedIntercoms)
+    public async Task UpdateIntercomsAsync(IList<Intercom> modifiedIntercoms)
     {
-        throw new NotImplementedException();
+        ArgumentNullException.ThrowIfNull(modifiedIntercoms);
+
+        foreach (var modifiedIntercom in modifiedIntercoms)
+        {
+            var existingIntercom = await context
+                .Intercoms.FirstAsync(x => x.Id == modifiedIntercom.Id)
+                .ConfigureAwait(false);
+
+            context.Entry(existingIntercom).CurrentValues.SetValues(modifiedIntercom);
+        }
+
+        await context.SaveChangesAsync().ConfigureAwait(false);
     }
 
     private void UpdateApartmentConfiguration(

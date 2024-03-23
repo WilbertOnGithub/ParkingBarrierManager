@@ -28,4 +28,18 @@ public class IntercomTests
         // Assert
         act.Should().NotThrow<ArgumentException>("because this is a valid Intercom.");
     }
+
+    [Fact]
+    public void Intercom_with_valid_data_should_create_valid_formed_object()
+    {
+        const string intercomName = "This is an intercom";
+
+        // Arrange / Act
+        var intercom = new Intercom(intercomName, PhoneNumber.EmptyPhoneNumber, MasterCode.Default);
+
+        // Assert
+        intercom.PhoneNumber.Should().Be(PhoneNumber.EmptyPhoneNumber);
+        intercom.MasterCode.Should().Be(MasterCode.Default);
+        intercom.Name.Should().Be(intercomName);
+    }
 }

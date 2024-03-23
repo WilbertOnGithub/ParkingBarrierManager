@@ -10,7 +10,8 @@ public static class ManualMapper
 {
     public static ApartmentConfigurationViewModel EntityToViewModel(
         ApartmentConfiguration apartmentConfiguration,
-        IList<Intercom> intercoms)
+        IList<Intercom> intercoms
+    )
     {
         ArgumentNullException.ThrowIfNull(apartmentConfiguration);
         ArgumentNullException.ThrowIfNull(intercoms);
@@ -22,33 +23,40 @@ public static class ManualMapper
             DialToOpen = apartmentConfiguration.DialToOpen,
             AccessCode = apartmentConfiguration.AccessCode.Code,
             PrimaryPhoneNumber = apartmentConfiguration.PhoneNumbers.First(x => x.Order == DivertOrder.Primary).Number,
-            SecondaryPhoneNumber =
-                apartmentConfiguration.PhoneNumbers.First(x => x.Order == DivertOrder.Secondary).Number,
-            TertiaryPhoneNumber =
-                apartmentConfiguration.PhoneNumbers.First(x => x.Order == DivertOrder.Tertiary).Number,
-            QuaternaryPhoneNumber =
-                apartmentConfiguration.PhoneNumbers.First(x => x.Order == DivertOrder.Quaternary).Number
-            };
+            SecondaryPhoneNumber = apartmentConfiguration
+                .PhoneNumbers.First(x => x.Order == DivertOrder.Secondary)
+                .Number,
+            TertiaryPhoneNumber = apartmentConfiguration
+                .PhoneNumbers.First(x => x.Order == DivertOrder.Tertiary)
+                .Number,
+            QuaternaryPhoneNumber = apartmentConfiguration
+                .PhoneNumbers.First(x => x.Order == DivertOrder.Quaternary)
+                .Number
+        };
 
         foreach (var intercom in intercoms)
         {
             if (apartmentConfiguration.Intercoms.Any(x => x.Id == intercom.Id))
             {
-                result.Intercoms.Add(new IntercomViewModel
-                {
-                    Id = intercom.Id.Id,
-                    Name = intercom.Name,
-                    IsUsed = true
-                });
+                result.Intercoms.Add(
+                    new IntercomViewModel
+                    {
+                        Id = intercom.Id.Id,
+                        Name = intercom.Name,
+                        IsUsed = true
+                    }
+                );
             }
             else
             {
-                result.Intercoms.Add(new IntercomViewModel
-                {
-                    Id = intercom.Id.Id,
-                    Name = intercom.Name,
-                    IsUsed = false
-                });
+                result.Intercoms.Add(
+                    new IntercomViewModel
+                    {
+                        Id = intercom.Id.Id,
+                        Name = intercom.Name,
+                        IsUsed = false
+                    }
+                );
             }
         }
 
@@ -57,7 +65,8 @@ public static class ManualMapper
 
     public static ApartmentConfiguration ViewModelToEntity(
         ApartmentConfigurationViewModel viewModel,
-        IList<Intercom> intercoms)
+        IList<Intercom> intercoms
+    )
     {
         ArgumentNullException.ThrowIfNull(viewModel);
         ArgumentNullException.ThrowIfNull(intercoms);
@@ -67,7 +76,8 @@ public static class ManualMapper
             new MemoryLocation((short)viewModel.ApartmentNumber),
             viewModel.DisplayName,
             dialToOpen: viewModel.DialToOpen,
-            new AccessCode(viewModel.AccessCode));
+            new AccessCode(viewModel.AccessCode)
+        );
 
         result.UpsertPhoneNumber(new DivertPhoneNumber(DivertOrder.Primary, viewModel.PrimaryPhoneNumber));
         result.UpsertPhoneNumber(new DivertPhoneNumber(DivertOrder.Secondary, viewModel.SecondaryPhoneNumber));

@@ -11,8 +11,9 @@ public class ContextDesignTimeFactory : IDesignTimeDbContextFactory<DatabaseCont
         IConfiguration configuration = GetDevelopmentConfiguration();
 
         var optionsBuilder = new DbContextOptionsBuilder<DatabaseContext>();
-        optionsBuilder.UseSqlite(configuration.GetSection("DatabaseConfiguration")
-            .GetValue<string>("ConnectionString"));
+        optionsBuilder.UseSqlite(
+            configuration.GetSection("DatabaseConfiguration").GetValue<string>("ConnectionString")
+        );
 
         return new DatabaseContext(optionsBuilder.Options);
 
@@ -24,5 +25,4 @@ public class ContextDesignTimeFactory : IDesignTimeDbContextFactory<DatabaseCont
                 .Build();
         }
     }
-
 }

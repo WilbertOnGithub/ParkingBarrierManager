@@ -18,7 +18,8 @@ public class ApartmentId : ValueObject
         if (number is < lowestApartmentNumber or > highestApartmentNumber)
         {
             throw new ArgumentException(
-                $"Expecting number to be between {lowestApartmentNumber} and {highestApartmentNumber}.");
+                $"Expecting number to be between {lowestApartmentNumber} and {highestApartmentNumber}."
+            );
         }
         Number = number;
     }

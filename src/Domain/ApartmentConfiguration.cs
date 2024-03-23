@@ -7,8 +7,8 @@ namespace Arentheym.ParkingBarrier.Domain;
 /// </summary>
 public class ApartmentConfiguration : Entity<ApartmentId>
 {
-    private readonly List<Intercom> intercoms = new ();
-    private readonly List<DivertPhoneNumber> phoneNumbers = new ();
+    private readonly List<Intercom> intercoms = new();
+    private readonly List<DivertPhoneNumber> phoneNumbers = new();
 
     /// <summary>
     /// Initializes a new instance of the <see cref="ApartmentConfiguration"/> class.
@@ -26,7 +26,13 @@ public class ApartmentConfiguration : Entity<ApartmentId>
         AccessCode = AccessCode.NoAccessCode;
     }
 
-    public ApartmentConfiguration(ApartmentId id, MemoryLocation memoryLocation, string displayName, bool dialToOpen, AccessCode accessCode)
+    public ApartmentConfiguration(
+        ApartmentId id,
+        MemoryLocation memoryLocation,
+        string displayName,
+        bool dialToOpen,
+        AccessCode accessCode
+    )
         : base(id)
     {
         DisplayName = displayName;
@@ -37,19 +43,13 @@ public class ApartmentConfiguration : Entity<ApartmentId>
     }
 
     public ApartmentConfiguration(ApartmentId id, MemoryLocation memoryLocation, string displayName, bool dialToOpen)
-        : this(id, memoryLocation, displayName, dialToOpen, AccessCode.NoAccessCode)
-    {
-    }
+        : this(id, memoryLocation, displayName, dialToOpen, AccessCode.NoAccessCode) { }
 
     public ApartmentConfiguration(ApartmentId id, MemoryLocation memoryLocation, string displayName)
-        : this(id, memoryLocation, displayName, false, AccessCode.NoAccessCode)
-    {
-    }
+        : this(id, memoryLocation, displayName, false, AccessCode.NoAccessCode) { }
 
     public ApartmentConfiguration(ApartmentId id, MemoryLocation memoryLocation)
-        : this(id, memoryLocation, string.Empty, false, AccessCode.NoAccessCode)
-    {
-    }
+        : this(id, memoryLocation, string.Empty, false, AccessCode.NoAccessCode) { }
 
     /// <summary>
     /// Initializes a new instance of the <see cref="ApartmentConfiguration"/> class.
@@ -67,7 +67,8 @@ public class ApartmentConfiguration : Entity<ApartmentId>
         bool dialToOpen,
         string displayName,
         MemoryLocation memoryLocation,
-        AccessCode accessCode)
+        AccessCode accessCode
+    )
         : base(id)
     {
         AccessCode = accessCode;
@@ -79,7 +80,7 @@ public class ApartmentConfiguration : Entity<ApartmentId>
     /// <summary>
     /// Gets a value indicating whether the linked phone numbers can call the intercom to open the barrier.
     /// </summary>
-    public bool DialToOpen { get; private set;  }
+    public bool DialToOpen { get; private set; }
 
     /// <summary>
     /// Gets the name for the apartment occupant.

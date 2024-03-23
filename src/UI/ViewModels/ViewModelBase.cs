@@ -2,6 +2,4 @@
 
 namespace Arentheym.ParkingBarrier.UI.ViewModels;
 
-public class ViewModelBase : ObservableObject
-{
-}
+public class ViewModelBase : ObservableObject { }

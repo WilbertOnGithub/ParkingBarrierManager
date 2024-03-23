@@ -13,8 +13,11 @@ namespace Arentheym.Database.Migrations
     public partial class Initial : Migration
     {
         /// <inheritdoc />
-        [SuppressMessage("Performance", "CA1861:Avoid constant arrays as arguments",
-            Justification = "Code is only run once, not repeatedly.")]
+        [SuppressMessage(
+            "Performance",
+            "CA1861:Avoid constant arrays as arguments",
+            Justification = "Code is only run once, not repeatedly."
+        )]
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
@@ -30,7 +33,8 @@ namespace Arentheym.Database.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_ApartmentConfigurations", x => x.Id);
-                });
+                }
+            );
 
             migrationBuilder.CreateTable(
                 name: "Intercoms",
@@ -44,7 +48,8 @@ namespace Arentheym.Database.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Intercoms", x => x.Id);
-                });
+                }
+            );
 
             migrationBuilder.CreateTable(
                 name: "ApartmentConfigurationPhoneNumbers",
@@ -56,14 +61,24 @@ namespace Arentheym.Database.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ApartmentConfigurationPhoneNumbers", x => new { x.ApartmentConfigurationId, x.Order, x.Number });
+                    table.PrimaryKey(
+                        "PK_ApartmentConfigurationPhoneNumbers",
+                        x => new
+                        {
+                            x.ApartmentConfigurationId,
+                            x.Order,
+                            x.Number
+                        }
+                    );
                     table.ForeignKey(
                         name: "FK_ApartmentConfigurationPhoneNumbers_ApartmentConfigurations_ApartmentConfigurationId",
                         column: x => x.ApartmentConfigurationId,
                         principalTable: "ApartmentConfigurations",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
+                        onDelete: ReferentialAction.Cascade
+                    );
+                }
+            );
 
             migrationBuilder.CreateTable(
                 name: "ApartmentConfigurationIntercoms",
@@ -74,20 +89,26 @@ namespace Arentheym.Database.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ApartmentConfigurationIntercoms", x => new { x.IntercomId, x.ApartmentConfigurationId });
+                    table.PrimaryKey(
+                        "PK_ApartmentConfigurationIntercoms",
+                        x => new { x.IntercomId, x.ApartmentConfigurationId }
+                    );
                     table.ForeignKey(
                         name: "FK_ApartmentConfigurationIntercoms_ApartmentConfigurations_ApartmentConfigurationId",
                         column: x => x.ApartmentConfigurationId,
                         principalTable: "ApartmentConfigurations",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Cascade
+                    );
                     table.ForeignKey(
                         name: "FK_ApartmentConfigurationIntercoms_Intercoms_IntercomId",
                         column: x => x.IntercomId,
                         principalTable: "Intercoms",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
+                        onDelete: ReferentialAction.Cascade
+                    );
+                }
+            );
 
             migrationBuilder.InsertData(
                 table: "ApartmentConfigurations",
@@ -164,7 +185,8 @@ namespace Arentheym.Database.Migrations
                     { 185, "", true, "185", (short)185 },
                     { 187, "", true, "187", (short)187 },
                     { 189, "", true, "189", (short)189 }
-                });
+                }
+            );
 
             migrationBuilder.InsertData(
                 table: "Intercoms",
@@ -173,7 +195,8 @@ namespace Arentheym.Database.Migrations
                 {
                     { new Guid("179f0aee-8831-45df-942e-57cb20fb65e9"), "8601", "Slagboom achter", "31657181402" },
                     { new Guid("3a3306b3-0f83-435a-a968-7d4f9b02a4a6"), "8601", "Slagboom voor", "31657093298" }
-                });
+                }
+            );
 
             migrationBuilder.InsertData(
                 table: "ApartmentConfigurationIntercoms",
@@ -320,7 +343,8 @@ namespace Arentheym.Database.Migrations
                     { 185, new Guid("3a3306b3-0f83-435a-a968-7d4f9b02a4a6") },
                     { 187, new Guid("3a3306b3-0f83-435a-a968-7d4f9b02a4a6") },
                     { 189, new Guid("3a3306b3-0f83-435a-a968-7d4f9b02a4a6") }
-                });
+                }
+            );
 
             migrationBuilder.InsertData(
                 table: "ApartmentConfigurationPhoneNumbers",
@@ -607,12 +631,14 @@ namespace Arentheym.Database.Migrations
                     { 189, "", 1 },
                     { 189, "", 2 },
                     { 189, "", 3 }
-                });
+                }
+            );
 
             migrationBuilder.CreateIndex(
                 name: "IX_ApartmentConfigurationIntercoms_ApartmentConfigurationId",
                 table: "ApartmentConfigurationIntercoms",
-                column: "ApartmentConfigurationId");
+                column: "ApartmentConfigurationId"
+            );
         }
 
         /// <inheritdoc />

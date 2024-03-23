@@ -8,16 +8,13 @@ public class Repository(DatabaseContext context) : IRepository
 {
     public async Task<IList<Intercom>> GetIntercomsAsync()
     {
-        return await context.Intercoms.OrderBy(x => x.Name)
-            .AsNoTracking()
-            .ToListAsync()
-            .ConfigureAwait(false);
+        return await context.Intercoms.OrderBy(x => x.Name).AsNoTracking().ToListAsync().ConfigureAwait(false);
     }
 
     public async Task<IList<ApartmentConfiguration>> GetApartmentConfigurationsAsync()
     {
-        return await context.ApartmentConfigurations
-            .Include(x => x.PhoneNumbers)
+        return await context
+            .ApartmentConfigurations.Include(x => x.PhoneNumbers)
             .Include(x => x.Intercoms)
             .OrderBy(x => x.Id)
             .AsNoTracking()
@@ -44,10 +41,11 @@ public class Repository(DatabaseContext context) : IRepository
 
     private void UpdateApartmentConfiguration(
         ApartmentConfiguration apartmentConfiguration,
-        List<Intercom> existingIntercoms)
+        List<Intercom> existingIntercoms
+    )
     {
-        var existingEntry = context.ApartmentConfigurations
-            .Include(x => x.PhoneNumbers)
+        var existingEntry = context
+            .ApartmentConfigurations.Include(x => x.PhoneNumbers)
             .Include(x => x.Intercoms)
             .First(x => x.Id == apartmentConfiguration.Id);
 

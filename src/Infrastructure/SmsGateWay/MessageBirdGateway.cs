@@ -23,8 +23,7 @@ public class MessageBirdGateway(SmsGatewayConfiguration configuration) : ISmsGat
         {
             long[] recipients = [Convert.ToInt64(intercom.PhoneNumber.Number, CultureInfo.InvariantCulture)];
             string sender = "MessageBird";
-            string body = new UpdateConfigurationCommand(
-                intercom.MasterCode, apartmentConfiguration).ToString();
+            string body = new UpdateConfigurationCommand(intercom.MasterCode, apartmentConfiguration).ToString();
 
             try
             {
@@ -54,8 +53,11 @@ public class MessageBirdGateway(SmsGatewayConfiguration configuration) : ISmsGat
         }
     }
 
-    [SuppressMessage("Performance", "CA1859:Use concrete types when possible for improved performance",
-        Justification = "Performance not a concern")]
+    [SuppressMessage(
+        "Performance",
+        "CA1859:Use concrete types when possible for improved performance",
+        Justification = "Performance not a concern"
+    )]
     private static IList<IError> CompileErrorList(ErrorException ex)
     {
         var errors = new List<IError>();
@@ -63,8 +65,11 @@ public class MessageBirdGateway(SmsGatewayConfiguration configuration) : ISmsGat
         // Either the request fails with error descriptions from the endpoint.
         if (ex.HasErrors)
         {
-            errors.AddRange(ex.Errors.Select(
-                error => new FluentResults.Error($"Code: {error.Code} Description: {error.Description} Parameter: {error.Parameter}")));
+            errors.AddRange(
+                ex.Errors.Select(error => new FluentResults.Error(
+                    $"Code: {error.Code} Description: {error.Description} Parameter: {error.Parameter}"
+                ))
+            );
         }
 
         // Or it fails without error information from the endpoint,

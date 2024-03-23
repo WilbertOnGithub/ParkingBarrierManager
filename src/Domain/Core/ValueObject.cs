@@ -83,8 +83,7 @@ public abstract class ValueObject : IEquatable<ValueObject>
     /// <returns>The calculated hash-code.</returns>
     public override int GetHashCode()
     {
-        return GetEqualityValues().Select(value => value?.GetHashCode() ?? 0)
-                                  .Aggregate((total, next) => total ^ next);
+        return GetEqualityValues().Select(value => value?.GetHashCode() ?? 0).Aggregate((total, next) => total ^ next);
     }
 
     /// <summary>

@@ -19,11 +19,12 @@ public class MessageBirdGatewayTests
     {
         // Arrange
         var configuration = new ApartmentConfiguration(
-                new ApartmentId(51),
-                new MemoryLocation(51),
-                "display name",
-                true,
-                new AccessCode("0000"));
+            new ApartmentId(51),
+            new MemoryLocation(51),
+            "display name",
+            true,
+            new AccessCode("0000")
+        );
         configuration.UpsertPhoneNumber(new DivertPhoneNumber(DivertOrder.Primary, "1234567890"));
         configuration.UpsertPhoneNumber(new DivertPhoneNumber(DivertOrder.Secondary, "2234567890"));
         configuration.UpsertPhoneNumber(new DivertPhoneNumber(DivertOrder.Tertiary, "3234567890"));
@@ -35,7 +36,11 @@ public class MessageBirdGatewayTests
         string result = command.ToString();
 
         // Assert
-        result.Should().Be("1234MEM051\"1234567890\",\"2234567890\",\"3234567890\",\"4234567890\",\"51\",\"0000\",1,0,\"display>name\"");
+        result
+            .Should()
+            .Be(
+                "1234MEM051\"1234567890\",\"2234567890\",\"3234567890\",\"4234567890\",\"51\",\"0000\",1,0,\"display>name\""
+            );
     }
 
     [SkippableFact]
@@ -57,10 +62,12 @@ public class MessageBirdGatewayTests
     public void MessageBird_cannot_retrieve_balance_with_invalid_key()
     {
         // Arrange
-        var sut = new MessageBirdGateway(new SmsGatewayConfiguration()
-        {
-            ApiKey = Guid.NewGuid().ToString() // Create invalid key
-        });
+        var sut = new MessageBirdGateway(
+            new SmsGatewayConfiguration()
+            {
+                ApiKey = Guid.NewGuid().ToString() // Create invalid key
+            }
+        );
 
         // Act
         Result<string> balance = sut.GetBalance();
@@ -83,7 +90,9 @@ public class MessageBirdGatewayTests
         apartmentConfiguration.UpsertPhoneNumber(new DivertPhoneNumber(DivertOrder.Secondary, string.Empty));
         apartmentConfiguration.UpsertPhoneNumber(new DivertPhoneNumber(DivertOrder.Tertiary, string.Empty));
         apartmentConfiguration.UpsertPhoneNumber(new DivertPhoneNumber(DivertOrder.Quaternary, string.Empty));
-        apartmentConfiguration.LinkIntercom(new Intercom("voor", new PhoneNumber("31613739851"), new MasterCode("1111")));
+        apartmentConfiguration.LinkIntercom(
+            new Intercom("voor", new PhoneNumber("31613739851"), new MasterCode("1111"))
+        );
 
         // Act
         IList<Result> result = sut.SendSms(apartmentConfiguration);
@@ -102,7 +111,9 @@ public class MessageBirdGatewayTests
         IConfigurationRoot configuration = new ConfigurationBuilder().AddEnvironmentVariables().Build();
 
         var smsGatewayConfiguration = new SmsGatewayConfiguration();
-        IConfigurationSection smsGatewayConfigurationSection = configuration.GetSection(nameof(smsGatewayConfiguration));
+        IConfigurationSection smsGatewayConfigurationSection = configuration.GetSection(
+            nameof(smsGatewayConfiguration)
+        );
         smsGatewayConfigurationSection.Bind(smsGatewayConfiguration);
 
         return smsGatewayConfiguration;

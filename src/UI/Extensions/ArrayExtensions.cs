@@ -10,7 +10,8 @@ public static class ArrayExtensions
         ArgumentNullException.ThrowIfNull(array);
         ArgumentNullException.ThrowIfNull(action);
 
-        if (array.LongLength == 0) return;
+        if (array.LongLength == 0)
+            return;
         ArrayTraverse walker = new ArrayTraverse(array);
         do action(array, walker.Position);
         while (walker.Step());

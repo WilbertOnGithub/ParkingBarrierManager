@@ -22,16 +22,14 @@ public class RepositoryTests
         fixture.Inject(databaseContext);
         var repository = fixture.Create<Repository>();
 
-        IList<ApartmentConfiguration> apartmentConfigurations =
-            await repository.GetApartmentConfigurationsAsync();
+        IList<ApartmentConfiguration> apartmentConfigurations = await repository.GetApartmentConfigurationsAsync();
         var apartment131 = apartmentConfigurations.First(x => x.Id.Number == 131);
         apartment131.UpsertPhoneNumber(new DivertPhoneNumber(DivertOrder.Primary, "31 1234567890"));
 
         // Act
         await repository.UpdateApartmentConfigurationsAsync(apartmentConfigurations);
 
-        IList<ApartmentConfiguration> updatedList =
-            await repository.GetApartmentConfigurationsAsync();
+        IList<ApartmentConfiguration> updatedList = await repository.GetApartmentConfigurationsAsync();
 
         // Assert
         updatedList.First(x => x.Id.Number == 131).PhoneNumbers[0].Number.Should().Be("31 1234567890");
@@ -47,8 +45,7 @@ public class RepositoryTests
         var repository = fixture.Create<Repository>();
 
         IList<Intercom> intercoms = await repository.GetIntercomsAsync();
-        IList<ApartmentConfiguration> apartmentConfigurations =
-            await repository.GetApartmentConfigurationsAsync();
+        IList<ApartmentConfiguration> apartmentConfigurations = await repository.GetApartmentConfigurationsAsync();
         var apartment131 = apartmentConfigurations.First(x => x.Id.Number == 131);
         apartment131.UnlinkIntercom(intercoms[0]);
         apartment131.UnlinkIntercom(intercoms[1]);
@@ -56,8 +53,7 @@ public class RepositoryTests
         // Act
         await repository.UpdateApartmentConfigurationsAsync(apartmentConfigurations);
 
-        IList<ApartmentConfiguration> updatedList =
-            await repository.GetApartmentConfigurationsAsync();
+        IList<ApartmentConfiguration> updatedList = await repository.GetApartmentConfigurationsAsync();
 
         // Assert
         updatedList.First(x => x.Id.Number == 131).Intercoms.Count.Should().Be(0);
@@ -73,8 +69,7 @@ public class RepositoryTests
         var repository = fixture.Create<Repository>();
 
         IList<Intercom> intercoms = await repository.GetIntercomsAsync();
-        IList<ApartmentConfiguration> apartmentConfigurations =
-            await repository.GetApartmentConfigurationsAsync();
+        IList<ApartmentConfiguration> apartmentConfigurations = await repository.GetApartmentConfigurationsAsync();
         var apartment131 = apartmentConfigurations.First(x => x.Id.Number == 131);
         apartment131.UnlinkIntercom(intercoms[0]);
         apartment131.UnlinkIntercom(intercoms[1]);
@@ -84,8 +79,7 @@ public class RepositoryTests
         apartment131.LinkIntercom(intercoms[0]);
         await repository.UpdateApartmentConfigurationsAsync(apartmentConfigurations);
 
-        IList<ApartmentConfiguration> updatedList =
-            await repository.GetApartmentConfigurationsAsync();
+        IList<ApartmentConfiguration> updatedList = await repository.GetApartmentConfigurationsAsync();
 
         // Assert
         updatedList.First(x => x.Id.Number == 131).Intercoms.Count.Should().Be(1);
@@ -99,9 +93,12 @@ public class RepositoryTests
     private static async Task<DatabaseContext> CreateTemporaryDatabaseContext()
     {
         string tempDatabasePath = Path.Combine(Path.GetTempPath(), $"{Guid.NewGuid().ToString()}-PBM.db");
-        string connectionString = $"Filename={tempDatabasePath};Mode=ReadWriteCreate;Foreign Keys=True;Default Timeout=30;Cache=Default";
+        string connectionString =
+            $"Filename={tempDatabasePath};Mode=ReadWriteCreate;Foreign Keys=True;Default Timeout=30;Cache=Default";
 
-        var databaseContext = new DatabaseContext(new DbContextOptionsBuilder<DatabaseContext>().UseSqlite(connectionString).Options);
+        var databaseContext = new DatabaseContext(
+            new DbContextOptionsBuilder<DatabaseContext>().UseSqlite(connectionString).Options
+        );
         await databaseContext.Database.EnsureDeletedAsync();
         await databaseContext.Database.MigrateAsync();
 

@@ -19,17 +19,20 @@ internal sealed class IntercomConfiguration : IEntityTypeConfiguration<Intercom>
         builder.ToTable("Intercoms");
         builder.HasKey(k => k.Id);
 
-        builder.Property(p => p.Id)
+        builder
+            .Property(p => p.Id)
             .HasColumnName(nameof(Intercom.Id))
             .HasConversion(x => x.Id, x => new IntercomId(x))
             .ValueGeneratedNever();
         builder.Property(p => p.Name).HasColumnName("Name");
-        builder.Property(p => p.MasterCode)
+        builder
+            .Property(p => p.MasterCode)
             .HasColumnName(nameof(MasterCode))
             .HasMaxLength(4)
             .HasConversion(x => x.Code, x => new MasterCode(x))
             .ValueGeneratedNever();
-        builder.Property(p => p.PhoneNumber)
+        builder
+            .Property(p => p.PhoneNumber)
             .HasColumnName(nameof(PhoneNumber))
             .HasConversion(x => x.Number, x => new PhoneNumber(x))
             .ValueGeneratedNever();

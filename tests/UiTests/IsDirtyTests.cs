@@ -1,8 +1,8 @@
 ﻿using System.Collections.ObjectModel;
 using System.Diagnostics.CodeAnalysis;
 using Arentheym.ParkingBarrier.UI.ViewModels;
-using Xunit;
 using FluentAssertions;
+using Xunit;
 
 namespace Arentheym.ParkingBarrier.UI.Tests;
 
@@ -178,6 +178,8 @@ public class IsDirtyTests
         }
 
         // / Assert
-        exceptionThrown.Should().BeTrue($"because {nameof(sut.IsDirty)} was called without calling {nameof(sut.SetOriginal)} first.");
+        exceptionThrown
+            .Should()
+            .BeTrue($"because {nameof(sut.IsDirty)} was called without calling {nameof(sut.SetOriginal)} first.");
     }
 }

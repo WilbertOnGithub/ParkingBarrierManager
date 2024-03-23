@@ -5,11 +5,15 @@
 resharper_check_namespace_highlighting = none
 
 [*]
+charset = utf-8
 end_of_line = crlf
 trim_trailing_whitespace = true
-insert_final_newline = false
+insert_final_newline = true
+dotnet_sort_system_directives_first = true
+dotnet_separate_import_directive_groups = true
 indent_style = space
 indent_size = 4
+max_line_length = 120
 
 dotnet_diagnostic.CA2007.severity = suggestion
 dotnet_diagnostic.CA1848.severity = suggestion

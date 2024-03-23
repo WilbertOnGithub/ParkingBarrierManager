@@ -15,9 +15,7 @@ public class DatabaseContext : DbContext
     /// </summary>
     /// <param name="options">Options for the database context.</param>
     public DatabaseContext(DbContextOptions<DatabaseContext> options)
-        : base(options)
-    {
-    }
+        : base(options) { }
 
     /// <summary>
     /// Gets the <see cref="DbSet{ApartmentConfiguration}"/>.
@@ -55,39 +53,48 @@ public class DatabaseContext : DbContext
                 new MemoryLocation(Convert.ToInt16(apartmentNumber)),
                 apartmentNumber.ToString("D3", CultureInfo.InvariantCulture),
                 true,
-                new AccessCode(string.Empty));
+                new AccessCode(string.Empty)
+            );
 
             // Create a standard list of 4 phone numbers.
             modelBuilder.Entity<ApartmentConfiguration>(b =>
             {
                 b.HasData(apartmentConfiguration);
-                b.OwnsMany(e => e.PhoneNumbers).HasData(new
-                {
-                    ApartmentConfigurationId = apartmentConfiguration.Id,
-                    Order = DivertOrder.Primary,
-                    Number = string.Empty
-                }, new
-                {
-                    ApartmentConfigurationId = apartmentConfiguration.Id,
-                    Order = DivertOrder.Secondary,
-                    Number = string.Empty
-                }, new
-                {
-                    ApartmentConfigurationId = apartmentConfiguration.Id,
-                    Order = DivertOrder.Tertiary,
-                    Number = string.Empty
-                }, new
-                {
-                    ApartmentConfigurationId = apartmentConfiguration.Id,
-                    Order = DivertOrder.Quaternary,
-                    Number = string.Empty
-                });
+                b.OwnsMany(e => e.PhoneNumbers)
+                    .HasData(
+                        new
+                        {
+                            ApartmentConfigurationId = apartmentConfiguration.Id,
+                            Order = DivertOrder.Primary,
+                            Number = string.Empty
+                        },
+                        new
+                        {
+                            ApartmentConfigurationId = apartmentConfiguration.Id,
+                            Order = DivertOrder.Secondary,
+                            Number = string.Empty
+                        },
+                        new
+                        {
+                            ApartmentConfigurationId = apartmentConfiguration.Id,
+                            Order = DivertOrder.Tertiary,
+                            Number = string.Empty
+                        },
+                        new
+                        {
+                            ApartmentConfigurationId = apartmentConfiguration.Id,
+                            Order = DivertOrder.Quaternary,
+                            Number = string.Empty
+                        }
+                    );
             });
 
-            modelBuilder.Entity("ApartmentconfigurationIntercoms").HasData(
-                new { ApartmentConfigurationId = apartmentConfiguration.Id, IntercomId = intercomBack.Id },
-                new { ApartmentConfigurationId = apartmentConfiguration.Id, IntercomId = intercomFront.Id }
-            );
+            modelBuilder
+                .Entity("ApartmentconfigurationIntercoms")
+                .HasData(
+                    new { ApartmentConfigurationId = apartmentConfiguration.Id, IntercomId = intercomBack.Id },
+                    new { ApartmentConfigurationId = apartmentConfiguration.Id, IntercomId = intercomFront.Id }
+                );
         }
     }
 }

@@ -18,7 +18,9 @@ public partial class ApartmentConfigurationViewModel : ObservableValidator, IEqu
         {
             if (original is null)
             {
-                throw new InvalidOperationException($"Original has not been set. Call method {nameof(SetOriginal)} first.");
+                throw new InvalidOperationException(
+                    $"Original has not been set. Call method {nameof(SetOriginal)} first."
+                );
             }
             return !Equals(original);
         }
@@ -84,25 +86,30 @@ public partial class ApartmentConfigurationViewModel : ObservableValidator, IEqu
 
     public bool Equals(ApartmentConfigurationViewModel? other)
     {
-        if (ReferenceEquals(null, other)) return false;
-        if (ReferenceEquals(this, other)) return true;
-        return string.Equals(PrimaryPhoneNumber, other.PrimaryPhoneNumber, StringComparison.OrdinalIgnoreCase) &&
-               string.Equals(SecondaryPhoneNumber, other.SecondaryPhoneNumber, StringComparison.OrdinalIgnoreCase) &&
-               string.Equals(TertiaryPhoneNumber, other.TertiaryPhoneNumber, StringComparison.OrdinalIgnoreCase) &&
-               string.Equals(QuaternaryPhoneNumber, other.QuaternaryPhoneNumber, StringComparison.OrdinalIgnoreCase)
-               && string.Equals(AccessCode, other.AccessCode, StringComparison.OrdinalIgnoreCase) &&
-               DialToOpen == other.DialToOpen &&
-               string.Equals(DisplayName, other.DisplayName, StringComparison.OrdinalIgnoreCase) &&
-               ApartmentNumber == other.ApartmentNumber &&
-               Intercoms.SequenceEqual(other.Intercoms);
+        if (ReferenceEquals(null, other))
+            return false;
+        if (ReferenceEquals(this, other))
+            return true;
+        return string.Equals(PrimaryPhoneNumber, other.PrimaryPhoneNumber, StringComparison.OrdinalIgnoreCase)
+            && string.Equals(SecondaryPhoneNumber, other.SecondaryPhoneNumber, StringComparison.OrdinalIgnoreCase)
+            && string.Equals(TertiaryPhoneNumber, other.TertiaryPhoneNumber, StringComparison.OrdinalIgnoreCase)
+            && string.Equals(QuaternaryPhoneNumber, other.QuaternaryPhoneNumber, StringComparison.OrdinalIgnoreCase)
+            && string.Equals(AccessCode, other.AccessCode, StringComparison.OrdinalIgnoreCase)
+            && DialToOpen == other.DialToOpen
+            && string.Equals(DisplayName, other.DisplayName, StringComparison.OrdinalIgnoreCase)
+            && ApartmentNumber == other.ApartmentNumber
+            && Intercoms.SequenceEqual(other.Intercoms);
     }
 
     public override bool Equals(object? obj)
     {
-        if (ReferenceEquals(null, obj)) return false;
-        if (ReferenceEquals(this, obj)) return true;
-        if (obj.GetType() != GetType()) return false;
-        return Equals((ApartmentConfigurationViewModel) obj);
+        if (ReferenceEquals(null, obj))
+            return false;
+        if (ReferenceEquals(this, obj))
+            return true;
+        if (obj.GetType() != GetType())
+            return false;
+        return Equals((ApartmentConfigurationViewModel)obj);
     }
 
     public override int GetHashCode()

@@ -10,6 +10,9 @@ public class DatabaseConfiguration
     public string ConnectionString { get; set; } = string.Empty;
 
     public string ExpandedConnectionString =>
-        ConnectionString.Replace("%APPDATA%",
-            Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), StringComparison.InvariantCulture);
+        ConnectionString.Replace(
+            "%APPDATA%",
+            Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
+            StringComparison.InvariantCulture
+        );
 }

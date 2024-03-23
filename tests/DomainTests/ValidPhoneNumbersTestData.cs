@@ -8,9 +8,9 @@ namespace Arentheym.ParkingBarrier.Domain.Tests;
 /// Create test data for validating phone numbers.
 /// </summary>
 /// <see cref="https://nl.wikipedia.org/wiki/Lijst_van_landnummers_in_de_telefonie_op_nummervolgorde"/>
-public class ValidCountryCodesTestData : IEnumerable<object[]>
+public class ValidPhoneNumbersTestData : IEnumerable<object[]>
 {
-    private static List<string> CreateValidPhoneNumbersForAllCountryCodes()
+    private static List<string> Create()
     {
         List<string> testData = new();
 
@@ -217,7 +217,7 @@ public class ValidCountryCodesTestData : IEnumerable<object[]>
 
     public IEnumerator<object[]> GetEnumerator()
     {
-        foreach (var phoneNumber in CreateValidPhoneNumbersForAllCountryCodes())
+        foreach (var phoneNumber in Create())
         {
             yield return [phoneNumber];
         }

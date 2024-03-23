@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.Text;
 
@@ -11,7 +10,7 @@ namespace Arentheym.ParkingBarrier.Domain.Tests;
 /// <see cref="https://nl.wikipedia.org/wiki/Lijst_van_landnummers_in_de_telefonie_op_nummervolgorde"/>
 public class ValidCountryCodesTestData : IEnumerable<object[]>
 {
-    private static List<string> CreateTestData()
+    private static List<string> CreateValidPhoneNumbersForAllCountryCodes()
     {
         List<string> testData = new();
 
@@ -218,9 +217,9 @@ public class ValidCountryCodesTestData : IEnumerable<object[]>
 
     public IEnumerator<object[]> GetEnumerator()
     {
-        foreach (var phoneNumber in CreateTestData())
+        foreach (var phoneNumber in CreateValidPhoneNumbersForAllCountryCodes())
         {
-            yield return new object[] { phoneNumber };
+            yield return [phoneNumber];
         }
     }
 

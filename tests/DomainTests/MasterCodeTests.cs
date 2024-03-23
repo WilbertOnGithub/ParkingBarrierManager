@@ -44,4 +44,13 @@ public class MasterCodeTests
         // Assert
         masterCode.Code.Should().Be("1111", "because this is the default Mastercode");
     }
+
+    [Fact]
+    public void MasterCodes_can_be_equal()
+    {
+        var left = new MasterCode("1111");
+        var right = new MasterCode("1111");
+
+        left.Should().BeEquivalentTo(right, "because they are equal");
+    }
 }

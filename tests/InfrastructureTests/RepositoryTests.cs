@@ -61,7 +61,7 @@ public class RepositoryTests
     }
 
     [Fact]
-    public async Task Adding_intercom_saves_it_in_database()
+    public async Task Linking_intercom_to_apartment_saves_it_in_database()
     {
         // Arrange
         await using DatabaseContext databaseContext = await CreateTemporaryDatabaseContext();
@@ -70,6 +70,7 @@ public class RepositoryTests
 
         IList<Intercom> intercoms = await repository.GetIntercomsAsync();
         IList<ApartmentConfiguration> apartmentConfigurations = await repository.GetApartmentConfigurationsAsync();
+        // Remove existing intercoms for apartment 131
         var apartment131 = apartmentConfigurations.First(x => x.Id.Number == 131);
         apartment131.UnlinkIntercom(intercoms[0]);
         apartment131.UnlinkIntercom(intercoms[1]);

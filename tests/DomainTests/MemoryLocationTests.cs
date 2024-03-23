@@ -31,4 +31,17 @@ public class MemoryLocationTests
         // Assert
         act.Should().Throw<ArgumentException>("because this is not a valid memory location.");
     }
+
+    [Fact]
+    public void MemoryLocation_are_displayed_with_leading_zeroes_to_3_digits()
+    {
+        // Arrange / act
+        var memoryLocation = new MemoryLocation(0);
+
+        // Assert
+        memoryLocation
+            .ToString()
+            .Should()
+            .Be("000", "because string representations are prefixed with leading zeroes");
+    }
 }

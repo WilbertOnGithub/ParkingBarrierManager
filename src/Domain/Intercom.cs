@@ -8,6 +8,8 @@ namespace Arentheym.ParkingBarrier.Domain;
 /// </summary>
 public class Intercom : Entity<IntercomId>
 {
+    private string name;
+
     /// <summary>
     /// Initializes a new instance of the <see cref="Intercom"/> class.
     /// </summary>
@@ -17,7 +19,7 @@ public class Intercom : Entity<IntercomId>
     public Intercom(string name, PhoneNumber phoneNumber, MasterCode masterCode)
         : base(IntercomId.NewId())
     {
-        Name = name;
+        this.name = name;
         PhoneNumber = phoneNumber;
         MasterCode = masterCode;
     }
@@ -35,7 +37,7 @@ public class Intercom : Entity<IntercomId>
     private Intercom(IntercomId id, string name, PhoneNumber phoneNumber, MasterCode masterCode)
         : base(id)
     {
-        Name = name;
+        this.name = name;
         PhoneNumber = phoneNumber;
         MasterCode = masterCode;
     }
@@ -43,15 +45,29 @@ public class Intercom : Entity<IntercomId>
     /// <summary>
     /// Gets the master code that is needed to remotely configure the intercom.
     /// </summary>
-    public MasterCode MasterCode { get; private set; }
+    public MasterCode MasterCode { get; set; }
 
     /// <summary>
     /// Gets the name of the owner.
     /// </summary>
-    public string Name { get; private set; }
+    public string Name
+    {
+        get
+        {
+            return name;
+        }
+        set
+        {
+            if (string.IsNullOrEmpty(value))
+            {
+                throw new ArgumentException("Name cannot be null or empty");
+            }
+            name = value;
+        }
+    }
 
     /// <summary>
     /// Gets the phone number for this intercom.
     /// </summary>
-    public PhoneNumber PhoneNumber { get; private set; }
+    public PhoneNumber PhoneNumber { get; set; }
 }

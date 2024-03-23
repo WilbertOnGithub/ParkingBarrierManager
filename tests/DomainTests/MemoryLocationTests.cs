@@ -33,6 +33,15 @@ public class MemoryLocationTests
     }
 
     [Fact]
+    public void MemoryLocations_can_be_equal()
+    {
+        var left = new MemoryLocation(0);
+        var right = new MemoryLocation(0);
+
+        left.Should().BeEquivalentTo(right, "because they are equal");
+    }
+
+    [Fact]
     public void MemoryLocation_are_displayed_with_leading_zeroes_to_3_digits()
     {
         // Arrange / act

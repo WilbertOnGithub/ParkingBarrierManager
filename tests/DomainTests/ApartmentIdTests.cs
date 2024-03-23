@@ -37,4 +37,14 @@ public class ApartmentIdTests
         // Assert
         act.Should().Throw<ArgumentException>("because this is not a valid ApartmentId.");
     }
+
+    [Fact]
+    public void ApartmentIds_can_be_equal()
+    {
+        // Arrange
+        var left = new ApartmentId(131);
+        var right = new ApartmentId(131);
+
+        left.Should().BeEquivalentTo(right, "because they are equal");
+    }
 }

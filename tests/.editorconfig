@@ -1,0 +1,2 @@
+[*.cs]
+dotnet_diagnostic.CA1515.severity = none # Consider making public types internal

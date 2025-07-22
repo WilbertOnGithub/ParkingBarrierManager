@@ -17,3 +17,4 @@ max_line_length = 120
 
 dotnet_diagnostic.CA2007.severity = suggestion
 dotnet_diagnostic.CA1848.severity = suggestion
+dotnet_diagnostic.CA1515.severity = suggestion # Consider making public types internal

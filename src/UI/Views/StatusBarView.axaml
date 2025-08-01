@@ -1,18 +1,26 @@
-﻿<UserControl xmlns="https://github.com/avaloniaui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:vm="using:Arentheym.ParkingBarrier.UI.ViewModels"
-             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-             x:DataType="vm:StatusBarViewModel"
-             x:Class="Arentheym.Views.StatusBarView">
+﻿<UserControl
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    mc:Ignorable="d"
+    x:Class="Arentheym.Views.StatusBarView"
+    x:DataType="vm:StatusBarViewModel"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vm="using:Arentheym.ParkingBarrier.UI.ViewModels"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
     <Design.DataContext>
-        <!-- This only sets the DataContext for the previewer in an IDE,
-             to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
-        <vm:StatusBarViewModel/>
+        <!--
+            This only sets the DataContext for the previewer in an IDE,
+            to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs)
+        -->
+        <vm:StatusBarViewModel />
     </Design.DataContext>
 
-    <TextBlock Text="{Binding RemainingCredits}"></TextBlock>
+    <StackPanel Orientation="Horizontal">
+        <TextBlock Text="{Binding RemainingCredits}" />
+        <TextBlock Text="{Binding PricePerMessage}" />
+    </StackPanel>
 
 </UserControl>

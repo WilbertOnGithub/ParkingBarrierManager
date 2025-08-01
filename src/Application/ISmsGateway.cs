@@ -8,7 +8,7 @@ namespace Arentheym.ParkingBarrier.Application;
 /// </summary>
 public interface ISmsGateway
 {
-    IList<Result> SendSms(ApartmentConfiguration apartmentConfiguration);
+    Result SendSms(ApartmentConfiguration apartmentConfiguration);
 
     Result<float> GetBalance();
 }

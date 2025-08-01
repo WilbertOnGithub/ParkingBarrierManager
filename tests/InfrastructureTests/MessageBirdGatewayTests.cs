@@ -95,8 +95,8 @@ public class MessageBirdGatewayTests
         );
 
         // Act
-        IList<Result> result = sut.SendSms(apartmentConfiguration);
-        result.All(x => x.IsSuccess).Should().BeTrue();
+        Result result = sut.SendSms(apartmentConfiguration);
+        result.IsSuccess.Should().BeTrue();
     }
 
     /// <summary>

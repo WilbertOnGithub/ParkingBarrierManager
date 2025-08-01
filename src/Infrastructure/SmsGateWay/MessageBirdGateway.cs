@@ -13,7 +13,7 @@ public class MessageBirdGateway(SmsGatewayConfiguration configuration) : ISmsGat
 {
     private readonly Client client = Client.CreateDefault(configuration.ApiKey);
 
-    public IList<Result> SendSms(ApartmentConfiguration apartmentConfiguration)
+    public Result SendSms(ApartmentConfiguration apartmentConfiguration)
     {
         ArgumentNullException.ThrowIfNull(apartmentConfiguration);
         List<Result> results = new();
@@ -28,7 +28,6 @@ public class MessageBirdGateway(SmsGatewayConfiguration configuration) : ISmsGat
             try
             {
                 Message message = client.SendMessage(sender, body, recipients);
-
                 results.Add(Result.Ok());
             }
             catch (ErrorException ex)
@@ -37,7 +36,10 @@ public class MessageBirdGateway(SmsGatewayConfiguration configuration) : ISmsGat
             }
         }
 
-        return results;
+        return Result.OkIf(
+            results.All(x => x.IsSuccess),
+            "One or more SMS messages failed to send. See error messages for details."
+        );
     }
 
     public Result<float> GetBalance()

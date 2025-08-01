@@ -1,12 +1,5 @@
-[*.xml]
-# Microsoft .NET properties
-
-# ReSharper inspection severities
-resharper_check_namespace_highlighting = none
-
 [*]
 charset = utf-8
-end_of_line = crlf
 trim_trailing_whitespace = true
 insert_final_newline = true
 dotnet_sort_system_directives_first = true

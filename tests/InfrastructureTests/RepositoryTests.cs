@@ -5,6 +5,7 @@ using AutoFixture;
 using AutoFixture.AutoNSubstitute;
 using FluentAssertions;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Diagnostics;
 using Xunit;
 
 namespace Arentheym.ParkingBarrier.Infrastructure.Tests;
@@ -123,7 +124,10 @@ public class RepositoryTests
             $"Filename={tempDatabasePath};Mode=ReadWriteCreate;Foreign Keys=True;Default Timeout=30;Cache=Default";
 
         var databaseContext = new DatabaseContext(
-            new DbContextOptionsBuilder<DatabaseContext>().UseSqlite(connectionString).Options
+            new DbContextOptionsBuilder<DatabaseContext>()
+                .UseSqlite(connectionString)
+                .ConfigureWarnings(w => w.Ignore(RelationalEventId.PendingModelChangesWarning))
+                .Options
         );
         await databaseContext.Database.EnsureDeletedAsync();
         await databaseContext.Database.MigrateAsync();

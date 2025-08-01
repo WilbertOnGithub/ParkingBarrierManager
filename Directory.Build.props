@@ -1,19 +1,15 @@
 <Project>
-
     <PropertyGroup>
-        <Title></Title>
+        <Title>PBM</Title>
         <Authors>Wilbert van Dolleweerd</Authors>
         <Description>Parking Barrier Manager</Description>
-
         <TargetFramework>net9.0</TargetFramework>
         <LangVersion>latest</LangVersion>
         <RootNamespace>Arentheym</RootNamespace>
-
         <Nullable>enable</Nullable>
         <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
         <EnableNETAnalyzers>true</EnableNETAnalyzers>
         <AnalysisMode>AllEnabledByDefault</AnalysisMode>
         <AnalysisLevel>latest</AnalysisLevel>
     </PropertyGroup>
-
 </Project>

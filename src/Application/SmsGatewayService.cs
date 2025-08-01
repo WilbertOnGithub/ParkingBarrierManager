@@ -43,4 +43,22 @@ public class SmsGatewayService(ILogger<SmsGatewayService> logger, ISmsGateway ga
         }
         return result;
     }
+
+    public float GetPricePerMessage()
+    {
+        return gateway.GetPricePerMessage();
+    }
+
+    public Result<int> NumberOfMessagesLeft()
+    {
+        Result<float> result = GetBalanceDetails();
+        float pricePerMessage = GetPricePerMessage();
+
+        if (result.IsSuccess && pricePerMessage > 0)
+        {
+            return (int)Math.Floor(result.Value / pricePerMessage);
+        }
+
+        return Result.Fail("Could not determine number of messages left.");
+    }
 }

@@ -11,4 +11,6 @@ public interface ISmsGateway
     Result SendSms(ApartmentConfiguration apartmentConfiguration);
 
     Result<float> GetBalance();
+
+    float GetPricePerMessage();
 }

@@ -57,6 +57,11 @@ public class MessageBirdGateway(SmsGatewayConfiguration configuration) : ISmsGat
         }
     }
 
+    public float GetPricePerMessage()
+    {
+        return configuration.PricePerMessage;
+    }
+
     [SuppressMessage(
         "Performance",
         "CA1859:Use concrete types when possible for improved performance",

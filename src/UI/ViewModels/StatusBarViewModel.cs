@@ -1,4 +1,6 @@
-﻿using System.Globalization;
+﻿using System;
+using System.Diagnostics.CodeAnalysis;
+using System.Globalization;
 using Arentheym.ParkingBarrier.Application;
 using Arentheym.ParkingBarrier.UI.Messages;
 using CommunityToolkit.Mvvm.ComponentModel;
@@ -9,12 +11,19 @@ namespace Arentheym.ParkingBarrier.UI.ViewModels;
 
 public partial class StatusBarViewModel : ObservableObject
 {
+    private readonly CultureInfo dutchCulture = new("nl-NL");
     private readonly SmsGatewayService smsGatewayService;
 
     [ObservableProperty]
     private string remainingCredits = string.Empty;
 
-    public StatusBarViewModel(SmsGatewayService smsGatewayService)
+    [ObservableProperty]
+    private string pricePerMessage = string.Empty;
+
+    [ObservableProperty]
+    private string numberOfMessagesLeft = string.Empty;
+
+    public StatusBarViewModel([NotNull] SmsGatewayService smsGatewayService)
     {
         this.smsGatewayService = smsGatewayService;
 
@@ -27,21 +36,26 @@ public partial class StatusBarViewModel : ObservableObject
             }
         );
 
-        RetrieveCreditsFromGateway();
+        UpdateValues();
     }
 
-    private void RetrieveCreditsFromGateway()
+    private void UpdateValues()
     {
-        Result<float> result = smsGatewayService.GetBalanceDetails();
+        Result<float> balanceDetails = smsGatewayService.GetBalanceDetails();
+        Result<int> messagesLeft = smsGatewayService.NumberOfMessagesLeft();
 
-        CultureInfo nl = new CultureInfo("nl-NL");
-        RemainingCredits = result.IsSuccess
-            ? $"{result.Value.ToString(nl)} euro."
+        RemainingCredits = balanceDetails.IsSuccess
+            ? $"{balanceDetails.Value.ToString(dutchCulture)} euro."
             : "Error occurred while retrieving SMS balance.";
+
+        PricePerMessage = smsGatewayService.GetPricePerMessage().ToString(dutchCulture);
+        NumberOfMessagesLeft = messagesLeft.IsSuccess
+            ? messagesLeft.Value.ToString(dutchCulture)
+            : "Could not determine number of messages left.";
     }
 
     private void OnMessageReceived()
     {
-        RetrieveCreditsFromGateway();
+        UpdateValues();
     }
 }

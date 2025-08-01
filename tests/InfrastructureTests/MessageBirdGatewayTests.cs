@@ -52,7 +52,7 @@ public class MessageBirdGatewayTests
         var sut = new MessageBirdGateway(GetDevelopmentApiKey());
 
         // Act
-        Result<string> balance = sut.GetBalance();
+        Result<float> balance = sut.GetBalance();
 
         // Assert
         balance.IsSuccess.Should().BeTrue();
@@ -65,12 +65,12 @@ public class MessageBirdGatewayTests
         var sut = new MessageBirdGateway(
             new SmsGatewayConfiguration()
             {
-                ApiKey = Guid.NewGuid().ToString() // Create invalid key
+                ApiKey = Guid.NewGuid().ToString(), // Create invalid key
             }
         );
 
         // Act
-        Result<string> balance = sut.GetBalance();
+        Result<float> balance = sut.GetBalance();
 
         // Assert
         balance.IsFailed.Should().BeTrue();

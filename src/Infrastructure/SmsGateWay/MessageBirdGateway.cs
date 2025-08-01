@@ -40,12 +40,14 @@ public class MessageBirdGateway(SmsGatewayConfiguration configuration) : ISmsGat
         return results;
     }
 
-    public Result<string> GetBalance()
+    public Result<float> GetBalance()
     {
         try
         {
             Balance balance = client.Balance();
-            return Result.Ok<string>($"{balance.Amount} {balance.Type}");
+
+            float remainingCredits = float.Parse(balance.Amount, CultureInfo.InvariantCulture);
+            return Result.Ok(remainingCredits);
         }
         catch (ErrorException ex)
         {

@@ -6,20 +6,21 @@ namespace Arentheym.ParkingBarrier.Application;
 
 public class SmsGatewayService(ILogger<SmsGatewayService> logger, ISmsGateway gateway)
 {
-    public Result<string> GetBalanceDetails()
+    public Result<float> GetBalanceDetails()
     {
-        Result<string> result = gateway.GetBalance();
+        Result<float> result = gateway.GetBalance();
 
-        if (!result.IsFailed)
+        if (result.IsSuccess)
         {
-            return gateway.GetBalance();
+            return result;
         }
 
-        logger.LogError("Error while trying to retrieve SMS balance");
+        logger.LogError("Error occurred while trying to retrieve SMS balance");
         foreach (var error in result.Errors)
         {
             logger.LogError("{ErrorMessage}", error.Message);
         }
-        return gateway.GetBalance();
+
+        return result;
     }
 }

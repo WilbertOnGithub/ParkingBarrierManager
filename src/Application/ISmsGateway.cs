@@ -10,5 +10,5 @@ public interface ISmsGateway
 {
     IList<Result> SendSms(ApartmentConfiguration apartmentConfiguration);
 
-    Result<string> GetBalance();
+    Result<float> GetBalance();
 }

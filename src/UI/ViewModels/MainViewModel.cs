@@ -14,7 +14,7 @@ namespace Arentheym.ParkingBarrier.UI.ViewModels;
 public partial class MainViewModel : ViewModelBase, IAsyncInitialization
 {
     private readonly DataService dataService;
-    private IEnumerable<Intercom> availableIntercoms = Enumerable.Empty<Intercom>();
+    private IEnumerable<Intercom> availableIntercoms = [];
 
     [ObservableProperty]
     private bool buttonEnabled;

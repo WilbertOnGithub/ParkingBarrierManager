@@ -1,4 +1,5 @@
-﻿using Arentheym.ParkingBarrier.Application;
+﻿using System.Globalization;
+using Arentheym.ParkingBarrier.Application;
 using Arentheym.ParkingBarrier.UI.Messages;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Messaging;
@@ -31,8 +32,12 @@ public partial class StatusBarViewModel : ObservableObject
 
     private void RetrieveCreditsFromGateway()
     {
-        Result<string> result = smsGatewayService.GetBalanceDetails();
-        RemainingCredits = result.IsSuccess ? result.Value : "Error occurred while retrieving SMS balance.";
+        Result<float> result = smsGatewayService.GetBalanceDetails();
+
+        CultureInfo nl = new CultureInfo("nl-NL");
+        RemainingCredits = result.IsSuccess
+            ? $"{result.Value.ToString(nl)} euro."
+            : "Error occurred while retrieving SMS balance.";
     }
 
     private void OnMessageReceived()

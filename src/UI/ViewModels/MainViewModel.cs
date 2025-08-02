@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Diagnostics.CodeAnalysis;
@@ -6,11 +7,15 @@ using System.Linq;
 using System.Threading.Tasks;
 using Arentheym.ParkingBarrier.Application;
 using Arentheym.ParkingBarrier.Domain;
+using Arentheym.ParkingBarrier.UI.Messages;
+
+using CommunityToolkit.Mvvm.Messaging;
 
 namespace Arentheym.ParkingBarrier.UI.ViewModels;
 
 public partial class MainViewModel : ViewModelBase, IAsyncInitialization
 {
+    private readonly SmsGatewayService smsGatewayService;
     private readonly DataService dataService;
     private IEnumerable<Intercom> availableIntercoms = [];
 
@@ -21,9 +26,11 @@ public partial class MainViewModel : ViewModelBase, IAsyncInitialization
     public Task Initialization { get; }
 
     [SuppressMessage("Design", "CA1062:Validate arguments of public methods", Justification = "Dependency injection")]
-    public MainViewModel(DataService dataService)
+    public MainViewModel(DataService dataService, SmsGatewayService smsGatewayService)
     {
         this.dataService = dataService;
+        this.smsGatewayService = smsGatewayService;
+
         Initialization = InitializeAsync();
     }
 
@@ -56,15 +63,24 @@ public partial class MainViewModel : ViewModelBase, IAsyncInitialization
     /// <summary>
     /// Save all dirty configurations to the database
     /// </summary>
-    public async Task SaveConfigurationsAsync()
+    public async Task UpdateConfigurationsAsync()
     {
-        var dirtyConfigurations = Configurations.Where(x => x.IsDirty).ToList();
-        await dataService.SaveApartmentConfigurations(
-            dirtyConfigurations.Select(x => ManualMapper.ViewModelToEntity(x, availableIntercoms.ToList())).ToList()
-        );
+        List<ApartmentConfigurationViewModel> toBeUpdatedViewModels = Configurations.Where(x => x.IsDirty).ToList();
+        List<ApartmentConfiguration> toBeUpdatedApartmentConfigurations = toBeUpdatedViewModels.Select(x => ManualMapper.ViewModelToEntity(x, availableIntercoms.ToList()))
+            .ToList();
+
+        foreach (var toBeUpdatedApartmentConfiguration in toBeUpdatedApartmentConfigurations)
+         {
+            List<string> toBeLogged = await smsGatewayService.UpdateApartmentConfiguration(toBeUpdatedApartmentConfiguration);
+            foreach (var message in toBeLogged)
+            {
+                WeakReferenceMessenger.Default.Send(new LogEntryAdded(new LogMessage { Message = message, Timestamp = DateTime.Now }));
+            }
+        }
+        await dataService.SaveApartmentConfigurations(toBeUpdatedApartmentConfigurations);
 
         // Set original for all dirty configurations so that they are no longer considered dirty.
-        dirtyConfigurations.ForEach(x => x.SetOriginal());
+        toBeUpdatedViewModels.ForEach(x => x.SetOriginal());
         OnPropertyChanged(nameof(IsDirty));
     }
 }

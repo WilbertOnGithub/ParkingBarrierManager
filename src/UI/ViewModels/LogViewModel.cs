@@ -15,15 +15,10 @@ public partial class LogViewModel : ObservableObject
     public LogViewModel()
     {
         WeakReferenceMessenger.Default.Register<LogEntryAdded>(this, OnMessageReceived);
-
-        for (int i = 0; i < 30; i++)
-        {
-            LogEntries.Insert(0, new LogMessage(){ Timestamp = DateTime.Now, Message = "foo"});
-        }
     }
 
     private void OnMessageReceived(object recipient, LogEntryAdded message)
     {
-        throw new System.NotImplementedException();
+        LogEntries.Add(message.Value);
     }
 }

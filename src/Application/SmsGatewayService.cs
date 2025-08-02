@@ -33,8 +33,8 @@ public class SmsGatewayService(ILogger<SmsGatewayService> logger, ISmsGateway ga
     public async Task<List<string>> UpdateApartmentConfiguration([NotNull] ApartmentConfiguration apartmentConfiguration)
     {
         IList<Intercom> intercoms = await dataService.GetIntercoms().ConfigureAwait(false);
-        List<Intercom> toBeEmptied = apartmentConfiguration.Intercoms.Where(x => intercoms.All(y => y.Id != x.Id)).ToList();
-        List<Intercom> toBeUpdated = intercoms.Where(x => apartmentConfiguration.Intercoms.All(y => y.Id == x.Id)).ToList();
+        List<Intercom> toBeEmptied = intercoms.Where(x => apartmentConfiguration.Intercoms.All(y => y.Id != x.Id)).ToList();
+        List<Intercom> toBeUpdated = intercoms.Where(x => apartmentConfiguration.Intercoms.Any(y => y.Id == x.Id)).ToList();
 
         List<string> results = [];
 

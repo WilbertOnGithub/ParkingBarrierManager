@@ -23,7 +23,7 @@ public class MainWindowViewModelTests
         repositoryMock.GetApartmentConfigurationsAsync().Returns(Task.FromResult(GetDefaultConfigurations()));
         repositoryMock.GetIntercomsAsync().Returns(Task.FromResult(GetDefaultIntercoms()));
 
-        var sut = new MainViewModel(fixture.Create<DataService>());
+        var sut = new MainViewModel(fixture.Create<DataService>(), fixture.Create<SmsGatewayService>());
         await sut.Initialization;
 
         // Act // Assert
@@ -38,7 +38,7 @@ public class MainWindowViewModelTests
         repositoryMock.GetApartmentConfigurationsAsync().Returns(Task.FromResult(GetDefaultConfigurations()));
         repositoryMock.GetIntercomsAsync().Returns(Task.FromResult(GetDefaultIntercoms()));
 
-        var sut = new MainViewModel(fixture.Create<DataService>());
+        var sut = new MainViewModel(fixture.Create<DataService>(), fixture.Create<SmsGatewayService>());
         await sut.Initialization;
 
         // Act
@@ -56,7 +56,7 @@ public class MainWindowViewModelTests
         repositoryMock.GetApartmentConfigurationsAsync().Returns(Task.FromResult(GetDefaultConfigurations()));
         repositoryMock.GetIntercomsAsync().Returns(Task.FromResult(GetDefaultIntercoms()));
 
-        var sut = new MainViewModel(fixture.Create<DataService>());
+        var sut = new MainViewModel(fixture.Create<DataService>(), fixture.Create<SmsGatewayService>());
         await sut.Initialization;
 
         // Act

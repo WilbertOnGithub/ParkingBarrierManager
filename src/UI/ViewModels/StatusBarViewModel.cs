@@ -65,6 +65,6 @@ public partial class StatusBarViewModel : ObservableObject
     [RelayCommand]
     public async Task SaveConfigurationsAsync()
     {
-        await mainViewModel.SaveConfigurationsAsync();
+        await mainViewModel.UpdateConfigurationsAsync();
     }
 }

@@ -27,12 +27,11 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="1*" />
             <RowDefinition Height="7*" />
+            <RowDefinition Height="5" />
             <RowDefinition Height="2*" />
         </Grid.RowDefinitions>
 
-        <StackPanel Grid.Row="0">
-            <views:StatusBarView />
-        </StackPanel>
+        <views:StatusBarView Grid.Row="0" />
 
         <DataGrid
             CanUserResizeColumns="True"
@@ -121,9 +120,7 @@
             </DataGrid.Columns>
         </DataGrid>
 
-        <StackPanel Grid.Row="2">
-            <views:LogView HorizontalAlignment="Stretch" />
-        </StackPanel>
+        <views:LogView Grid.Row="3" HorizontalAlignment="Stretch" />
 
     </Grid>
 

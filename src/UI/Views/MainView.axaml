@@ -23,11 +23,11 @@
         <vm:MainViewModel />
     </Design.DataContext>
 
-    <Grid ShowGridLines="True">
+    <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="7*" />
+            <RowDefinition Height="2*" />
         </Grid.RowDefinitions>
 
         <StackPanel Grid.Row="0">
@@ -120,6 +120,10 @@
                 </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
+
+        <StackPanel Grid.Row="2">
+            <TextBlock Text="Foobar" />
+        </StackPanel>
 
     </Grid>
 

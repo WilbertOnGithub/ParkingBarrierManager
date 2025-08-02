@@ -14,29 +14,31 @@
         <vm:StatusBarViewModel />
     </Design.DataContext>
 
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="Auto" />
-        </Grid.ColumnDefinitions>
+    <Border BorderBrush="LightGray" BorderThickness="0,0,0,1">
+        <Grid Margin="10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
 
-        <StackPanel
-            Grid.Column="0"
-            Orientation="Horizontal"
-            Spacing="10"
-            VerticalAlignment="Center">
-            <TextBlock Text="{Binding RemainingCredits, StringFormat='Krediet: {0}'}" />
-            <TextBlock Text="{Binding PricePerMessage, StringFormat='Prijs per SMS: {0}'}" />
-            <TextBlock Text="{Binding NumberOfMessagesLeft, StringFormat='Aantal SMS over: {0}'}" />
-        </StackPanel>
+            <StackPanel
+                Grid.Column="0"
+                Orientation="Horizontal"
+                Spacing="10"
+                VerticalAlignment="Center">
+                <TextBlock Text="{Binding RemainingCredits, StringFormat='Krediet: {0}'}" />
+                <TextBlock Text="{Binding PricePerMessage, StringFormat='Prijs per SMS: {0}'}" />
+                <TextBlock Text="{Binding NumberOfMessagesLeft, StringFormat='Aantal SMS over: {0}'}" />
+            </StackPanel>
 
-        <Button
-            Command="{Binding SaveConfigurationsAsync}"
-            Content="Save Configurations"
-            Grid.Column="1"
-            HorizontalAlignment="Right"
-            IsEnabled="{Binding ButtonEnabled}"
-            VerticalAlignment="Center" />
-    </Grid>
+            <Button
+                Command="{Binding SaveConfigurationsAsync}"
+                Content="Save Configurations"
+                Grid.Column="1"
+                HorizontalAlignment="Right"
+                IsEnabled="{Binding ButtonEnabled}"
+                VerticalAlignment="Center" />
+        </Grid>
+    </Border>
 
 </UserControl>

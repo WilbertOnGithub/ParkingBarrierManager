@@ -122,7 +122,7 @@
         </DataGrid>
 
         <StackPanel Grid.Row="2">
-            <views:LogView />
+            <views:LogView HorizontalAlignment="Stretch" />
         </StackPanel>
 
     </Grid>

@@ -7,39 +7,35 @@ using MessageBird;
 using MessageBird.Exceptions;
 using MessageBird.Objects;
 
+using Error = FluentResults.Error;
+
 namespace Arentheym.ParkingBarrier.Infrastructure.SmsGateway;
 
 public class MessageBirdGateway(SmsGatewayConfiguration configuration) : ISmsGateway
 {
     private readonly Client client = Client.CreateDefault(configuration.ApiKey);
 
-    public Result SendSms(ApartmentConfiguration apartmentConfiguration)
+    public Result<string> SendSms(ApartmentConfiguration apartmentConfiguration, Intercom intercom)
     {
         ArgumentNullException.ThrowIfNull(apartmentConfiguration);
-        List<Result> results = new();
+        ArgumentNullException.ThrowIfNull(intercom);
 
-        // Create a separate SMS for each intercom.
-        foreach (var intercom in apartmentConfiguration.Intercoms)
+        long[] recipients = new long[1];
+        recipients[0] = Convert.ToInt64(intercom.PhoneNumber.Number, CultureInfo.InvariantCulture);
+        string sender = "MessageBird";
+        string body = new UpdateConfigurationCommand(intercom.MasterCode, apartmentConfiguration).ToString();
+
+        try
         {
-            long[] recipients = [Convert.ToInt64(intercom.PhoneNumber.Number, CultureInfo.InvariantCulture)];
-            string sender = "MessageBird";
-            string body = new UpdateConfigurationCommand(intercom.MasterCode, apartmentConfiguration).ToString();
-
-            try
-            {
-                Message message = client.SendMessage(sender, body, recipients);
-                results.Add(Result.Ok());
-            }
-            catch (ErrorException ex)
-            {
-                results.Add(Result.Fail(CompileErrorList(ex)));
-            }
+            Message _ = client.SendMessage(sender, body, recipients);
+            return Result.Ok(body);
         }
-
-        return Result.OkIf(
-            results.All(x => x.IsSuccess),
-            "One or more SMS messages failed to send. See error messages for details."
-        );
+        catch (ErrorException ex)
+        {
+            IList<IError> errors = CompileErrorList(ex);
+            errors.Insert(0, new Error($"Error while trying to send SMS for apartment {apartmentConfiguration.Id.Number} to {intercom.PhoneNumber.Number}"));
+            return Result.Fail(errors);
+        }
     }
 
     public Result<float> GetBalance()

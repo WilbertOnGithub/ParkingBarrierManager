@@ -16,7 +16,7 @@ public partial class LogViewModel : ObservableObject
     {
         WeakReferenceMessenger.Default.Register<LogEntryAdded>(this, OnMessageReceived);
 
-        for (int i = 0; i < 10; i++)
+        for (int i = 0; i < 30; i++)
         {
             LogEntries.Insert(0, new LogMessage(){ Timestamp = DateTime.Now, Message = "foo"});
         }

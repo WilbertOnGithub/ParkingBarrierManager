@@ -5,7 +5,7 @@ using Microsoft.Extensions.Logging;
 
 namespace Arentheym.ParkingBarrier.Application;
 
-public class SmsGatewayService(ILogger<SmsGatewayService> logger, ISmsGateway gateway)
+public class SmsGatewayService(ILogger<SmsGatewayService> logger, ISmsGateway gateway, DataService dataService)
 {
     public Result<float> GetBalanceDetails()
     {
@@ -24,24 +24,46 @@ public class SmsGatewayService(ILogger<SmsGatewayService> logger, ISmsGateway ga
         return result;
     }
 
-    public Result SendSMS([NotNull] ApartmentConfiguration apartmentConfiguration)
+    /// <summary>
+    /// Updates the configuration of an apartment by synchronizing its intercoms with the given apartment configuration.
+    /// Sends SMS messages to update or reset intercom configurations accordingly.
+    /// </summary>
+    /// <param name="apartmentConfiguration">The configuration of the apartment to be updated, including its intercoms.</param>
+    /// <returns>A list of strings representing the results of the SMS update operations.</returns>
+    public async Task<List<string>> UpdateApartmentConfiguration([NotNull] ApartmentConfiguration apartmentConfiguration)
     {
-        Result result = gateway.SendSms(apartmentConfiguration);
+        IList<Intercom> intercoms = await dataService.GetIntercoms().ConfigureAwait(false);
+        List<Intercom> toBeEmptied = apartmentConfiguration.Intercoms.Where(x => intercoms.All(y => y.Id != x.Id)).ToList();
+        List<Intercom> toBeUpdated = intercoms.Where(x => apartmentConfiguration.Intercoms.All(y => y.Id == x.Id)).ToList();
 
-        if (result.IsSuccess)
+        List<string> results = [];
+
+        foreach (var intercom in toBeUpdated)
         {
-            return result;
+            results.Add(CheckResult(gateway.SendSms(apartmentConfiguration, intercom)));
         }
 
-        logger.LogError(
-            "Error occurred while trying to send SMS to update apartment {ApartmentNumber}",
-            apartmentConfiguration.Id
-        );
+        foreach (var intercom in toBeEmptied)
+        {
+            results.Add(CheckResult(gateway.SendSms(ApartmentConfiguration.CreateEmptyConfiguration(apartmentConfiguration.Id.Number), intercom)));
+        }
+
+        return results;
+    }
+
+    private string CheckResult(Result<string> result)
+    {
+        if (result.IsSuccess)
+        {
+            return result.Value;
+        }
+
         foreach (var error in result.Errors)
         {
             logger.LogError("{ErrorMessage}", error.Message);
         }
-        return result;
+
+        return "Fout opgetreden bij het versturen van de SMS.";
     }
 
     public float GetPricePerMessage()

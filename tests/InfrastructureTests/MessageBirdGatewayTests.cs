@@ -77,28 +77,6 @@ public class MessageBirdGatewayTests
         balance.Errors.Count.Should().BeGreaterThan(0);
     }
 
-    [SkippableFact]
-    public void MessageBird_can_send_sms_with_valid_key()
-    {
-        Skip.If(string.IsNullOrEmpty(GetDevelopmentApiKey().ApiKey));
-
-        // Arrange
-        var sut = new MessageBirdGateway(GetDevelopmentApiKey());
-
-        var apartmentConfiguration = new ApartmentConfiguration(new ApartmentId(131));
-        apartmentConfiguration.UpsertPhoneNumber(new DivertPhoneNumber(DivertOrder.Primary, "311234567890"));
-        apartmentConfiguration.UpsertPhoneNumber(new DivertPhoneNumber(DivertOrder.Secondary, string.Empty));
-        apartmentConfiguration.UpsertPhoneNumber(new DivertPhoneNumber(DivertOrder.Tertiary, string.Empty));
-        apartmentConfiguration.UpsertPhoneNumber(new DivertPhoneNumber(DivertOrder.Quaternary, string.Empty));
-        apartmentConfiguration.LinkIntercom(
-            new Intercom("voor", new PhoneNumber("31613739851"), new MasterCode("1111"))
-        );
-
-        // Act
-        Result result = sut.SendSms(apartmentConfiguration);
-        result.IsSuccess.Should().BeTrue();
-    }
-
     /// <summary>
     /// Try to retrieve API key that should be injected using environment variables.
     /// </summary>

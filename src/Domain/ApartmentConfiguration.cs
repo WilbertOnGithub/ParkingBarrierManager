@@ -42,6 +42,20 @@ public class ApartmentConfiguration : Entity<ApartmentId>
         AccessCode = accessCode;
     }
 
+    /// <summary>
+    /// We need an empty configuration if we need to delete a configuration for a barrier.
+    /// </summary>
+    public static ApartmentConfiguration CreateEmptyConfiguration(int apartmentNumber)
+    {
+        var emptyConfiguration =  new ApartmentConfiguration(new ApartmentId(apartmentNumber), new MemoryLocation(Convert.ToInt16(apartmentNumber)), string.Empty, false, AccessCode.NoAccessCode);
+        emptyConfiguration.UpsertPhoneNumber(new DivertPhoneNumber(DivertOrder.Primary, string.Empty));
+        emptyConfiguration.UpsertPhoneNumber(new DivertPhoneNumber(DivertOrder.Secondary, string.Empty));
+        emptyConfiguration.UpsertPhoneNumber(new DivertPhoneNumber(DivertOrder.Tertiary, string.Empty));
+        emptyConfiguration.UpsertPhoneNumber(new DivertPhoneNumber(DivertOrder.Quaternary, string.Empty));
+
+        return emptyConfiguration;
+    }
+
     public ApartmentConfiguration(ApartmentId id, MemoryLocation memoryLocation, string displayName, bool dialToOpen)
         : this(id, memoryLocation, displayName, dialToOpen, AccessCode.NoAccessCode) { }
 

@@ -34,10 +34,13 @@
         <views:StatusBarView Grid.Row="0" />
 
         <DataGrid
+            Background="Transparent"
             CanUserResizeColumns="True"
+            Foreground="Transparent"
             Grid.Row="1"
             ItemsSource="{Binding Configurations}"
-            MaxHeight="1000">
+            MaxHeight="1000"
+            RowBackground="Transparent">
             <DataGrid.Columns>
                 <DataGridTemplateColumn Header="{x:Static i18n:Resources.HouseNumberHeader}">
                     <DataGridTemplateColumn.CellTemplate>

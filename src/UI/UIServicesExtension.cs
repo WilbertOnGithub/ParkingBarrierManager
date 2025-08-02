@@ -19,9 +19,13 @@ public static class UIServicesExtension
 
         services.AddSingleton<MainView>();
         services.AddSingleton<MainViewModel>();
+        services.AddSingleton<ApartmentConfigurationViewModel>();
+
         services.AddSingleton<StatusBarView>();
         services.AddSingleton<StatusBarViewModel>();
-        services.AddSingleton<ApartmentConfigurationViewModel>();
+
+        services.AddSingleton<LogView>();
+        services.AddSingleton<LogViewModel>();
 
         services.RegisterApplicationServices(configuration);
         services.RegisterInfrastructureServices(configuration);

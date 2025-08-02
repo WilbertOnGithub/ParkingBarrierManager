@@ -1,0 +1,42 @@
+<UserControl
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    mc:Ignorable="d"
+    x:Class="Arentheym.Views.LogView"
+    x:DataType="vm:LogViewModel"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vm="clr-namespace:Arentheym.ParkingBarrier.UI.ViewModels"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Design.DataContext>
+        <vm:LogViewModel />
+    </Design.DataContext>
+
+    <ScrollViewer MaxHeight="100">
+        <ItemsRepeater ItemsSource="{Binding LogEntries}">
+            <ItemsRepeater.Layout>
+                <StackLayout Spacing="2" />
+            </ItemsRepeater.Layout>
+            <ItemsRepeater.ItemTemplate>
+                <DataTemplate>
+                    <Border
+                        Background="Transparent"
+                        BorderBrush="LightGray"
+                        BorderThickness="0,0,0,1"
+                        Padding="5">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock
+                                Foreground="Gray"
+                                Text="{Binding Timestamp, StringFormat='{}{0:HH:mm:ss}'}"
+                                Width="80" />
+                            <TextBlock Text="{Binding Message}" TextWrapping="Wrap" />
+                        </StackPanel>
+                    </Border>
+                </DataTemplate>
+            </ItemsRepeater.ItemTemplate>
+        </ItemsRepeater>
+    </ScrollViewer>
+
+</UserControl>

@@ -11,18 +11,20 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
     <Design.DataContext>
-        <!--
-            This only sets the DataContext for the previewer in an IDE,
-            to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs)
-        -->
         <vm:StatusBarViewModel />
     </Design.DataContext>
 
-    <DockPanel>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+
         <StackPanel
-            DockPanel.Dock="Left"
+            Grid.Column="0"
             Orientation="Horizontal"
-            Spacing="10">
+            Spacing="10"
+            VerticalAlignment="Center">
             <TextBlock Text="{Binding RemainingCredits, StringFormat='Krediet: {0}'}" />
             <TextBlock Text="{Binding PricePerMessage, StringFormat='Prijs per SMS: {0}'}" />
             <TextBlock Text="{Binding NumberOfMessagesLeft, StringFormat='Aantal SMS over: {0}'}" />
@@ -31,9 +33,10 @@
         <Button
             Command="{Binding SaveConfigurationsAsync}"
             Content="Save Configurations"
-            DockPanel.Dock="Right"
-            IsEnabled="{Binding ButtonEnabled}" />
-    </DockPanel>
-
+            Grid.Column="1"
+            HorizontalAlignment="Right"
+            IsEnabled="{Binding ButtonEnabled}"
+            VerticalAlignment="Center" />
+    </Grid>
 
 </UserControl>

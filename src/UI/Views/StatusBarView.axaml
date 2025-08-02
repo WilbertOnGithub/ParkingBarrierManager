@@ -18,9 +18,10 @@
         <vm:StatusBarViewModel />
     </Design.DataContext>
 
-    <StackPanel Orientation="Horizontal">
-        <TextBlock Text="{Binding RemainingCredits}" />
-        <TextBlock Text="{Binding PricePerMessage}" />
+    <StackPanel Orientation="Horizontal" Spacing="10">
+        <TextBlock Text="{Binding RemainingCredits, StringFormat='Krediet: {0}'}" />
+        <TextBlock Text="{Binding PricePerMessage, StringFormat='Prijs per SMS: {0}'}" />
+        <TextBlock Text="{Binding NumberOfMessagesLeft, StringFormat='Aantal SMS over: {0}'}" />
     </StackPanel>
 
 </UserControl>

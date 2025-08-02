@@ -1,106 +1,103 @@
-<Window xmlns="https://github.com/avaloniaui"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:vm="using:Arentheym.ParkingBarrier.UI.ViewModels"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:i18n="clr-namespace:Arentheym.Assets"
-        xmlns:views="clr-namespace:Arentheym.Views"
-        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-        x:Class="Arentheym.ParkingBarrier.UI.Views.MainView"
-        x:DataType="vm:MainViewModel"
-        Icon="/Assets/avalonia-logo.ico"
-        Title="{x:Static i18n:Resources.ApplicationTitle}">
+<Window
+    Icon="/Assets/avalonia-logo.ico"
+    Title="{x:Static i18n:Resources.ApplicationTitle}"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    mc:Ignorable="d"
+    x:Class="Arentheym.ParkingBarrier.UI.Views.MainView"
+    x:DataType="vm:MainViewModel"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:i18n="clr-namespace:Arentheym.Assets"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:views="clr-namespace:Arentheym.Views"
+    xmlns:vm="using:Arentheym.ParkingBarrier.UI.ViewModels"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
     <Design.DataContext>
-        <!-- This only sets the DataContext for the previewer in an IDE,
-             to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
-        <vm:MainViewModel/>
+        <!--
+            This only sets the DataContext for the previewer in an IDE,
+            to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs)
+        -->
+        <vm:MainViewModel />
     </Design.DataContext>
 
     <Grid ShowGridLines="True">
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"></RowDefinition>
-            <RowDefinition Height="Auto"></RowDefinition>
-            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
-        <StackPanel Orientation="Horizontal" Grid.Row="0"
-                    HorizontalAlignment="Right">
-            <Button HorizontalAlignment="Right"
-                    Command="{Binding SaveConfigurationsAsync}"
-                    Content="Save Configurations"
-                    IsEnabled="{Binding ButtonEnabled, Mode=OneWay}"
-                    />
+        <StackPanel Grid.Row="0" Orientation="Horizontal">
+            <views:StatusBarView />
         </StackPanel>
 
-        <DataGrid ItemsSource="{Binding Configurations}"
-                  Grid.Row="1"
-                  MaxHeight="1000"
-                  CanUserResizeColumns="True">
+        <DataGrid
+            CanUserResizeColumns="True"
+            Grid.Row="1"
+            ItemsSource="{Binding Configurations}"
+            MaxHeight="1000">
             <DataGrid.Columns>
                 <DataGridTemplateColumn Header="{x:Static i18n:Resources.HouseNumberHeader}">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <TextBlock Text="{Binding ApartmentNumber}"
-                                       HorizontalAlignment="Center"
-                                       Margin="10,0,10,0"/>
+                            <TextBlock
+                                HorizontalAlignment="Center"
+                                Margin="10,0,10,0"
+                                Text="{Binding ApartmentNumber}" />
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
                 <DataGridTemplateColumn Header="{x:Static i18n:Resources.DisplayNameHeader}">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <TextBox Text="{Binding DisplayName}"
-                                     Margin="10,0,10,0"/>
+                            <TextBox Margin="10,0,10,0" Text="{Binding DisplayName}" />
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
                 <DataGridTemplateColumn Header="{x:Static i18n:Resources.AccessCodeHeader}">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <TextBox Text="{Binding AccessCode}"
-                                     Margin="10,0,10,0"/>
+                            <TextBox Margin="10,0,10,0" Text="{Binding AccessCode}" />
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
                 <DataGridTemplateColumn Header="{x:Static i18n:Resources.PrimaryPhonenumberHeader}">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <TextBox Text="{Binding PrimaryPhoneNumber}"
-                                     Margin="10,0,10,0"/>
+                            <TextBox Margin="10,0,10,0" Text="{Binding PrimaryPhoneNumber}" />
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
                 <DataGridTemplateColumn Header="{x:Static i18n:Resources.SecondaryPhonenumberHeader}">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <TextBox Text="{Binding SecondaryPhoneNumber}"
-                                     Margin="10,0,10,0"/>
+                            <TextBox Margin="10,0,10,0" Text="{Binding SecondaryPhoneNumber}" />
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
                 <DataGridTemplateColumn Header="{x:Static i18n:Resources.TertiaryPhonenumberHeader}">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <TextBox Text="{Binding TertiaryPhoneNumber}"
-                                     Margin="10,0,10,0"/>
+                            <TextBox Margin="10,0,10,0" Text="{Binding TertiaryPhoneNumber}" />
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
                 <DataGridTemplateColumn Header="{x:Static i18n:Resources.QuaternaryPhonenumberHeader}">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <TextBox Text="{Binding QuaternaryPhoneNumber}"
-                                     Margin="10,0,10,0"/>
+                            <TextBox Margin="10,0,10,0" Text="{Binding QuaternaryPhoneNumber}" />
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
                 <DataGridTemplateColumn Header="{x:Static i18n:Resources.DialToOpenHeader}">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <CheckBox IsChecked="{Binding DialToOpen}"
-                                      HorizontalAlignment="Center"
-                                      Margin="10,0,10,0"/>
+                            <CheckBox
+                                HorizontalAlignment="Center"
+                                IsChecked="{Binding DialToOpen}"
+                                Margin="10,0,10,0" />
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
@@ -109,12 +106,11 @@
                         <DataTemplate>
                             <ItemsRepeater ItemsSource="{Binding Intercoms}">
                                 <ItemsRepeater.Layout>
-                                    <StackLayout Spacing="20" Orientation="Horizontal" />
+                                    <StackLayout Orientation="Horizontal" Spacing="20" />
                                 </ItemsRepeater.Layout>
                                 <ItemsRepeater.ItemTemplate>
                                     <DataTemplate>
-                                        <CheckBox IsChecked="{Binding IsUsed}"
-                                                  Content="{Binding Name}" />
+                                        <CheckBox Content="{Binding Name}" IsChecked="{Binding IsUsed}" />
                                     </DataTemplate>
                                 </ItemsRepeater.ItemTemplate>
                             </ItemsRepeater>
@@ -122,11 +118,7 @@
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
             </DataGrid.Columns>
-            </DataGrid>
-
-        <StackPanel Grid.Row="2" Orientation="Horizontal">
-            <views:StatusBarView/>
-        </StackPanel>
+        </DataGrid>
 
     </Grid>
 

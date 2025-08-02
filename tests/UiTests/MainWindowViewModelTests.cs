@@ -27,22 +27,7 @@ public class MainWindowViewModelTests
         await sut.Initialization;
 
         // Act // Assert
-        sut.NumberOfDirtyConfigurations.Should().Be(0, "because no changes have been made yet.");
-    }
-
-    [Fact]
-    public async Task When_MainWindowViewModel_is_initially_loaded_save_button_is_disabled()
-    {
-        // Arrange
-        var repositoryMock = fixture.Freeze<IRepository>();
-        repositoryMock.GetApartmentConfigurationsAsync().Returns(Task.FromResult(GetDefaultConfigurations()));
-        repositoryMock.GetIntercomsAsync().Returns(Task.FromResult(GetDefaultIntercoms()));
-
-        var sut = new MainViewModel(fixture.Create<DataService>());
-        await sut.Initialization;
-
-        // Act // Assert
-        sut.ButtonEnabled.Should().BeFalse("because no changes have been made yet.");
+        sut.IsDirty.Should().Be(false, "because no changes have been made yet.");
     }
 
     [Fact]
@@ -60,27 +45,7 @@ public class MainWindowViewModelTests
         sut.Configurations.First().AccessCode = "1234";
 
         // Assert
-        sut.ButtonEnabled.Should().BeTrue("because changes have been made to the list.");
-    }
-
-    [Fact]
-    public async Task When_MainWindowViewModel_is_changed_the_isdirty_count_increases()
-    {
-        // Arrange
-        var repositoryMock = fixture.Freeze<IRepository>();
-        repositoryMock.GetApartmentConfigurationsAsync().Returns(Task.FromResult(GetDefaultConfigurations()));
-        repositoryMock.GetIntercomsAsync().Returns(Task.FromResult(GetDefaultIntercoms()));
-
-        var sut = new MainViewModel(fixture.Create<DataService>());
-        await sut.Initialization;
-
-        // Act
-        int initialValue = sut.NumberOfDirtyConfigurations;
-        sut.Configurations.First().AccessCode = "1234";
-        int secondValue = sut.NumberOfDirtyConfigurations;
-
-        // Assert
-        secondValue.Should().BeGreaterThan(initialValue, "because changes have been made to the list.");
+        sut.IsDirty.Should().BeTrue("because changes have been made to the list.");
     }
 
     [Fact]
@@ -95,38 +60,16 @@ public class MainWindowViewModelTests
         await sut.Initialization;
 
         // Act
-        bool beforeChange = sut.ButtonEnabled;
+        bool beforeChange = sut.IsDirty;
         sut.Configurations.First().AccessCode = "1234";
-        bool afterChange = sut.ButtonEnabled;
+        bool afterChange = sut.IsDirty;
         sut.Configurations.First().AccessCode = string.Empty;
-        bool afterRevertingChange = sut.ButtonEnabled;
+        bool afterRevertingChange = sut.IsDirty;
 
         // Assert
         beforeChange.Should().BeFalse("because no changes have (yet) been made to the list.");
         afterChange.Should().BeTrue("because changes have been made to the list.");
         afterRevertingChange.Should().BeFalse("because the change has been reverted to the original.");
-    }
-
-    [Fact]
-    public async Task After_MainWindowViewModel_is_saved_save_button_is_disabled()
-    {
-        // Arrange
-        var repositoryMock = fixture.Freeze<IRepository>();
-        repositoryMock.GetApartmentConfigurationsAsync().Returns(Task.FromResult(GetDefaultConfigurations()));
-        repositoryMock.GetIntercomsAsync().Returns(Task.FromResult(GetDefaultIntercoms()));
-
-        var sut = new MainViewModel(fixture.Create<DataService>());
-        await sut.Initialization;
-
-        // Act
-        sut.Configurations.First().AccessCode = "1234";
-        bool afterChange = sut.ButtonEnabled;
-        await sut.SaveConfigurationsAsync();
-        bool afterSave = sut.ButtonEnabled;
-
-        // Assert
-        afterChange.Should().BeTrue("because changes have been made to the list.");
-        afterSave.Should().BeFalse("because all the changes have been saved and this is the new situation.");
     }
 
     [SuppressMessage(

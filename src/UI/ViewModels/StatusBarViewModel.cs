@@ -1,10 +1,12 @@
-﻿using System;
+﻿using System.ComponentModel;
 using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
+using System.Threading.Tasks;
+
 using Arentheym.ParkingBarrier.Application;
-using Arentheym.ParkingBarrier.UI.Messages;
 using CommunityToolkit.Mvvm.ComponentModel;
-using CommunityToolkit.Mvvm.Messaging;
+using CommunityToolkit.Mvvm.Input;
+
 using FluentResults;
 
 namespace Arentheym.ParkingBarrier.UI.ViewModels;
@@ -12,7 +14,9 @@ namespace Arentheym.ParkingBarrier.UI.ViewModels;
 public partial class StatusBarViewModel : ObservableObject
 {
     private readonly CultureInfo dutchCulture = new("nl-NL");
+
     private readonly SmsGatewayService smsGatewayService;
+    private readonly MainViewModel mainViewModel;
 
     [ObservableProperty]
     private string remainingCredits = string.Empty;
@@ -23,20 +27,24 @@ public partial class StatusBarViewModel : ObservableObject
     [ObservableProperty]
     private string numberOfMessagesLeft = string.Empty;
 
-    public StatusBarViewModel([NotNull] SmsGatewayService smsGatewayService)
+    public bool ButtonEnabled => mainViewModel.IsDirty;
+
+    [SuppressMessage("Design", "CA1062:Validate arguments of public methods", Justification = "Dependency injection")]
+    public StatusBarViewModel(MainViewModel mainViewModel, SmsGatewayService smsGatewayService)
     {
+        this.mainViewModel = mainViewModel;
         this.smsGatewayService = smsGatewayService;
 
-        // Listen for RefreshRemainingCreditsMessage messages
-        WeakReferenceMessenger.Default.Register<RefreshRemainingCreditsMessage>(
-            this,
-            (_, _) =>
-            {
-                OnMessageReceived();
-            }
-        );
-
+        mainViewModel.PropertyChanged += MainViewModelOnPropertyChanged;
         UpdateValues();
+    }
+
+    private void MainViewModelOnPropertyChanged(object? sender, PropertyChangedEventArgs e)
+    {
+        if (e.PropertyName == nameof(MainViewModel.IsDirty))
+        {
+            OnPropertyChanged(nameof(ButtonEnabled));
+        }
     }
 
     private void UpdateValues()
@@ -54,8 +62,9 @@ public partial class StatusBarViewModel : ObservableObject
             : "Could not determine number of messages left.";
     }
 
-    private void OnMessageReceived()
+    [RelayCommand]
+    public async Task SaveConfigurationsAsync()
     {
-        UpdateValues();
+        await mainViewModel.SaveConfigurationsAsync();
     }
 }

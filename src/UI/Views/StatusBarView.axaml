@@ -18,10 +18,22 @@
         <vm:StatusBarViewModel />
     </Design.DataContext>
 
-    <StackPanel Orientation="Horizontal" Spacing="10">
-        <TextBlock Text="{Binding RemainingCredits, StringFormat='Krediet: {0}'}" />
-        <TextBlock Text="{Binding PricePerMessage, StringFormat='Prijs per SMS: {0}'}" />
-        <TextBlock Text="{Binding NumberOfMessagesLeft, StringFormat='Aantal SMS over: {0}'}" />
-    </StackPanel>
+    <DockPanel>
+        <StackPanel
+            DockPanel.Dock="Left"
+            Orientation="Horizontal"
+            Spacing="10">
+            <TextBlock Text="{Binding RemainingCredits, StringFormat='Krediet: {0}'}" />
+            <TextBlock Text="{Binding PricePerMessage, StringFormat='Prijs per SMS: {0}'}" />
+            <TextBlock Text="{Binding NumberOfMessagesLeft, StringFormat='Aantal SMS over: {0}'}" />
+        </StackPanel>
+
+        <Button
+            Command="{Binding SaveConfigurationsAsync}"
+            Content="Save Configurations"
+            DockPanel.Dock="Right"
+            IsEnabled="{Binding ButtonEnabled}" />
+    </DockPanel>
+
 
 </UserControl>

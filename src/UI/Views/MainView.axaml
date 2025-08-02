@@ -120,7 +120,7 @@
             </DataGrid.Columns>
         </DataGrid>
 
-        <views:LogView Grid.Row="3" HorizontalAlignment="Stretch" />
+        <views:LogView Grid.Row="3" />
 
     </Grid>
 

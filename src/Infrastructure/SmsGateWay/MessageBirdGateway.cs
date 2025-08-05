@@ -28,7 +28,7 @@ public class MessageBirdGateway(SmsGatewayConfiguration configuration) : ISmsGat
         try
         {
             Message _ = client.SendMessage(sender, body, recipients);
-            return Result.Ok(body);
+            return Result.Ok($"SMS gestuurd naar: {recipients[0]} - {body}");
         }
         catch (ErrorException ex)
         {

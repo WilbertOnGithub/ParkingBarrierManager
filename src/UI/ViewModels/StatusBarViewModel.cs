@@ -20,6 +20,7 @@ public partial class StatusBarViewModel : ObservableObject
     private readonly MainViewModel mainViewModel;
 
     [ObservableProperty]
+    [NotifyPropertyChangedFor(nameof(NumberOfMessagesLeft))]
     private string remainingCredits = string.Empty;
 
     [ObservableProperty]
@@ -49,7 +50,7 @@ public partial class StatusBarViewModel : ObservableObject
         this.smsGatewayService = smsGatewayService;
 
         mainViewModel.PropertyChanged += MainViewModelOnPropertyChanged;
-        UpdateValues();
+        UpdateSMSBalanceInformation();
     }
 
     private void MainViewModelOnPropertyChanged(object? sender, PropertyChangedEventArgs e)
@@ -61,7 +62,7 @@ public partial class StatusBarViewModel : ObservableObject
         }
     }
 
-    private void UpdateValues()
+    private void UpdateSMSBalanceInformation()
     {
         Result<float> balanceDetails = smsGatewayService.GetBalanceDetails();
         Result<int> messagesLeft = smsGatewayService.NumberOfMessagesLeft();
@@ -74,6 +75,8 @@ public partial class StatusBarViewModel : ObservableObject
         NumberOfMessagesLeft = messagesLeft.IsSuccess
             ? messagesLeft.Value.ToString(dutchCulture)
             : "Could not determine number of messages left.";
+
+        OnPropertyChanged(nameof(RemainingCredits));
     }
 
     [RelayCommand]
@@ -83,6 +86,8 @@ public partial class StatusBarViewModel : ObservableObject
         {
             await mainViewModel.UpdateConfigurationBySMS();
         }
+        UpdateSMSBalanceInformation();
+
         await mainViewModel.SaveConfigurationsAsync();
     }
 }

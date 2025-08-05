@@ -28,13 +28,14 @@
                 FontWeight="Bold"
                 Grid.Row="0"
                 Margin="5,0,0,5"
-                Text="Log entries" />
+                Text="Geschiedenis" />
 
             <!--  ScrollViewer with ItemsControl in Grid layout  -->
             <ScrollViewer
                 Grid.Row="1"
                 HorizontalScrollBarVisibility="Disabled"
                 MaxHeight="200"
+                MinHeight="150"
                 VerticalScrollBarVisibility="Auto">
                 <ItemsControl ItemsSource="{Binding LogEntries}">
                     <ItemsControl.ItemsPanel>

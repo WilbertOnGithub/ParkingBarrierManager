@@ -19,6 +19,6 @@ public partial class LogViewModel : ObservableObject
 
     private void OnMessageReceived(object recipient, LogEntryAdded message)
     {
-        LogEntries.Add(message.Value);
+        LogEntries.Insert(0, message.Value);
     }
 }

@@ -26,10 +26,10 @@
                 Orientation="Horizontal"
                 Spacing="10"
                 VerticalAlignment="Center">
-                <TextBlock Text="{Binding RemainingCredits, Mode=OneWay, StringFormat='Krediet: {0}'}" />
-                <TextBlock Text="{Binding PricePerMessage, Mode=OneTime, StringFormat='Prijs per SMS: {0}'}" />
-                <TextBlock Text="{Binding NumberOfMessagesLeft, Mode=OneWay, StringFormat='Aantal SMS over: {0}'}" />
-                <TextBlock IsVisible="{Binding !!NrSMSNeeded}" Text="{Binding NrSMSNeeded, Mode=OneWay, StringFormat='Aantal SMS nodig om configuratie bij te werken: {0}'}" />
+                <TextBlock Text="{Binding RemainingCredits, StringFormat='Krediet: {0}'}" />
+                <TextBlock Text="{Binding PricePerMessage, StringFormat='Prijs per SMS: {0}'}" />
+                <TextBlock Text="{Binding NumberOfMessagesLeft, StringFormat='Aantal SMS over: {0}'}" />
+                <TextBlock IsVisible="{Binding !!NrSMSNeeded}" Text="{Binding NrSMSNeeded, StringFormat='Aantal SMS nodig om configuratie bij te werken: {0}'}" />
             </StackPanel>
 
             <StackPanel
@@ -42,7 +42,7 @@
                     Content="Sla wijzigingen op"
                     HorizontalAlignment="Right"
                     IsEnabled="{Binding SaveConfigurationButtonEnabled}" />
-                <CheckBox Content="Verstuur SMS" />
+                <CheckBox Content="Verstuur SMS" IsChecked="{Binding SendingSMS}" />
             </StackPanel>
 
         </Grid>

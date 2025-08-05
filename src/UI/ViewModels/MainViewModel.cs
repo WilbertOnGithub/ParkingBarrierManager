@@ -63,24 +63,42 @@ public partial class MainViewModel : ViewModelBase, IAsyncInitialization
     /// <summary>
     /// Save all dirty configurations to the database
     /// </summary>
-    public async Task UpdateConfigurationsAsync()
+    public async Task SaveConfigurationsAsync()
     {
-        List<ApartmentConfigurationViewModel> toBeUpdatedViewModels = Configurations.Where(x => x.IsDirty).ToList();
-        List<ApartmentConfiguration> toBeUpdatedApartmentConfigurations = toBeUpdatedViewModels.Select(x => ManualMapper.ViewModelToEntity(x, availableIntercoms.ToList()))
-            .ToList();
+        List<ApartmentConfiguration> toBeUpdatedApartmentConfigurations = GetDirtyConfigurations();
+        await dataService.SaveApartmentConfigurations(toBeUpdatedApartmentConfigurations);
 
+        ResetDirtyConfigurations();
+        OnPropertyChanged(nameof(IsDirty));
+    }
+
+    public async Task UpdateConfigurationBySMS()
+    {
+        List<ApartmentConfiguration> toBeUpdatedApartmentConfigurations = GetDirtyConfigurations();
         foreach (var toBeUpdatedApartmentConfiguration in toBeUpdatedApartmentConfigurations)
-         {
+        {
             List<string> toBeLogged = await smsGatewayService.UpdateApartmentConfiguration(toBeUpdatedApartmentConfiguration);
             foreach (var message in toBeLogged)
             {
                 WeakReferenceMessenger.Default.Send(new LogEntryAdded(new LogMessage { Message = message, Timestamp = DateTime.Now }));
             }
         }
-        await dataService.SaveApartmentConfigurations(toBeUpdatedApartmentConfigurations);
+    }
 
-        // Set original for all dirty configurations so that they are no longer considered dirty.
-        toBeUpdatedViewModels.ForEach(x => x.SetOriginal());
-        OnPropertyChanged(nameof(IsDirty));
+    private List<ApartmentConfiguration> GetDirtyConfigurations()
+    {
+        List<ApartmentConfigurationViewModel> toBeUpdatedViewModels = Configurations.Where(x => x.IsDirty).ToList();
+        List<ApartmentConfiguration> toBeUpdatedApartmentConfigurations = toBeUpdatedViewModels.Select(x => ManualMapper.ViewModelToEntity(x, availableIntercoms.ToList()))
+            .ToList();
+
+        return toBeUpdatedApartmentConfigurations;
+    }
+
+    private void ResetDirtyConfigurations()
+    {
+        foreach (var dirty in Configurations.Where(x => x.IsDirty))
+        {
+            dirty.SetOriginal();
+        }
     }
 }

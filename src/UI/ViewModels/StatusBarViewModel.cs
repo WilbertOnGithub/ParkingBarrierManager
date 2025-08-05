@@ -33,6 +33,9 @@ public partial class StatusBarViewModel : ObservableObject
     /// </summary>
     public bool SaveConfigurationButtonEnabled => mainViewModel.IsDirty;
 
+    [ObservableProperty]
+    private bool sendingSMS;
+
     /// <summary>
     /// How many SMS messages do we need to send if we want to update this
     /// configuration?
@@ -76,6 +79,10 @@ public partial class StatusBarViewModel : ObservableObject
     [RelayCommand]
     public async Task SaveConfigurationsAsync()
     {
-        await mainViewModel.UpdateConfigurationsAsync();
+        if (SendingSMS)
+        {
+            await mainViewModel.UpdateConfigurationBySMS();
+        }
+        await mainViewModel.SaveConfigurationsAsync();
     }
 }

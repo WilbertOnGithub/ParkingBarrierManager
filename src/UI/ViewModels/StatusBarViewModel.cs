@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel;
 using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
+using System.Linq;
 using System.Threading.Tasks;
 
 using Arentheym.ParkingBarrier.Application;
@@ -27,7 +28,16 @@ public partial class StatusBarViewModel : ObservableObject
     [ObservableProperty]
     private string numberOfMessagesLeft = string.Empty;
 
-    public bool ButtonEnabled => mainViewModel.IsDirty;
+    /// <summary>
+    /// Is the Save Configuration button enabled or not?
+    /// </summary>
+    public bool SaveConfigurationButtonEnabled => mainViewModel.IsDirty;
+
+    /// <summary>
+    /// How many SMS messages do we need to send if we want to update this
+    /// configuration?
+    /// </summary>
+    public int NrSMSNeeded => mainViewModel.Configurations.Count(x => x.IsDirty) * 2;
 
     [SuppressMessage("Design", "CA1062:Validate arguments of public methods", Justification = "Dependency injection")]
     public StatusBarViewModel(MainViewModel mainViewModel, SmsGatewayService smsGatewayService)
@@ -43,7 +53,8 @@ public partial class StatusBarViewModel : ObservableObject
     {
         if (e.PropertyName == nameof(MainViewModel.IsDirty))
         {
-            OnPropertyChanged(nameof(ButtonEnabled));
+            OnPropertyChanged(nameof(SaveConfigurationButtonEnabled));
+            OnPropertyChanged(nameof(NrSMSNeeded));
         }
     }
 

@@ -100,7 +100,7 @@ public class MainWindowViewModelTests
         var intercoms = new List<Intercom>
         {
             new("voor", new PhoneNumber("1234567890"), new MasterCode("1111")),
-            new("achter", new PhoneNumber("1234567890"), new MasterCode("1111"))
+            new("achter", new PhoneNumber("1234567890"), new MasterCode("1111")),
         };
 
         return intercoms;

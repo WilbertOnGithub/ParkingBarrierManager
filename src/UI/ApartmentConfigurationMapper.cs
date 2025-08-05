@@ -31,7 +31,7 @@ public static class ManualMapper
                 .Number,
             QuaternaryPhoneNumber = apartmentConfiguration
                 .PhoneNumbers.First(x => x.Order == DivertOrder.Quaternary)
-                .Number
+                .Number,
         };
 
         foreach (var intercom in intercoms)
@@ -43,7 +43,7 @@ public static class ManualMapper
                     {
                         Id = intercom.Id.Id,
                         Name = intercom.Name,
-                        IsUsed = true
+                        IsUsed = true,
                     }
                 );
             }
@@ -54,7 +54,7 @@ public static class ManualMapper
                     {
                         Id = intercom.Id.Id,
                         Name = intercom.Name,
-                        IsUsed = false
+                        IsUsed = false,
                     }
                 );
             }

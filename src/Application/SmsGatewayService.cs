@@ -30,11 +30,17 @@ public class SmsGatewayService(ILogger<SmsGatewayService> logger, ISmsGateway ga
     /// </summary>
     /// <param name="apartmentConfiguration">The configuration of the apartment to be updated, including its intercoms.</param>
     /// <returns>A list of strings representing the results of the SMS update operations.</returns>
-    public async Task<List<string>> UpdateApartmentConfiguration([NotNull] ApartmentConfiguration apartmentConfiguration)
+    public async Task<List<string>> UpdateApartmentConfiguration(
+        [NotNull] ApartmentConfiguration apartmentConfiguration
+    )
     {
         IList<Intercom> intercoms = await dataService.GetIntercoms().ConfigureAwait(false);
-        List<Intercom> toBeEmptied = intercoms.Where(x => apartmentConfiguration.Intercoms.All(y => y.Id != x.Id)).ToList();
-        List<Intercom> toBeUpdated = intercoms.Where(x => apartmentConfiguration.Intercoms.Any(y => y.Id == x.Id)).ToList();
+        List<Intercom> toBeEmptied = intercoms
+            .Where(x => apartmentConfiguration.Intercoms.All(y => y.Id != x.Id))
+            .ToList();
+        List<Intercom> toBeUpdated = intercoms
+            .Where(x => apartmentConfiguration.Intercoms.Any(y => y.Id == x.Id))
+            .ToList();
 
         List<string> results = [];
 
@@ -45,7 +51,14 @@ public class SmsGatewayService(ILogger<SmsGatewayService> logger, ISmsGateway ga
 
         foreach (var intercom in toBeEmptied)
         {
-            results.Add(CheckResult(gateway.SendSms(ApartmentConfiguration.CreateEmptyConfiguration(apartmentConfiguration.Id.Number), intercom)));
+            results.Add(
+                CheckResult(
+                    gateway.SendSms(
+                        ApartmentConfiguration.CreateEmptyConfiguration(apartmentConfiguration.Id.Number),
+                        intercom
+                    )
+                )
+            );
         }
 
         return results;

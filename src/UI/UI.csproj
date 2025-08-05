@@ -8,15 +8,12 @@
     <NeutralLanguage>en</NeutralLanguage>
     <LangVersion>latestmajor</LangVersion>
   </PropertyGroup>
-
   <ItemGroup>
     <Folder Include="Behaviours\" />
     <Folder Include="Models\" />
     <AvaloniaResource Include="Assets\**" />
     <Folder Include="Resources\" />
   </ItemGroup>
-
-
   <ItemGroup>
     <PackageReference Include="Avalonia" Version="11.3.2" />
     <PackageReference Include="avalonia.controls.datagrid" Version="11.3.2" />
@@ -24,9 +21,17 @@
     <PackageReference Include="Avalonia.Desktop" Version="11.3.2" />
     <PackageReference Include="Avalonia.Fonts.Inter" Version="11.3.2" />
     <!--Condition below is needed to remove Avalonia.Diagnostics package from build output in Release configuration.-->
-    <PackageReference Condition="'$(Configuration)' == 'Debug'" Include="Avalonia.Diagnostics" Version="11.3.2" />
+    <PackageReference
+      Condition="'$(Configuration)' == 'Debug'"
+      Include="Avalonia.Diagnostics"
+      Version="11.3.2"
+    />
     <PackageReference Include="Avalonia.Themes.Simple" Version="11.3.2" />
     <PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.0" />
+    <PackageReference Include="CSharpier.MsBuild" Version="1.1.1">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="9.0.7" />
     <PackageReference Include="serilog" Version="4.3.0" />
     <PackageReference Include="Serilog.Exceptions" Version="8.4.0" />
@@ -35,15 +40,11 @@
     <PackageReference Include="serilog.sinks.console" Version="6.0.0" />
     <PackageReference Include="serilog.sinks.file" Version="7.0.0" />
   </ItemGroup>
-
-
   <ItemGroup>
     <ProjectReference Include="..\Application\Application.csproj" />
     <ProjectReference Include="..\Domain\Domain.csproj" />
     <ProjectReference Include="..\Infrastructure\Infrastructure.csproj" />
   </ItemGroup>
-
-
   <ItemGroup>
     <None Update="appsettings.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -55,8 +56,6 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
-
-
   <ItemGroup>
     <EmbeddedResource Update="Assets\Resources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
@@ -67,8 +66,6 @@
       <LastGenOutput>Resources.nl-NL.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
-
-
   <ItemGroup>
     <Compile Update="Assets\Resources.Designer.cs">
       <DesignTime>True</DesignTime>

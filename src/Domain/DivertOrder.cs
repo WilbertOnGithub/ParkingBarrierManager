@@ -23,5 +23,5 @@ public enum DivertOrder
     /// <summary>
     /// The final divert - when the second divert does not answer.
     /// </summary>
-    Quaternary = 3
+    Quaternary = 3,
 }

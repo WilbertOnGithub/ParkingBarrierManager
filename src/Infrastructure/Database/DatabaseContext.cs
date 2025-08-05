@@ -66,25 +66,25 @@ public class DatabaseContext : DbContext
                         {
                             ApartmentConfigurationId = apartmentConfiguration.Id,
                             Order = DivertOrder.Primary,
-                            Number = string.Empty
+                            Number = string.Empty,
                         },
                         new
                         {
                             ApartmentConfigurationId = apartmentConfiguration.Id,
                             Order = DivertOrder.Secondary,
-                            Number = string.Empty
+                            Number = string.Empty,
                         },
                         new
                         {
                             ApartmentConfigurationId = apartmentConfiguration.Id,
                             Order = DivertOrder.Tertiary,
-                            Number = string.Empty
+                            Number = string.Empty,
                         },
                         new
                         {
                             ApartmentConfigurationId = apartmentConfiguration.Id,
                             Order = DivertOrder.Quaternary,
-                            Number = string.Empty
+                            Number = string.Empty,
                         }
                     );
             });

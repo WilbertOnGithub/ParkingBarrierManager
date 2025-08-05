@@ -6,7 +6,6 @@ using FluentResults;
 using MessageBird;
 using MessageBird.Exceptions;
 using MessageBird.Objects;
-
 using Error = FluentResults.Error;
 
 namespace Arentheym.ParkingBarrier.Infrastructure.SmsGateway;
@@ -33,7 +32,12 @@ public class MessageBirdGateway(SmsGatewayConfiguration configuration) : ISmsGat
         catch (ErrorException ex)
         {
             IList<IError> errors = CompileErrorList(ex);
-            errors.Insert(0, new Error($"Error while trying to send SMS for apartment {apartmentConfiguration.Id.Number} to {intercom.PhoneNumber.Number}"));
+            errors.Insert(
+                0,
+                new Error(
+                    $"Error while trying to send SMS for apartment {apartmentConfiguration.Id.Number} to {intercom.PhoneNumber.Number}"
+                )
+            );
             return Result.Fail(errors);
         }
     }

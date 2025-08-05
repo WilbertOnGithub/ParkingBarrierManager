@@ -29,9 +29,9 @@ public class IsDirtyTests
                 {
                     Id = Guid.NewGuid(),
                     IsUsed = true,
-                    Name = string.Empty
-                }
-            }
+                    Name = string.Empty,
+                },
+            },
         };
 
         // Act
@@ -61,9 +61,9 @@ public class IsDirtyTests
                 {
                     Id = Guid.NewGuid(),
                     IsUsed = true,
-                    Name = string.Empty
-                }
-            }
+                    Name = string.Empty,
+                },
+            },
         };
         sut.SetOriginal();
 
@@ -94,9 +94,9 @@ public class IsDirtyTests
                 {
                     Id = Guid.NewGuid(),
                     IsUsed = true,
-                    Name = string.Empty
-                }
-            }
+                    Name = string.Empty,
+                },
+            },
         };
         sut.SetOriginal();
 
@@ -127,9 +127,9 @@ public class IsDirtyTests
                 {
                     Id = Guid.NewGuid(),
                     IsUsed = true,
-                    Name = string.Empty
-                }
-            }
+                    Name = string.Empty,
+                },
+            },
         };
         sut.SetOriginal();
 
@@ -161,9 +161,9 @@ public class IsDirtyTests
                 {
                     Id = Guid.NewGuid(),
                     IsUsed = true,
-                    Name = string.Empty
-                }
-            }
+                    Name = string.Empty,
+                },
+            },
         };
 
         // Act

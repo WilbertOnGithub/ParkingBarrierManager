@@ -47,7 +47,13 @@ public class ApartmentConfiguration : Entity<ApartmentId>
     /// </summary>
     public static ApartmentConfiguration CreateEmptyConfiguration(int apartmentNumber)
     {
-        var emptyConfiguration =  new ApartmentConfiguration(new ApartmentId(apartmentNumber), new MemoryLocation(Convert.ToInt16(apartmentNumber)), string.Empty, false, AccessCode.NoAccessCode);
+        var emptyConfiguration = new ApartmentConfiguration(
+            new ApartmentId(apartmentNumber),
+            new MemoryLocation(Convert.ToInt16(apartmentNumber)),
+            string.Empty,
+            false,
+            AccessCode.NoAccessCode
+        );
         emptyConfiguration.UpsertPhoneNumber(new DivertPhoneNumber(DivertOrder.Primary, string.Empty));
         emptyConfiguration.UpsertPhoneNumber(new DivertPhoneNumber(DivertOrder.Secondary, string.Empty));
         emptyConfiguration.UpsertPhoneNumber(new DivertPhoneNumber(DivertOrder.Tertiary, string.Empty));

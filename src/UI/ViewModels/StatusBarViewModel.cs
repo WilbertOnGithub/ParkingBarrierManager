@@ -3,11 +3,9 @@ using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
-
 using Arentheym.ParkingBarrier.Application;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-
 using FluentResults;
 
 namespace Arentheym.ParkingBarrier.UI.ViewModels;

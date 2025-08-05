@@ -8,7 +8,6 @@ using System.Threading.Tasks;
 using Arentheym.ParkingBarrier.Application;
 using Arentheym.ParkingBarrier.Domain;
 using Arentheym.ParkingBarrier.UI.Messages;
-
 using CommunityToolkit.Mvvm.Messaging;
 
 namespace Arentheym.ParkingBarrier.UI.ViewModels;
@@ -77,10 +76,14 @@ public partial class MainViewModel : ViewModelBase, IAsyncInitialization
         List<ApartmentConfiguration> toBeUpdatedApartmentConfigurations = GetDirtyConfigurations();
         foreach (var toBeUpdatedApartmentConfiguration in toBeUpdatedApartmentConfigurations)
         {
-            List<string> toBeLogged = await smsGatewayService.UpdateApartmentConfiguration(toBeUpdatedApartmentConfiguration);
+            List<string> toBeLogged = await smsGatewayService.UpdateApartmentConfiguration(
+                toBeUpdatedApartmentConfiguration
+            );
             foreach (var message in toBeLogged)
             {
-                WeakReferenceMessenger.Default.Send(new LogEntryAdded(new LogMessage { Message = message, Timestamp = DateTime.Now }));
+                WeakReferenceMessenger.Default.Send(
+                    new LogEntryAdded(new LogMessage { Message = message, Timestamp = DateTime.Now })
+                );
             }
         }
     }
@@ -88,7 +91,8 @@ public partial class MainViewModel : ViewModelBase, IAsyncInitialization
     private List<ApartmentConfiguration> GetDirtyConfigurations()
     {
         List<ApartmentConfigurationViewModel> toBeUpdatedViewModels = Configurations.Where(x => x.IsDirty).ToList();
-        List<ApartmentConfiguration> toBeUpdatedApartmentConfigurations = toBeUpdatedViewModels.Select(x => ManualMapper.ViewModelToEntity(x, availableIntercoms.ToList()))
+        List<ApartmentConfiguration> toBeUpdatedApartmentConfigurations = toBeUpdatedViewModels
+            .Select(x => ManualMapper.ViewModelToEntity(x, availableIntercoms.ToList()))
             .ToList();
 
         return toBeUpdatedApartmentConfigurations;

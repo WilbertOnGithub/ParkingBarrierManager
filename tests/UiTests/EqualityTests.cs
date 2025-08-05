@@ -19,14 +19,14 @@ public class EqualityTests
         {
             Id = id,
             Name = string.Empty,
-            IsUsed = false
+            IsUsed = false,
         };
 
         var right = new IntercomViewModel
         {
             Id = id,
             Name = string.Empty,
-            IsUsed = false
+            IsUsed = false,
         };
 
         // Act / Assert
@@ -41,14 +41,14 @@ public class EqualityTests
         {
             Id = Guid.NewGuid(),
             Name = string.Empty,
-            IsUsed = false
+            IsUsed = false,
         };
 
         var right = new IntercomViewModel
         {
             Id = Guid.NewGuid(),
             Name = string.Empty,
-            IsUsed = false
+            IsUsed = false,
         };
 
         // Act / Assert
@@ -63,7 +63,7 @@ public class EqualityTests
         {
             Id = Guid.NewGuid(),
             Name = string.Empty,
-            IsUsed = false
+            IsUsed = false,
         };
 
         // Act / Assert
@@ -92,9 +92,9 @@ public class EqualityTests
                 {
                     Id = id,
                     IsUsed = true,
-                    Name = string.Empty
-                }
-            }
+                    Name = string.Empty,
+                },
+            },
         };
 
         var right = new ApartmentConfigurationViewModel
@@ -113,9 +113,9 @@ public class EqualityTests
                 {
                     Id = id,
                     IsUsed = true,
-                    Name = string.Empty
-                }
-            }
+                    Name = string.Empty,
+                },
+            },
         };
 
         // Act / Assert
@@ -142,9 +142,9 @@ public class EqualityTests
                 {
                     Id = Guid.NewGuid(),
                     IsUsed = true,
-                    Name = string.Empty
-                }
-            }
+                    Name = string.Empty,
+                },
+            },
         };
 
         // Act / Assert
@@ -171,9 +171,9 @@ public class EqualityTests
                 {
                     Id = Guid.NewGuid(),
                     IsUsed = true,
-                    Name = string.Empty
-                }
-            }
+                    Name = string.Empty,
+                },
+            },
         };
 
         var right = new ApartmentConfigurationViewModel
@@ -192,9 +192,9 @@ public class EqualityTests
                 {
                     Id = Guid.NewGuid(),
                     IsUsed = true,
-                    Name = string.Empty
-                }
-            }
+                    Name = string.Empty,
+                },
+            },
         };
 
         // Act / Assert

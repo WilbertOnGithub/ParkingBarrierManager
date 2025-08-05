@@ -28,7 +28,7 @@ namespace Arentheym.Database.Migrations
                     DialToOpen = table.Column<bool>(type: "INTEGER", nullable: false),
                     DisplayName = table.Column<string>(type: "TEXT", nullable: false),
                     MemoryLocation = table.Column<short>(type: "INTEGER", nullable: false),
-                    AccessCode = table.Column<string>(type: "TEXT", nullable: false)
+                    AccessCode = table.Column<string>(type: "TEXT", nullable: false),
                 },
                 constraints: table =>
                 {
@@ -43,7 +43,7 @@ namespace Arentheym.Database.Migrations
                     Id = table.Column<Guid>(type: "TEXT", nullable: false),
                     MasterCode = table.Column<string>(type: "TEXT", maxLength: 4, nullable: false),
                     Name = table.Column<string>(type: "TEXT", nullable: false),
-                    PhoneNumber = table.Column<string>(type: "TEXT", nullable: false)
+                    PhoneNumber = table.Column<string>(type: "TEXT", nullable: false),
                 },
                 constraints: table =>
                 {
@@ -57,7 +57,7 @@ namespace Arentheym.Database.Migrations
                 {
                     Number = table.Column<string>(type: "TEXT", nullable: false),
                     Order = table.Column<int>(type: "INTEGER", nullable: false),
-                    ApartmentConfigurationId = table.Column<int>(type: "INTEGER", nullable: false)
+                    ApartmentConfigurationId = table.Column<int>(type: "INTEGER", nullable: false),
                 },
                 constraints: table =>
                 {
@@ -67,7 +67,7 @@ namespace Arentheym.Database.Migrations
                         {
                             x.ApartmentConfigurationId,
                             x.Order,
-                            x.Number
+                            x.Number,
                         }
                     );
                     table.ForeignKey(
@@ -85,7 +85,7 @@ namespace Arentheym.Database.Migrations
                 columns: table => new
                 {
                     IntercomId = table.Column<Guid>(type: "TEXT", nullable: false),
-                    ApartmentConfigurationId = table.Column<int>(type: "INTEGER", nullable: false)
+                    ApartmentConfigurationId = table.Column<int>(type: "INTEGER", nullable: false),
                 },
                 constraints: table =>
                 {
@@ -184,7 +184,7 @@ namespace Arentheym.Database.Migrations
                     { 183, "", true, "183", (short)183 },
                     { 185, "", true, "185", (short)185 },
                     { 187, "", true, "187", (short)187 },
-                    { 189, "", true, "189", (short)189 }
+                    { 189, "", true, "189", (short)189 },
                 }
             );
 
@@ -194,7 +194,7 @@ namespace Arentheym.Database.Migrations
                 values: new object[,]
                 {
                     { new Guid("179f0aee-8831-45df-942e-57cb20fb65e9"), "8601", "Slagboom achter", "31657181402" },
-                    { new Guid("3a3306b3-0f83-435a-a968-7d4f9b02a4a6"), "8601", "Slagboom voor", "31657093298" }
+                    { new Guid("3a3306b3-0f83-435a-a968-7d4f9b02a4a6"), "8601", "Slagboom voor", "31657093298" },
                 }
             );
 
@@ -342,7 +342,7 @@ namespace Arentheym.Database.Migrations
                     { 183, new Guid("3a3306b3-0f83-435a-a968-7d4f9b02a4a6") },
                     { 185, new Guid("3a3306b3-0f83-435a-a968-7d4f9b02a4a6") },
                     { 187, new Guid("3a3306b3-0f83-435a-a968-7d4f9b02a4a6") },
-                    { 189, new Guid("3a3306b3-0f83-435a-a968-7d4f9b02a4a6") }
+                    { 189, new Guid("3a3306b3-0f83-435a-a968-7d4f9b02a4a6") },
                 }
             );
 
@@ -630,7 +630,7 @@ namespace Arentheym.Database.Migrations
                     { 189, "", 0 },
                     { 189, "", 1 },
                     { 189, "", 2 },
-                    { 189, "", 3 }
+                    { 189, "", 3 },
                 }
             );
 

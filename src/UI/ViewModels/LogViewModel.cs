@@ -1,8 +1,6 @@
 using System;
 using System.Collections.ObjectModel;
-
 using Arentheym.ParkingBarrier.UI.Messages;
-
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Messaging;
 

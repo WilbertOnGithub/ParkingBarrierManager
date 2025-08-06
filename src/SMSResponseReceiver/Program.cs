@@ -2,6 +2,7 @@ using Microsoft.Azure.Functions.Worker;
 using Microsoft.Azure.Functions.Worker.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Azure.Messaging.ServiceBus;
 
 namespace Arentheym.ParkingBarrier.SMSResponseReceiver
 {
@@ -16,6 +17,12 @@ namespace Arentheym.ParkingBarrier.SMSResponseReceiver
             builder.Services
                 .AddApplicationInsightsTelemetryWorkerService()
                 .ConfigureFunctionsApplicationInsights();
+
+            builder.Services.AddSingleton(_ =>
+            {
+                var connectionString = Environment.GetEnvironmentVariable("ServiceBusConnectionString");
+                return new ServiceBusClient(connectionString);
+            });
 
             builder.Build().Run();
         }

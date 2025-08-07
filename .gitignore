@@ -30,3 +30,6 @@ BenchmarkDotNet.Artifacts/
 
 # Nuke temporary files
 .nuke/temp
+
+# Local development configuration for Azure functions
+local.settings.json

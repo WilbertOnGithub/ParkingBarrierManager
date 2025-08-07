@@ -11,6 +11,7 @@
     xmlns="https://github.com/avaloniaui"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:i18n="clr-namespace:Arentheym.Assets"
+    xmlns:livecharts="clr-namespace:LiveChartsCore.SkiaSharpView.Avalonia;assembly=LiveChartsCore.SkiaSharpView.Avalonia"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:sukiUi="clr-namespace:SukiUI.Controls;assembly=SukiUI"
     xmlns:views="clr-namespace:Arentheym.Views"
@@ -34,6 +35,8 @@
 
         <views:StatusBarView Grid.Row="0" />
 
+        <livecharts:CartesianChart Grid.Row="1" Series="{Binding Series}" />
+        <!--
         <DataGrid
             CanUserResizeColumns="True"
             Grid.Row="1"
@@ -121,6 +124,7 @@
                 </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
+        -->
 
         <views:LogView Grid.Row="2" />
     </Grid>

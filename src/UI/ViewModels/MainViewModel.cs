@@ -8,7 +8,11 @@ using System.Threading.Tasks;
 using Arentheym.ParkingBarrier.Application;
 using Arentheym.ParkingBarrier.Domain;
 using Arentheym.ParkingBarrier.UI.Messages;
+using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Messaging;
+using LiveChartsCore;
+using LiveChartsCore.SkiaSharpView;
+using LiveChartsCore.SkiaSharpView.Drawing.Geometries;
 
 namespace Arentheym.ParkingBarrier.UI.ViewModels;
 
@@ -19,6 +23,15 @@ public partial class MainViewModel : ViewModelBase, IAsyncInitialization
     private IEnumerable<Intercom> availableIntercoms = [];
 
     public bool IsDirty => Configurations.Any(x => x.IsDirty);
+
+#pragma warning disable CA1819
+    public ISeries[] Series { get; set; } =
+    [
+#pragma warning restore CA1819
+        new ColumnSeries<int>(3, 4, 2),
+        new ColumnSeries<int>(4, 2, 6),
+        new ColumnSeries<double, DiamondGeometry>(4, 3, 4),
+    ];
 
     public ObservableCollection<ApartmentConfigurationViewModel> Configurations { get; } = new();
 

@@ -1,4 +1,5 @@
-<Window
+<sukiUi:SukiWindow
+    BackgroundStyle="Gradient"
     Icon="/Assets/avalonia-logo.ico"
     SizeToContent="WidthAndHeight"
     Title="{x:Static i18n:Resources.ApplicationTitle}"
@@ -11,6 +12,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:i18n="clr-namespace:Arentheym.Assets"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:sukiUi="clr-namespace:SukiUI.Controls;assembly=SukiUI"
     xmlns:views="clr-namespace:Arentheym.Views"
     xmlns:vm="using:Arentheym.ParkingBarrier.UI.ViewModels"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
@@ -34,19 +36,15 @@
         <views:StatusBarView Grid.Row="0" />
 
         <DataGrid
-            Background="Transparent"
             CanUserResizeColumns="True"
-            Foreground="Transparent"
             Grid.Row="1"
             ItemsSource="{Binding Configurations}"
-            MaxHeight="1000"
-            RowBackground="Transparent">
+            MaxHeight="1000">
             <DataGrid.Columns>
                 <DataGridTemplateColumn Header="{x:Static i18n:Resources.HouseNumberHeader}">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <TextBlock
-                                Foreground="White"
                                 HorizontalAlignment="Center"
                                 Margin="10,0,10,0"
                                 Text="{Binding ApartmentNumber}"
@@ -129,4 +127,4 @@
 
     </Grid>
 
-</Window>
+</sukiUi:SukiWindow>

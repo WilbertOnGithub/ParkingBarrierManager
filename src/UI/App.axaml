@@ -3,6 +3,7 @@
     x:Class="Arentheym.ParkingBarrier.UI.App"
     xmlns="https://github.com/avaloniaui"
     xmlns:local="using:Arentheym.ParkingBarrier.UI"
+    xmlns:sukiUi="clr-namespace:SukiUI;assembly=SukiUI"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <!--  "Default" ThemeVariant follows system theme variant. "Dark" or "Light" are other available options.  -->
 
@@ -11,7 +12,6 @@
     </Application.DataTemplates>
 
     <Application.Styles>
-        <SimpleTheme />
-        <StyleInclude Source="avares://Avalonia.Controls.DataGrid/Themes/Simple.xaml" />
+        <sukiUi:SukiTheme ThemeColor="Red" />
     </Application.Styles>
 </Application>

@@ -17,10 +17,10 @@ public class IncomingSMSReceiver(ILogger<IncomingSMSReceiver> logger, ServiceBus
         using (var reader = new StreamReader(request.Body))
         {
             string body = await reader.ReadToEndAsync();
-            logger.LogInformation("Foo");
+            await SendToServiceBus(body);
         }
 
-        return new OkObjectResult("Welcome to Azure Functions!");
+        return new OkResult();
     }
 
     private async Task SendToServiceBus(string body)
@@ -33,7 +33,6 @@ public class IncomingSMSReceiver(ILogger<IncomingSMSReceiver> logger, ServiceBus
             ContentType = "application/json",
             MessageId = Guid.NewGuid().ToString()
         };
-
         message.ApplicationProperties.Add("Timestamp", DateTimeOffset.UtcNow);
 
         try
@@ -42,7 +41,7 @@ public class IncomingSMSReceiver(ILogger<IncomingSMSReceiver> logger, ServiceBus
         }
         catch (ServiceBusException ex)
         {
-            logger.LogError(ex, "Failed to send message to Service Bus");
+            logger.LogError(ex, "Failed to send message {Body} to Service Bus", body);
         }
     }
 }
